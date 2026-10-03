@@ -1,0 +1,244 @@
+{
+  "id": "T24",
+  "type": "trolleybus",
+  "color": "#1356d3",
+  "displayName": "T24",
+  "directions": [
+    {
+      "id": "T24_BOR",
+      "displayName": "BOR",
+      "stops": [
+        {
+          "stationId": "Druzhba3Terminus",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "Block10",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "Block6",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "PechatniPlatkiPCBs",
+          "offsetMinutes": 3
+        },
+        {
+          "stationId": "YordanYovkovHighSchool",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "SBA",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "MathsHighschoolNorth",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "MarielaSoni",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "SaintOuan",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "Zhiti",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "Yuta",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "Winery",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "BOR",
+          "offsetMinutes": 0
+        }
+      ],
+      "schedules": {
+        "workday": [
+          "05:45",
+          "06:25",
+          "07:05",
+          "07:25",
+          "07:40",
+          "08:10",
+          "08:40",
+          "09:00",
+          "09:35",
+          "09:50",
+          "10:10",
+          "11:20",
+          "11:45",
+          "12:20",
+          "12:55",
+          "13:40",
+          "14:20",
+          "14:45",
+          "15:20",
+          "15:30",
+          "15:50",
+          "16:30",
+          "17:15",
+          "17:40",
+          "18:00",
+          "18:20",
+          "18:35",
+          "18:45",
+          "19:10",
+          "20:10",
+          "20:15",
+          "21:15",
+          "22:10",
+          "22:30",
+          "22:50",
+          "22:55",
+          "22:55",
+          "23:30"
+        ],
+        "holiday": [
+          "08:10",
+          "09:20",
+          "10:45",
+          "13:35",
+          "14:45",
+          "16:10",
+          "17:20",
+          "20:15",
+          "22:10",
+          "22:50",
+          "23:20",
+          "23:25"
+        ]
+      }
+    },
+    {
+      "id": "T24_Block28",
+      "displayName": "Druzhba 3 - Terminus",
+      "stops": [
+        {
+          "stationId": "DairyPlant",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "FireBrigade",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "Orgahim",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "Fazan",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "ShipbuildingHighSchool",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "ChaykaEast",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "MathsHighschoolSouth",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "Skobelev",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "Oborishte",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "Afrodita",
+          "offsetMinutes": 3
+        },
+        {
+          "stationId": "Technopolis",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "CBADruzhba3",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "Block33",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "Block28",
+          "offsetMinutes": 0
+        }
+      ],
+      "schedules": {
+        "workday": [
+          "04:50",
+          "05:10",
+          "05:15",
+          "05:15",
+          "05:15",
+          "05:25",
+          "05:30",
+          "05:30",
+          "05:50",
+          "06:00",
+          "06:00",
+          "06:20",
+          "06:25",
+          "06:35",
+          "06:45",
+          "06:45",
+          "07:00",
+          "07:40",
+          "08:10",
+          "08:20",
+          "08:30",
+          "09:05",
+          "09:20",
+          "09:35",
+          "10:40",
+          "11:10",
+          "11:50",
+          "12:25",
+          "13:05",
+          "13:45",
+          "14:15",
+          "14:45",
+          "14:55",
+          "15:20",
+          "15:55",
+          "16:40",
+          "17:05",
+          "18:00",
+          "19:35",
+          "20:45",
+          "21:55"
+        ],
+        "holiday": [
+          "05:10",
+          "05:15",
+          "05:25",
+          "05:30",
+          "05:40",
+          "06:20",
+          "07:35",
+          "08:45",
+          "10:05",
+          "13:00",
+          "14:10",
+          "15:20",
+          "16:50"
+        ]
+      }
+    }
+  ]
+}
