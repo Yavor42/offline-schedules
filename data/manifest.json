@@ -1,6 +1,7 @@
 {
  "lines": [
-  "line_T2.json"
+  "line_T2.json",
+  "line_A27A.json"
  ],
  "stations": "stations/stations_extended.json"
 }
