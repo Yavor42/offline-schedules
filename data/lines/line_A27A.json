@@ -1,0 +1,254 @@
+{
+  "id": "A27A",
+  "type": "bus",
+  "color": "#4aca68",
+  "displayName": "A27A",
+  "directions": [
+    {
+      "id": "A27A_Block48",
+      "displayName": "Druzhba 3 - Block 48",
+      "stops": [
+        {
+          "stationId": "25TutrakanBlvd",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "PsychiatricClinicNorth",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "TutrakanOverpass",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "TsvetnitsaNorth",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "BratyaMiladinoviPrimarySchool",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "UniversityOfRuseNorth",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "EngineeringHighSchool",
+          "offsetMinutes": 3
+        },
+        {
+          "stationId": "Serdika",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "Oborishte",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "Afrodita",
+          "offsetMinutes": 3
+        },
+        {
+          "stationId": "Technopolis",
+          "offsetMinutes": 3
+        },
+        {
+          "stationId": "CBADruzhba3",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "Block33",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "Block28",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "54GotseDelchevBlvd",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "SvirchevServiceWest",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "Block48",
+          "offsetMinutes": 0
+        }
+      ],
+      "schedules": {
+        "workday": [
+          "06:10",
+          "06:45",
+          "07:25",
+          "07:40",
+          "08:05",
+          "09:00",
+          "09:15",
+          "09:40",
+          "10:50",
+          "11:35",
+          "12:05",
+          "12:50",
+          "13:35",
+          "14:10",
+          "14:55",
+          "15:15",
+          "15:30",
+          "16:15",
+          "16:30",
+          "16:50",
+          "17:35",
+          "18:00",
+          "18:10",
+          "19:00",
+          "19:45",
+          "20:45",
+          "21:35",
+          "22:15",
+          "22:55"
+        ],
+        "holiday": [
+          "06:35",
+          "07:55",
+          "09:20",
+          "10:55",
+          "12:45",
+          "14:05",
+          "15:25",
+          "16:45",
+          "18:15",
+          "19:45",
+          "21:30",
+          "22:50"
+        ]
+      }
+    },
+    {
+      "id": "A27A_2526TutrakanBlvd",
+      "displayName": "26 Tutrakan Blvd.",
+      "stops": [
+        {
+          "stationId": "Block48",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "SvirchevServiceEast",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "IrrigationSystems",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "Druzhba3Terminus",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "Block10",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "Block6",
+          "offsetMinutes": 3
+        },
+        {
+          "stationId": "PechatniPlatkiPCBs",
+          "offsetMinutes": 3
+        },
+        {
+          "stationId": "YordanYovkovHighSchool",
+          "offsetMinutes": 3
+        },
+        {
+          "stationId": "SportsArena",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "ThePantheon",
+          "offsetMinutes": 3
+        },
+        {
+          "stationId": "Hospital",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "PurvaProlet",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "UniversityOfRuseSouth",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "Paris",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "TsvetnitsaSouth",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "TraktsiyataLVZ",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "PsychiatricClinicSouth",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "26TutrakanBlvd",
+          "offsetMinutes": 0
+        }
+      ],
+      "schedules": {
+        "workday": [
+          "05:25",
+          "06:00",
+          "06:45",
+          "07:05",
+          "07:25",
+          "08:10",
+          "08:20",
+          "08:45",
+          "09:40",
+          "10:20",
+          "11:25",
+          "12:10",
+          "12:55",
+          "13:30",
+          "14:10",
+          "14:35",
+          "14:50",
+          "15:30",
+          "15:50",
+          "16:05",
+          "16:50",
+          "17:15",
+          "17:25",
+          "18:25",
+          "19:05",
+          "20:10",
+          "20:55",
+          "21:30",
+          "22:15"
+        ],
+        "holiday": [
+          "06:00",
+          "07:20",
+          "08:40",
+          "10:15",
+          "12:05",
+          "13:25",
+          "14:45",
+          "16:05",
+          "17:25",
+          "19:05",
+          "20:50",
+          "22:10"
+        ]
+      }
+    }
+  ]
+}
