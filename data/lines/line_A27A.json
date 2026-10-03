@@ -73,7 +73,7 @@
           "offsetMinutes": 1
         },
         {
-          "stationId": "Block48",
+          "stationId": "Druzhba3Block48",
           "offsetMinutes": 0
         }
       ],
@@ -130,7 +130,7 @@
       "displayName": "26 Tutrakan Blvd.",
       "stops": [
         {
-          "stationId": "Block48",
+          "stationId": "Druzhba3Block48",
           "offsetMinutes": 2
         },
         {
