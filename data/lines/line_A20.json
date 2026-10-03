@@ -1,0 +1,268 @@
+{
+  "id": "A20",
+  "type": "bus",
+  "color": "#4aca68",
+  "displayName": "A20",
+  "directions": [
+    {
+      "id": "A20_SaintOuan",
+      "displayName": "Saint Ouan",
+      "stops": [
+        {
+          "stationId": "PragaSqrTerminusNorth",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "BlockZheravNorth",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "BlockBoryana",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "SubstationNorth",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "DairyKitchenEast",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "TovarnaRailwayStop",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "BratyaMiladinoviPrimarySchool",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "UniversityOfRuseNorth",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "EngineeringHighSchool",
+          "offsetMinutes": 3
+        },
+        {
+          "stationId": "Serdika",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "SBA",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "MathsHighSchoolNorth",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "MarielaSoni",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "SaintOuan",
+          "offsetMinutes": 0
+        }
+      ],
+      "schedules": {
+        "workday": [
+          "06:25",
+          "07:00",
+          "07:35",
+          "08:10",
+          "08:40",
+          "09:20",
+          "10:10",
+          "10:50",
+          "11:15",
+          "11:55",
+          "13:00",
+          "13:35",
+          "14:10",
+          "14:45",
+          "15:15",
+          "15:55",
+          "16:20",
+          "17:05",
+          "17:35",
+          "18:20",
+          "19:05",
+          "19:40",
+          "20:15",
+          "20:50",
+          "21:55",
+          "22:25",
+          "23:05",
+          "23:40"
+        ],
+        "holiday": [
+          "06:25",
+          "07:00",
+          "07:35",
+          "08:10",
+          "08:40",
+          "09:20",
+          "10:10",
+          "10:50",
+          "11:15",
+          "11:55",
+          "13:00",
+          "13:35",
+          "14:10",
+          "14:45",
+          "15:15",
+          "15:55",
+          "16:20",
+          "17:05",
+          "17:35",
+          "18:20",
+          "19:05",
+          "19:40",
+          "20:15",
+          "20:50",
+          "21:55",
+          "22:25",
+          "23:05",
+          "23:40"
+        ]
+      }
+    },
+    {
+      "id": "A20_PragaSqr",
+      "displayName": "Praga Square - Terminus",
+      "stops": [
+        {
+          "stationId": "ShipbuildingHighSchool",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "ChaykaEast",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "MathsHighschoolSouth",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "Skobelev",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "SportsArena",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "ThePantheon",
+          "offsetMinutes": 3
+        },
+        {
+          "stationId": "Hospital",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "PurvaProlet",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "UniversityOfRuseSouth",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "Pliska",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "BlockDobrudzha",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "DairyKitchenWest",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "YundolaBlock7",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "YundolaBlock16",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "BlockKremena",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "BlockZheravSouth",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "PragaSqrTerminusSouth",
+          "offsetMinutes": 0
+        }
+      ],
+      "schedules": {
+        "workday": [
+          "05:55",
+          "06:30",
+          "07:00",
+          "07:30",
+          "08:10",
+          "08:50",
+          "09:35",
+          "10:05",
+          "10:45",
+          "11:25",
+          "12:25",
+          "13:00",
+          "13:35",
+          "14:15",
+          "14:40",
+          "15:20",
+          "15:50",
+          "16:35",
+          "17:05",
+          "17:40",
+          "18:25",
+          "19:05",
+          "19:45",
+          "20:15",
+          "21:25",
+          "21:55",
+          "22:30",
+          "23:05"
+        ],
+        "holiday": [
+          "05:55",
+          "06:30",
+          "07:00",
+          "07:30",
+          "08:10",
+          "08:50",
+          "09:35",
+          "10:05",
+          "10:45",
+          "11:25",
+          "12:25",
+          "13:00",
+          "13:35",
+          "14:15",
+          "14:40",
+          "15:20",
+          "15:50",
+          "16:35",
+          "17:05",
+          "17:40",
+          "18:25",
+          "19:05",
+          "19:45",
+          "20:15",
+          "21:25",
+          "21:55",
+          "22:30",
+          "23:05"
+        ]
+      }
+    }
+  ]
+}
