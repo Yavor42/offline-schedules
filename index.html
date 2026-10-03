@@ -49,7 +49,7 @@ input:focus{border-color:var(--acc)}
 .st{display:flex;gap:14px;padding:11px 4px;position:relative;align-items:center;border:0;background:none;width:100%;text-align:left}
 .st .tm{width:52px;font-variant-numeric:tabular-nums;font-weight:600}
 .st .dot{width:12px;height:12px;border-radius:50%;background:var(--c);flex:none;z-index:1}
-.st::before{content:"";position:absolute;left:66px;top:0;bottom:0;width:3px;margin-left:4.5px;background:var(--c);opacity:.5}
+.st::before{content:"";position:absolute;left:76px;top:0;bottom:0;width:3px;margin-left:-1.5px;background:var(--c);opacity:.5}
 .st:first-child::before{top:50%}.st:last-child::before{bottom:50%}
 .st.past{opacity:.38}.st .nm{flex:1}
 .tag{font-size:11px;color:var(--mut);border:1px solid var(--line);border-radius:6px;padding:1px 6px;margin-left:6px}
@@ -64,7 +64,7 @@ const pad=n=>String(n).padStart(2,'0');
 const fmt=m=>pad(Math.floor(m/60)%24)+':'+pad(m%60);
 const toMin=t=>{const[a,b]=t.split(':');return +a*60+ +b};
 const now=()=>{const d=new Date();return d.getHours()*60+d.getMinutes()};
-let lines=[],stations={},by={},q='';
+let lines=[],stations={},by={},q='';const missing=new Set();
 let mode='auto';try{mode=localStorage.dayMode||'auto'}catch(e){}
 const dayType=()=>mode!=='auto'?mode:([0,6].includes(new Date().getDay())?'holiday':'workday');
 const sname=id=>stations[id]?.displayName||id.replace(/([a-z])([A-Z])/g,'$1 $2');
@@ -77,6 +77,11 @@ async function load(){
   const man=await (await fetch('data/manifest.json')).json();
   stations=await (await fetch('data/'+man.stations)).json();
   lines=await Promise.all(man.lines.map(f=>fetch('data/lines/'+f).then(r=>r.json())));
+  const norm=x=>String(x).toLowerCase().replace(/[^a-z0-9]/g,''),nmap={};
+  Object.keys(stations).forEach(k=>nmap[norm(k)]=k);
+  lines.forEach(l=>l.directions.forEach(d=>d.stops.forEach(s=>{
+    const raw=String(s.stationId).trim();s.stationId=stations[raw]?raw:nmap[norm(raw)]||raw;
+    if(!stations[s.stationId])missing.add(s.stationId)})));
   lines.forEach(l=>l.directions.forEach(d=>{let c=0;d.cum=d.stops.map(s=>{const v=c;c+=s.offsetMinutes;return v});
     d.stops.forEach((s,i)=>(by[s.stationId]??=[]).push({l,d,i,off:d.cum[i]}))}));
 }
@@ -92,7 +97,8 @@ home(){
   const d=new Date();
   return{t:'Transit',h:`<div class="clock">${fmt(now())}</div><div class="sub">${d.toLocaleDateString(undefined,{weekday:'long',day:'numeric',month:'long'})}</div>
   <div class="hero"><button class="big" data-go='{"v":"routes"}'><div class="ic">🚎</div><div><b>Search routes</b><span>Browse lines &amp; directions</span></div></button>
-  <button class="big" data-go='{"v":"search"}'><div class="ic">📍</div><div><b>Search stations</b><span>By name or ID · upcoming departures</span></div></button></div>`}},
+  <button class="big" data-go='{"v":"search"}'><div class="ic">📍</div><div><b>Search stations</b><span>By name or ID · upcoming departures</span></div></button></div>
+  ${missing.size?`<div class="sub" style="margin-top:22px;font-size:12px">⚠ Not in stations file: ${[...missing].map(esc).join(', ')}</div>`:''}`}},
 routes(){
   const g={};lines.forEach(l=>(g[l.type]??=[]).push(l));
   const nm={trolleybus:'Trolleybuses',bus:'Buses'};
