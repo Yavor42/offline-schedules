@@ -1,0 +1,252 @@
+{
+  "id": "T29",
+  "type": "trolleybus",
+  "color": "#1356d3",
+  "displayName": "T29",
+  "directions": [
+    {
+      "id": "T29_2526Tutrakan",
+      "displayName": "26 \"Tutrakan\" blvd.",
+      "stops": [
+        {
+          "stationId": "CharodeykaSouth",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "Block115North",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "PechatniPlatkiPCBs",
+          "offsetMinutes": 3
+        },
+        {
+          "stationId": "YordanYovkovHighSchool",
+          "offsetMinutes": 3
+        },
+        {
+          "stationId": "SportsArena",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "Serdika",
+          "offsetMinutes": 3
+        },
+        {
+          "stationId": "Hospital",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "PurvaProlet",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "UniversityOfRuseSouth",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "Paris",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "TsvetnitsaSouth",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "TraktsiyataLVZ",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "PsychiatricClinicSouth",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "26TutrakanBlvd",
+          "offsetMinutes": 0
+        }
+      ],
+      "schedules": {
+        "workday": [
+          "05:40",
+          "05:55",
+          "06:15",
+          "06:35",
+          "07:00",
+          "07:20",
+          "07:45",
+          "08:05",
+          "08:40",
+          "09:05",
+          "09:25",
+          "09:45",
+          "10:40",
+          "11:00",
+          "11:20",
+          "11:45",
+          "12:05",
+          "12:25",
+          "12:50",
+          "13:10",
+          "13:30",
+          "13:55",
+          "14:15",
+          "14:30",
+          "14:55",
+          "15:20",
+          "15:35",
+          "16:05",
+          "16:25",
+          "16:40",
+          "17:20",
+          "17:45",
+          "18:00",
+          "19:05",
+          "19:20",
+          "19:35",
+          "20:05",
+          "20:25",
+          "20:40",
+          "21:10",
+          "21:30",
+          "21:45"
+        ],
+        "holiday": [
+          "05:35",
+          "06:40",
+          "07:40",
+          "09:00",
+          "10:40",
+          "11:40",
+          "12:50",
+          "13:55",
+          "15:00",
+          "16:00",
+          "17:25",
+          "18:55",
+          "20:05",
+          "21:10"
+        ]
+      }
+    },
+    {
+      "id": "T29_CharodeykaSouth",
+      "displayName": "Shopping Complex / Charodeyka-South",
+      "stops": [
+        {
+          "stationId": "25TutrakanBlvd",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "PsychiatricClinicNorth",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "TutrakanOverpass",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "TsvetnitsaNorth",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "BratyaMiladinoviPrimarySchool",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "UniversityOfRuseNorth",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "EngineeringHighSchool",
+          "offsetMinutes": 3
+        },
+        {
+          "stationId": "Serdika",
+          "offsetMinutes": 3
+        },
+        {
+          "stationId": "Oborishte",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "Afrodita",
+          "offsetMinutes": 3
+        },
+        {
+          "stationId": "Technopolis",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "Block115North",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "ShoppingComplex",
+          "offsetMinutes": 0
+        }
+      ],
+      "schedules": {
+        "workday": [
+          "06:05",
+          "06:20",
+          "06:50",
+          "07:10",
+          "07:35",
+          "07:50",
+          "08:15",
+          "08:35",
+          "09:10",
+          "09:35",
+          "09:55",
+          "10:45",
+          "11:05",
+          "11:25",
+          "11:45",
+          "12:15",
+          "12:35",
+          "12:55",
+          "13:15",
+          "13:45",
+          "14:00",
+          "14:25",
+          "14:45",
+          "15:00",
+          "15:35",
+          "15:50",
+          "16:05",
+          "16:35",
+          "16:55",
+          "17:15",
+          "17:55",
+          "18:15",
+          "18:35",
+          "19:30",
+          "19:55",
+          "20:10",
+          "20:30",
+          "21:00",
+          "21:10",
+          "21:40",
+          "22:05",
+          "22:20"
+        ],
+        "holiday": [
+          "06:05",
+          "07:05",
+          "08:15",
+          "09:35",
+          "11:10",
+          "12:15",
+          "13:20",
+          "14:25",
+          "15:30",
+          "16:25",
+          "17:55",
+          "19:20",
+          "20:35",
+          "21:40"
+        ]
+      }
+    }
+  ]
+}
