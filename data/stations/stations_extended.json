@@ -980,11 +980,11 @@
     "ID": "255"
   },
   "SrednaKula1North": {
-    "displayName": "Sredna Kula 1 - North",
+    "displayName": "Sredna Kula 1 - North (Entrace from Ruse)",
     "ID": "256"
   },
   "SrednaKula1South": {
-    "displayName": "Sredna Kula 1 - South",
+    "displayName": "Sredna Kula 1 - South (Entrace from Ruse)",
     "ID": "257"
   },
   "SrednaKulaCentralNorth": {
@@ -996,15 +996,15 @@
     "ID": "259"
   },
   "SrednaKula2North": {
-    "displayName": "Sredna Kula 2 - North",
+    "displayName": "Sredna Kula 2 - North (Exit to Dolapite)",
     "ID": "260"
   },
   "SrednaKula2South": {
-    "displayName": "Sredna Kula 2 - South",
+    "displayName": "Sredna Kula 2 - South (Exit to Dolapite)",
     "ID": "261"
   },
-  "DolapiteCentralWest": {
-    "displayName": "Dolapite Central - West",
+  "DolapiteCentralSouth": {
+    "displayName": "Dolapite Central - South",
     "ID": "262"
   },
   "DolapiteCentralEast": {
