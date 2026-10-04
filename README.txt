@@ -4,9 +4,9 @@ Based on Municipal Transport Ruse's routes. (https://transport-ruse.com/)
 
 View current state of the webapp here: https://yavor42.github.io/offline-schedules/
 
-Lines TBA: A3, A4, A5, A6, A8, T9, A10, A11, A12, A12A, T13, A15, A16, A16A, A18, A19, T21, A23, T27, A28, A30, A33, A50
+Lines TBA: A3, A4, A5, A6, A8, T9, A10, A11, A12A, T13, A16, A16A, A18, A19, T21, A23, T27, A28, A30, A33, A50
 Lines with wrong schedules: A27A, T2, A11
-Lines with wrong `offsetMinutes`: A8 (?), A50 and maybe some more
+Lines with wrong `offsetMinutes`: A50 and maybe some more
 
 /*
 OFFLINE TRANSIT
