@@ -1,0 +1,292 @@
+{
+  "id": "A15",
+  "type": "bus",
+  "color": "#4aca68",
+  "displayName": "A15",
+  "directions": [
+    {
+      "id": "A15_Strelbishteto",
+      "displayName": "Strelbishteto - Dolapite",
+      "stops": [
+        {
+          "stationId": "CAT",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "AVKO",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "MallRuse",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "Substation",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "Stif",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "PetarKaraminchev",
+          "offsetMinutes": 3
+        },
+        {
+          "stationId": "Yalta",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "Oborishte",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "Afrodita",
+          "offsetMinutes": 3
+        },
+        {
+          "stationId": "AleksandarStamboliyskiNorth",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "MidiyaEnosNorth",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "RoadJunctionOhlyuvaEast",
+          "offsetMinutes": 3
+        },
+        {
+          "stationId": "StrelbishteWest",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "RusanovoBridgeWest",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "SrednaKula1North",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "SrednaKulaCentralNorth",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "SrednaKula2North",
+          "offsetMinutes": 3
+        },
+        {
+          "stationId": "DolapiteCentralSouth",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "HristoSmirnenkiPrimarySchool",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "ObrashtaloDolapite",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "NesebarStrWest",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "StrelbishtetoDolapite",
+          "offsetMinutes": 0
+        }
+      ],
+      "schedules": {
+        "workday": [
+          "06:05",
+          "06:55",
+          "07:40",
+          "08:00",
+          "08:25",
+          "09:10",
+          "09:35",
+          "09:50",
+          "11:00",
+          "11:20",
+          "12:15",
+          "12:45",
+          "13:15",
+          "14:05",
+          "14:50",
+          "15:20",
+          "15:45",
+          "16:40",
+          "17:05",
+          "17:20",
+          "18:30",
+          "19:00",
+          "19:25",
+          "20:40",
+          "21:10",
+          "22:15"
+        ],
+        "holiday": [
+          "05:50",
+          "07:30",
+          "08:15",
+          "09:05",
+          "10:15",
+          "11:00",
+          "12:25",
+          "13:15",
+          "14:50",
+          "15:45",
+          "16:40",
+          "17:40",
+          "18:30",
+          "19:35",
+          "20:40",
+          "22:15"
+        ]
+      }
+    },
+    {
+      "id": "A15_Mototehnika",
+      "displayName": "C.A.T. / Mototehnika",
+      "stops": [
+        {
+          "stationId": "StrelbishtetoDolapite",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "NesebarStrEast",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "ObrashtaloDolapite",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "Church",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "DolapiteCentralEast",
+          "offsetMinutes": 3
+        },
+        {
+          "stationId": "SrednaKula2South",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "SrednaKulaCentralSouth",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "SrednaKula1South",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "RusanovoBridgeEast",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "StrelbishteEast",
+          "offsetMinutes": 3
+        },
+        {
+          "stationId": "RoadJunctionOhlyuvaWest",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "MidiyaEnosSouth",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "AleksandarStamboliyskiSouth",
+          "offsetMinutes": 3
+        },
+        {
+          "stationId": "YordanYovkovHighSchool",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "Bricolage",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "Kaufland",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "NaidenKirov",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "Olymp",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "SubstationSouth",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "ThirdPolyclinic",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "DunavPrintery",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "Mototehnika",
+          "offsetMinutes": 0
+        }
+      ],
+      "schedules": {
+        "workday": [
+          "05:25",
+          "06:10",
+          "06:55",
+          "07:40",
+          "08:25",
+          "08:50",
+          "09:10",
+          "10:15",
+          "10:35",
+          "11:00",
+          "12:00",
+          "12:25",
+          "13:00",
+          "14:05",
+          "14:30",
+          "14:50",
+          "15:45",
+          "16:10",
+          "16:30",
+          "17:40",
+          "18:10",
+          "18:40",
+          "19:35",
+          "20:00",
+          "20:25",
+          "21:25"
+        ],
+        "holiday": [
+          "05:00",
+          "06:45",
+          "07:30",
+          "08:15",
+          "09:05",
+          "10:15",
+          "11:00",
+          "12:25",
+          "14:05",
+          "14:50",
+          "15:45",
+          "16:40",
+          "17:40",
+          "18:30",
+          "19:35",
+          "21:25"
+        ]
+      }
+    }
+  ]
+}
