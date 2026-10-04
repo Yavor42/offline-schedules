@@ -4,6 +4,8 @@ Based on Municipal Transport Ruse's routes. (https://transport-ruse.com/)
 
 View current state of the webapp here: https://yavor42.github.io/offline-schedules/
 
+Lines TBA: A3, A4, A5, A6, A8, T9, A10, A11, A12, A12A, T13, A15, A16, A16A, A18, A19, T21, A23, T27, A28, T29, A30, A33, A50
+
 /*
 OFFLINE TRANSIT
 1. Host this folder over HTTPS once (GitHub Pages, Netlify, or any static host). Service workers don't run from file://.
