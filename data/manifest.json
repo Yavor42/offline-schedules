@@ -3,7 +3,8 @@
   "line_T2.json",
   "line_A27A.json",
   "line_T24.json",
-  "line_A20.json"
+  "line_A20.json",
+  "line_T29.json"
  ],
  "stations": "stations/stations_extended.json"
 }
