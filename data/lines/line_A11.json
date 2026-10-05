@@ -109,7 +109,7 @@
           "offsetMinutes": 1
         },
         {
-          "stationId": "32TutrakanBlvd",
+          "stationId": "32TutrakanBlvdVocSchoolOfTransport",
           "offsetMinutes": 1
         },
         {
@@ -122,7 +122,7 @@
         }
       ],
       "schedules": {
-        "weekday": [
+        "workday": [
           "05:30",
           "06:20",
           "06:45",
@@ -202,7 +202,7 @@
           "offsetMinutes": 1
         },
         {
-          "stationId": "19TutrakanBlvd",
+          "stationId": "19TutrakanBlvdBrickFactory",
           "offsetMinutes": 1
         },
         {
@@ -274,7 +274,7 @@
           "offsetMinutes": 1
         },
         {
-          "stationId": "PumpingStationWest",
+          "stationId": "ViKPumpingStationWest",
           "offsetMinutes": 1
         },
         {
@@ -291,7 +291,7 @@
         }
       ],
       "schedules": {
-        "weekday": [
+        "workday": [
           "06:20",
           "07:10",
           "07:35",
