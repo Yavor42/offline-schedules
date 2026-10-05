@@ -134,7 +134,7 @@
       "stops": [
         {
           "stationId": "ShipbuildingHighSchool",
-          "offsetMinutes": 1
+          "offsetMinutes": 2
         },
         {
           "stationId": "ChaykaEast",

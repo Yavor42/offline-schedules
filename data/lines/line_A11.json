@@ -1,0 +1,362 @@
+{
+  "id": "A11",
+  "type": "bus",
+  "color": "#4aca68",
+  "displayName": "A11",
+  "directions": [
+    {
+      "id": "A11_Customs",
+      "displayName": "Friendship Bridge / Customs",
+      "stops": [
+        {
+          "stationId": "MalyovitsaStrTerminus",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "Malyovitsa1South",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "Malyovitsa2South",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "ViKPumpingStationEast",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "VerilaSouth",
+          "offsetMinutes": 3
+        },
+	    	{
+          "stationId": "VerilaNorth",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "LeventaNorth",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "AlekoKonstantinovPrimarySchoolNorth",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "RoadJunctionOhlyuvaWest",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "MidiyaEnosSouth",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "RailwayStationBorisovaStr",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "Lermontov",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "OrhideyaEast",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "MedicalCentreEast",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "Skobelev",
+          "offsetMinutes": 3
+        },
+        {
+          "stationId": "SportsArena",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "ThePantheon",
+          "offsetMinutes": 3
+        },
+        {
+          "stationId": "Hospital",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "PurvaProlet",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "UniversityOfRuseSouth",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "Paris",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "TsvetnitsaSouth",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "TraktsiyataLVZ",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "PsychiatricClinicSouth",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "26TutrakanBlvd",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "32TutrakanBlvd",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "EcontExpressShippingSouthDomostroene",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "Customs",
+          "offsetMinutes": 0
+        }
+      ],
+      "schedules": {
+        "weekday": [
+          "05:30",
+          "06:20",
+          "06:45",
+          "07:05",
+          "07:55",
+          "08:20",
+          "08:40",
+          "09:05",
+          "09:30",
+          "09:55",
+          "10:30",
+          "10:55",
+          "11:20",
+          "12:35",
+          "13:00",
+          "13:25",
+          "14:10",
+          "14:35",
+          "15:00",
+          "15:20",
+          "15:45",
+          "16:10",
+          "16:35",
+          "17:20",
+          "17:45",
+          "18:10",
+          "19:10",
+          "19:30",
+          "20:15",
+          "21:15"
+        ],
+        "holiday": [
+          "05:30",
+          "06:20",
+          "06:45",
+          "07:05",
+          "07:30",
+          "07:55",
+          "08:20",
+          "08:40",
+          "09:05",
+          "09:30",
+          "09:55",
+          "10:30",
+          "10:55",
+          "11:20",
+          "12:35",
+          "13:00",
+          "13:25",
+          "14:10",
+          "14:35",
+          "15:00",
+          "15:20",
+          "15:45",
+          "16:10",
+          "16:35",
+          "17:20",
+          "17:45",
+          "18:10",
+          "19:10",
+          "19:30",
+          "20:15",
+          "21:15"
+        ]
+      }
+    },
+    {
+      "id": "A11_MalyovitsaStr",
+      "displayName": "Malyovitsa str. - Terminus",
+      "stops": [
+        {
+          "stationId": "DanubeBridge",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "EcontExpressShippingNorthNaporniTrabi",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "19TutrakanBlvd",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "25TutrakanBlvd",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "PsychiatricClinicNorth",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "TutrakanOverpass",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "TsvetnitsaNorth",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "BratyaMiladinoviPrimarySchool",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "UniversityOfRuseNorth",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "EngineeringHighSchool",
+          "offsetMinutes": 3
+        },
+        {
+          "stationId": "Serdika",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "SBA",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "MedicalCentreWest",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "OrhideyaWest",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "Nekrasov",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "AleksandarStamboliyskiNorth",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "MidiyaEnosNorth",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "RoadJunctionOhlyuvaEast",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "AlekoKonstantinovPrimarySchoolSouth",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "LeventaSouth",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "PumpingStationWest",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "Malyovitsa2North",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "Malyovitsa1North",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "MalyovitsaStrTerminus",
+          "offsetMinutes": 0
+        }
+      ],
+      "schedules": {
+        "weekday": [
+          "06:20",
+          "07:10",
+          "07:35",
+          "07:55",
+          "08:20",
+          "08:45",
+          "09:05",
+          "09:45",
+          "10:10",
+          "10:35",
+          "10:55",
+          "11:50",
+          "12:15",
+          "12:40",
+          "13:25",
+          "13:45",
+          "14:15",
+          "15:00",
+          "15:25",
+          "15:50",
+          "16:35",
+          "17:00",
+          "17:25",
+          "18:25",
+          "18:45",
+          "19:30",
+          "20:15",
+          "20:30",
+          "21:20",
+          "22:05"
+        ],
+        "holiday": [
+          "06:20",
+          "07:10",
+          "07:35",
+          "07:55",
+          "08:20",
+          "08:45",
+          "09:05",
+          "09:45",
+          "10:10",
+          "10:35",
+          "10:55",
+          "11:50",
+          "12:15",
+          "12:40",
+          "13:25",
+          "13:45",
+          "14:15",
+          "15:00",
+          "15:25",
+          "15:50",
+          "16:10",
+          "16:35",
+          "17:00",
+          "17:25",
+          "18:25",
+          "18:45",
+          "19:30",
+          "20:15",
+          "20:30",
+          "21:20",
+          "22:05"
+        ]
+      }
+    }
+  ]
+}
