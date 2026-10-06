@@ -38,8 +38,24 @@ h2{font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--mut)
 .row .grow{flex:1;min-width:0}.row .t{font-weight:600;overflow:hidden;text-overflow:ellipsis}.row .s{color:var(--mut);font-size:13px}
 .time{font-size:22px;font-weight:700;font-variant-numeric:tabular-nums}.eta{font-size:13px;color:var(--ok);text-align:right}
 .code{color:var(--mut);font-size:12px;background:var(--card2);padding:3px 8px;border-radius:8px}
-input{width:100%;padding:15px 16px;font-size:17px;border:1px solid var(--line);border-radius:14px;background:var(--card);color:var(--tx);outline:0;-webkit-user-select:text;user-select:text;margin:6px 0 12px}
-input:focus{border-color:var(--acc)}
+input[type=search]{width:100%;padding:15px 16px;font-size:17px;border:1px solid var(--line);border-radius:14px;background:var(--card);color:var(--tx);outline:0;-webkit-user-select:text;user-select:text;margin:6px 0 12px}
+input[type=search]:focus{border-color:var(--acc)}
+.fx{margin:0 -14px 4px}
+.chips{display:flex;gap:8px;overflow-x:auto;padding:2px 14px 8px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:none;height:38px;min-width:54px;padding:0 16px;border-radius:19px;border:1.5px solid transparent;font-weight:700;font-size:15px;color:#fff;background:var(--c)}
+.chip.off{background:var(--card);color:var(--mut);border-color:var(--line)}
+.advwrap{position:relative;padding:2px 14px 8px;display:flex;gap:12px;align-items:center}
+.advbtn{height:34px;padding:0 14px;border-radius:17px;border:1px solid var(--line);background:var(--card);font-size:13px}
+.advbtn.on{border-color:var(--acc);color:var(--acc)}
+.clr{background:none;border:0;color:var(--mut);font-size:13px;text-decoration:underline}
+.scrim{position:fixed;inset:0;z-index:5}
+.menu{position:absolute;left:14px;top:calc(100% - 4px);width:min(calc(100% - 28px),350px);z-index:6;background:var(--card2);border:1px solid var(--line);border-radius:16px;box-shadow:0 14px 34px rgba(0,0,0,.65);padding:2px 14px 10px}
+.menu h3{margin:12px 0 2px;font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--mut)}
+.chk{display:flex;align-items:center;gap:12px;min-height:46px}
+.chk.dis{opacity:.35;pointer-events:none}
+.chk input[type=checkbox]{width:22px;height:22px;margin:0;flex:none;accent-color:var(--acc)}
+.chk input[type=time],.chk select{margin-left:auto;max-width:190px;background:var(--card);color:var(--tx);border:1px solid var(--line);border-radius:10px;padding:8px 10px;font-size:16px;-webkit-user-select:text;user-select:text}
 .empty{text-align:center;color:var(--mut);padding:50px 20px}
 .hd{background:var(--card);border-radius:22px;padding:18px;margin-top:6px;text-align:center}
 .hd .big2{font-size:56px;font-weight:750;letter-spacing:-1px;font-variant-numeric:tabular-nums;line-height:1.1;margin:8px 0 2px}
@@ -86,7 +102,7 @@ async function load(){
     d.stops.forEach((s,i)=>(by[s.stationId]??=[]).push({l,d,i,off:d.cum[i]}))}));
 }
 // ---- navigation (history-backed so the phone's back gesture works)
-const go=s=>{history.pushState(s,'');render(s)};
+const go=s=>{if(s.v==='station')fReset(s.id);history.pushState(s,'');render(s)};
 const set=s=>{history.replaceState(s,'');render(s)};
 window.onpopstate=e=>render(e.state||{v:'home'});
 $('#bk').onclick=()=>history.back();
@@ -132,15 +148,65 @@ search(){
       res.innerHTML=all.slice(0,60).map(s=>`<button class="row" data-go='${JSON.stringify({v:'station',id:s.id})}'><div class="grow"><div class="t">${esc(s.name)}</div><div class="s">${(by[s.id]||[]).length?[...new Set(by[s.id].map(e=>e.l.displayName))].join(' · '):'No lines'}</div></div>${s.code?`<span class="code">#${esc(s.code)}</span>`:''}</button>`).join('')||'<div class="empty">No stations match</div>'};
     inp.oninput=draw;draw();}}},
 station(s){
-  const n=now(),out=[];
-  (by[s.id]||[]).forEach(e=>times(e.d).forEach((t,i)=>{const m=toMin(t)+e.off;if(m>=n)out.push({...e,m,ti:i})}));
-  out.sort((a,b)=>a.m-b.m);
+  if(F.sid!==s.id)fReset(s.id);
   const head=`<div class="sub" style="margin:4px 4px 0">${scode(s.id)?'Station #'+esc(scode(s.id))+' · ':''}${dayType()} schedule</div><h2>Upcoming departures</h2>`;
-  return{t:sname(s.id),h:head+(out.length?out.slice(0,40).map(e=>{const term=e.i===e.d.stops.length-1;
-   return`<button class="row" data-go='${JSON.stringify({v:'trip',l:e.l.id,d:e.d.id,i:e.ti})}'>${badge(e.l)}<div class="grow"><div class="t">→ ${esc(sname(e.d.stops.at(-1).stationId))}</div>${term?'<div class="s">Terminates here</div>':''}</div><div><div class="time">${fmt(e.m)}</div><div class="eta">${eta(e.m-n)}</div></div></button>`}).join(''):'<div class="empty">No upcoming departures</div>')}}
+  if(!(by[s.id]||[]).length)return{t:sname(s.id),h:head+'<div class="empty">No upcoming departures</div>'};
+  return{t:sname(s.id),h:head+'<div class="fx" id="fx"></div><div id="fdeps"></div>',after(){initFilters(s.id)}}}
 };
+// ---- station filters (standard = line chips, advanced = vehicle type / time frame / stops-at; the two are mutually exclusive)
+let F={},refreshDeps=null;
+const fReset=id=>{F={sid:id,sel:new Set(),types:new Set(),after:null,before:null,via:null,open:false}};
+const advCount=()=>F.types.size+(F.after!=null)+(F.before!=null)+(F.via?1:0);
+const clearAdv=()=>{F.types.clear();F.after=F.before=F.via=null};
+const tm=v=>v?toMin(v):null;
+function rowHtml(e,n){const term=e.i===e.d.stops.length-1;
+  return`<button class="row" data-go='${JSON.stringify({v:'trip',l:e.l.id,d:e.d.id,i:e.ti})}'>${badge(e.l)}<div class="grow"><div class="t">→ ${esc(sname(e.d.stops.at(-1).stationId))}</div>${term?'<div class="s">Terminates here</div>':''}</div><div><div class="time">${fmt(e.m)}</div><div class="eta">${eta(e.m-n)}</div></div></button>`}
+function initFilters(id){
+  const ents=by[id],fx=$('#fx'),deps=$('#fdeps');
+  const ls=[...new Map(ents.map(e=>[e.l.id,e.l])).values()].sort((a,b)=>a.displayName.localeCompare(b.displayName,undefined,{numeric:true}));
+  const hasBoth=ls.some(l=>l.type==='trolleybus')&&ls.some(l=>l.type==='bus');
+  const via=new Map();ents.forEach(e=>e.d.stops.slice(e.i+1).forEach(x=>via.set(x.stationId,sname(x.stationId))));
+  const viaList=[...via].sort((a,b)=>a[1].localeCompare(b[1]));
+  fx.innerHTML=`<div class="chips">${ls.map(l=>`<button class="chip" data-l="${esc(l.id)}" style="--c:${esc(l.color||'#4d83ff')}">${esc(l.displayName)}</button>`).join('')}</div>
+   <div class="advwrap"><button class="advbtn" id="ab"></button><button class="clr" id="cl">Clear</button><div id="mn"></div></div>`;
+  const menu=()=>{const n=now(),d=hasBoth?'':'dis';
+    return`<div class="scrim" id="sc"></div><div class="menu">
+    <h3>Vehicle</h3>${[['trolleybus','Trolleybus'],['bus','Bus']].map(([t,nm])=>`<label class="chk ${d}"><input type="checkbox" data-t="${t}" ${F.types.has(t)?'checked':''} ${hasBoth?'':'disabled'}>${nm}</label>`).join('')}
+    <h3>Departure time</h3>
+    <label class="chk"><input type="checkbox" id="ca" ${F.after!=null?'checked':''}>After<input type="time" id="ta" value="${fmt(F.after??n)}"></label>
+    <label class="chk"><input type="checkbox" id="cb" ${F.before!=null?'checked':''}>Before<input type="time" id="tb" value="${fmt(F.before??Math.min(n+60,1439))}"></label>
+    <h3>Stops at</h3>
+    <label class="chk ${viaList.length?'':'dis'}"><input type="checkbox" id="cv" ${F.via?'checked':''}><select id="sv">${viaList.map(([k,nm])=>`<option value="${esc(k)}" ${k===F.via?'selected':''}>${esc(nm)}</option>`).join('')}</select></label></div>`};
+  const drawMenu=()=>$('#mn').innerHTML=F.open?menu():'';
+  const sync=()=>{
+    fx.querySelectorAll('.chip').forEach(c=>c.classList.toggle('off',F.sel.size>0&&!F.sel.has(c.dataset.l)));
+    const k=advCount(),ab=$('#ab');ab.textContent='⚙ Advanced filters'+(k?' · '+k:'')+(F.open?' ▴':' ▾');
+    ab.classList.toggle('on',k>0);$('#cl').hidden=!(k||F.sel.size)};
+  refreshDeps=()=>{const n=now(),out=[];
+    ents.forEach(e=>times(e.d).forEach((t,i)=>{const m=toMin(t)+e.off;
+      if(m<n||(F.sel.size&&!F.sel.has(e.l.id))||(F.types.size&&!F.types.has(e.l.type))||(F.after!=null&&m<F.after)||(F.before!=null&&m>F.before)||
+        (F.via&&!e.d.stops.some((x,k)=>k>e.i&&x.stationId===F.via)))return;
+      out.push({...e,m,ti:i})}));
+    out.sort((a,b)=>a.m-b.m);
+    deps.innerHTML=out.length?out.slice(0,40).map(e=>rowHtml(e,n)).join(''):`<div class="empty">${F.sel.size||advCount()?'No departures match these filters':'No upcoming departures'}</div>`};
+  const update=()=>{sync();refreshDeps()};
+  fx.onclick=e=>{
+    const c=e.target.closest('.chip');
+    if(c){clearAdv();const k=c.dataset.l;F.sel.has(k)?F.sel.delete(k):F.sel.add(k);F.open=false;drawMenu();return update()}
+    if(e.target.closest('#ab')){F.open=!F.open;drawMenu();return sync()}
+    if(e.target.id==='sc'){F.open=false;drawMenu();return sync()}
+    if(e.target.closest('#cl')){F.sel.clear();clearAdv();F.open=false;drawMenu();update()}};
+  fx.onchange=e=>{const t=e.target,g=x=>$('#'+x);
+    if(t.dataset.t)t.checked?F.types.add(t.dataset.t):F.types.delete(t.dataset.t);
+    else if(t.id==='ca'||t.id==='ta'){if(t.id==='ta'&&t.value)g('ca').checked=true;F.after=g('ca').checked?tm(g('ta').value)??0:null}
+    else if(t.id==='cb'||t.id==='tb'){if(t.id==='tb'&&t.value)g('cb').checked=true;F.before=g('cb').checked?tm(g('tb').value)??1439:null}
+    else if(t.id==='cv'||t.id==='sv'){if(t.id==='sv')g('cv').checked=true;F.via=g('cv').checked?g('sv').value:null}
+    else return;
+    if(advCount())F.sel.clear();update()};
+  drawMenu();update();
+}
 function render(s,keep){
-  s=s||{v:'home'};const y=main.scrollTop,v=V[s.v](s);
+  s=s||{v:'home'};refreshDeps=null;const y=main.scrollTop,v=V[s.v](s);
   $('#ttl').textContent=v.t;$('#bk').hidden=s.v==='home';
   $('#dt').textContent=({auto:'Auto · ',workday:'',holiday:''}[mode])+(dayType()==='workday'?'Workday':'Holiday');
   main.innerHTML=v.h;v.after&&v.after();main.scrollTop=keep?y:0;
@@ -149,7 +215,7 @@ main.addEventListener('click',e=>{
   const g=e.target.closest('[data-go]');if(g)return go(JSON.parse(g.dataset.go));
   const b=e.target.closest('[data-i]');if(b&&!b.disabled)set({...history.state,i:+b.dataset.i});
 });
-setInterval(()=>{const s=history.state||{v:'home'};if(s.v!=='search')render(s,true)},20000);
+setInterval(()=>{const s=history.state||{v:'home'};if(s.v==='station')refreshDeps&&refreshDeps();else if(s.v!=='search')render(s,true)},20000);
 load().then(()=>{history.replaceState(history.state||{v:'home'},'');render(history.state)})
  .catch(()=>{main.innerHTML='<div class="empty">Could not load schedule data.<br>Serve this folder over http(s) instead of opening the file directly.</div>'});
 if('serviceWorker'in navigator)navigator.serviceWorker.register('sw.js').catch(()=>{});
