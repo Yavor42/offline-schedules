@@ -1,9 +1,10 @@
-const C='transit-v4';
+const C='transit-v5';
 self.addEventListener('install',e=>{e.waitUntil((async()=>{
   const c=await caches.open(C);
   await c.addAll(['./','./index.html','./manifest.webmanifest','./icon-192.png','./icon-512.png','./data/manifest.json']);
   const m=await (await fetch('./data/manifest.json',{cache:'no-store'})).json();
   await c.addAll(['./data/'+m.stations,...m.lines.map(f=>'./data/lines/'+f)]);
+  await c.add('./OTP.png').catch(()=>{}); // optional logo; don't fail install if missing
   self.skipWaiting();})())});
 self.addEventListener('activate',e=>e.waitUntil((async()=>{
   for(const k of await caches.keys())if(k!==C)await caches.delete(k);
