@@ -68,11 +68,11 @@
     "ID": "19"
   },
   "NaidenKirov": {
-    "displayName": "Naiden Kirov",
+    "displayName": "Naiden Kirov (Heroes of Ukraine)",
     "ID": "20"
   },
   "PetarKaraminchev": {
-    "displayName": "Petar Karaminchev",
+    "displayName": "Petar Karaminchev (Eternit)",
     "ID": "21"
   },
   "Block113Charodeyka1": {
@@ -144,7 +144,7 @@
     "ID": "43"
   },
   "Borisova": {
-    "displayName": "Borisova",
+    "displayName": "\"Borisova\" str. (Former Fish Market)",
     "ID": "44"
   },
   "RailwayStationNikolaevskaStr": {
@@ -176,15 +176,15 @@
     "ID": "51"
   },
   "25TutrakanBlvd": {
-    "displayName": "25 \"Tutrakan\" blvd.",
+    "displayName": "25 \"Tutrakan\" blvd. (Sugar Factory)",
     "ID": "52"
   },
   "26TutrakanBlvd": {
-    "displayName": "26 \"Tutrakan\" blvd.",
+    "displayName": "26 \"Tutrakan\" blvd. (Sugar Factory)",
     "ID": "53"
   },
   "19TutrakanBlvdBrickFactory": {
-    "displayName": "19 \"Tutrakan\" blvd. (Brick factory)",
+    "displayName": "19 \"Tutrakan\" blvd. (Brick Factory)",
     "ID": "54"
   },
   "32TutrakanBlvdVocSchoolOfTransport": {
@@ -248,11 +248,11 @@
     "ID": "70"
   },
   "OlympBlock49": {
-    "displayName": "Olymp, Block 49",
+    "displayName": "Olymp - Block 49",
     "ID": "71"
   },
   "OlympBlock48": {
-    "displayName": "Olymp, Block 48",
+    "displayName": "Olymp - Block 48",
     "ID": "72"
   },
   "Block6": {
@@ -408,11 +408,11 @@
     "ID": "112"
   },
   "CBAGradskiHaliSouth": {
-    "displayName": "CBA Gradski Hali - South",
+    "displayName": "CBA (Gradski Hali) - South",
     "ID": "113"
   },
   "CBAGradskiHaliNorth": {
-    "displayName": "CBA Gradski Hali - North",
+    "displayName": "CBA (Gradski Hali) - North",
     "ID": "114"
   },
   "RigaHotel": {
@@ -436,7 +436,7 @@
     "ID": "119"
   },
   "Zhiti": {
-    "displayName": "Zhiti",
+    "displayName": "ZHITI",
     "ID": "120"
   },
   "Yuta": {
@@ -500,11 +500,11 @@
     "ID": "136"
   },
   "IntercityBusStationEast": {
-    "displayName": "Intercity Bus Station - East",
+    "displayName": "Eastern Intercity Bus Station - East",
     "ID": "137"
   },
   "IntercityBusStationWest": {
-    "displayName": "Intercity Bus Station - West",
+    "displayName": "Eastern Intercity Bus Station - West",
     "ID": "138"
   },
   "RazpredelitelnaRailwayStation": {
@@ -552,11 +552,11 @@
     "ID": "149"
   },
   "StefanStambolov26": {
-    "displayName": "Stefan Stambolov 26",
+    "displayName": "26 \"Stefan Stambolov\" blvd.",
     "ID": "150"
   },
   "StefanStambolov64": {
-    "displayName": "Stefan Stambolov 64",
+    "displayName": "64 \"Stefan Stambolov\" blvd.",
     "ID": "151"
   },
   "BlockElectron": {
@@ -572,11 +572,11 @@
     "ID": "154"
   },
   "BlockPushkinOnNeofitBozveliBlvd": {
-    "displayName": "Block \"Pushkin\" on \"Neofit Bozveli\" blvd.",
+    "displayName": "Unnamed - Block \"Pushkin\" on \"Neofit Bozveli\" blvd.",
     "ID": "155"
   },
-  "AfterTsarOsvoboditelBlvdOnNeofitBozveliBlvdNoOfficialName": {
-    "displayName": "After \"Tsar Osvoboditel\" blvd., on \"Neofit Bozveli\" blvd. (no official name)",
+  "AfterTsarOsvoboditelBlvdOnNeofitBozveliBlvd": {
+    "displayName": "Unnamed - After \"Tsar Osvoboditel\" blvd., on \"Neofit Bozveli\" blvd.",
     "ID": "156"
   },
   "Malyovitsa1North": {
@@ -800,11 +800,11 @@
     "ID": "211"
   },
   "ObrashtaloNorth": {
-    "displayName": "Obrashtalo - North",
+    "displayName": "Obrashtalo - Kaseva Chesma - North",
     "ID": "212"
   },
   "ObrashtaloSouth": {
-    "displayName": "Obrashtalo - South",
+    "displayName": "Obrashtalo - Kaseva Chesma - South",
     "ID": "213"
   },
   "ZavoyaNorth": {
@@ -1103,8 +1103,12 @@
     "displayName": "\"Terasata\" Restaurant",
     "ID": "288"
   },
-  "RusalkaKindergarten290": {
-    "displayName": "\"Rusalka\" Kindergarten",
+  "TSYUR": {
+    "displayName": "TSYUR",
+    "ID": "288"
+  },
+  "RadostKindergarten": {
+    "displayName": "\"Radost\" Kindergarten",
     "ID": "290"
   },
   "DKC1": {

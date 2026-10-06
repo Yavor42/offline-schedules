@@ -1,0 +1,206 @@
+{
+  "id": "A23",
+  "type": "bus",
+  "color": "#4aca68",
+  "displayName": "A23",
+  "directions": [
+    {
+      "id": "A23_HouseOfCulture",
+      "displayName": "House of Culture",
+      "stops": [
+        {
+          "stationId": "Druzhba3Block48",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "SvirchevServiceEast",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "IrrigationSystems",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "Druzhba3Terminus",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "Block10",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "Block6",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "PechatniPlatkiPCBs",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "Tsyur",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "RailwayStationBorisovaStr",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "Lermontov",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "OrhideyaEast",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "MedicalCentreEast",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "Borisova",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "StrandzhataTavern",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "TerasataRestaurant",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "RigaHotel",
+          "offsetMinutes": 0
+        },
+        {
+          "stationId": "RadostKindergarten",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "DKC1",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "HouseOfCulture",
+          "offsetMinutes": 0
+        }
+      ],
+      "schedules": {
+        "workday": [
+          "06:35",
+          "07:20",
+          "07:55",
+          "08:30",
+          "09:15",
+          "09:55",
+          "14:25",
+          "15:20",
+          "15:50",
+          "16:40",
+          "17:10",
+          "17:55"
+        ],
+        "holiday": []
+      }
+    },
+    {
+      "id": "A23_Block 48",
+      "displayName": "Druzhba 3 - Block 48",
+      "stops": [
+        {
+          "stationId": "HouseOfCulture",
+          "offsetMinutes": 3
+        },
+        {
+          "stationId": "Serdika",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "SBA",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "MedicalCentreWest",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "OrhideyaWest",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "Nekrasov",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "AleksandarStamboliyskiNorth",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "MidiyaEnosNorth",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "RoadJunctionOhlyuvaEast",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "AlekoKonstantinovPrimarySchoolSouth",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "LeventaSouth",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "PumpingStationWest",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "VasilLevskiWest",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "CBADruzhba3",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "Block33",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "Block28",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "54GotseDelchevBlvd",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "SvirchevServiceWest",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "Druzhba3Block48",
+          "offsetMinutes": 0
+        }
+      ],
+      "schedules": {
+        "workday": [
+          "07:15",
+          "07:55",
+          "08:35",
+          "09:15",
+          "09:55",
+          "10:35",
+          "15:05",
+          "15:55",
+          "16:35",
+          "17:15",
+          "17:45",
+          "18:35"
+        ],
+        "holiday": []
+      }
+    }
+  ]
+}
