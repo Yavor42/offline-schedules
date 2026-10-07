@@ -10,6 +10,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Transit">
 <link rel="manifest" href="manifest.webmanifest">
+<link rel="stylesheet" href="lib/leaflet.css">
 <link rel="apple-touch-icon" href="icon-192.png">
 <title>Offline Transit</title>
 <style>
@@ -75,10 +76,17 @@ input[type=search]:focus{border-color:var(--acc)}
 .st:first-child::before{top:50%}.st:last-child::before{bottom:50%}
 .st.past{opacity:.38}.st .nm{flex:1}
 .tag{font-size:11px;color:var(--mut);border:1px solid var(--line);border-radius:6px;padding:1px 6px;margin-left:6px}
+main.fill{padding:0;overflow:hidden}
+#map{width:100%;height:100%;background:#0b0e13;touch-action:none;outline:0}
+.leaflet-bar a,.leaflet-bar a:hover{background:var(--card2);color:var(--tx);border-color:var(--line)}
+.leaflet-bar{border:1px solid var(--line);box-shadow:0 4px 14px rgba(0,0,0,.5)}
+.leaflet-bottom{margin-bottom:env(safe-area-inset-bottom)}
+.mapmsg{position:absolute;inset:0;display:grid;place-items:center;text-align:center;color:var(--mut);padding:30px;z-index:500}
 </style>
 </head>
 <body>
 <div id="app"><header><button class="back" id="bk" hidden>‹</button><h1 id="ttl"></h1><button class="pill" id="dt"></button></header><main id="main"></main></div>
+<script src="lib/leaflet.js"></script>
 <script>
 const $=s=>document.querySelector(s),main=$('#main');
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
@@ -119,7 +127,8 @@ home(){
   const d=new Date();
   return{t:'Transit',h:`<div class="clock">${fmt(now())}</div><div class="sub">${d.toLocaleDateString(undefined,{weekday:'long',day:'numeric',month:'long'})}</div>
   <div class="hero"><button class="big" data-go='{"v":"routes"}'><div class="ic">🚎</div><div><b>Search routes</b><span>Browse lines &amp; directions</span></div></button>
-  <button class="big" data-go='{"v":"search"}'><div class="ic">📍</div><div><b>Search stations</b><span>By name or ID · upcoming departures</span></div></button></div>
+  <button class="big" data-go='{"v":"search"}'><div class="ic">📍</div><div><b>Search stations</b><span>By name or ID · upcoming departures</span></div></button>
+  <button class="big" data-go='{"v":"map"}'><div class="ic">🗺️</div><div><b>Transit map</b><span>Pan &amp; zoom the network map</span></div></button></div>
   ${missing.size?`<div class="sub" style="margin-top:22px;font-size:12px">⚠ Not in stations file: ${[...missing].map(esc).join(', ')}</div>`:''}`}},
 routes(){
   const g={};lines.forEach(l=>(g[l.type]??=[]).push(l));
@@ -128,7 +137,7 @@ routes(){
   return{t:'Routes',h:order.filter(k=>g[k]).map(k=>`<h2>${nm[k]||esc(k)}</h2><div class="grid">${g[k].map(l=>`<button class="badge" style="background:${esc(l.color)}" data-go='${JSON.stringify({v:'dirs',l:l.id})}'>${esc(l.displayName)}</button>`).join('')}</div>`).join('')||'<div class="empty">No routes found</div>'}},
 dirs(s){
   const l=lines.find(x=>x.id===s.l);
-  return{t:'Line '+l.displayName,h:`<h2>Choose direction</h2>`+l.directions.map(d=>`<button class="row" data-go='${JSON.stringify({v:'trip',l:l.id,d:d.id})}'>${badge(l)}<div class="grow"><div class="t">➜ ${esc(sname(d.stops.at(-1).stationId))}</div><div class="s">from ${esc(sname(d.stops[0].stationId))} · ${d.stops.length} stops</div></div>›</button>`).join('')}},
+  return{t:'Line '+l.displayName,h:`<h2>Choose direction</h2>`+l.directions.map(d=>`<button class="row" data-go='${JSON.stringify({v:'trip',l:l.id,d:d.id})}'>${badge(l)}<div class="grow"><div class="t">→ ${esc(sname(d.stops.at(-1).stationId))}</div><div class="s">from ${esc(sname(d.stops[0].stationId))} · ${d.stops.length} stops</div></div>›</button>`).join('')}},
 trip(s){
   const l=lines.find(x=>x.id===s.l),d=l.directions.find(x=>x.id===s.d),ts=times(d),n=now();
   if(!ts.length)return{t:'Line '+l.displayName,h:`<div class="empty">No ${dayType()} departures for this direction</div>`};
@@ -138,13 +147,14 @@ trip(s){
   const menu=pickOpen&&!one?`<div class="scrim" data-pk></div><div class="menu pk"><h3>Select departure</h3><div class="tg">${ts.map((t,k)=>`<button class="tb ${k===i?'cur':''} ${toMin(t)<n?'past':''}" data-i="${k}">${t}</button>`).join('')}</div></div>`:'';
   const stat=diff>0?`Departs in ${eta(diff)}`:n>last?'Finished':diff===0?'Departing now':`Departed ${-diff} min ago`;
   const flag=i===ts.length-1&&diff<0?' · last of the day':'';
-  return{t:'Line '+l.displayName,h:`<div class="hd">${badge(l)}<div class="sub" style="margin:6px 0 0">➜ ${esc(sname(d.stops.at(-1).stationId))}</div>
+  return{t:'Line '+l.displayName,h:`<div class="hd">${badge(l)}<div class="sub" style="margin:6px 0 0">→ ${esc(sname(d.stops.at(-1).stationId))}</div>
   <div class="big2">${ts[i]}</div><div style="color:var(--ok);font-weight:600">${stat}${flag}</div>
   <div class="sub" style="margin:4px 0 0;font-size:13px">${one?'Only one departure today':`Departure ${i+1} of ${ts.length}`} · ${dayType()}</div>
   <div class="nav"><button data-i="${i-1}" ${one||i<1?'disabled':''}>‹ Previous</button><button data-i="${i+1}" ${one||i>=ts.length-1?'disabled':''}>Next ›</button></div>
   <div style="position:relative"><div class="nav sm"><button data-i="0" ${one||i<1?'disabled':''}>⏮ First</button><button data-i="${ts.length-1}" ${one||i>=ts.length-1?'disabled':''}>Last ⏭</button><button data-pk style="flex:2.4" ${one?'disabled':''}>Pick a specific departure… ▾</button></div>${menu}</div></div>
   <h2>Stops</h2><div style="--c:${esc(l.color)}">${d.stops.map((st,k)=>{const m=dep+d.cum[k];
   return`<button class="st ${m<n?'past':''}" data-go='${JSON.stringify({v:'station',id:st.stationId})}'><span class="tm">${fmt(m)}</span><span class="dot"></span><span class="nm">${esc(sname(st.stationId))}${k===d.stops.length-1?'<span class="tag">end</span>':''}</span></button>`}).join('')}</div>`,after(){const m=$('.pk'),c=m&&m.querySelector('.cur');if(c)m.scrollTop=c.offsetTop-m.clientHeight/2+c.offsetHeight/2}}},
+map(){return{t:'Transit map',h:'<div id="map"></div>',after:initMap}},
 search(){
   return{t:'Stations',h:`<input id="q" type="search" placeholder="Station name or ID" autocomplete="off" autocapitalize="off" spellcheck="false" value="${esc(q)}"><div id="res"></div>`,after(){
     const inp=$('#q'),res=$('#res');
@@ -168,7 +178,7 @@ const advCount=()=>F.types.size+(F.after!=null)+(F.before!=null)+(F.via?1:0);
 const clearAdv=()=>{F.types.clear();F.after=F.before=F.via=null};
 const tm=v=>v?toMin(v):null;
 function rowHtml(e,n){const term=e.i===e.d.stops.length-1;
-  return`<button class="row" data-go='${JSON.stringify({v:'trip',l:e.l.id,d:e.d.id,i:e.ti})}'>${badge(e.l)}<div class="grow"><div class="t">➜ ${esc(sname(e.d.stops.at(-1).stationId))}</div>${term?'<div class="s">Terminates here</div>':''}</div><div><div class="time">${fmt(e.m)}</div><div class="eta">${eta(e.m-n)}</div></div></button>`}
+  return`<button class="row" data-go='${JSON.stringify({v:'trip',l:e.l.id,d:e.d.id,i:e.ti})}'>${badge(e.l)}<div class="grow"><div class="t">→ ${esc(sname(e.d.stops.at(-1).stationId))}</div>${term?'<div class="s">Terminates here</div>':''}</div><div><div class="time">${fmt(e.m)}</div><div class="eta">${eta(e.m-n)}</div></div></button>`}
 function initFilters(id){
   const ents=by[id],fx=$('#fx'),deps=$('#fdeps');
   const ls=[...new Map(ents.map(e=>[e.l.id,e.l])).values()].sort((a,b)=>a.displayName.localeCompare(b.displayName,undefined,{numeric:true}));
@@ -213,8 +223,26 @@ function initFilters(id){
     if(advCount())F.sel.clear();update()};
   drawMenu();update();
 }
+let mapObj=null;
+async function initMap(){
+  const el=$('#map');
+  try{
+    const r=await fetch('map.svg');if(!r.ok)throw 0;const txt=await r.text();
+    const svg=new DOMParser().parseFromString(txt,'image/svg+xml').documentElement;
+    const vb=(svg.getAttribute('viewBox')||'').trim().split(/[\s,]+/).map(Number);
+    let w=vb.length===4?vb[2]:parseFloat(svg.getAttribute('width')),h=vb.length===4?vb[3]:parseFloat(svg.getAttribute('height'));
+    if(!(w>0&&h>0)){w=1000;h=1000}
+    if(!el.isConnected)return;
+    const b=[[0,0],[h,w]];
+    mapObj=L.map(el,{crs:L.CRS.Simple,zoomSnap:.25,zoomDelta:.5,minZoom:-10,maxZoom:10,attributionControl:false,zoomControl:false,maxBoundsViscosity:.9,bounceAtZoomLimits:false});
+    L.control.zoom({position:'bottomright'}).addTo(mapObj);
+    L.imageOverlay('map.svg',b).addTo(mapObj);
+    mapObj.fitBounds(b);
+    const z=mapObj.getZoom();mapObj.setMinZoom(z-1);mapObj.setMaxZoom(z+5);mapObj.setMaxBounds(L.latLngBounds(b).pad(.3));
+  }catch(e){el.innerHTML='<div class="mapmsg">Could not load map.svg.<br>Add it next to index.html.</div>'}
+}
 function render(s,keep){
-  s=s||{v:'home'};refreshDeps=null;if(!keep)pickOpen=false;const y=main.scrollTop,v=V[s.v](s);
+  s=s||{v:'home'};if(mapObj){mapObj.remove();mapObj=null}refreshDeps=null;if(!keep)pickOpen=false;main.classList.toggle('fill',s.v==='map');$('#dt').hidden=s.v==='map';const y=main.scrollTop,v=V[s.v](s);
   const ttl=$('#ttl');if(s.v==='home')ttl.innerHTML='<img src="OTP.png" alt="OTP" onerror="this.replaceWith(\'Transit\')">';else ttl.textContent=v.t;$('#bk').hidden=s.v==='home';
   $('#dt').textContent=({auto:'Auto · ',workday:'',holiday:''}[mode])+(dayType()==='workday'?'Workday':'Holiday');
   main.innerHTML=v.h;v.after&&v.after();main.scrollTop=keep?y:0;
@@ -224,7 +252,7 @@ main.addEventListener('click',e=>{
   const g=e.target.closest('[data-go]');if(g)return go(JSON.parse(g.dataset.go));
   const b=e.target.closest('[data-i]');if(b&&!b.disabled)set({...history.state,i:+b.dataset.i});
 });
-setInterval(()=>{const s=history.state||{v:'home'};if(s.v==='trip'&&pickOpen)return;if(s.v==='station')refreshDeps&&refreshDeps();else if(s.v!=='search')render(s,true)},20000);
+setInterval(()=>{const s=history.state||{v:'home'};if(s.v==='map'||(s.v==='trip'&&pickOpen))return;if(s.v==='station')refreshDeps&&refreshDeps();else if(s.v!=='search')render(s,true)},20000);
 load().then(()=>{history.replaceState(history.state||{v:'home'},'');render(history.state)})
  .catch(()=>{main.innerHTML='<div class="empty">Could not load schedule data.<br>Serve this folder over http(s) instead of opening the file directly.</div>'});
 if('serviceWorker'in navigator)navigator.serviceWorker.register('sw.js').catch(()=>{});
