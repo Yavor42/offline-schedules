@@ -80,6 +80,7 @@ main.fill{padding:0;overflow:hidden}
 #map{width:100%;height:100%;background:#0b0e13;touch-action:none;outline:0}
 .leaflet-bar a,.leaflet-bar a:hover{background:var(--card2);color:var(--tx);border-color:var(--line)}
 .leaflet-bar{border:1px solid var(--line);box-shadow:0 4px 14px rgba(0,0,0,.5)}
+.leaflet-map-pane,.leaflet-tile-pane{will-change:transform}
 .leaflet-bottom{margin-bottom:env(safe-area-inset-bottom)}
 .mapmsg{position:absolute;inset:0;display:grid;place-items:center;text-align:center;color:var(--mut);padding:30px;z-index:500}
 </style>
@@ -227,19 +228,20 @@ let mapObj=null;
 async function initMap(){
   const el=$('#map');
   try{
-    const r=await fetch('map.svg');if(!r.ok)throw 0;const txt=await r.text();
-    const svg=new DOMParser().parseFromString(txt,'image/svg+xml').documentElement;
-    const vb=(svg.getAttribute('viewBox')||'').trim().split(/[\s,]+/).map(Number);
-    let w=vb.length===4?vb[2]:parseFloat(svg.getAttribute('width')),h=vb.length===4?vb[3]:parseFloat(svg.getAttribute('height'));
-    if(!(w>0&&h>0)){w=1000;h=1000}
+    let meta=null,w,h;
+    try{const r=await fetch('tiles/meta.json');if(r.ok)meta=await r.json()}catch(e){}
+    if(meta){w=meta.w;h=meta.h}
+    else{const im=new Image();im.src='map.png';await new Promise((ok,no)=>{im.onload=ok;im.onerror=no});w=im.naturalWidth;h=im.naturalHeight}   // fallback: single big image (slow)
     if(!el.isConnected)return;
-    const b=[[0,0],[h,w]];
-    mapObj=L.map(el,{crs:L.CRS.Simple,zoomSnap:.25,zoomDelta:.5,minZoom:-10,maxZoom:10,attributionControl:false,zoomControl:false,maxBoundsViscosity:.9,bounceAtZoomLimits:false});
+    const b=L.latLngBounds([[-h,0],[0,w]]);
+    mapObj=L.map(el,{crs:L.CRS.Simple,zoomSnap:.25,zoomDelta:.5,minZoom:-10,maxZoom:2,attributionControl:false,zoomControl:false,maxBoundsViscosity:.9,fadeAnimation:false,bounceAtZoomLimits:false});
     L.control.zoom({position:'bottomright'}).addTo(mapObj);
-    L.imageOverlay('map.svg',b).addTo(mapObj);
+    if(meta){const N=meta.levels;
+      new(L.TileLayer.extend({getTileUrl(c){return'tiles/'+(c.z+N)+'/'+c.x+'/'+c.y+'.png'}}))('',{tileSize:meta.tile,minZoom:-10,maxZoom:2,minNativeZoom:-N,maxNativeZoom:0,bounds:b,noWrap:true,keepBuffer:3}).addTo(mapObj)}
+    else L.imageOverlay('map.png',b).addTo(mapObj);
     mapObj.fitBounds(b);
-    const z=mapObj.getZoom();mapObj.setMinZoom(z-1);mapObj.setMaxZoom(z+5);mapObj.setMaxBounds(L.latLngBounds(b).pad(.3));
-  }catch(e){el.innerHTML='<div class="mapmsg">Could not load map.svg.<br>Add it next to index.html.</div>'}
+    mapObj.setMinZoom(mapObj.getZoom()-1);mapObj.setMaxBounds(b.pad(.3));
+  }catch(e){el.innerHTML='<div class="mapmsg">Could not load the map.<br>Add tiles/ (or map.png) next to index.html.</div>'}
 }
 function render(s,keep){
   s=s||{v:'home'};if(mapObj){mapObj.remove();mapObj=null}refreshDeps=null;if(!keep)pickOpen=false;main.classList.toggle('fill',s.v==='map');$('#dt').hidden=s.v==='map';const y=main.scrollTop,v=V[s.v](s);
