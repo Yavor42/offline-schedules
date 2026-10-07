@@ -136,7 +136,7 @@
         },
         {
           "stationId": "IntercityBusStationWest",
-          "offsetMinutes": 1
+          "offsetMinutes": 2
         },
         {
           "stationId": "AVKO",
@@ -152,7 +152,7 @@
         },
         {
           "stationId": "Stif",
-          "offsetMinutes": 1
+          "offsetMinutes": 2
         },
         {
           "stationId": "PetarKaraminchev",
@@ -160,11 +160,11 @@
         },
         {
           "stationId": "Yalta",
-          "offsetMinutes": 1
+          "offsetMinutes": 2
         },
         {
           "stationId": "Oborishte",
-          "offsetMinutes": 3
+          "offsetMinutes": 4
         },
         {
           "stationId": "Afrodita",
