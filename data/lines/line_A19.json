@@ -1,0 +1,240 @@
+{
+  "id": "A19",
+  "type": "bus",
+  "color": "#4aca68",
+  "displayName": "A19",
+  "directions": [
+    {
+      "id": "A19_METRO",
+      "displayName": "METRO Superstore",
+      "stops": [
+        {
+          "stationId": "CooperativeMarket",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "OlimpiPanovPrimarySchool",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "ZalaDunav",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "OlympBlock48",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "DairyKitchenEast",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "TovarnaRailwayStop",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "BratyaMiladinoviPrimarySchool",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "UniversityOfRuseNorth",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "EngineeringHighSchool",
+          "offsetMinutes": 3
+        },
+        {
+          "stationId": "Serdika",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "YouthHouse",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "StrandzhataTavern",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "HristoBotevHighSchool",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "ChaykaWest",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "SaintOuan",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "Zhiti",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "Yuta",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "Winery",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "BOR",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "METROSuperstoreNorth",
+          "offsetMinutes": 0
+        }
+      ],
+      "schedules": {
+        "workday": [
+          "05:30",
+          "05:55",
+          "06:50",
+          "07:15",
+          "07:50",
+          "08:20",
+          "09:00",
+          "10:30",
+          "10:55",
+          "11:45",
+          "12:15",
+          "12:45",
+          "13:15",
+          "13:40",
+          "14:10",
+          "14:35",
+          "15:00",
+          "16:05",
+          "16:30",
+          "17:50",
+          "18:15",
+          "19:45",
+          "20:10"
+        ],
+        "holiday": []
+      }
+    },
+    {
+      "id": "A19_CoopMarketNorth",
+      "displayName": "Cooperative Market / ZP Prelez",
+      "stops": [
+        {
+          "stationId": "METROSuperstoreSouth",
+          "offsetMinutes": 3
+        },
+        {
+          "stationId": "DairyPlant",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "FireBrigade",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "Orgahim",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "Fazan",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "ShipbuildingHighSchool",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "ChaykaEast",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "MathsHighSchoolSouth",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "Skobelev",
+          "offsetMinutes": 3
+        },
+        {
+          "stationId": "SportsArena",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "ThePantheon",
+          "offsetMinutes": 3
+        },
+        {
+          "stationId": "Hospital",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "PurvaProlet",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "UniversityOfRuseSouth",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "Pliska",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "BlockDobrudzha",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "DairyKitchenWest",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "OlympBlock49",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "Kolos",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "RusalkaKindergarten",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "ZPPrelez",
+          "offsetMinutes": 0
+        }
+      ],
+      "schedules": {
+        "workday": [
+          "06:15",
+          "06:40",
+          "07:35",
+          "08:15",
+          "09:15",
+          "10:10",
+          "11:10",
+          "11:35",
+          "12:05",
+          "12:35",
+          "13:00",
+          "13:30",
+          "14:00",
+          "14:25",
+          "14:55",
+          "15:25",
+          "15:50",
+          "16:50",
+          "17:35",
+          "19:05",
+          "19:30",
+          "20:30",
+          "20:55"
+        ],
+        "holiday": []
+      }
+    }
+  ]
+}

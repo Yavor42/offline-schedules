@@ -25,7 +25,7 @@
           "offsetMinutes": 1
         },
         {
-          "stationId": "PumpingStationEast",
+          "stationId": "ViKPumpingStationEast",
           "offsetMinutes": 1
         },
         {
@@ -198,7 +198,7 @@
           "offsetMinutes": 2
         },
         {
-          "stationId": "VocationalSchoolOfEngineering",
+          "stationId": "EngineeringHighSchool",
           "offsetMinutes": 3
         },
         {
@@ -242,7 +242,7 @@
           "offsetMinutes": 1
         },
         {
-          "stationId": "PumpingStationWest",
+          "stationId": "ViKPumpingStationWest",
           "offsetMinutes": 1
         },
         {

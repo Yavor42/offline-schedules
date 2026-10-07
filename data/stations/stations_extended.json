@@ -223,12 +223,12 @@
     "displayName": "Maths High School - South",
     "ID": "63"
   },
-  "RailwayCrossingCooperativeMarket": {
-    "displayName": "Railway Crossing - Cooperative Market",
+  "ZPPrelez": {
+    "displayName": "ŽP Prelez (Cooperative Market)",
     "ID": "65"
   },
-  "CooperativeMarketA4A5A19A30": {
-    "displayName": "Cooperative Market - A4, A5, A19, A30",
+  "CooperativeMarket": {
+    "displayName": "Cooperative Market (ŽP Prelez)",
     "ID": "66"
   },
   "RusalkaKindergarten": {
@@ -463,8 +463,8 @@
     "displayName": "Dairy Plant",
     "ID": "126"
   },
-  "METROSuperstoreToPrista": {
-    "displayName": "METRO Superstore - to Prista",
+  "METROSuperstoreNorth": {
+    "displayName": "METRO Superstore - North (To Prista)",
     "ID": "127"
   },
   "MidiyaEnosNorth": {
@@ -1087,8 +1087,8 @@
     "displayName": "Jumbo",
     "ID": "282"
   },
-  "METROSuperstoreToRuse": {
-    "displayName": "METRO Superstore - to Ruse",
+  "METROSuperstoreSouth": {
+    "displayName": "METRO Superstore - South (To Ruse)",
     "ID": "284"
   },
   "RusenskaKorabostroilnitsa": {
