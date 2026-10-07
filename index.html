@@ -51,7 +51,6 @@ input[type=search]:focus{border-color:var(--acc)}
 .advbtn{height:34px;padding:0 14px;border-radius:17px;border:1px solid var(--line);background:var(--card);font-size:13px}
 .advbtn.on{border-color:var(--acc);color:var(--acc)}
 .clr{background:none;border:0;color:var(--mut);font-size:13px;text-decoration:underline}
-.scrim{position:fixed;inset:0;z-index:5}
 .menu{position:absolute;left:14px;top:calc(100% - 4px);width:min(calc(100% - 28px),350px);z-index:6;background:var(--card2);border:1px solid var(--line);border-radius:16px;box-shadow:0 14px 34px rgba(0,0,0,.65);padding:2px 14px 10px}
 .menu h3{margin:12px 0 2px;font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--mut)}
 .chk{display:flex;align-items:center;gap:12px;min-height:46px}
@@ -65,7 +64,7 @@ input[type=search]:focus{border-color:var(--acc)}
 .nav button{flex:1;padding:14px;border:0;border-radius:14px;background:var(--card2);font-weight:600}
 .nav button:disabled{opacity:.3}
 .nav.sm{margin-top:10px}.nav.sm button{font-size:13px;padding:11px 6px}
-.pk{left:0;right:0;width:auto;top:calc(100% + 6px);max-height:46vh;overflow-y:auto;text-align:left;padding-bottom:12px}
+.pk{left:0;right:0;width:auto;top:calc(100% + 6px);max-height:46vh;overflow-y:auto;overscroll-behavior:contain;text-align:left;padding-bottom:12px}
 .tg{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:8px}
 .tb{padding:11px 0;border:0;border-radius:10px;background:var(--card);font-weight:600;font-size:15px;font-variant-numeric:tabular-nums}
 .tb.past{opacity:.4}.tb.cur{background:var(--acc);color:#fff;opacity:1}
@@ -97,12 +96,14 @@ const toMin=t=>{const[a,b]=t.split(':');return +a*60+ +b};
 const now=()=>{const d=new Date();return d.getHours()*60+d.getMinutes()};
 let lines=[],stations={},by={},q='';const missing=new Set();
 let mode='auto';try{mode=localStorage.dayMode||'auto'}catch(e){}
-const dayType=()=>mode!=='auto'?mode:([0,6].includes(new Date().getDay())?'holiday':'workday');
+const dayType=(o=0)=>{if(mode!=='auto')return mode;const d=new Date();d.setDate(d.getDate()+o);return[0,6].includes(d.getDay())?'holiday':'workday'};
 const sname=id=>stations[id]?.displayName||id.replace(/([a-z])([A-Z])/g,'$1 $2');
 const scode=id=>stations[id]?.ID||'';
 const badge=l=>`<span class="badge" style="background:${esc(l.color||'#4d83ff')}">${esc(l.displayName||l.id)}</span>`;
 const eta=d=>d<=0?'now':d<60?d+' min':Math.floor(d/60)+'h '+pad(d%60)+'m';
-const times=d=>d.schedules[dayType()]||[];
+const times=(d,o=0)=>d.schedules[dayType(o)]||[];
+let dayStart=360;   // earliest departure in the data; filter times before this mean 'after midnight' (next day)
+const uw=t=>t<dayStart&&now()>=dayStart?t+1440:t;   // small times = after midnight: tomorrow if it's daytime now, today if it's already past midnight
 
 async function load(){
   const man=await (await fetch('data/manifest.json')).json();
@@ -113,6 +114,7 @@ async function load(){
   lines.forEach(l=>l.directions.forEach(d=>d.stops.forEach(s=>{
     const raw=String(s.stationId).trim();s.stationId=stations[raw]?raw:nmap[norm(raw)]||raw;
     if(!stations[s.stationId])missing.add(s.stationId)})));
+  lines.forEach(l=>l.directions.forEach(d=>Object.values(d.schedules).forEach(a=>a.length&&(dayStart=Math.min(dayStart,...a.map(toMin))))));
   lines.forEach(l=>l.directions.forEach(d=>{let c=0;d.cum=d.stops.map(s=>{const v=c;c+=s.offsetMinutes;return v});
     d.stops.forEach((s,i)=>(by[s.stationId]??=[]).push({l,d,i,off:d.cum[i]}))}));
 }
@@ -140,12 +142,12 @@ dirs(s){
   const l=lines.find(x=>x.id===s.l);
   return{t:'Line '+l.displayName,h:`<h2>Choose direction</h2>`+l.directions.map(d=>`<button class="row" data-go='${JSON.stringify({v:'trip',l:l.id,d:d.id})}'>${badge(l)}<div class="grow"><div class="t">→ ${esc(sname(d.stops.at(-1).stationId))}</div><div class="s">from ${esc(sname(d.stops[0].stationId))} · ${d.stops.length} stops</div></div>›</button>`).join('')}},
 trip(s){
-  const l=lines.find(x=>x.id===s.l),d=l.directions.find(x=>x.id===s.d),ts=times(d),n=now();
+  const l=lines.find(x=>x.id===s.l),d=l.directions.find(x=>x.id===s.d),yd=s.y?1:0,ts=times(d,-yd),n=now()+yd*1440;
   if(!ts.length)return{t:'Line '+l.displayName,h:`<div class="empty">No ${dayType()} departures for this direction</div>`};
   const one=ts.length===1;let i=s.i;
   if(i==null){i=ts.findIndex(t=>toMin(t)>=n);if(i<0)i=ts.length-1;history.replaceState({...s,i},'')}
   const dep=toMin(ts[i]),diff=dep-n,last=toMin(ts.at(-1))+d.cum.at(-1);
-  const menu=pickOpen&&!one?`<div class="scrim" data-pk></div><div class="menu pk"><h3>Select departure</h3><div class="tg">${ts.map((t,k)=>`<button class="tb ${k===i?'cur':''} ${toMin(t)<n?'past':''}" data-i="${k}">${t}</button>`).join('')}</div></div>`:'';
+  const menu=pickOpen&&!one?`<div class="menu pk"><h3>Select departure</h3><div class="tg">${ts.map((t,k)=>`<button class="tb ${k===i?'cur':''} ${toMin(t)<n?'past':''}" data-i="${k}">${t}</button>`).join('')}</div></div>`:'';
   const stat=diff>0?`Departs in ${eta(diff)}`:n>last?'Finished':diff===0?'Departing now':`Departed ${-diff} min ago`;
   const flag=i===ts.length-1&&diff<0?' · last of the day':'';
   return{t:'Line '+l.displayName,h:`<div class="hd">${badge(l)}<div class="sub" style="margin:6px 0 0">→ ${esc(sname(d.stops.at(-1).stationId))}</div>
@@ -173,13 +175,13 @@ station(s){
   return{t:sname(s.id),h:head+'<div class="fx" id="fx"></div><div id="fdeps"></div>',after(){initFilters(s.id)}}}
 };
 // ---- station filters (standard = line chips, advanced = vehicle type / time frame / stops-at; the two are mutually exclusive)
-let F={},refreshDeps=null,pickOpen=false;
+let F={},refreshDeps=null,closeFx=null,pickOpen=false;
 const fReset=id=>{F={sid:id,sel:new Set(),types:new Set(),after:null,before:null,via:null,open:false}};
 const advCount=()=>F.types.size+(F.after!=null)+(F.before!=null)+(F.via?1:0);
 const clearAdv=()=>{F.types.clear();F.after=F.before=F.via=null};
 const tm=v=>v?toMin(v):null;
 function rowHtml(e,n){const term=e.i===e.d.stops.length-1;
-  return`<button class="row" data-go='${JSON.stringify({v:'trip',l:e.l.id,d:e.d.id,i:e.ti})}'>${badge(e.l)}<div class="grow"><div class="t">→ ${esc(sname(e.d.stops.at(-1).stationId))}</div>${term?'<div class="s">Terminates here</div>':''}</div><div><div class="time">${fmt(e.m)}</div><div class="eta">${eta(e.m-n)}</div></div></button>`}
+  return`<button class="row" data-go='${JSON.stringify({v:'trip',l:e.l.id,d:e.d.id,i:e.ti,...(e.y?{y:1}:{})})}'>${badge(e.l)}<div class="grow"><div class="t">→ ${esc(sname(e.d.stops.at(-1).stationId))}</div>${term?'<div class="s">Terminates here</div>':''}</div><div><div class="time">${fmt(e.m)}</div><div class="eta">${eta(e.m-n)}</div></div></button>`}
 function initFilters(id){
   const ents=by[id],fx=$('#fx'),deps=$('#fdeps');
   const ls=[...new Map(ents.map(e=>[e.l.id,e.l])).values()].sort((a,b)=>a.displayName.localeCompare(b.displayName,undefined,{numeric:true}));
@@ -189,7 +191,7 @@ function initFilters(id){
   fx.innerHTML=`<div class="chips">${ls.map(l=>`<button class="chip" data-l="${esc(l.id)}" style="--c:${esc(l.color||'#4d83ff')}">${esc(l.displayName)}</button>`).join('')}</div>
    <div class="advwrap"><button class="advbtn" id="ab"></button><button class="clr" id="cl">Clear</button><div id="mn"></div></div>`;
   const menu=()=>{const n=now(),d=hasBoth?'':'dis';
-    return`<div class="scrim" id="sc"></div><div class="menu">
+    return`<div class="menu">
     <h3>Vehicle</h3>${[['trolleybus','Trolleybus'],['bus','Bus']].map(([t,nm])=>`<label class="chk ${d}"><input type="checkbox" data-t="${t}" ${F.types.has(t)?'checked':''} ${hasBoth?'':'disabled'}>${nm}</label>`).join('')}
     <h3>Departure time</h3>
     <label class="chk"><input type="checkbox" id="ca" ${F.after!=null?'checked':''}>After<input type="time" id="ta" value="${fmt(F.after??n)}"></label>
@@ -202,18 +204,20 @@ function initFilters(id){
     const k=advCount(),ab=$('#ab');ab.textContent='⚙ Advanced filters'+(k?' · '+k:'')+(F.open?' ▴':' ▾');
     ab.classList.toggle('on',k>0);$('#cl').hidden=!(k||F.sel.size)};
   refreshDeps=()=>{const n=now(),out=[];
-    ents.forEach(e=>times(e.d).forEach((t,i)=>{const m=toMin(t)+e.off;
-      if(m<n||(F.sel.size&&!F.sel.has(e.l.id))||(F.types.size&&!F.types.has(e.l.type))||(F.after!=null&&m<F.after)||(F.before!=null&&m>F.before)||
+    const A=F.after!=null?uw(F.after):null,B=F.before!=null?uw(F.before):null;
+    [0,-1].forEach(o=>ents.forEach(e=>times(e.d,o).forEach((t,i)=>{   // o=-1: yesterday's trips still running past midnight
+      let m=toMin(t)+e.off;if(o){m-=1440;if(m<0)return}
+      if(m<n||(F.sel.size&&!F.sel.has(e.l.id))||(F.types.size&&!F.types.has(e.l.type))||!(A!=null&&B!=null&&A>B?(m>=A||m<=B):!((A!=null&&m<A)||(B!=null&&m>B)))||
         (F.via&&!e.d.stops.some((x,k)=>k>e.i&&x.stationId===F.via)))return;
-      out.push({...e,m,ti:i})}));
+      out.push({...e,m,ti:i,y:o?1:0})})));
     out.sort((a,b)=>a.m-b.m);
     deps.innerHTML=out.length?out.slice(0,40).map(e=>rowHtml(e,n)).join(''):`<div class="empty">${F.sel.size||advCount()?'No departures match these filters':'No upcoming departures'}</div>`};
   const update=()=>{sync();refreshDeps()};
+  closeFx=()=>{F.open=false;drawMenu();sync()};
   fx.onclick=e=>{
     const c=e.target.closest('.chip');
     if(c){clearAdv();const k=c.dataset.l;F.sel.has(k)?F.sel.delete(k):F.sel.add(k);F.open=false;drawMenu();return update()}
     if(e.target.closest('#ab')){F.open=!F.open;drawMenu();return sync()}
-    if(e.target.id==='sc'){F.open=false;drawMenu();return sync()}
     if(e.target.closest('#cl')){F.sel.clear();clearAdv();F.open=false;drawMenu();update()}};
   fx.onchange=e=>{const t=e.target,g=x=>$('#'+x);
     if(t.dataset.t)t.checked?F.types.add(t.dataset.t):F.types.delete(t.dataset.t);
@@ -244,12 +248,15 @@ async function initMap(){
   }catch(e){el.innerHTML='<div class="mapmsg">Could not load the map.<br>Add tiles/ (or map.png) next to index.html.</div>'}
 }
 function render(s,keep){
-  s=s||{v:'home'};if(mapObj){mapObj.remove();mapObj=null}refreshDeps=null;if(!keep)pickOpen=false;main.classList.toggle('fill',s.v==='map');$('#dt').hidden=s.v==='map';const y=main.scrollTop,v=V[s.v](s);
+  s=s||{v:'home'};if(mapObj){mapObj.remove();mapObj=null}refreshDeps=null;closeFx=null;if(!keep)pickOpen=false;main.classList.toggle('fill',s.v==='map');$('#dt').hidden=s.v==='map';const y=main.scrollTop,v=V[s.v](s);
   const ttl=$('#ttl');if(s.v==='home')ttl.innerHTML='<img src="OTP.png" alt="OTP" onerror="this.replaceWith(\'Transit\')">';else ttl.textContent=v.t;$('#bk').hidden=s.v==='home';
   $('#dt').textContent=({auto:'Auto · ',workday:'',holiday:''}[mode])+(dayType()==='workday'?'Workday':'Holiday');
   main.innerHTML=v.h;v.after&&v.after();main.scrollTop=keep?y:0;
 }
 main.addEventListener('click',e=>{
+  if(!e.target.closest('.menu,#ab,[data-pk]')){   // tap outside an open dropdown closes it (scrolling outside still works)
+    if(pickOpen){pickOpen=false;return render(history.state,true)}
+    if(F.open&&closeFx)return closeFx()}
   if(e.target.closest('[data-pk]')){pickOpen=!pickOpen;return render(history.state,true)}
   const g=e.target.closest('[data-go]');if(g)return go(JSON.parse(g.dataset.go));
   const b=e.target.closest('[data-i]');if(b&&!b.disabled)set({...history.state,i:+b.dataset.i});
