@@ -1,0 +1,253 @@
+{
+  "id": "A6",
+  "type": "bus",
+  "color": "#4aca68",
+  "displayName": "A6",
+  "directions": [
+    {
+      "id": "A6_AsphaltBase",
+      "displayName": "Asphalt Base",
+      "stops": [
+        {
+          "stationId": "HouseOfCulture",
+          "offsetMinutes": 3
+        },
+        {
+          "stationId": "Serdika",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "SBA",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "MathsHighSchoolNorth",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "MarielaSoni",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "SaintOuan",
+          "offsetMinutes": 3
+        },
+        {
+          "stationId": "Zhiti",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "Yuta",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "Winery",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "BOR",
+          "offsetMinutes": 3
+        },
+        {
+          "stationId": "METROSuperstoreNorth",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "FishingHutWest",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "PristaLodge",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "RailwayCrossingDolapiteSouth",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "Church",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "DolapiteCentralEast",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "SrednaKula2South",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "SrednaKulaCentralSouth",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "SrednaKula1South",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "TheTriangleSrednaKulaEast",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "AsphaltBaseEast",
+          "offsetMinutes": 0
+        }
+      ],
+      "schedules": {
+        "workday": [
+          "06:15",
+          "07:00",
+          "08:00",
+          "08:30",
+          "09:30",
+          "11:30",
+          "13:00",
+          "14:25",
+          "15:10",
+          "16:10",
+          "16:45",
+          "17:30",
+          "18:30",
+          "19:20",
+          "21:00"
+        ],
+        "holiday": [
+          "05:45",
+          "07:15",
+          "09:15",
+          "11:15",
+          "12:45",
+          "14:15",
+          "16:10",
+          "17:35",
+          "19:15"
+        ]
+      }
+    },
+    {
+      "id": "A6_HouseOfCulture",
+      "displayName": "HouseOfCulture",
+      "stops": [
+        {
+          "stationId": "AsphaltBaseWest",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "TheTriangleSrednaKulaWest",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "SrednaKula1North",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "SrednaKulaCentralNorth",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "SrednaKula2North",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "DolapiteCentralSouth",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "HristoSmirnenkiPrimarySchool",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "RailwayCrossingDolapiteNorth",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "OldPeoplesHome",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "FishingHutEast",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "METROSuperstoreSouth",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "DairyPlant",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "FireBrigade",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "OrgahimDunavskaKoprina",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "Fazan",
+          "offsetMinutes": 3
+        },
+        {
+          "stationId": "ShipbuildingHighSchool",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "ChaykaEast",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "MathsHighSchoolSouth",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "Skobelev",
+          "offsetMinutes": 3
+        },
+        {
+          "stationId": "SportsArena",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "ThePantheon",
+          "offsetMinutes": 3
+        },
+        {
+          "stationId": "HouseOfCulture",
+          "offsetMinutes": 0
+        }
+      ],
+      "schedules": {
+        "workday": [
+          "05:30",
+          "06:15",
+          "07:00",
+          "07:45",
+          "08:45",
+          "09:35",
+          "10:45",
+          "12:15",
+          "13:45",
+          "15:05",
+          "16:00",
+          "16:50",
+          "17:25",
+          "18:05",
+          "19:10",
+          "20:05"
+        ],
+        "holiday": [
+          "06:25",
+          "08:30",
+          "10:00",
+          "12:00",
+          "13:30",
+          "15:25",
+          "16:50",
+          "18:15",
+          "20:15"
+        ]
+      }
+    }
+  ]
+}

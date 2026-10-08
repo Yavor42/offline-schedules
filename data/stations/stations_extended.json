@@ -679,12 +679,12 @@
     "displayName": "Fishing Hut - East",
     "ID": "181"
   },
-  "PristaLodgeNorth": {
-    "displayName": "Prista Lodge - North",
+  "PristaLodge": {
+    "displayName": "Prista Lodge",
     "ID": "182"
   },
-  "PristaLodgeSouth": {
-    "displayName": "Prista Lodge - South (Old People's Home)",
+  "OldPeoplesHome": {
+    "displayName": "Old People's Home",
     "ID": "183"
   },
   "KPPEast": {

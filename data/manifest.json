@@ -11,7 +11,8 @@
   "line_A23.json",
   "line_T21.json",
   "line_A18.json",
-  "line_A19.json"
+  "line_A19.json",
+  "line_A6.json"
  ],
  "stations": "stations/stations_extended.json"
 }
