@@ -50,6 +50,8 @@ input[type=search]:focus{border-color:var(--acc)}
 .advwrap{position:relative;padding:2px 14px 8px;display:flex;gap:12px;align-items:center}
 .advbtn{height:34px;padding:0 14px;border-radius:17px;border:1px solid var(--line);background:var(--card);font-size:13px}
 .advbtn.on{border-color:var(--acc);color:var(--acc)}
+.pvbtn{display:block;width:100%;height:38px;margin:2px 0 12px;border-radius:12px;border:1px solid var(--line);background:var(--card);font-size:13px;color:var(--mut)}.row.past{opacity:.6}
+.pager{display:flex;align-items:center;justify-content:center;gap:18px;margin:14px 0 8px;color:var(--mut)}.pager button{width:44px;height:40px;border-radius:10px;border:1px solid var(--line);background:var(--card);font-size:20px}.pager button:disabled{opacity:.3}
 .clr{background:none;border:0;color:var(--mut);font-size:13px;text-decoration:underline}
 .menu{position:absolute;left:14px;top:calc(100% - 4px);width:min(calc(100% - 28px),350px);z-index:6;background:var(--card2);border:1px solid var(--line);border-radius:16px;box-shadow:0 14px 34px rgba(0,0,0,.65);padding:2px 14px 10px}
 .menu h3{margin:12px 0 2px;font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--mut)}
@@ -91,7 +93,7 @@ main.fill{padding:0;overflow:hidden}
 const $=s=>document.querySelector(s),main=$('#main');
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const pad=n=>String(n).padStart(2,'0');
-const fmt=m=>pad(Math.floor(m/60)%24)+':'+pad(m%60);
+const fmt=m=>{m=(m%1440+1440)%1440;return pad(Math.floor(m/60))+':'+pad(m%60)};
 const toMin=t=>{const[a,b]=t.split(':');return +a*60+ +b};
 const now=()=>{const d=new Date();return d.getHours()*60+d.getMinutes()};
 let lines=[],stations={},by={},q='';const missing=new Set();
@@ -179,16 +181,17 @@ station(s){
   if(F.sid!==s.id)fReset(s.id);
   const head=`<div class="sub" style="margin:4px 4px 0">${scode(s.id)?'Station #'+esc(scode(s.id))+' · ':''}${dayType()} schedule</div><h2>Upcoming departures</h2>`;
   if(!(by[s.id]||[]).length)return{t:sname(s.id),h:head+'<div class="empty">No upcoming departures</div>'};
-  return{t:sname(s.id),h:head+'<div class="fx" id="fx"></div><div id="fdeps"></div>',after(){initFilters(s.id)}}}
+  return{t:sname(s.id),h:head+'<div class="fx" id="fx"></div><button class="pvbtn" id="pv"></button><div id="pdeps"></div><div id="fdeps"></div>',after(){initFilters(s.id)}}}
 };
 // ---- station filters (standard = line chips, advanced = vehicle type / time frame / stops-at; the two are mutually exclusive)
 let F={},refreshDeps=null,closeFx=null,pickOpen=false;
-const fReset=id=>{F={sid:id,sel:new Set(),types:new Set(),after:null,before:null,via:null,open:false}};
+const PG=15,PV=10,PVMIN=60;   // departures per page; previous departures: max count / max minutes back
+const fReset=id=>{F={page:0,prev:false,sid:id,sel:new Set(),types:new Set(),after:null,before:null,via:null,open:false}};
 const advCount=()=>F.types.size+(F.after!=null)+(F.before!=null)+(F.via?1:0);
 const clearAdv=()=>{F.types.clear();F.after=F.before=F.via=null};
 const tm=v=>v?toMin(v):null;
-function rowHtml(e,n){const term=e.i===e.d.stops.length-1;
-  return`<button class="row" data-go='${JSON.stringify({v:'trip',l:e.l.id,d:e.d.id,i:e.ti,...(e.y?{y:1}:{})})}'>${badge(e.l)}<div class="grow"><div class="t">${esc(e.d.displayName||sname(e.d.stops.at(-1).stationId))}</div>${term?'<div class="s">Terminates here</div>':''}</div><div><div class="time">${fmt(e.m)}</div><div class="eta">${eta(e.m-n)}</div></div></button>`}
+function rowHtml(e,n,past){const term=e.i===e.d.stops.length-1;
+  return`<button class="row${past?' past':''}" data-go='${JSON.stringify({v:'trip',l:e.l.id,d:e.d.id,i:e.ti,...(e.y?{y:1}:{})})}'>${badge(e.l)}<div class="grow"><div class="t">${esc(e.d.displayName||sname(e.d.stops.at(-1).stationId))}</div>${term?'<div class="s">Terminates here</div>':''}</div><div><div class="time">${fmt(e.m)}</div><div class="eta">${past?(n-e.m)+' min ago':eta(e.m-n)}</div></div></button>`}
 function initFilters(id){
   const ents=by[id],fx=$('#fx'),deps=$('#fdeps');
   const ls=[...new Map(ents.map(e=>[e.l.id,e.l])).values()].sort((a,b)=>a.displayName.localeCompare(b.displayName,undefined,{numeric:true}));
@@ -213,13 +216,20 @@ function initFilters(id){
   refreshDeps=()=>{const n=now(),out=[];
     const A=F.after!=null?uw(F.after):null,B=F.before!=null?uw(F.before):null;
     [0,-1].forEach(o=>ents.forEach(e=>times(e.d,o).forEach((t,i)=>{   // o=-1: yesterday's trips still running past midnight
-      let m=toMin(t)+e.off;if(o){m-=1440;if(m<0)return}
-      if(m<n||(F.sel.size&&!F.sel.has(e.l.id))||(F.types.size&&!F.types.has(e.l.type))||!(A!=null&&B!=null&&A>B?(m>=A||m<=B):!((A!=null&&m<A)||(B!=null&&m>B)))||
+      let m=toMin(t)+e.off;if(o)m-=1440;
+      if(m<n-PVMIN||(F.sel.size&&!F.sel.has(e.l.id))||(F.types.size&&!F.types.has(e.l.type))||!(A!=null&&B!=null&&A>B?(m>=A||m<=B):!((A!=null&&m<A)||(B!=null&&m>B)))||
         (F.via&&!e.d.stops.some((x,k)=>k>e.i&&x.stationId===F.via)))return;
       out.push({...e,m,ti:i,y:o?1:0})})));
     out.sort((a,b)=>a.m-b.m);
-    deps.innerHTML=out.length?out.slice(0,40).map(e=>rowHtml(e,n)).join(''):`<div class="empty">${F.sel.size||advCount()?'No departures match these filters':'No upcoming departures'}</div>`};
-  const update=()=>{sync();refreshDeps()};
+    const up=out.filter(e=>e.m>=n),pv=out.filter(e=>e.m<n).slice(-PV),pages=Math.max(1,Math.ceil(up.length/PG));
+    F.page=Math.min(Math.max(F.page,0),pages-1);
+    $('#pv').textContent=(F.prev?'Hide':'Show')+' previous departures '+(F.prev?'▴':'▾');
+    $('#pdeps').innerHTML=F.prev?(pv.length?pv.map(e=>rowHtml(e,n,1)).join(''):'<div class="empty" style="padding:18px 20px">No departures in the past hour</div>'):'';
+    deps.innerHTML=(up.length?up.slice(F.page*PG,F.page*PG+PG).map(e=>rowHtml(e,n)).join(''):`<div class="empty">${F.sel.size||advCount()?'No departures match these filters':'No upcoming departures'}</div>`)+
+      (pages>1?`<div class="pager"><button data-pg="-1" ${F.page<1?'disabled':''} aria-label="Previous page">←</button><span>Page ${F.page+1} of ${pages}</span><button data-pg="1" ${F.page>=pages-1?'disabled':''} aria-label="Next page">→</button></div>`:'')};
+  $('#pv').onclick=()=>{F.prev=!F.prev;refreshDeps()};
+  deps.onclick=e=>{const b=e.target.closest('[data-pg]');if(!b||b.disabled)return;e.stopPropagation();F.page+=+b.dataset.pg;refreshDeps();main.scrollTop=0};
+  const update=()=>{F.page=0;sync();refreshDeps()};
   closeFx=()=>{F.open=false;drawMenu();sync()};
   fx.onclick=e=>{
     const c=e.target.closest('.chip');
@@ -233,7 +243,7 @@ function initFilters(id){
     else if(t.id==='cv'||t.id==='sv'){if(t.id==='sv')g('cv').checked=true;F.via=g('cv').checked?g('sv').value:null}
     else return;
     if(advCount())F.sel.clear();update()};
-  drawMenu();update();
+  drawMenu();sync();refreshDeps();
 }
 let mapObj=null;
 async function initMap(){
