@@ -163,7 +163,7 @@ trip(s){
   <div class="sub" style="margin:4px 0 0;font-size:13px">${one?'Only one departure today':`Departure ${i+1} of ${ts.length}`} · ${dayType()}</div>
   <div class="nav"><button data-i="${tg.k}" ${one?'disabled':''} style="color:var(--acc)">${tg.act?'Jump to current departure':'Jump to upcoming departure'}</button></div>
   <div class="nav" style="margin-top:10px"><button data-i="${i-1}" ${one||i<1?'disabled':''}>‹ Previous</button><button data-i="${i+1}" ${one||i>=ts.length-1?'disabled':''}>Next ›</button></div>
-  <div style="position:relative"><div class="nav sm"><div class="half"><button data-i="0" ${one||i<1?'disabled':''}>⏮ First</button><button data-i="${ts.length-1}" ${one||i>=ts.length-1?'disabled':''}>Last ⏭</button></div><button data-pk ${one?'disabled':''}>Pick a specific departure… ▾</button></div>${menu}</div></div>
+  <div style="position:relative"><div class="nav sm"><div class="half"><button data-i="0" ${one||i<1?'disabled':''}>⏮ First</button><button data-i="${ts.length-1}" ${one||i>=ts.length-1?'disabled':''}>Last ⏭</button></div><button data-pk ${one?'disabled':''}>Choose a departure… ▾</button></div>${menu}</div></div>
   <h2>Stops</h2><div style="--c:${esc(l.color)}">${d.stops.map((st,k)=>{const m=dep+d.cum[k];
   return`<button class="st ${m<n?'past':''}" data-go='${JSON.stringify({v:'station',id:st.stationId})}'><span class="tm">${fmt(m)}</span><span class="dot"></span><span class="nm">${esc(sname(st.stationId))}${k===d.stops.length-1?'<span class="tag">end</span>':''}</span></button>`}).join('')}</div>`,after(){const m=$('.pk'),c=m&&m.querySelector('.cur');if(c)m.scrollTop=c.offsetTop-m.clientHeight/2+c.offsetHeight/2}}},
 map(){return{t:'Transit map',h:'<div id="map"></div>',after:initMap}},
