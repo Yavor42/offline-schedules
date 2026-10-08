@@ -1,0 +1,248 @@
+{
+  "id": "T13",
+  "type": "trolleybus",
+  "color": "#1356d3",
+  "displayName": "T13",
+  "directions": [
+    {
+      "id": "T13_OtherRailwayStation",
+      "displayName": "Razpredelitelna Railway Station",
+      "stops": [
+        {
+          "stationId": "Druzhba3Terminus",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "Block10",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "Block6",
+          "offsetMinutes": 3
+        },
+        {
+          "stationId": "PechatniPlatkiPCBS",
+          "offsetMinutes": 3
+        },
+        {
+          "stationId": "YordanYovkovHighSchool",
+          "offsetMinutes": 3
+        },
+        {
+          "stationId": "Bricolage",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "Kaufland",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "NaidenKirov",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "Olymp",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "SubstationSouth",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "ThirdPolyclinic",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "VasilAprilovPrimarySchool",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "IntercityBusStationEast",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "RazpredelitelnaRailwayStation",
+          "offsetMinutes": 0
+        }
+      ],
+      "schedules": {
+        "workday": [
+          "05:40",
+          "06:00",
+          "06:45",
+          "07:15",
+          "07:50",
+          "08:30",
+          "09:20",
+          "10:05",
+          "11:00",
+          "11:40",
+          "12:05",
+          "12:45",
+          "13:15",
+          "14:00",
+          "14:35",
+          "15:05",
+          "15:45",
+          "16:15",
+          "17:10",
+          "17:35",
+          "18:15",
+          "18:50",
+          "19:55",
+          "20:30",
+          "21:05",
+          "21:40"
+        ],
+        "holiday": [
+          "05:40",
+          "06:00",
+          "06:40",
+          "07:15",
+          "07:50",
+          "08:30",
+          "09:20",
+          "10:05",
+          "11:00",
+          "11:40",
+          "12:05",
+          "12:45",
+          "13:15",
+          "14:00",
+          "14:35",
+          "15:05",
+          "15:45",
+          "16:15",
+          "17:10",
+          "17:35",
+          "18:15",
+          "19:00",
+          "19:55",
+          "20:30",
+          "21:05",
+          "21:40"
+        ]
+      }
+    },
+    {
+      "id": "T13_Block28",
+      "displayName": "Druzhba 3 - Terminus",
+      "stops": [
+        {
+          "stationId": "RazpredelitelnaRailwayStation",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "IntercityBusStationWest",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "AVKO",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "MallRuseIRIS",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "SubstationNorth",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "Stif",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "PetarKaraminchev",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "Yalta",
+          "offsetMinutes": 3
+        },
+        {
+          "stationId": "Oborishte",
+          "offsetMinutes": 3
+        },
+        {
+          "stationId": "Afrodita",
+          "offsetMinutes": 4
+        },
+        {
+          "stationId": "PCBs",
+          "offsetMinutes": 3
+        },
+        {
+          "stationId": "CBADruzhba3",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "Block33",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "Block28",
+          "offsetMinutes": 0
+        }
+      ],
+      "schedules": {
+        "workday": [
+          "06:10",
+          "06:40",
+          "07:20",
+          "08:00",
+          "08:30",
+          "09:05",
+          "10:05",
+          "10:40",
+          "11:35",
+          "12:10",
+          "12:40",
+          "13:25",
+          "13:50",
+          "14:30",
+          "15:10",
+          "15:40",
+          "16:15",
+          "16:50",
+          "17:45",
+          "18:20",
+          "18:50",
+          "19:30",
+          "20:30",
+          "21:00",
+          "21:35",
+          "22:20"
+        ],
+        "holiday": [
+          "06:10",
+          "06:40",
+          "07:20",
+          "08:00",
+          "08:30",
+          "09:05",
+          "10:05",
+          "10:40",
+          "11:35",
+          "12:10",
+          "12:40",
+          "13:25",
+          "13:50",
+          "14:30",
+          "15:10",
+          "15:40",
+          "16:15",
+          "16:50",
+          "17:45",
+          "18:20",
+          "18:50",
+          "19:30",
+          "20:30",
+          "21:00",
+          "21:35",
+          "22:20"
+        ]
+      }
+    }
+  ]
+}
