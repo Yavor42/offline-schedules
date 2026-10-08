@@ -63,7 +63,7 @@ input[type=search]:focus{border-color:var(--acc)}
 .nav{display:flex;gap:10px;margin-top:14px}
 .nav button{flex:1;padding:14px;border:0;border-radius:14px;background:var(--card2);font-weight:600}
 .nav button:disabled{opacity:.3}
-.nav.sm{margin-top:10px}.nav.sm button{font-size:13px;padding:11px 6px}
+.nav button{min-width:0}.nav .half{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px;min-width:0}.nav.sm{margin-top:10px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.nav.sm button{font-size:12px;padding:11px 2px;white-space:nowrap}
 .pk{left:0;right:0;width:auto;top:calc(100% + 6px);max-height:46vh;overflow-y:auto;overscroll-behavior:contain;text-align:left;padding-bottom:12px}
 .tg{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:8px}
 .tb{padding:11px 0;border:0;border-radius:10px;background:var(--card);font-weight:600;font-size:15px;font-variant-numeric:tabular-nums}
@@ -142,10 +142,16 @@ dirs(s){
   const l=lines.find(x=>x.id===s.l);
   return{t:'Line '+l.displayName,h:`<h2>Choose direction</h2>`+l.directions.map(d=>`<button class="row" data-go='${JSON.stringify({v:'trip',l:l.id,d:d.id})}'>${badge(l)}<div class="grow"><div class="t">➜ ${esc(sname(d.stops.at(-1).stationId))}</div><div class="s">from ${esc(sname(d.stops[0].stationId))} · ${d.stops.length} stops</div></div>›</button>`).join('')}},
 trip(s){
-  const l=lines.find(x=>x.id===s.l),d=l.directions.find(x=>x.id===s.d),yd=s.y?1:0,ts=times(d,-yd),n=now()+yd*1440;
+  const l=lines.find(x=>x.id===s.l),d=l.directions.find(x=>x.id===s.d),tot=d.cum.at(-1);
+  // target = most recently departed trip still running (not yet at terminus), else next upcoming, else last of the day
+  const target=(t,n)=>{let k=-1;t.forEach((x,j)=>{const m=toMin(x);if(m<=n&&n<m+tot)k=j});if(k>=0)return{k,act:1};k=t.findIndex(x=>toMin(x)>=n);return{k:k<0?t.length-1:k,act:0}};
+  let yd=s.y?1:0,i=s.i;
+  if(i==null&&!yd){const yt=times(d,-1),r=target(yt,now()+1440);if(r.act){yd=1;i=r.k}}   // trip from yesterday still running past midnight
+  const ts=times(d,-yd),n=now()+yd*1440;
   if(!ts.length)return{t:'Line '+l.displayName,h:`<div class="empty">No ${dayType()} departures for this direction</div>`};
-  const one=ts.length===1;let i=s.i;
-  if(i==null){i=ts.findIndex(t=>toMin(t)>=n);if(i<0)i=ts.length-1;history.replaceState({...s,i},'')}
+  const one=ts.length===1,tg=target(ts,n);
+  if(i==null)i=tg.k;
+  if(s.i==null)history.replaceState({...s,i,...(yd?{y:1}:{})},'');
   const dep=toMin(ts[i]),diff=dep-n,last=toMin(ts.at(-1))+d.cum.at(-1);
   const menu=pickOpen&&!one?`<div class="menu pk"><h3>Select departure</h3><div class="tg">${ts.map((t,k)=>`<button class="tb ${k===i?'cur':''} ${toMin(t)<n?'past':''}" data-i="${k}">${t}</button>`).join('')}</div></div>`:'';
   const stat=diff>0?`Departs in ${eta(diff)}`:n>last?'Finished':diff===0?'Departing now':`Departed ${-diff} min ago`;
@@ -153,8 +159,9 @@ trip(s){
   return{t:'Line '+l.displayName,h:`<div class="hd">${badge(l)}<div class="sub" style="margin:6px 0 0">➜ ${esc(sname(d.stops.at(-1).stationId))}</div>
   <div class="big2">${ts[i]}</div><div style="color:var(--ok);font-weight:600">${stat}${flag}</div>
   <div class="sub" style="margin:4px 0 0;font-size:13px">${one?'Only one departure today':`Departure ${i+1} of ${ts.length}`} · ${dayType()}</div>
-  <div class="nav"><button data-i="${i-1}" ${one||i<1?'disabled':''}>‹ Previous</button><button data-i="${i+1}" ${one||i>=ts.length-1?'disabled':''}>Next ›</button></div>
-  <div style="position:relative"><div class="nav sm"><button data-i="0" ${one||i<1?'disabled':''}>⏮ First</button><button data-i="${ts.length-1}" ${one||i>=ts.length-1?'disabled':''}>Last ⏭</button><button data-pk style="flex:2.4" ${one?'disabled':''}>Pick a specific departure… ▾</button></div>${menu}</div></div>
+  <div class="nav"><button data-i="${tg.k}" ${one?'disabled':''} style="color:var(--acc)">${tg.act?'Jump to current departure':'Jump to upcoming departure'}</button></div>
+  <div class="nav" style="margin-top:10px"><button data-i="${i-1}" ${one||i<1?'disabled':''}>‹ Previous</button><button data-i="${i+1}" ${one||i>=ts.length-1?'disabled':''}>Next ›</button></div>
+  <div style="position:relative"><div class="nav sm"><div class="half"><button data-i="0" ${one||i<1?'disabled':''}>⏮ First</button><button data-i="${ts.length-1}" ${one||i>=ts.length-1?'disabled':''}>Last ⏭</button></div><button data-pk ${one?'disabled':''}>Pick a specific departure… ▾</button></div>${menu}</div></div>
   <h2>Stops</h2><div style="--c:${esc(l.color)}">${d.stops.map((st,k)=>{const m=dep+d.cum[k];
   return`<button class="st ${m<n?'past':''}" data-go='${JSON.stringify({v:'station',id:st.stationId})}'><span class="tm">${fmt(m)}</span><span class="dot"></span><span class="nm">${esc(sname(st.stationId))}${k===d.stops.length-1?'<span class="tag">end</span>':''}</span></button>`}).join('')}</div>`,after(){const m=$('.pk'),c=m&&m.querySelector('.cur');if(c)m.scrollTop=c.offsetTop-m.clientHeight/2+c.offsetHeight/2}}},
 map(){return{t:'Transit map',h:'<div id="map"></div>',after:initMap}},
