@@ -4,7 +4,7 @@ Based on Municipal Transport Ruse's routes. (https://transport-ruse.com/)
 
 View current state of the webapp here: https://yavor42.github.io/offline-schedules/
 
-Lines TBA: A3, A4, A8, A10, A12A, A16, A16A, T27, A28, A33, A50
+Lines TBA: A3, A4, A8, A10, A12A, A16, A16A, A28, A33, A50
 
 /*
 OFFLINE TRANSIT

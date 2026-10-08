@@ -1,0 +1,170 @@
+{
+  "id": "T27",
+  "type": "trolleybus",
+  "color": "#1356d3",
+  "displayName": "T27",
+  "directions": [
+    {
+      "id": "T27_Block28",
+      "displayName": "Druzhba 3 - Terminus",
+      "stops": [
+        {
+          "stationId": "25TutrakanBlvd",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "PsychiatricClinicNorth",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "TutrakanOverpass",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "TsvetnitsaNorth",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "BratyaMiladinoviPrimarySchool",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "UniversityOfRuseNorth",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "EngineeringHighSchool",
+          "offsetMinutes": 3
+        },
+        {
+          "stationId": "Serdika",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "Oborishte",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "Afrodita",
+          "offsetMinutes": 3
+        },
+        {
+          "stationId": "Technopolis",
+          "offsetMinutes": 3
+        },
+        {
+          "stationId": "CBADruzhba3",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "Block33",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "Block28",
+          "offsetMinutes": 0
+        }
+      ],
+      "schedules": {
+        "workday": [
+          "07:00",
+          "08:25",
+          "10:00",
+          "11:50",
+          "13:10",
+          "14:35",
+          "15:45",
+          "17:05",
+          "18:30",
+          "20:05",
+          "21:55",
+          "23:15"
+        ],
+        "holiday": [] 
+      }
+    },
+    {
+      "id": "T27_2526TutrakanBlvd",
+      "displayName": "26 \"Tutrakan\" blvd. (Sugar Factory)",
+      "stops": [
+        {
+          "stationId": "Druzhba3Terminus",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "Block10",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "Block6",
+          "offsetMinutes": 3
+        },
+        {
+          "stationId": "PechatniPlatkiPCBs",
+          "offsetMinutes": 3
+        },
+        {
+          "stationId": "YordanYovkovHighSchool",
+          "offsetMinutes": 3
+        },
+        {
+          "stationId": "SportsArena",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "ThePantheon",
+          "offsetMinutes": 3
+        },
+        {
+          "stationId": "Hospital",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "PurvaProlet",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "UniversityOfRuseSouth",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "Paris",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "TsvetnitsaSouth",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "TraktsiyataLVZ",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "PsychiatricClinicSouth",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "26TutrakanBlvd",
+          "offsetMinutes": 0
+        }
+      ],
+      "schedules": {
+        "workday": [
+          "06:20",
+          "07:45",
+          "09:05",
+          "10:40",
+          "12:30",
+          "13:55",
+          "15:10",
+          "16:25",
+          "17:50",
+          "19:25",
+          "21:10",
+          "22:35"
+        ],
+        "holiday": []
+      }
+    }
+  ]
+}
