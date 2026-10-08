@@ -6,7 +6,7 @@
   "directions": [
     {
       "id": "A6_AsphaltBase",
-      "displayName": "Asphalt Base",
+      "displayName": "Sredna Kula - Asphalt Base",
       "stops": [
         {
           "stationId": "HouseOfCulture",
@@ -126,7 +126,7 @@
     },
     {
       "id": "A6_HouseOfCulture",
-      "displayName": "HouseOfCulture",
+      "displayName": "House of Culture",
       "stops": [
         {
           "stationId": "AsphaltBaseWest",

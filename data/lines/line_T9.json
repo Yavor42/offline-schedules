@@ -1,0 +1,204 @@
+{
+  "id": "T9",
+  "type": "trolleybus",
+  "color": "#1356d3",
+  "displayName": "T9",
+  "directions": [
+    {
+      "id": "T9_BOR",
+      "displayName": "BOR",
+      "stops": [
+        {
+          "stationId": "CharodeykaSouth",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "Block115North",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "PechatniPlatkiPCBs",
+          "offsetMinutes": 3
+        },
+        {
+          "stationId": "YordanYovkovHighSchool",
+          "offsetMinutes": 3
+        },
+        {
+          "stationId": "SBA",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "MathsHighSchoolNorth",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "MarielaSoni",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "SaintOuan",
+          "offsetMinutes": 3
+        },
+        {
+          "stationId": "Zhiti",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "Yuta",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "Winery",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "BOR",
+          "offsetMinutes": 0
+        }
+      ],
+      "schedules": {
+        "workday": [
+          "05:30",
+          "05:55",
+          "06:25",
+          "07:05",
+          "07:20",
+          "08:00",
+          "08:30",
+          "09:00",
+          "10:15",
+          "11:15",
+          "12:15",
+          "13:15",
+          "14:10",
+          "14:40",
+          "15:10",
+          "15:40",
+          "16:10",
+          "16:40",
+          "17:15",
+          "17:40",
+          "18:05",
+          "18:10",
+          "18:20",
+          "20:10",
+          "21:10",
+          "21:35",
+          "22:05",
+          "22:10",
+          "22:10",
+          "22:35",
+          "22:50",
+          "22:50"
+        ],
+        "holiday": [
+          "18:15",
+          "22:05",
+          "22:10",
+          "22:55"
+        ]
+      }
+    },
+    {
+      "id": "T9_Charodeyka",
+      "displayName": "Charodeyka-South",
+      "stops": [
+        {
+          "stationId": "DairyPlant",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "FireBrigade",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "Orgahim",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "Fazan",
+          "offsetMinutes": 3
+        },
+        {
+          "stationId": "ShipbuildingHighSchool",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "ChaykaEast",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "MathsHighSchoolSouth",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "Skobelev",
+          "offsetMinutes": 3
+        },
+        {
+          "stationId": "Oborishte",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "Afrodita",
+          "offsetMinutes": 3
+        },
+        {
+          "stationId": "Technopolis",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "Block115South",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "ShoppingComplex",
+          "offsetMinutes": 0
+        }
+      ],
+      "schedules": {
+        "workday": [
+          "05:00",
+          "05:10",
+          "05:20",
+          "05:25",
+          "05:30",
+          "05:30",
+          "05:45",
+          "05:45",
+          "06:00",
+          "06:00",
+          "06:20",
+          "06:35",
+          "06:55",
+          "07:35",
+          "07:55",
+          "08:25",
+          "09:45",
+          "10:45",
+          "11:45",
+          "12:40",
+          "13:40",
+          "14:10",
+          "14:35",
+          "15:10",
+          "15:40",
+          "16:10",
+          "16:45",
+          "17:10",
+          "17:40",
+          "19:40",
+          "20:40",
+          "21:40"
+        ],
+        "holiday": [
+          "05:05",
+          "05:20",
+          "05:45",
+          "08:00"
+        ]
+      }
+    }
+  ]
+}

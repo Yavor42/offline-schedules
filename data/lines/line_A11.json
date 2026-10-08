@@ -6,7 +6,7 @@
   "directions": [
     {
       "id": "A11_Customs",
-      "displayName": "Friendship Bridge / Customs",
+      "displayName": "Danube Bridge / Customs",
       "stops": [
         {
           "stationId": "MalyovitsaStrTerminus",
@@ -191,7 +191,7 @@
     },
     {
       "id": "A11_MalyovitsaStr",
-      "displayName": "Malyovitsa str. - Terminus",
+      "displayName": "\"Malyovitsa\" str. - Terminus",
       "stops": [
         {
           "stationId": "DanubeBridge",
