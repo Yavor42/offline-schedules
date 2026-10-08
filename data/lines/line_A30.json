@@ -1,0 +1,226 @@
+{
+  "id": "A30",
+  "type": "bus",
+  "color": "#4aca68",
+  "displayName": "A30",
+  "directions": [
+    {
+      "id": "A30_RigaHotelTerminus",
+      "displayName": "\"Riga\" Hotel",
+      "stops": [
+        {
+          "stationId": "CharodeykaSouth",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "FilipStanislavovStrCharodeykaCemetery",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "Block403South",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "Block302North",
+          "offsetMinutes": 3
+        },
+        {
+          "stationId": "CooperativeMarket",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "OlimpiPanovPrimarySchool",
+          "offsetMinutes": 3
+        },
+        {
+          "stationId": "BlockBorimechka",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "DunavStadiumSouth",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "BitovKombinatSouth",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "ZdravetsMarket",
+          "offsetMinutes": 3
+        },
+        {
+          "stationId": "DairyKitchenEast",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "TovarnaRailwayStop",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "BratyaMiladinoviPrimarySchool",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "UniversityOfRuseNorth",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "EngineeringHighSchool",
+          "offsetMinutes": 3
+        },
+        {
+          "stationId": "CBAGradskiHaliNorth",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "RigaHotel",
+          "offsetMinutes": 0
+        }
+      ],
+      "schedules": {
+        "workday": [
+          "06:00",
+          "06:30",
+          "07:10",
+          "07:35",
+          "07:50",
+          "08:20",
+          "09:00",
+          "09:45",
+          "11:25",
+          "12:35",
+          "13:45",
+          "14:40",
+          "15:00",
+          "15:50",
+          "16:10",
+          "17:00",
+          "17:35",
+          "19:15",
+          "20:25"
+        ],
+        "holiday": [
+          "08:30",
+          "09:40",
+          "11:05",
+          "14:30",
+          "15:40",
+          "17:05"
+        ]
+      }
+    },
+    {
+      "id": "A30_Charodeyka",
+      "displayName": "Shopping Complex / Charodeyka-South",
+      "stops": [
+        {
+          "stationId": "RigaHotel",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "CBAGradskiHaliSouth",
+          "offsetMinutes": 3
+        },
+        {
+          "stationId": "Hospital",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "PurvaProlet",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "UniversityOfRuseSouth",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "Pliska",
+          "offsetMinutes": 3
+        },
+        {
+          "stationId": "BlockDobrudzha",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "DairyKitchenWest",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "YundolaStrBlock7",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "YundolaStrBlock16",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "BitovKombinatNorth",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "DunavStadiumNorth",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "39PetrohanStr",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "Pastrina",
+          "offsetMinutes": 4
+        },
+        {
+          "stationId": "ZPPrelez",
+          "offsetMinutes": 3
+        },
+        {
+          "stationId": "Block302South",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "Block403North",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "Block401",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "ShoppingComplex",
+          "offsetMinutes": 0
+        }
+      ],
+      "schedules": {
+        "workday": [
+          "06:35",
+          "07:00",
+          "07:45",
+          "08:10",
+          "08:55",
+          "09:35",
+          "10:20",
+          "12:00",
+          "13:10",
+          "14:20",
+          "15:15",
+          "15:35",
+          "16:25",
+          "16:45",
+          "17:15",
+          "17:45",
+          "18:10",
+          "19:50",
+          "21:00"
+        ],
+        "holiday": [
+          "09:05",
+          "10:30",
+          "11:40",
+          "15:05",
+          "16:30",
+          "17:40"
+        ]
+      }
+    }
+  ]
+}

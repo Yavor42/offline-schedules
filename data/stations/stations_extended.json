@@ -335,9 +335,13 @@
     "displayName": "\"Praga\" sqr. Terminus - South",
     "ID": "93"
   },
-  "Block302": {
-    "displayName": "Block 302",
+  "Block302North": {
+    "displayName": "Block 302 - North",
     "ID": "94"
+  },
+  "Block302South": {
+    "displayName": "Block 302 - South (\"Filip Stanislavov\" str.)",
+    "ID": "94_1"
   },
   "Block115North": {
     "displayName": "Block 115 - North",
@@ -352,7 +356,7 @@
     "ID": "97"
   },
   "FilipStanislavovStrCharodeykaCemetery": {
-    "displayName": "\"Filip Stanislavov\" str. (Charodeyka Cemetery)",
+    "displayName": "\"Filip Stanislavov\" str. (Charodeyka Cemetery, Block 401)",
     "ID": "99"
   },
   "Block401": {
@@ -360,7 +364,7 @@
     "ID": "100"
   },
   "Block403North": {
-    "displayName": "Block 403 - North",
+    "displayName": "Block 403 - North (Former Line 22 Terminus)",
     "ID": "101"
   },
   "Block403South": {
@@ -1099,13 +1103,17 @@
     "displayName": "METRO Superstore - Parking",
     "ID": "286"
   },
+  "ZdravetsMarket": {
+    "displayName": "Zdravets Market",
+    "ID": "287"
+  },
   "TerasataRestaurant": {
     "displayName": "\"Terasata\" Restaurant",
     "ID": "288"
   },
   "TSYUR": {
     "displayName": "TSYUR",
-    "ID": "288"
+    "ID": "289"
   },
   "RadostKindergarten": {
     "displayName": "\"Radost\" Kindergarten",
