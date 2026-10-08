@@ -42,6 +42,12 @@ h2{font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--mut)
 .code{color:var(--mut);font-size:12px;background:var(--card2);padding:3px 8px;border-radius:8px}
 input[type=search]{width:100%;padding:15px 16px;font-size:17px;border:1px solid var(--line);border-radius:14px;background:var(--card);color:var(--tx);outline:0;-webkit-user-select:text;user-select:text;margin:6px 0 12px}
 input[type=search]:focus{border-color:var(--acc)}
+input[type=search]::-webkit-search-cancel-button{-webkit-appearance:none;display:none}input[type=search]{-webkit-appearance:none;padding-right:54px}
+.sw{position:relative}.sw input[type=search]{margin:6px 0 12px}#qx{position:absolute;right:4px;top:10px;width:48px;height:48px;border:0;background:none;color:var(--mut);font-size:26px;line-height:1}#qx[hidden]{display:none}
+.vp{position:fixed;inset:0;z-index:30;background:rgba(0,0,0,.6);padding:7vh 14px 0}.vpb{max-width:420px;margin:0 auto;max-height:68vh;display:flex;flex-direction:column;background:var(--card2);border:1px solid var(--line);border-radius:16px;box-shadow:0 14px 34px rgba(0,0,0,.65);overflow:hidden}
+.vpb input{margin:10px;width:calc(100% - 20px);padding:13px 14px;font-size:16px;border:1px solid var(--line);border-radius:12px;background:var(--card);color:var(--tx);outline:0;-webkit-user-select:text;user-select:text}.vpb input:focus{border-color:var(--acc)}
+.vl{overflow-y:auto;padding:0 6px 8px}.vl button{display:block;width:100%;text-align:left;padding:13px 12px;border:0;border-radius:10px;background:none;color:var(--tx);font-size:16px}.vl button.on{background:var(--card);color:var(--acc);font-weight:700}.vl .empty{padding:24px 10px}
+.selbtn{margin-left:auto;max-width:190px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;background:var(--card);color:var(--tx);border:1px solid var(--line);border-radius:10px;padding:9px 10px;font-size:16px}
 .fx{margin:0 -14px 4px}
 .chips{display:flex;gap:8px;overflow-x:auto;padding:2px 14px 8px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
 .chips::-webkit-scrollbar{display:none}
@@ -168,7 +174,7 @@ trip(s){
   return`<button class="st ${m<n?'past':''}" data-go='${JSON.stringify({v:'station',id:st.stationId})}'><span class="tm">${fmt(m)}</span><span class="dot"></span><span class="nm">${esc(sname(st.stationId))}${k===d.stops.length-1?'<span class="tag">end</span>':''}</span></button>`}).join('')}</div>`,after(){const m=$('.pk'),c=m&&m.querySelector('.cur');if(c)m.scrollTop=c.offsetTop-m.clientHeight/2+c.offsetHeight/2}}},
 map(){return{t:'Transit map',h:'<div id="map"></div>',after:initMap}},
 search(){
-  return{t:'Stations',h:`<input id="q" type="search" placeholder="Station name or ID" autocomplete="off" autocapitalize="off" spellcheck="false" value="${esc(q)}"><div id="res"></div>`,after(){
+  return{t:'Stations',h:`<div class="sw"><input id="q" type="search" placeholder="Station name or ID" autocomplete="off" autocapitalize="off" spellcheck="false" value="${esc(q)}"><button type="button" id="qx" aria-label="Clear" ${q?'':'hidden'}>✕</button></div><div id="res"></div>`,after(){
     const inp=$('#q'),res=$('#res');
     const draw=()=>{q=inp.value;const t=q.trim().toLowerCase();
       let all=Object.entries(stations).map(([id,s])=>({id,name:s.displayName,code:s.ID}));
@@ -176,7 +182,7 @@ search(){
       if(t)all=all.filter(s=>s.name.toLowerCase().includes(t)||s.code===t||s.code.startsWith(t)||s.id.toLowerCase().includes(t));
       all.sort((a,b)=>(a.code===t?-1:b.code===t?1:0)||a.name.localeCompare(b.name));
       res.innerHTML=all.slice(0,60).map(s=>`<button class="row" data-go='${JSON.stringify({v:'station',id:s.id})}'><div class="grow"><div class="t">${esc(s.name)}</div><div class="s">${(by[s.id]||[]).length?[...new Set(by[s.id].map(e=>e.l.displayName))].join(' · '):'No lines'}</div></div>${s.code?`<span class="code">#${esc(s.code)}</span>`:''}</button>`).join('')||'<div class="empty">No stations match</div>'};
-    inp.oninput=draw;draw();}}},
+    const qx=$('#qx');inp.oninput=()=>{qx.hidden=!inp.value;draw()};qx.onclick=()=>{inp.value='';qx.hidden=true;inp.focus();draw()};draw();}}},
 station(s){
   if(F.sid!==s.id)fReset(s.id);
   const head=`<div class="sub" style="margin:4px 4px 0">${scode(s.id)?'Station #'+esc(scode(s.id))+' · ':''}${dayType()} schedule</div><h2>Upcoming departures</h2>`;
@@ -207,7 +213,7 @@ function initFilters(id){
     <label class="chk"><input type="checkbox" id="ca" ${F.after!=null?'checked':''}>After<input type="time" id="ta" value="${fmt(F.after??n)}"></label>
     <label class="chk"><input type="checkbox" id="cb" ${F.before!=null?'checked':''}>Before<input type="time" id="tb" value="${fmt(F.before??Math.min(n+60,1439))}"></label>
     <h3>Stops at</h3>
-    <label class="chk ${viaList.length?'':'dis'}"><input type="checkbox" id="cv" ${F.via?'checked':''}><select id="sv">${viaList.map(([k,nm])=>`<option value="${esc(k)}" ${k===F.via?'selected':''}>${esc(nm)}</option>`).join('')}</select></label></div>`};
+    <label class="chk ${viaList.length?'':'dis'}"><input type="checkbox" id="cv" ${F.via?'checked':''}><button type="button" class="selbtn" id="sv">${F.viaSel?esc(sname(F.viaSel)):'Choose a station…'} ▾</button></label></div>`};
   const drawMenu=()=>$('#mn').innerHTML=F.open?menu():'';
   const sync=()=>{
     fx.querySelectorAll('.chip').forEach(c=>c.classList.toggle('off',F.sel.size>0&&!F.sel.has(c.dataset.l)));
@@ -231,7 +237,22 @@ function initFilters(id){
   deps.onclick=e=>{const b=e.target.closest('[data-pg]');if(!b||b.disabled)return;e.stopPropagation();F.page+=+b.dataset.pg;refreshDeps();main.scrollTop=0};
   const update=()=>{F.page=0;sync();refreshDeps()};
   closeFx=()=>{F.open=false;drawMenu();sync()};
+  const openVia=()=>{
+    document.querySelector('.vp')?.remove();
+    const o=document.createElement('div');o.className='vp';
+    o.innerHTML='<div class="vpb"><input type="text" placeholder="Search stations" autocomplete="off" autocapitalize="off" spellcheck="false"><div class="vl"></div></div>';
+    document.body.appendChild(o);
+    const qi=o.querySelector('input'),vl=o.querySelector('.vl');
+    const draw=()=>{const t=qi.value.trim().toLowerCase(),r=viaList.filter(([k,nm])=>!t||nm.toLowerCase().includes(t));
+      vl.innerHTML=r.map(([k,nm])=>`<button data-k="${esc(k)}" class="${k===F.viaSel?'on':''}">${esc(nm)}</button>`).join('')||'<div class="empty">No stations match</div>'};
+    qi.oninput=draw;draw();
+    o.onclick=e=>{const b=e.target.closest('[data-k]');
+      if(b){F.via=F.viaSel=b.dataset.k;F.sel.clear();o.remove();drawMenu();update()}
+      else if(!e.target.closest('.vpb'))o.remove()};
+    qi.focus();
+  };
   fx.onclick=e=>{
+    if(e.target.closest('#sv'))return openVia();
     const c=e.target.closest('.chip');
     if(c){clearAdv();const k=c.dataset.l;F.sel.has(k)?F.sel.delete(k):F.sel.add(k);F.open=false;drawMenu();return update()}
     if(e.target.closest('#ab')){F.open=!F.open;drawMenu();return sync()}
@@ -240,7 +261,7 @@ function initFilters(id){
     if(t.dataset.t)t.checked?F.types.add(t.dataset.t):F.types.delete(t.dataset.t);
     else if(t.id==='ca'||t.id==='ta'){if(t.id==='ta'&&t.value)g('ca').checked=true;F.after=g('ca').checked?tm(g('ta').value)??0:null}
     else if(t.id==='cb'||t.id==='tb'){if(t.id==='tb'&&t.value)g('cb').checked=true;F.before=g('cb').checked?tm(g('tb').value)??1439:null}
-    else if(t.id==='cv'||t.id==='sv'){if(t.id==='sv')g('cv').checked=true;F.via=g('cv').checked?g('sv').value:null}
+    else if(t.id==='cv'){if(!t.checked)F.via=null;else if(F.viaSel)F.via=F.viaSel;else{t.checked=false;return openVia()}}
     else return;
     if(advCount())F.sel.clear();update()};
   drawMenu();sync();refreshDeps();
@@ -265,7 +286,7 @@ async function initMap(){
   }catch(e){el.innerHTML='<div class="mapmsg">Could not load the map.<br>Add tiles/ (or map.png) next to index.html.</div>'}
 }
 function render(s,keep){
-  s=s||{v:'home'};if(mapObj){mapObj.remove();mapObj=null}refreshDeps=null;closeFx=null;if(!keep)pickOpen=false;main.classList.toggle('fill',s.v==='map');$('#dt').hidden=s.v==='map';const y=main.scrollTop,v=V[s.v](s);
+  s=s||{v:'home'};if(mapObj){mapObj.remove();mapObj=null}refreshDeps=null;closeFx=null;document.querySelector('.vp')?.remove();if(!keep)pickOpen=false;main.classList.toggle('fill',s.v==='map');$('#dt').hidden=s.v==='map';const y=main.scrollTop,v=V[s.v](s);
   const ttl=$('#ttl');if(s.v==='home')ttl.innerHTML='<img src="OTP.png" alt="OTP" onerror="this.replaceWith(\'Transit\')">';else ttl.textContent=v.t;$('#bk').hidden=s.v==='home';
   $('#dt').textContent=({auto:'Auto · ',workday:'',holiday:''}[mode])+(dayType()==='workday'?'Workday':'Holiday');
   main.innerHTML=v.h;v.after&&v.after();main.scrollTop=keep?y:0;
@@ -280,7 +301,7 @@ main.addEventListener('click',e=>{
 });
 setInterval(()=>{const s=history.state||{v:'home'};if(s.v==='map'||(s.v==='trip'&&pickOpen))return;if(s.v==='station')refreshDeps&&refreshDeps();else if(s.v!=='search')render(s,true)},20000);
 load().then(()=>{history.replaceState(history.state||{v:'home'},'');render(history.state)})
- .catch(()=>{main.innerHTML='<div class="empty">Could not load schedule data.<br>Serve this folder over http(s) instead of opening the file directly.</div>'});
+ .catch(()=>{main.innerHTML='<div class="empty">Could not load schedule data.<br>Serve this folder over http(s) instead of opening the file directly.<ul style="display:inline-block;text-align:left;margin:14px 0 0;padding-left:20px"><li>GitHub might be down</li><li>Check Internet connection</li><li>Check capitalization and/or name of new line files</li></ul></div>'});
 if('serviceWorker'in navigator)navigator.serviceWorker.register('sw.js').catch(()=>{});
 </script>
 </body>
