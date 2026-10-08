@@ -1,0 +1,219 @@
+{
+  "id": "A5",
+  "type": "bus",
+  "color": "#4aca68",
+  "displayName": "A5",
+  "directions": [
+    {
+      "id": "A5_CoopMarketSouth",
+      "displayName": "Cooperative Market / ŽP Prelez",
+      "stops": [
+        {
+          "stationId": "RailwayStationNikolaevskaStr",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "ShipbuildingHighSchool",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "ChaykaEast",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "MathsHighSchoolSouth",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "Skobelev",
+          "offsetMinutes": 3
+        },
+        {
+          "stationId": "Bricolage",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "Kaufland",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "NaidenKirov",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "Olymp",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "SubstationSouth",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "ThirdPolyclinic",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "BlockZheravNorth",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "BlockBoryana",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "BitovKombinatNorth",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "DunavStadiumNorth",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "39PetrohanStr",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "Pastrina",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "ZPPrelez",
+          "offsetMinutes": 0
+        }
+      ],
+      "schedules": {
+        "workday": [
+          "06:10",
+          "06:50",
+          "07:35",
+          "08:10",
+          "09:00",
+          "09:30",
+          "10:30",
+          "11:05",
+          "12:20",
+          "12:55",
+          "13:40",
+          "14:15",
+          "15:00",
+          "15:35",
+          "17:05",
+          "18:30",
+          "19:50",
+          "21:10",
+          "22:30"
+        ],
+        "holiday": []
+      }
+    },
+    {
+      "id": "A5_RailwayNikolaevskaTerminus",
+      "displayName": "Railway Staiton - Nikolaevska str.",
+      "stops": [
+        {
+          "stationId": "CooperativeMarket",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "OlimpiPanovPrimarySchool",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "BlockBorimechka",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "DunavStadiumSouth",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "BitovKombinatSouth",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "BlockKremena",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "BlockZheravSouth",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "MallRuse",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "SubstationNorth",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "Stif",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "PetarKaraminchev",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "Yalta",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "SBA",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "MathsHighSchoolNorth",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "MarielaSoni",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "SaintOuan",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "StefanStambolov26",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "StefanStambolov64",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "MidiyaEnosSouth",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "RailwayStationNikolaevskaStr",
+          "offsetMinutes": 0
+        }
+      ],
+      "schedules": {
+        "workday": [
+          "06:55",
+          "07:25",
+          "08:15",
+          "08:50",
+          "09:35",
+          "10:05",
+          "11:10",
+          "11:45",
+          "13:05",
+          "13:35",
+          "14:20",
+          "14:55",
+          "16:00",
+          "17:50",
+          "19:10",
+          "20:30",
+          "21:50",
+          "23:10"
+        ],
+        "holiday": []
+      }
+    }
+  ]
+}
