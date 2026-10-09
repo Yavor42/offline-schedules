@@ -23,7 +23,9 @@ header{display:flex;align-items:center;gap:10px;padding:10px 14px;min-height:56p
 header h1 img{display:block;height:44px;width:auto;max-width:100%;object-fit:contain}
 header h1{flex:1;margin:0;font-size:20px;font-weight:650;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .back{width:40px;height:40px;border-radius:50%;border:0;background:var(--card);color:var(--tx);font-size:22px}
-.pill{border:0;border-radius:20px;background:var(--card);color:var(--mut);font-size:13px;padding:8px 12px}
+.pill{border:0;border-radius:20px;background:var(--card);color:var(--tx);font-size:13px;padding:8px 12px;white-space:nowrap;flex:none}.pill:disabled{opacity:.35}.pill[hidden]{display:none}
+.ttlsub{display:block;font-size:12px;font-weight:400;color:var(--mut);line-height:1.2;margin-top:1px}
+.dayft{display:flex;justify-content:center;align-items:center;gap:8px;margin:28px 0 4px;color:var(--mut);font-size:12px}.dayft select{background:var(--card);color:var(--tx);border:1px solid var(--line);border-radius:10px;padding:6px 8px;font-size:13px}
 main{flex:1;overflow-y:auto;padding:4px 14px calc(24px + env(safe-area-inset-bottom));-webkit-overflow-scrolling:touch}
 button{font:inherit;color:inherit}
 button:active,.row:active{filter:brightness(1.3);transform:scale(.985)}
@@ -93,7 +95,7 @@ main.fill{padding:0;overflow:hidden}
 </style>
 </head>
 <body>
-<div id="app"><header><button class="back" id="bk" hidden>‹</button><h1 id="ttl"></h1><button class="pill" id="dt"></button></header><main id="main"></main></div>
+<div id="app"><header><button class="back" id="bk" hidden>‹</button><h1 id="ttl"></h1><button class="pill" id="sd" hidden>⇄&nbsp; Switch Direction</button></header><main id="main"></main></div>
 <script src="lib/leaflet.js"></script>
 <script>
 const $=s=>document.querySelector(s),main=$('#main');
@@ -131,7 +133,14 @@ const go=s=>{if(s.v==='station')fReset(s.id);history.pushState(s,'');render(s)};
 const set=s=>{history.replaceState(s,'');render(s)};
 window.onpopstate=e=>render(e.state||{v:'home'});
 $('#bk').onclick=()=>history.back();
-$('#dt').onclick=()=>{mode={auto:'workday',workday:'holiday',holiday:'auto'}[mode];try{localStorage.dayMode=mode}catch(e){}render(history.state||{v:'home'})};
+// opposite station data check: '' = no data; otherwise returns a problem description (empty string = fine)
+const oppOf=id=>{const o=stations[id]&&stations[id].oppositeStation;return{id:o,ok:!!o&&o!==id&&!!stations[o]}};
+const oppWarn=id=>{const o=stations[id]&&stations[id].oppositeStation;if(!o)return'';if(!stations[o])return`oppositeStation "${o}" is not in the stations file`;if(o===id)return'oppositeStation points to itself';if(stations[o].oppositeStation!==id)return`${o} does not point back to this station`;return''};
+$('#sd').onclick=()=>{const s=history.state||{};
+  if(s.v==='station'){const o=oppOf(s.id);if(o.ok)set({v:'station',id:o.id})}
+  else if(s.v==='trip'){const l=lines.find(x=>x.id===s.l),n=l.directions.length;
+    if(n===2)set({v:'trip',l:l.id,d:l.directions.find(x=>x.id!==s.d).id});else if(n>2)go({v:'dirs',l:l.id})}};
+
 
 const V={
 home(){
@@ -140,7 +149,8 @@ home(){
   <div class="hero"><button class="big" data-go='{"v":"routes"}'><div class="ic">🚎</div><div><b>Search routes</b><span>Browse lines &amp; directions</span></div></button>
   <button class="big" data-go='{"v":"search"}'><div class="ic">📍</div><div><b>Search stations</b><span>By name or ID · upcoming departures</span></div></button>
   <button class="big" data-go='{"v":"map"}'><div class="ic">🗺️</div><div><b>Transit map</b><span>Pan &amp; zoom the network map</span></div></button></div>
-  ${missing.size?`<div class="sub" style="margin-top:22px;font-size:12px">⚠ Not in stations file: ${[...missing].map(esc).join(', ')}</div>`:''}`}},
+  ${missing.size?`<div class="sub" style="margin-top:22px;font-size:12px">⚠ Not in stations file: ${[...missing].map(esc).join(', ')}</div>`:''}
+  ${(()=>{const w=Object.keys(stations).map(k=>[k,oppWarn(k)]).filter(x=>x[1]);return w.length?`<div class="sub" style="margin-top:12px;font-size:12px">⚠ Opposite station problems: ${w.map(([k,m])=>esc(k)+' ('+esc(m)+')').join('; ')}</div>`:''})()}`}},
 routes(){
   const g={};lines.forEach(l=>(g[l.type]??=[]).push(l));
   const nm={trolleybus:'Trolleybuses',bus:'Buses'};
@@ -185,9 +195,9 @@ search(){
     const qx=$('#qx');inp.oninput=()=>{qx.hidden=!inp.value;draw()};qx.onclick=()=>{inp.value='';qx.hidden=true;inp.focus();draw()};draw();}}},
 station(s){
   if(F.sid!==s.id)fReset(s.id);
-  const head=`<div class="sub" style="margin:4px 4px 0">${scode(s.id)?'Station #'+esc(scode(s.id))+' · ':''}${dayType()} schedule</div><h2>Upcoming departures</h2>`;
-  if(!(by[s.id]||[]).length)return{t:sname(s.id),h:head+'<div class="empty">No upcoming departures</div>'};
-  return{t:sname(s.id),h:head+'<div class="fx" id="fx"></div><button class="pvbtn" id="pv"></button><div id="pdeps"></div><div id="fdeps"></div>',after(){initFilters(s.id)}}}
+  const ow=oppWarn(s.id),head=(ow?`<div class="sub" style="margin:4px 4px 0;font-size:12px">⚠ ${esc(ow)}</div>`:'')+'<h2>Upcoming departures</h2>',sub=scode(s.id);
+  if(!(by[s.id]||[]).length)return{t:sname(s.id),sub,h:head+'<div class="empty">No upcoming departures</div>'};
+  return{t:sname(s.id),sub,h:head+'<div class="fx" id="fx"></div><button class="pvbtn" id="pv"></button><div id="pdeps"></div><div id="fdeps"></div>',after(){initFilters(s.id)}}}
 };
 // ---- station filters (standard = line chips, advanced = vehicle type / time frame / stops-at; the two are mutually exclusive)
 let F={},refreshDeps=null,closeFx=null,pickOpen=false;
@@ -286,10 +296,14 @@ async function initMap(){
   }catch(e){el.innerHTML='<div class="mapmsg">Could not load the map.<br>Add tiles/ (or map.png) next to index.html.</div>'}
 }
 function render(s,keep){
-  s=s||{v:'home'};if(mapObj){mapObj.remove();mapObj=null}refreshDeps=null;closeFx=null;document.querySelector('.vp')?.remove();if(!keep)pickOpen=false;main.classList.toggle('fill',s.v==='map');$('#dt').hidden=s.v==='map';const y=main.scrollTop,v=V[s.v](s);
-  const ttl=$('#ttl');if(s.v==='home')ttl.innerHTML='<img src="OTP.png" alt="OTP" onerror="this.replaceWith(\'Transit\')">';else ttl.textContent=v.t;$('#bk').hidden=s.v==='home';
-  $('#dt').textContent=({auto:'Auto · ',workday:'',holiday:''}[mode])+(dayType()==='workday'?'Workday':'Holiday');
-  main.innerHTML=v.h;v.after&&v.after();main.scrollTop=keep?y:0;
+  s=s||{v:'home'};if(mapObj){mapObj.remove();mapObj=null}refreshDeps=null;closeFx=null;document.querySelector('.vp')?.remove();if(!keep)pickOpen=false;main.classList.toggle('fill',s.v==='map');const y=main.scrollTop,v=V[s.v](s);
+  const ttl=$('#ttl');if(s.v==='home')ttl.innerHTML='<img src="OTP.png" alt="OTP" onerror="this.replaceWith(\'Transit\')">';else if(v.sub)ttl.innerHTML=esc(v.t)+'<span class="ttlsub">#'+esc(v.sub)+'</span>';else ttl.textContent=v.t;$('#bk').hidden=s.v==='home';
+  const sd=$('#sd');sd.hidden=!(s.v==='station'||s.v==='trip');
+  if(!sd.hidden)sd.disabled=s.v==='station'?!oppOf(s.id).ok:lines.find(x=>x.id===s.l).directions.length<2;
+  const au=[0,6].includes(new Date().getDay())?'Holiday':'Workday';
+  main.innerHTML=v.h+(s.v==='map'?'':`<div class="dayft"><label>Schedule&nbsp; <select id="dm"><option value="auto">Auto (${au})</option><option value="workday">Workday</option><option value="holiday">Holiday</option></select></label></div>`);
+  const dm=$('#dm');if(dm){dm.value=mode;dm.onchange=()=>{mode=dm.value;try{localStorage.dayMode=mode}catch(e){}render(history.state||{v:'home'},true)}}
+  v.after&&v.after();main.scrollTop=keep?y:0;
 }
 main.addEventListener('click',e=>{
   if(!e.target.closest('.menu,#ab,[data-pk]')){   // tap outside an open dropdown closes it (scrolling outside still works)
@@ -299,7 +313,7 @@ main.addEventListener('click',e=>{
   const g=e.target.closest('[data-go]');if(g)return go(JSON.parse(g.dataset.go));
   const b=e.target.closest('[data-i]');if(b&&!b.disabled)set({...history.state,i:+b.dataset.i});
 });
-setInterval(()=>{const s=history.state||{v:'home'};if(s.v==='map'||(s.v==='trip'&&pickOpen))return;if(s.v==='station')refreshDeps&&refreshDeps();else if(s.v!=='search')render(s,true)},20000);
+setInterval(()=>{const s=history.state||{v:'home'};if(document.activeElement&&document.activeElement.id==='dm')return;if(s.v==='map'||(s.v==='trip'&&pickOpen))return;if(s.v==='station')refreshDeps&&refreshDeps();else if(s.v!=='search')render(s,true)},20000);
 load().then(()=>{history.replaceState(history.state||{v:'home'},'');render(history.state)})
  .catch(()=>{main.innerHTML='<div class="empty">Could not load schedule data.<br>Serve this folder over http(s) instead of opening the file directly.<ul style="display:inline-block;text-align:left;margin:14px 0 0;padding-left:20px"><li>GitHub might be down</li><li>Check Internet connection</li><li>Check capitalization and/or name of new line files</li></ul></div>'});
 if('serviceWorker'in navigator)navigator.serviceWorker.register('sw.js').catch(()=>{});
