@@ -89,7 +89,7 @@
           "offsetMinutes": 1
         },
         {
-          "stationId": "FishingHutsWest",
+          "stationId": "FishingHutWest",
           "offsetMinutes": 1
         },
         {
@@ -173,7 +173,7 @@
           "offsetMinutes": 2
         },
         {
-          "stationId": "FishingHutsEast",
+          "stationId": "FishingHutEast",
           "offsetMinutes": 2
         },
         {
