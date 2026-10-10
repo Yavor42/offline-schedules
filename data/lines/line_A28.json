@@ -1,0 +1,243 @@
+{
+  "id": "A28",
+  "type": "bus",
+  "color": "#4aca68",
+  "displayName": "A28",
+  "directions": [
+    {
+      "id": "A28_Block48",
+      "displayName": "Druzhba 3 - Block 48",
+      "stops": [
+        {
+          "stationId": "KEROS",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "SlatinaEast",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "BorderPoliceEast",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "DanubeBridge",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "EcontExpressShippingNorth",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "19TutrakanBlvd",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "26TutrakanBlvd",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "PsychiatricClinicNorth",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "TutrakanOverpass",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "TsvetnitsaNorth",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "BratyaMiladinoviPrimarySchool",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "UniversityOfRuseNorth",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "EngineeringHighSchool",
+          "offsetMinutes": 3
+        },
+        {
+          "stationId": "Serdika",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "Oborishte",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "Afrodita",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "Technopolis",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "CBADruzhba3",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "Block33",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "Block28",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "54GotseDelchevBlvd",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "SvirchevServiceWest",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "Druzhba3Block48",
+          "offsetMinutes": 0
+        }
+      ],
+      "schedules": {
+        "workday": [
+          "06:35",
+          "07:35",
+          "08:30",
+          "15:00",
+          "17:40",
+          "19:30"
+        ],
+        "holiday": [
+          "06:35",
+          "08:30",
+          "15:00",
+          "17:40",
+          "19:30"
+        ]
+      }
+    },
+    {
+      "id": "A28_KEROS",
+      "displayName": "KEROS",
+      "stops": [
+        {
+          "stationId": "Druzhba3Block48",
+          "offsetMinutes": 0
+        },
+        {
+          "stationId": "SvirchevServiceEast",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "IrrigationSystems",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "Druzhba3Terminus",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "Block10",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "Block6",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "PechatniPlatkiPCBs",
+          "offsetMinutes": 3
+        },
+        {
+          "stationId": "YordanYovkovHighSchool",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "SportsArena",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "ThePantheon",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "Hospital",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "PurvaProlet",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "UniversityOfRuseSouth",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "Paris",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "TsvetnitsaSouth",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "TraktsiyataLVZ",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "PsychiatricClinicSouth",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "25TutrakanBlvd",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "32TutrakanBlvd",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "EcontExpressShippingSouth",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "Customs",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "BorderPoliceWest",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "SlatinaWest",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "KEROS",
+          "offsetMinutes": 0
+        }
+      ],
+      "schedules": {
+        "workday": [
+          "05:50",
+          "06:55",
+          "07:50",
+          "08:25",
+          "14:15",
+          "16:55",
+          "18:50"
+        ],
+        "holiday": [
+          "05:50",
+          "07:50",
+          "14:15",
+          "16:55",
+          "18:50"
+        ]
+      }
+    }
+  ]
+}
