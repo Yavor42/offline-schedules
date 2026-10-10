@@ -24,6 +24,10 @@ header h1 img{display:block;height:44px;width:auto;max-width:100%;object-fit:con
 header h1{flex:1;margin:0;font-size:20px;font-weight:650;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .back{width:40px;height:40px;border-radius:50%;border:0;background:var(--card);color:var(--tx);font-size:22px}
 .pill{border:0;border-radius:20px;background:var(--card);color:var(--tx);font-size:13px;padding:8px 12px;white-space:nowrap;flex:none}.pill:disabled{opacity:.35}#sd{font-size:20px;line-height:1;padding:8px 16px}.pill[hidden]{display:none}
+.rt{display:flex;flex-direction:column;align-items:flex-end;gap:2px}.fav{font-size:23px;line-height:1;padding:5px 7px;margin:-2px -7px -7px 0;color:var(--mut)}.fav.on{color:#f5c542}
+.sortm{position:fixed;right:14px;z-index:25;min-width:230px;background:var(--card2);border:1px solid var(--line);border-radius:14px;box-shadow:0 14px 34px rgba(0,0,0,.65);padding:6px}.sortm[hidden]{display:none}
+.sortm button,.sortm label{display:flex;align-items:center;justify-content:space-between;width:100%;padding:13px 12px;border:0;background:none;color:var(--tx);font-size:16px;border-radius:10px;text-align:left}.sortm hr{border:0;border-top:1px solid var(--line);margin:4px 6px}.sortm .tk{width:22px;text-align:right;color:var(--acc);font-weight:700}.sortm input{width:20px;height:20px;accent-color:var(--acc)}
+.clrfav{display:block;margin:22px auto 8px;padding:10px 18px;border-radius:12px;border:1px solid var(--line);background:var(--card);color:var(--mut);font-size:13px}.clrfav:disabled{opacity:.35}
 .ss{font-size:12px;font-weight:400;color:#69738a;margin-left:6px}
 .ttlsub{display:block;font-size:12px;font-weight:400;color:var(--mut);line-height:1.2;margin-top:1px}
 #ft{flex:none;background:var(--bg);border-top:1px solid var(--line);padding:6px 14px calc(6px + env(safe-area-inset-bottom))}#ft[hidden]{display:none}
@@ -100,7 +104,7 @@ main.fill{padding:0;overflow:hidden}
 </style>
 </head>
 <body>
-<div id="app"><header><button class="back" id="bk" hidden>‹</button><h1 id="ttl"></h1><button class="pill" id="sd" hidden aria-label="Switch direction" title="Switch direction">⇄</button></header><main id="main"></main><footer id="ft"><div id="pgr"></div><div class="dayft"><label>Schedule&nbsp; <select id="dm"><option value="auto"></option><option value="workday">Workday</option><option value="holiday">Holiday</option></select></label></div></footer></div>
+<div id="app"><header><button class="back" id="bk" hidden>‹</button><h1 id="ttl"></h1><button class="pill" id="so" hidden>Sort by… ▾</button><button class="pill" id="sd" hidden aria-label="Switch direction" title="Switch direction">⇄</button></header><main id="main"></main><footer id="ft"><div id="pgr"></div><div class="dayft"><label>Schedule&nbsp; <select id="dm"><option value="auto"></option><option value="workday">Workday</option><option value="holiday">Holiday</option></select></label></div></footer></div>
 <script src="lib/leaflet.js"></script>
 <script>
 const $=s=>document.querySelector(s),main=$('#main');
@@ -111,6 +115,9 @@ const toMin=t=>{const[a,b]=t.split(':');return +a*60+ +b};
 const now=()=>{const d=new Date();return d.getHours()*60+d.getMinutes()};
 let lines=[],stations={},by={},q='';const missing=new Set();
 let mode='auto';try{mode=localStorage.dayMode||'auto'}catch(e){}
+let favs=new Set(),sortBy='name',onlyFav=false;   // favourite stations + station-search sort/filter, kept in localStorage
+try{favs=new Set(JSON.parse(localStorage.favStations||'[]'));sortBy=localStorage.searchSort==='id'?'id':'name';onlyFav=localStorage.favOnly==='1'}catch(e){}
+const saveFav=()=>{try{localStorage.favStations=JSON.stringify([...favs]);localStorage.searchSort=sortBy;localStorage.favOnly=onlyFav?'1':''}catch(e){}};
 const dayType=(o=0)=>{if(mode!=='auto')return mode;const d=new Date();d.setDate(d.getDate()+o);return[0,6].includes(d.getDay())?'holiday':'workday'};
 const sname=id=>stations[id]?.displayName||id.replace(/([a-z])([A-Z])/g,'$1 $2');
 const scode=id=>String(stations[id]?.ID??'').trim();
@@ -142,6 +149,8 @@ $('#bk').onclick=()=>history.back();
 // opposite station data check: '' = no data; otherwise returns a problem description (empty string = fine)
 const oppOf=id=>{const o=stations[id]&&stations[id].oppositeStation;return{id:o,ok:!!o&&o!==id&&!!stations[o]}};
 const oppWarn=id=>{const o=stations[id]&&stations[id].oppositeStation;if(!o)return'';if(!stations[o])return`oppositeStation "${o}" is not in the stations file`;if(o===id)return'oppositeStation points to itself';if(stations[o].oppositeStation!==id)return`${o} does not point back to this station`;return''};
+$('#so').onclick=()=>{const m=$('#sortm');if(!m)return;m.hidden=!m.hidden;if(!m.hidden)m.style.top=($('#so').getBoundingClientRect().bottom+6)+'px'};
+document.addEventListener('click',e=>{const m=$('#sortm');if(m&&!m.hidden&&!e.target.closest('#sortm,#so'))m.hidden=true});
 $('#dm').onchange=()=>{mode=$('#dm').value;try{localStorage.dayMode=mode}catch(e){}render(history.state||{v:'home'},true)};
 $('#sd').onclick=()=>{const s=history.state||{};
   if(s.v==='station'){const o=oppOf(s.id);if(o.ok)set({v:'station',id:o.id})}
@@ -191,14 +200,22 @@ trip(s){
   return`<button class="st ${m<n?'past':''}" data-go='${JSON.stringify({v:'station',id:st.stationId})}'><span class="tm">${fmt(m)}</span><span class="dot"></span><span class="nm">${snm(st.stationId)}${k===d.stops.length-1?'<span class="tag">end</span>':''}</span></button>`}).join('')}</div>`,after(){const m=$('.pk'),c=m&&m.querySelector('.cur');if(c)m.scrollTop=c.offsetTop-m.clientHeight/2+c.offsetHeight/2}}},
 map(){return{t:'Transit map',h:'<div id="map"></div>',after:initMap}},
 search(){
-  return{t:'Stations',h:`<div class="sw"><input id="q" type="search" placeholder="Station name or ID" autocomplete="off" autocapitalize="off" spellcheck="false" value="${esc(q)}"><button type="button" id="qx" aria-label="Clear" ${q?'':'hidden'}>✕</button></div><div id="res"></div>`,after(){
-    const inp=$('#q'),res=$('#res');
+  return{t:'Stations',h:`<div class="sw"><input id="q" type="search" placeholder="Station name or ID" autocomplete="off" autocapitalize="off" spellcheck="false" value="${esc(q)}"><button type="button" id="qx" aria-label="Clear" ${q?'':'hidden'}>✕</button></div><div id="sortm" class="sortm" hidden><button data-s="name">Name<span class="tk"></span></button><button data-s="id">ID<span class="tk"></span></button><hr><label>Include favorites<input type="checkbox" id="fo"></label></div><div id="res"></div><button class="clrfav" id="clrfav">Clear favorites</button>`,after(){
+    const inp=$('#q'),res=$('#res'),sm=$('#sortm'),cb=$('#clrfav');
+    const syncM=()=>{sm.querySelectorAll('[data-s]').forEach(b=>b.querySelector('.tk').textContent=b.dataset.s===sortBy?'✓':'');$('#fo').checked=onlyFav;cb.disabled=!favs.size};
     const draw=()=>{q=inp.value;const t=q.trim().toLowerCase();
       let all=Object.entries(stations).map(([id,s])=>({id,name:s.displayName,code:String(s.ID??'').trim(),sm:s.smallText||''}));
       Object.keys(by).forEach(id=>{if(!stations[id])all.push({id,name:sname(id),code:'',sm:''})});
       if(t)all=all.filter(s=>s.name.toLowerCase().includes(t)||s.code===t||s.code.startsWith(t)||s.id.toLowerCase().includes(t)||s.sm.toLowerCase().includes(t));
-      all.sort((a,b)=>(a.code===t?-1:b.code===t?1:0)||a.name.localeCompare(b.name));
-      res.innerHTML=all.slice(0,60).map(s=>`<button class="row" data-go='${JSON.stringify({v:'station',id:s.id})}'><div class="grow"><div class="t">${esc(s.name)}${s.sm?`<span class="ss">${esc(s.sm)}</span>`:''}</div><div class="s">${(by[s.id]||[]).length?[...new Set(by[s.id].map(e=>e.l.displayName))].join(' · '):'No lines'}</div></div>${s.code?`<span class="code">#${esc(s.code)}</span>`:''}</button>`).join('')||'<div class="empty">No stations match</div>'};
+      if(onlyFav)all=all.filter(s=>favs.has(s.id));
+      const num=c=>/^\d+$/.test(c)?+c:null,byId=(a,b)=>!a.code!==!b.code?(a.code?-1:1):(num(a.code)!==null&&num(b.code)!==null&&num(a.code)!==num(b.code)?num(a.code)-num(b.code):a.code.localeCompare(b.code,undefined,{numeric:true}));
+      all.sort((a,b)=>(a.code===t?-1:b.code===t?1:0)||(sortBy==='id'?byId(a,b):0)||a.name.localeCompare(b.name));
+      res.innerHTML=all.slice(0,60).map(s=>`<button class="row" data-go='${JSON.stringify({v:'station',id:s.id})}'><div class="grow"><div class="t">${esc(s.name)}${s.sm?`<span class="ss">${esc(s.sm)}</span>`:''}</div><div class="s">${(by[s.id]||[]).length?[...new Set(by[s.id].map(e=>e.l.displayName))].join(' · '):'No lines'}</div></div><div class="rt">${s.code?`<span class="code">#${esc(s.code)}</span>`:''}<span class="fav ${favs.has(s.id)?'on':''}" role="button" aria-label="Favorite" data-fav="${esc(s.id)}">${favs.has(s.id)?'★':'☆'}</span></div></button>`).join('')||`<div class="empty">${onlyFav&&!t&&!favs.size?'No favorite stations yet.<br>Tap ☆ on a station to add it.':'No stations match'}</div>`;syncM()};
+    res.onclick=e=>{const f=e.target.closest('[data-fav]');if(!f)return;e.stopPropagation();const k=f.dataset.fav;favs.has(k)?favs.delete(k):favs.add(k);saveFav();
+      if(onlyFav)draw();else{const on=favs.has(k);f.classList.toggle('on',on);f.textContent=on?'★':'☆';syncM()}};
+    sm.onclick=e=>{const b=e.target.closest('[data-s]');if(b){sortBy=b.dataset.s;saveFav();sm.hidden=true;draw()}};
+    $('#fo').onchange=e=>{onlyFav=e.target.checked;saveFav();draw()};
+    cb.onclick=()=>{if(favs.size&&confirm('Clear all favorite stations?')){favs.clear();saveFav();draw()}};
     const qx=$('#qx');inp.oninput=()=>{qx.hidden=!inp.value;draw()};qx.onclick=()=>{inp.value='';qx.hidden=true;inp.focus();draw()};draw();}}},
 station(s){
   if(F.sid!==s.id)fReset(s.id);
@@ -321,6 +338,7 @@ async function initMap(){
 function render(s,keep){
   s=s||{v:'home'};if(mapObj){mapObj.remove();mapObj=null}refreshDeps=null;closeFx=null;document.querySelector('.vp')?.remove();$('#pgr').innerHTML='';if(!keep)pickOpen=false;main.classList.toggle('fill',s.v==='map');const y=main.scrollTop,v=V[s.v](s);
   const ttl=$('#ttl');if(s.v==='home')ttl.innerHTML='<img src="OTP.png" alt="OTP" onerror="this.replaceWith(\'Transit\')">';else if(v.sub)ttl.innerHTML=esc(v.t)+'<span class="ttlsub">'+esc(v.sub)+'</span>';else ttl.textContent=v.t;$('#bk').hidden=s.v==='home';
+  $('#so').hidden=s.v!=='search';
   const sd=$('#sd');sd.hidden=!(s.v==='station'||s.v==='trip');
   if(!sd.hidden)sd.disabled=s.v==='station'?!oppOf(s.id).ok:lines.find(x=>x.id===s.l).directions.length<2;
   const au=[0,6].includes(new Date().getDay())?'Holiday':'Workday';
