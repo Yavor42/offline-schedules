@@ -25,11 +25,11 @@
           "offsetMinutes": 1
         },
         {
-          "stationId": "EcontExpressShippingNorth",
+          "stationId": "EcontExpressShippingNorthNaporniTrabi",
           "offsetMinutes": 1
         },
         {
-          "stationId": "19TutrakanBlvd",
+          "stationId": "19TutrakanBlvdBrickFactory",
           "offsetMinutes": 2
         },
         {
@@ -196,11 +196,11 @@
           "offsetMinutes": 1
         },
         {
-          "stationId": "32TutrakanBlvd",
+          "stationId": "32TutrakanBlvdVocSchoolOfTransport",
           "offsetMinutes": 1
         },
         {
-          "stationId": "EcontExpressShippingSouth",
+          "stationId": "EcontExpressShippingSouthDomostroene",
           "offsetMinutes": 1
         },
         {
