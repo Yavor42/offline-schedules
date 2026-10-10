@@ -1,0 +1,297 @@
+{
+  "id": "A33",
+  "type": "bus",
+  "color": "#4aca68",
+  "displayName": "A33",
+  "directions": [
+    {
+      "id": "A33_ObrChiflik_South",
+      "displayName": "Obraztsov Chiflik (via DZS & Zurnosahranenie)",
+      "stops": [
+        {
+          "stationId": "RazpredelitelnaRailwayStation",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "IntercityBusStationWest",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "AVKO",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "MallRuseIRIS",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "SubstationNorth",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "Stif",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "PetarKaraminchev",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "Yalta",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "Oborishte",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "Afrodita",
+          "offsetMinutes": 3
+        },
+        {
+          "stationId": "Technopolis",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "MotherBabyHome",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "IzgrevWest",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "MonumentOfRusofiliteWest",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "Jumbo",
+          "offsetMinutes": 3
+        },
+        {
+          "stationId": "DZSNorth",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "ZurnosahranenieSouth",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "ForkForObraztsovChiflikSouth",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "ObraztsovChiflikCentre",
+          "offsetMinutes": 0
+        }
+      ],
+      "schedules": {
+        "workday": [
+          "07:20",
+          "13:10",
+          "15:20"
+        ],
+        "holiday": []
+      }
+    },
+    {
+      "id": "A33_OtherRailwayStation",
+      "displayName": "Razpredelitelna Railway Station",
+      "stops": [
+        {
+          "stationId": "ObraztsovChiflikCentre",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "ForkForObraztsovChiflikNorth",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "ZurnosahranenieNorth",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "DZSNorth",
+          "offsetMinutes": 3
+        },
+        {
+          "stationId": "Jumbo",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "MonumentOfRusofiliteEast",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "IzgrevEast",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "Block121",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "PechatniPlatkiPCBs",
+          "offsetMinutes": 3
+        },
+        {
+          "stationId": "YordanYovkovHighSchool",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "Yalta",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "Kaufland",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "NaidenKirov",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "Olymp",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "SubstationSouth",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "ThirdPolyclinic",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "VasilAprilovPrimarySchool",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "IntercityBusStationEast",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "RazpredelitelnaRailwayStation",
+          "offsetMinutes": 0
+        }
+      ],
+      "schedules": {
+        "workday": [
+          "06:45",
+          "08:10",
+          "10:05",
+          "12:05",
+          "14:45",
+          "16:30",
+          "18:00",
+          "19:20"
+        ],
+        "holiday": [
+          "08:00",
+          "10:05",
+          "12:05",
+          "16:30",
+          "18:30"
+        ]
+      }
+    },
+    {
+      "id": "A33_ObrChiflik_North",
+      "displayName": "Obraztsov Chiflik (via Astardzhiyka & Nova Ploshtadka)",
+      "stops": [
+        {
+          "stationId": "RazpredelitelnaRailwayStation",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "IntercityBusStationWest",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "AVKO",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "MallRuseIRIS",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "SubstationNorth",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "Stif",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "PetarKaraminchev",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "Yalta",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "Oborishte",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "Afrodita",
+          "offsetMinutes": 3
+        },
+        {
+          "stationId": "Technopolis",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "MotherBabyHome",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "IzgrevWest",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "MonumentOfRusofiliteWest",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "Jumbo",
+          "offsetMinutes": 2
+        },        
+		{
+          "stationId": "AstardzhiykaSouth",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "NovaPloshtadkaSouth",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "ForkForObraztsovChiflikSouth",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "ObraztsovChiflikCentre",
+          "offsetMinutes": 0
+        }
+      ],
+      "schedules": {
+        "workday": [
+          "06:10",
+          "09:20",
+          "11:20",
+          "17:10",
+          "18:40"
+        ],
+        "holiday": [
+          "07:10",
+          "09:20",
+          "11:20",
+          "15:50",
+          "17:50"
+        ]
+      }
+    }
+  ]
+}
