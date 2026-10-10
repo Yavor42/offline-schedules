@@ -19,7 +19,8 @@
   "line_T13.json",
   "line_T27.json",
   "line_A8.json",
-  "line_A10.json"
+  "line_A10.json",
+  "line_A50.json"
  ],
  "stations": "stations/stations_extended.json"
 }

@@ -1,0 +1,286 @@
+{
+  "id": "A50",
+  "type": "bus",
+  "color": "#4aca68",
+  "displayName": "A50",
+  "directions": [
+    {
+      "id": "A50_Basarbovo1",
+      "displayName": "Basarbovo",
+      "stops": [
+        {
+          "stationId": "IntercityBusStationWest",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "AVKO",
+          "offsetMinutes": 3
+        },
+        {
+          "stationId": "MallRuseIRIS",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "SubstationNorth",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "Stif",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "PetarKaramichev",
+          "offsetMinutes": 3
+        },
+        {
+          "stationId": "Yalta",
+          "offsetMinutes": 3
+        },
+        {
+          "stationId": "SBA",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "MathsHighSchoolNorth",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "MarielaSoni",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "SaintOuan",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "LeatherFactoryWest",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "ZMMWest",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "ElectrometalWest",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "DagovBridgeWest",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "StrelbishteWest",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "RusanovoBridgeWest",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "SrednaKulaTheTriangleWest",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "AsphaltBaseWest",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "BasarbovoCemeteryEntrance",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "BasarbovoCemeteryWest",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "TheCanalWest",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "Basarbovo3West",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "Basarbovo2West",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "Basarbovo1",
+          "offsetMinutes": 0
+        }
+      ],
+      "schedules": {
+        "workday": [
+          "05:45",
+          "06:30",
+          "07:15",
+          "08:00",
+          "09:30",
+          "11:30",
+          "13:30",
+          "15:00",
+          "15:45",
+          "16:30",
+          "17:30",
+          "18:15",
+          "19:45"
+        ],
+        "holiday": [
+          "06:30",
+          "07:30",
+          "08:00",
+          "09:30",
+          "11:30",
+          "13:30",
+          "15:00",
+          "16:30",
+          "17:30",
+          "18:15",
+          "19:45"
+        ]
+      }
+    },
+    {
+      "id": "A50_IntercityBusStation",
+      "displayName": "Intercity Bus Station",
+      "stops": [
+        {
+          "stationId": "Basarbovo1East",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "Basarbovo2East",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "Basarbovo3East",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "TheCanalEast",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "BasarbovoCemeteryEast",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "BasarbovoCemeteryExit",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "AsphaltBaseEast",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "TheTriangleSrednaKulaEast",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "RusanovoBridgeEast",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "StrelbishteEast",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "DagovBridgeEast",
+          "offsetMinutes": 3
+        },
+        {
+          "stationId": "ElectrometalEast",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "ZMMEast",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "LeatherFactoryEast",
+          "offsetMinutes": 3
+        },
+        {
+          "stationId": "ShipbuildingHighSchool",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "ChaykaEast",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "MathsHighSchoolSouth",
+          "offsetMinutes": 3
+        },
+        {
+          "stationId": "Skobelev",
+          "offsetMinutes": 3
+        },
+        {
+          "stationId": "Bricolage",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "Kaufland",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "NaidenKirov",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "Olymp",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "SubstationSouth",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "ThirdPolyclininc",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "VasilAprilovPrimarySchool",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "IntercityBusStationEast",
+          "offsetMinutes": 0
+        }
+      ],
+      "schedules": {
+        "workday": [
+          "06:30",
+          "07:15",
+          "08:00",
+          "08:45",
+          "10:15",
+          "12:15",
+          "14:15",
+          "15:45",
+          "16:15",
+          "17:15",
+          "18:15",
+          "19:00",
+          "20:30"
+        ],
+        "holiday": [
+          "06:30",
+          "07:15",
+          "08:15",
+          "08:45",
+          "10:15",
+          "12:15",
+          "14:15",
+          "15:45",
+          "16:15",
+          "17:15",
+          "18:15",
+          "19:00",
+          "20:30"
+        ]
+      }
+    }
+  ]
+}
