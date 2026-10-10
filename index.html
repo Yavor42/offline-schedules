@@ -113,7 +113,7 @@ let lines=[],stations={},by={},q='';const missing=new Set();
 let mode='auto';try{mode=localStorage.dayMode||'auto'}catch(e){}
 const dayType=(o=0)=>{if(mode!=='auto')return mode;const d=new Date();d.setDate(d.getDate()+o);return[0,6].includes(d.getDay())?'holiday':'workday'};
 const sname=id=>stations[id]?.displayName||id.replace(/([a-z])([A-Z])/g,'$1 $2');
-const scode=id=>stations[id]?.ID||'';
+const scode=id=>String(stations[id]?.ID??'').trim();
 const snm=id=>esc(sname(id))+(stations[id]?.smallText?`<span class="ss">${esc(stations[id].smallText)}</span>`:'');
 const badge=l=>`<span class="badge" style="background:${esc(l.color||'#4d83ff')}">${esc(l.displayName||l.id)}</span>`;
 const eta=d=>d<=0?'now':d<60?d+' min':Math.floor(d/60)+'h '+pad(d%60)+'m';
@@ -194,11 +194,11 @@ search(){
   return{t:'Stations',h:`<div class="sw"><input id="q" type="search" placeholder="Station name or ID" autocomplete="off" autocapitalize="off" spellcheck="false" value="${esc(q)}"><button type="button" id="qx" aria-label="Clear" ${q?'':'hidden'}>✕</button></div><div id="res"></div>`,after(){
     const inp=$('#q'),res=$('#res');
     const draw=()=>{q=inp.value;const t=q.trim().toLowerCase();
-      let all=Object.entries(stations).map(([id,s])=>({id,name:s.displayName,code:s.ID,sm:s.smallText||''}));
+      let all=Object.entries(stations).map(([id,s])=>({id,name:s.displayName,code:String(s.ID??'').trim(),sm:s.smallText||''}));
       Object.keys(by).forEach(id=>{if(!stations[id])all.push({id,name:sname(id),code:'',sm:''})});
       if(t)all=all.filter(s=>s.name.toLowerCase().includes(t)||s.code===t||s.code.startsWith(t)||s.id.toLowerCase().includes(t)||s.sm.toLowerCase().includes(t));
       all.sort((a,b)=>(a.code===t?-1:b.code===t?1:0)||a.name.localeCompare(b.name));
-      res.innerHTML=all.slice(0,60).map(s=>`<button class="row" data-go='${JSON.stringify({v:'station',id:s.id})}'><div class="grow"><div class="t">${esc(s.name)}${s.sm?`<span class="ss">${esc(s.sm)}</span>`:''}</div><div class="s">${(by[s.id]||[]).length?[...new Set(by[s.id].map(e=>e.l.displayName))].join(' · '):'No lines'}</div></div>${s.code?`<span class="code">#${esc(s.code)}</span>`:''}</button>`).join('')||`<div class="empty">${base.length?'No stations match':none}</div>`};
+      res.innerHTML=all.slice(0,60).map(s=>`<button class="row" data-go='${JSON.stringify({v:'station',id:s.id})}'><div class="grow"><div class="t">${esc(s.name)}${s.sm?`<span class="ss">${esc(s.sm)}</span>`:''}</div><div class="s">${(by[s.id]||[]).length?[...new Set(by[s.id].map(e=>e.l.displayName))].join(' · '):'No lines'}</div></div>${s.code?`<span class="code">#${esc(s.code)}</span>`:''}</button>`).join('')||'<div class="empty">No stations match</div>'};
     const qx=$('#qx');inp.oninput=()=>{qx.hidden=!inp.value;draw()};qx.onclick=()=>{inp.value='';qx.hidden=true;inp.focus();draw()};draw();}}},
 station(s){
   if(F.sid!==s.id)fReset(s.id);
@@ -272,7 +272,7 @@ function initFilters(id){
     const qi=o.querySelector('input'),vl=o.querySelector('.vl');
     const sm=k=>stations[k]?.smallText||'';
     const base=lst(kind),selK=kind==='via'?F.viaSel:F.fromSel,none=kind==='via'?'No stations fit with the current "Arrives from" filter':'No stations fit with the current "Stops at" filter';
-    const draw=()=>{const t=qi.value.trim().toLowerCase(),r=base.filter(([k,nm])=>!t||nm.toLowerCase().includes(t)||sm(k).toLowerCase().includes(t));
+    const draw=()=>{const t=qi.value.trim().toLowerCase(),tc=t.replace(/^#/,''),r=base.filter(([k,nm])=>!t||nm.toLowerCase().includes(t)||sm(k).toLowerCase().includes(t)||(tc&&scode(k).toLowerCase().startsWith(tc)));
       vl.innerHTML=r.map(([k,nm])=>`<button data-k="${esc(k)}" class="${k===selK?'on':''}">${esc(nm)}${sm(k)?`<span class="ss">${esc(sm(k))}</span>`:''}</button>`).join('')||`<div class="empty">${base.length?'No stations match':none}</div>`};
     qi.oninput=draw;draw();
     o.onclick=e=>{const b=e.target.closest('[data-k]');

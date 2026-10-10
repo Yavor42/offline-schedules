@@ -1,4 +1,4 @@
-const C='transit-v15';
+const C='transit-v16';
 self.addEventListener('install',e=>{e.waitUntil((async()=>{
   const c=await caches.open(C);
   await c.addAll(['./','./index.html','./manifest.webmanifest','./icon-192.png','./icon-512.png','./lib/leaflet.js','./lib/leaflet.css','./data/manifest.json']);
