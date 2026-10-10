@@ -29,7 +29,7 @@
           "offsetMinutes": 2
         },
         {
-          "stationId": "PetarKaramichev",
+          "stationId": "PetarKaraminchev",
           "offsetMinutes": 3
         },
         {
@@ -145,7 +145,7 @@
       "displayName": "Intercity Bus Station",
       "stops": [
         {
-          "stationId": "Basarbovo1East",
+          "stationId": "Basarbovo1",
           "offsetMinutes": 2
         },
         {
@@ -173,7 +173,7 @@
           "offsetMinutes": 1
         },
         {
-          "stationId": "TheTriangleSrednaKulaEast",
+          "stationId": "SrednaKulaTheTriangleEast",
           "offsetMinutes": 2
         },
         {
@@ -237,7 +237,7 @@
           "offsetMinutes": 2
         },
         {
-          "stationId": "ThirdPolyclininc",
+          "stationId": "ThirdPolyclinic",
           "offsetMinutes": 2
         },
         {
