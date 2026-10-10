@@ -115,8 +115,8 @@ const toMin=t=>{const[a,b]=t.split(':');return +a*60+ +b};
 const now=()=>{const d=new Date();return d.getHours()*60+d.getMinutes()};
 let lines=[],stations={},by={},q='';const missing=new Set();
 let mode='auto';try{mode=localStorage.dayMode||'auto'}catch(e){}
-let favs=new Set(),sortBy='name',onlyFav=false;   // favourite stations + station-search sort/filter, kept in localStorage
-try{favs=new Set(JSON.parse(localStorage.favStations||'[]'));sortBy=localStorage.searchSort==='id'?'id':'name';onlyFav=localStorage.favOnly==='1'}catch(e){}
+let favs=new Set(),sortBy='id',onlyFav=false;   // favourite stations + station-search sort/filter, kept in localStorage
+try{favs=new Set(JSON.parse(localStorage.favStations||'[]'));sortBy=localStorage.searchSort==='name'?'name':'id';onlyFav=localStorage.favOnly==='1'}catch(e){}
 const saveFav=()=>{try{localStorage.favStations=JSON.stringify([...favs]);localStorage.searchSort=sortBy;localStorage.favOnly=onlyFav?'1':''}catch(e){}};
 const dayType=(o=0)=>{if(mode!=='auto')return mode;const d=new Date();d.setDate(d.getDate()+o);return[0,6].includes(d.getDay())?'holiday':'workday'};
 const sname=id=>stations[id]?.displayName||id.replace(/([a-z])([A-Z])/g,'$1 $2');
@@ -209,7 +209,7 @@ search(){
       if(t)all=all.filter(s=>s.name.toLowerCase().includes(t)||s.code===t||s.code.startsWith(t)||s.id.toLowerCase().includes(t)||s.sm.toLowerCase().includes(t));
       if(onlyFav)all=all.filter(s=>favs.has(s.id));
       const num=c=>/^\d+$/.test(c)?+c:null,byId=(a,b)=>!a.code!==!b.code?(a.code?-1:1):(num(a.code)!==null&&num(b.code)!==null&&num(a.code)!==num(b.code)?num(a.code)-num(b.code):a.code.localeCompare(b.code,undefined,{numeric:true}));
-      all.sort((a,b)=>(a.code===t?-1:b.code===t?1:0)||(sortBy==='id'?byId(a,b):0)||a.name.localeCompare(b.name));
+      all.sort((a,b)=>(t&&a.code===t?-1:t&&b.code===t?1:0)||(sortBy==='id'?byId(a,b):0)||a.name.localeCompare(b.name));
       res.innerHTML=all.slice(0,60).map(s=>`<button class="row" data-go='${JSON.stringify({v:'station',id:s.id})}'><div class="grow"><div class="t">${esc(s.name)}${s.sm?`<span class="ss">${esc(s.sm)}</span>`:''}</div><div class="s">${(by[s.id]||[]).length?[...new Set(by[s.id].map(e=>e.l.displayName))].join(' · '):'No lines'}</div></div><div class="rt">${s.code?`<span class="code">#${esc(s.code)}</span>`:''}<span class="fav ${favs.has(s.id)?'on':''}" role="button" aria-label="Favorite" data-fav="${esc(s.id)}">${favs.has(s.id)?'★':'☆'}</span></div></button>`).join('')||`<div class="empty">${onlyFav&&!t&&!favs.size?'No favorite stations yet.<br>Tap ☆ on a station to add it.':'No stations match'}</div>`;syncM()};
     res.onclick=e=>{const f=e.target.closest('[data-fav]');if(!f)return;e.stopPropagation();const k=f.dataset.fav;favs.has(k)?favs.delete(k):favs.add(k);saveFav();
       if(onlyFav)draw();else{const on=favs.has(k);f.classList.toggle('on',on);f.textContent=on?'★':'☆';syncM()}};
