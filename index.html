@@ -24,6 +24,7 @@ header h1 img{display:block;height:44px;width:auto;max-width:100%;object-fit:con
 header h1{flex:1;margin:0;font-size:20px;font-weight:650;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .back{width:40px;height:40px;border-radius:50%;border:0;background:var(--card);color:var(--tx);font-size:22px}
 .pill{border:0;border-radius:20px;background:var(--card);color:var(--tx);font-size:13px;padding:8px 12px;white-space:nowrap;flex:none}.pill:disabled{opacity:.35}.pill[hidden]{display:none}
+.ss{font-size:12px;font-weight:400;color:#69738a;margin-left:6px}
 .ttlsub{display:block;font-size:12px;font-weight:400;color:var(--mut);line-height:1.2;margin-top:1px}
 .dayft{display:flex;justify-content:center;align-items:center;gap:8px;margin:28px 0 4px;color:var(--mut);font-size:12px}.dayft select{background:var(--card);color:var(--tx);border:1px solid var(--line);border-radius:10px;padding:6px 8px;font-size:13px}
 main{flex:1;overflow-y:auto;padding:4px 14px calc(24px + env(safe-area-inset-bottom));-webkit-overflow-scrolling:touch}
@@ -53,12 +54,15 @@ input[type=search]::-webkit-search-cancel-button{-webkit-appearance:none;display
 .fx{margin:0 -14px 4px}
 .chips{display:flex;gap:8px;overflow-x:auto;padding:2px 14px 8px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
 .chips::-webkit-scrollbar{display:none}
-.chip{flex:none;height:38px;min-width:54px;padding:0 16px;border-radius:19px;border:1.5px solid transparent;font-weight:700;font-size:15px;color:#fff;background:var(--c)}
-.chip.off{background:var(--card);color:var(--mut);border-color:var(--line)}
-.advwrap{position:relative;padding:2px 14px 8px;display:flex;gap:12px;align-items:center}
-.advbtn{height:34px;padding:0 14px;border-radius:17px;border:1px solid var(--line);background:var(--card);font-size:13px}
+.chip{flex:none;height:38px;min-width:54px;padding:0 16px;border-radius:19px;border:1.5px solid var(--c);font-weight:700;font-size:15px;color:var(--tx);background:transparent;box-shadow:inset 0 0 7px color-mix(in srgb,var(--c) 38%,transparent)}
+.chip.on{background:var(--c);color:#fff;box-shadow:none}
+.advwrap{position:relative;padding:2px 14px 8px;display:flex;gap:10px;align-items:center}
+.advbtn{flex:1 1 0;min-width:0;height:34px;padding:0 4px;border-radius:17px;border:1px solid var(--line);background:var(--card);font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .advbtn.on{border-color:var(--acc);color:var(--acc)}
-.pvbtn{display:block;width:100%;height:38px;margin:2px 0 12px;border-radius:12px;border:1px solid var(--line);background:var(--card);font-size:13px;color:var(--mut)}.row.past{opacity:.6}
+
+@media(max-width:380px){.advbtn{font-size:11px}}
+.uph{display:flex;align-items:center;justify-content:space-between}.uph h2{flex:1}.uph .clr{margin:20px 4px 10px 0}
+.row.past{opacity:.6}
 .pager{display:flex;align-items:center;justify-content:center;gap:18px;margin:14px 0 8px;color:var(--mut)}.pager button{width:44px;height:40px;border-radius:10px;border:1px solid var(--line);background:var(--card);font-size:20px}.pager button:disabled{opacity:.3}
 .clr{background:none;border:0;color:var(--mut);font-size:13px;text-decoration:underline}
 .menu{position:absolute;left:14px;top:calc(100% - 4px);width:min(calc(100% - 28px),350px);z-index:6;background:var(--card2);border:1px solid var(--line);border-radius:16px;box-shadow:0 14px 34px rgba(0,0,0,.65);padding:2px 14px 10px}
@@ -187,17 +191,17 @@ search(){
   return{t:'Stations',h:`<div class="sw"><input id="q" type="search" placeholder="Station name or ID" autocomplete="off" autocapitalize="off" spellcheck="false" value="${esc(q)}"><button type="button" id="qx" aria-label="Clear" ${q?'':'hidden'}>✕</button></div><div id="res"></div>`,after(){
     const inp=$('#q'),res=$('#res');
     const draw=()=>{q=inp.value;const t=q.trim().toLowerCase();
-      let all=Object.entries(stations).map(([id,s])=>({id,name:s.displayName,code:s.ID}));
-      Object.keys(by).forEach(id=>{if(!stations[id])all.push({id,name:sname(id),code:''})});
-      if(t)all=all.filter(s=>s.name.toLowerCase().includes(t)||s.code===t||s.code.startsWith(t)||s.id.toLowerCase().includes(t));
+      let all=Object.entries(stations).map(([id,s])=>({id,name:s.displayName,code:s.ID,sm:s.smallText||''}));
+      Object.keys(by).forEach(id=>{if(!stations[id])all.push({id,name:sname(id),code:'',sm:''})});
+      if(t)all=all.filter(s=>s.name.toLowerCase().includes(t)||s.code===t||s.code.startsWith(t)||s.id.toLowerCase().includes(t)||s.sm.toLowerCase().includes(t));
       all.sort((a,b)=>(a.code===t?-1:b.code===t?1:0)||a.name.localeCompare(b.name));
-      res.innerHTML=all.slice(0,60).map(s=>`<button class="row" data-go='${JSON.stringify({v:'station',id:s.id})}'><div class="grow"><div class="t">${esc(s.name)}</div><div class="s">${(by[s.id]||[]).length?[...new Set(by[s.id].map(e=>e.l.displayName))].join(' · '):'No lines'}</div></div>${s.code?`<span class="code">#${esc(s.code)}</span>`:''}</button>`).join('')||'<div class="empty">No stations match</div>'};
+      res.innerHTML=all.slice(0,60).map(s=>`<button class="row" data-go='${JSON.stringify({v:'station',id:s.id})}'><div class="grow"><div class="t">${esc(s.name)}${s.sm?`<span class="ss">${esc(s.sm)}</span>`:''}</div><div class="s">${(by[s.id]||[]).length?[...new Set(by[s.id].map(e=>e.l.displayName))].join(' · '):'No lines'}</div></div>${s.code?`<span class="code">#${esc(s.code)}</span>`:''}</button>`).join('')||'<div class="empty">No stations match</div>'};
     const qx=$('#qx');inp.oninput=()=>{qx.hidden=!inp.value;draw()};qx.onclick=()=>{inp.value='';qx.hidden=true;inp.focus();draw()};draw();}}},
 station(s){
   if(F.sid!==s.id)fReset(s.id);
-  const ow=oppWarn(s.id),head=(ow?`<div class="sub" style="margin:4px 4px 0;font-size:12px">⚠ ${esc(ow)}</div>`:'')+'<h2>Upcoming departures</h2>',sub=scode(s.id);
-  if(!(by[s.id]||[]).length)return{t:sname(s.id),sub,h:head+'<div class="empty">No upcoming departures</div>'};
-  return{t:sname(s.id),sub,h:head+'<div class="fx" id="fx"></div><button class="pvbtn" id="pv"></button><div id="pdeps"></div><div id="fdeps"></div>',after(){initFilters(s.id)}}}
+  const ow=oppWarn(s.id),head=(ow?`<div class="sub" style="margin:4px 4px 0;font-size:12px">⚠ ${esc(ow)}</div>`:'')+'',code=scode(s.id),stx=stations[s.id]?.smallText,sub=[code?'#'+code:'',stx||''].filter(Boolean).join(' · ');
+  if(!(by[s.id]||[]).length)return{t:sname(s.id),sub,h:head+'<h2>Upcoming departures</h2><div class="empty">No upcoming departures</div>'};
+  return{t:sname(s.id),sub,h:head+'<div class="fx" id="fx"></div><div id="pdeps"></div><div class="uph"><h2>Upcoming departures</h2><button class="clr" id="cl" hidden>Clear</button></div><div id="fdeps"></div>',after(){initFilters(s.id)}}}
 };
 // ---- station filters (standard = line chips, advanced = vehicle type / time frame / stops-at; the two are mutually exclusive)
 let F={},refreshDeps=null,closeFx=null,pickOpen=false;
@@ -215,7 +219,7 @@ function initFilters(id){
   const via=new Map();ents.forEach(e=>e.d.stops.slice(e.i+1).forEach(x=>via.set(x.stationId,sname(x.stationId))));
   const viaList=[...via].sort((a,b)=>a[1].localeCompare(b[1]));
   fx.innerHTML=`<div class="chips">${ls.map(l=>`<button class="chip" data-l="${esc(l.id)}" style="--c:${esc(l.color||'#4d83ff')}">${esc(l.displayName)}</button>`).join('')}</div>
-   <div class="advwrap"><button class="advbtn" id="ab"></button><button class="clr" id="cl">Clear</button><div id="mn"></div></div>`;
+   <div class="advwrap"><button class="advbtn" id="ab"></button><button class="advbtn" id="pv"></button><div id="mn"></div></div>`;
   const menu=()=>{const n=now(),d=hasBoth?'':'dis';
     return`<div class="menu">
     <h3>Vehicle</h3>${[['trolleybus','Trolleybus'],['bus','Bus']].map(([t,nm])=>`<label class="chk ${d}"><input type="checkbox" data-t="${t}" ${F.types.has(t)?'checked':''} ${hasBoth?'':'disabled'}>${nm}</label>`).join('')}
@@ -226,7 +230,7 @@ function initFilters(id){
     <label class="chk ${viaList.length?'':'dis'}"><input type="checkbox" id="cv" ${F.via?'checked':''}><button type="button" class="selbtn" id="sv">${F.viaSel?esc(sname(F.viaSel)):'Choose a station…'} ▾</button></label></div>`};
   const drawMenu=()=>$('#mn').innerHTML=F.open?menu():'';
   const sync=()=>{
-    fx.querySelectorAll('.chip').forEach(c=>c.classList.toggle('off',F.sel.size>0&&!F.sel.has(c.dataset.l)));
+    fx.querySelectorAll('.chip').forEach(c=>c.classList.toggle('on',F.sel.has(c.dataset.l)));
     const k=advCount(),ab=$('#ab');ab.textContent='⚙ Advanced filters'+(k?' · '+k:'')+(F.open?' ▴':' ▾');
     ab.classList.toggle('on',k>0);$('#cl').hidden=!(k||F.sel.size)};
   refreshDeps=()=>{const n=now(),out=[];
@@ -239,7 +243,7 @@ function initFilters(id){
     out.sort((a,b)=>a.m-b.m);
     const up=out.filter(e=>e.m>=n),pv=out.filter(e=>e.m<n).slice(-PV),pages=Math.max(1,Math.ceil(up.length/PG));
     F.page=Math.min(Math.max(F.page,0),pages-1);
-    $('#pv').textContent=(F.prev?'Hide':'Show')+' previous departures '+(F.prev?'▴':'▾');
+    $('#pv').textContent='🕒 Previous departures'+(F.prev?' ▴':' ▾');$('#pv').classList.toggle('on',F.prev);
     $('#pdeps').innerHTML=F.prev?(pv.length?pv.map(e=>rowHtml(e,n,1)).join(''):'<div class="empty" style="padding:18px 20px">No departures in the past hour</div>'):'';
     deps.innerHTML=(up.length?up.slice(F.page*PG,F.page*PG+PG).map(e=>rowHtml(e,n)).join(''):`<div class="empty">${F.sel.size||advCount()?'No departures match these filters':'No upcoming departures'}</div>`)+
       (pages>1?`<div class="pager"><button data-pg="-1" ${F.page<1?'disabled':''} aria-label="Previous page">←</button><span>Page ${F.page+1} of ${pages}</span><button data-pg="1" ${F.page>=pages-1?'disabled':''} aria-label="Next page">→</button></div>`:'')};
@@ -253,8 +257,9 @@ function initFilters(id){
     o.innerHTML='<div class="vpb"><input type="text" placeholder="Search stations" autocomplete="off" autocapitalize="off" spellcheck="false"><div class="vl"></div></div>';
     document.body.appendChild(o);
     const qi=o.querySelector('input'),vl=o.querySelector('.vl');
-    const draw=()=>{const t=qi.value.trim().toLowerCase(),r=viaList.filter(([k,nm])=>!t||nm.toLowerCase().includes(t));
-      vl.innerHTML=r.map(([k,nm])=>`<button data-k="${esc(k)}" class="${k===F.viaSel?'on':''}">${esc(nm)}</button>`).join('')||'<div class="empty">No stations match</div>'};
+    const sm=k=>stations[k]?.smallText||'';
+    const draw=()=>{const t=qi.value.trim().toLowerCase(),r=viaList.filter(([k,nm])=>!t||nm.toLowerCase().includes(t)||sm(k).toLowerCase().includes(t));
+      vl.innerHTML=r.map(([k,nm])=>`<button data-k="${esc(k)}" class="${k===F.viaSel?'on':''}">${esc(nm)}${sm(k)?`<span class="ss">${esc(sm(k))}</span>`:''}</button>`).join('')||'<div class="empty">No stations match</div>'};
     qi.oninput=draw;draw();
     o.onclick=e=>{const b=e.target.closest('[data-k]');
       if(b){F.via=F.viaSel=b.dataset.k;F.sel.clear();o.remove();drawMenu();update()}
@@ -266,7 +271,8 @@ function initFilters(id){
     const c=e.target.closest('.chip');
     if(c){clearAdv();const k=c.dataset.l;F.sel.has(k)?F.sel.delete(k):F.sel.add(k);F.open=false;drawMenu();return update()}
     if(e.target.closest('#ab')){F.open=!F.open;drawMenu();return sync()}
-    if(e.target.closest('#cl')){F.sel.clear();clearAdv();F.open=false;drawMenu();update()}};
+    };
+  $('#cl').onclick=()=>{F.sel.clear();clearAdv();F.open=false;drawMenu();update()};
   fx.onchange=e=>{const t=e.target,g=x=>$('#'+x);
     if(t.dataset.t)t.checked?F.types.add(t.dataset.t):F.types.delete(t.dataset.t);
     else if(t.id==='ca'||t.id==='ta'){if(t.id==='ta'&&t.value)g('ca').checked=true;F.after=g('ca').checked?tm(g('ta').value)??0:null}
@@ -297,7 +303,7 @@ async function initMap(){
 }
 function render(s,keep){
   s=s||{v:'home'};if(mapObj){mapObj.remove();mapObj=null}refreshDeps=null;closeFx=null;document.querySelector('.vp')?.remove();if(!keep)pickOpen=false;main.classList.toggle('fill',s.v==='map');const y=main.scrollTop,v=V[s.v](s);
-  const ttl=$('#ttl');if(s.v==='home')ttl.innerHTML='<img src="OTP.png" alt="OTP" onerror="this.replaceWith(\'Transit\')">';else if(v.sub)ttl.innerHTML=esc(v.t)+'<span class="ttlsub">#'+esc(v.sub)+'</span>';else ttl.textContent=v.t;$('#bk').hidden=s.v==='home';
+  const ttl=$('#ttl');if(s.v==='home')ttl.innerHTML='<img src="OTP.png" alt="OTP" onerror="this.replaceWith(\'Transit\')">';else if(v.sub)ttl.innerHTML=esc(v.t)+'<span class="ttlsub">'+esc(v.sub)+'</span>';else ttl.textContent=v.t;$('#bk').hidden=s.v==='home';
   const sd=$('#sd');sd.hidden=!(s.v==='station'||s.v==='trip');
   if(!sd.hidden)sd.disabled=s.v==='station'?!oppOf(s.id).ok:lines.find(x=>x.id===s.l).directions.length<2;
   const au=[0,6].includes(new Date().getDay())?'Holiday':'Workday';
