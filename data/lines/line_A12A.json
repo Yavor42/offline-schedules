@@ -1,0 +1,200 @@
+{
+  "id": "A12A",
+  "type": "bus",
+  "color": "#4aca68",
+  "displayName": "A12A",
+  "directions": [
+    {
+      "id": "A12A_RailwayStationBorisova",
+      "displayName": "Railway Station - Cosmos",
+      "stops": [
+        {
+          "stationId": "26TutrakanBlvd",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "32TutrakanBlvdVocSchoolOfTransport",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "EcontExpressShippingSouthDomostroene",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "Customs",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "OrgahimWest",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "ZEIMWest",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "FamiliaHotelWest",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "CAT",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "AVKO",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "MallRuseIRIS",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "SubstationNorth",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "Stif",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "PetarKaraminchev",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "Yalta",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "SBA",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "MedicalCentreWest",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "OrhideyaWest",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "Nekrasov",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "Cosmos",
+          "offsetMinutes": 0
+        }
+      ],
+      "schedules": {
+        "workday": [
+          "07:30",
+          "08:50",
+          "10:25",
+          "12:35",
+          "14:20",
+          "15:30",
+          "17:10"
+        ],
+        "holiday": []
+      }
+    },
+    {
+      "id": "A12A_2526Tutrakan",
+      "displayName": "26 Tutrakan blvd.",
+      "stops": [
+        {
+          "stationId": "RailwayStationBorisovaStr",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "Lermontov",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "OrhideyaEast",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "MedicalCentreEast",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "Skobelev",
+          "offsetMinutes": 3
+        },
+        {
+          "stationId": "Bricolage",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "Kaufland",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "NaidenKirov",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "Olymp",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "SubstationSouth",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "ThirdPolyclinic",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "DunavPrintery",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "Mototehnika",
+          "offsetMinutes": 3
+        },
+        {
+          "stationId": "FamiliaHotelEast",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "ZEIMEast",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "OrgahimEast",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "DanubeBridge",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "EcontExpressShippingNorthNaporniTrabi",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "32TutrakanBlvdVocSchoolOfTransport",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "25TutrakanBlvd",
+          "offsetMinutes": 0
+        }
+      ],
+      "schedules": {
+        "workday": [
+          "06:50",
+          "08:10",
+          "09:50",
+          "11:05",
+          "13:35",
+          "14:55",
+          "16:20"
+        ],
+        "holiday": []
+      }
+    }
+  ]
+}

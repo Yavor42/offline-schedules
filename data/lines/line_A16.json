@@ -1,0 +1,206 @@
+{
+  "id": "A16",
+  "type": "bus",
+  "color": "#4aca68",
+  "displayName": "A16",
+  "directions": [
+    {
+      "id": "A16_METRO",
+      "displayName": "METRO Superstore",
+      "stops": [
+        {
+          "stationId": "RazpredelitelnaRailwayStation",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "IntercityBusStationWest",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "AVKO",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "MallRuseIRIS",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "SubstationNorth",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "DairyKitchenEast",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "TovarnaRailwayStop",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "BratyaMiladinoviPrimarySchool",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "UniversityOfRuseNorth",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "EngineeringHighSchool",
+          "offsetMinutes": 3
+        },
+        {
+          "stationId": "Serdika",
+          "offsetMinutes": 3
+        },
+        {
+          "stationId": "SBA",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "MathsHighSchoolNorth",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "MarielaSoni",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "SaintOuan",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "Zhiti",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "Yuta",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "Winery",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "BOR",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "METROSuperstoreNorth",
+          "offsetMinutes": 0
+        }
+      ],
+      "schedules": {
+        "workday": [
+          "05:45"
+        ],
+        "holiday": [
+          "05:45",
+          "15:15"
+        ]
+      }
+    },
+    {
+      "id": "A16_OtherRailwayStation",
+      "displayName": "Razpredelitelna Railway Station",
+      "stops": [
+        {
+          "stationId": "METROSuperstoreSouth",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "DairyPlant",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "FireBrigade",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "OrgahimDunavskaKoprina",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "Fazan",
+          "offsetMinutes": 3
+        },
+        {
+          "stationId": "ShipbuildingHighSchool",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "ChaykaEast",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "MathsHighSchoolSouth",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "Skobelev",
+          "offsetMinutes": 3
+        },
+        {
+          "stationId": "SportsArena",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "ThaPantheon",
+          "offsetMinutes": 3
+        },
+        {
+          "stationId": "Hospital",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "PurvaProlet",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "UniversityOfRuseSouth",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "Pliska",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "BlockDobrudzha",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "DairyKitchenWest",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "SubstationSouth",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "ThirdPolyclinic",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "VasilAprilovPrimarySchool",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "IntercityBusStationEast",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "RazpredelitelnaRailwayStation",
+          "offsetMinutes": 0
+        }
+      ],
+      "schedules": {
+        "workday": [
+          "05:10"
+        ],
+        "holiday": [
+          "05:10",
+          "14:35"
+        ]
+      }
+    }
+  ]
+}

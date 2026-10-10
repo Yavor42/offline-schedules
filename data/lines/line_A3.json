@@ -1,0 +1,92 @@
+{
+  "id": "A3",
+  "type": "bus",
+  "color": "#4aca68",
+  "displayName": "A3",
+  "directions": [
+    {
+      "id": "A3_METRO",
+      "displayName": "METRO Superstore",
+      "stops": [
+        {
+          "stationId": "CharodeykaSouth",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "Block115North",
+          "offsetMinutes": 4
+        },
+        {
+          "stationId": "VasilLevskiEast",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "PumpingStationEast",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "VerilaSouth",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "VerilaNorth",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "LeventaNorth",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "AlekoKonstantinovPrimarySchoolNorth",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "RoadJunctionOhlyuvaWest",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "MidiyaEnosSouth",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "RailwayStationNikolaevskaStr",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "ShipbuildingHighSchool",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "SaintOuan",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "Zhiti",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "Yuta",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "Winery",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "BOR",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "METROSuperstoreNorth",
+          "offsetMinutes": 0
+        }
+      ],
+      "schedules": {
+        "workday": [
+          "06:50"
+        ],
+        "holiday": []
+      }
+    }
+  ]
+}

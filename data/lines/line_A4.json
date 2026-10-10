@@ -1,0 +1,254 @@
+{
+  "id": "A4",
+  "type": "bus",
+  "color": "#4aca68",
+  "displayName": "A4",
+  "directions": [
+    {
+      "id": "A4_ZEIM",
+      "displayName": "ZEIM",
+      "stops": [
+        {
+          "stationId": "Druzhba3Block48",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "SvirchevServiceEast",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "IrrigationSystems",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "Druzhba3Terminus",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "Block10",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "Block6",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "Block115South",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "ShoppingComplex",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "CharodeykaSouth",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "FilipStanislavovStrCharodeykaCemetery",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "Block403South",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "Block302North",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "CooperativeMarket",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "OlimpiPanovPrimarySchool",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "ZalaDunav",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "OlympBlock48",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "DairyKitchenEast",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "TovarnaRailwayStop",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "Paris",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "TsvetnitsaSouth",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "TraktsiyataLVZ",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "PsychiatricClinicSouth",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "26TutrakanBlvd",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "32TutrakanBlvdVocSchoolOfTransport",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "EcontExpressShippingSouthDomostroene",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "Customs",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "OrgahimWest",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "ZEIMWest",
+          "offsetMinutes": 0
+        }
+      ],
+      "schedules": {
+        "workday": [
+          "06:05",
+          "07:00",
+          "16:45"
+        ],
+        "holiday": []
+      }
+    },
+    {
+      "id": "A4_Block48",
+      "displayName": "Druzhba 3 - Block 48",
+      "stops": [
+        {
+          "stationId": "ZEIMEast",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "OrgahimEast",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "DanubeBridge",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "EcontExpressShippingNorthNaporniTrabi",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "19TutrakanBlvdBrickFactory",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "25TutrakanBlvd",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "PsychiatricClinicNorth",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "TutrakanOverpass",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "TsvetnitsaNorth",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "BlockDobrudzha",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "DairyKitchenWest",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "OlympBlock49",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "Kolos",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "RusalkaKindergarten",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "ZPPrelez",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "Block302South",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "Block403North",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "Block401",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "ShoppingComplex",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "CharodeykaSouth",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "Block115North",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "CBADruzhba3",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "Block33",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "Block28",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "54GotseDelchevBlvd",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "SvirchevServiceWest",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "Druzhba3Block48",
+          "offsetMinutes": 0
+        }
+      ],
+      "schedules": {
+        "workday": [
+          "17:15"
+        ],
+        "holiday": []
+      }
+    }
+  ]
+}
