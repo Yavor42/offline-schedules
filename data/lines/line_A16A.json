@@ -1,0 +1,292 @@
+{
+  "id": "A16A",
+  "type": "bus",
+  "color": "#4aca68",
+  "displayName": "A16A",
+  "directions": [
+    {
+      "id": "A16A_16thKilometreTerminus",
+      "displayName": "16th Kilometre Terminus (Dolapite Railway Station)",
+      "stops": [
+        {
+          "stationId": "RazpredelitelnaRailwayStation",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "IntercityBusStationWest",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "AVKO",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "MallRuseIRIS",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "SubstationNorth",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "DairyKitchenEast",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "TovarnaRailwayStop",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "BratyaMiladinoviPrimarySchool",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "UniversityOfRuseNorth",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "VocationalSchoolOfEngineering",
+          "offsetMinutes": 3
+        },
+        {
+          "stationId": "Serdika",
+          "offsetMinutes": 3
+        },
+        {
+          "stationId": "SBA",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "MathsHighSchoolNorth",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "MarielaSoni",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "SaintOuan",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "Zhiti",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "Yuta",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "Winery",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "BOR",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "METROSuperstoreNorth",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "FishingHutsWest",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "PristaLodge",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "KPPWest",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "9thKilometerWest",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "PetrolBaseEntranceNorth",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "PetrolBaseCentralNorth",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "PetrolBaseObrashtalo",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "PetrolBaseCentralSouth",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "PetrolBaseEntranceSouth",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "16thKilometerTerminus",
+          "offsetMinutes": 0
+        }
+      ],
+      "schedules": {
+        "workday": [
+          "06:15",
+          "08:45",
+          "10:35",
+          "12:40",
+          "14:30",
+          "16:10",
+          "18:00",
+          "20:20"
+        ],
+        "holiday": [
+          "06:25",
+          "08:45",
+          "10:35",
+          "12:40",
+          "14:30",
+          "16:10",
+          "18:00",
+          "20:20"
+        ]
+      }
+    },
+    {
+      "id": "A16_OtherRailwayStation",
+      "displayName": "Razpredelitelna Railway Station",
+      "stops": [
+        {
+          "stationId": "16thKilometerTerminus",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "9thKilometerEast",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "KPPEast",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "OldPeoplesHome",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "FishingHutsEast",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "METROSuperstoreSouth",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "DairyPlant",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "FireBrigade",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "OrgahimDunavskaKoprina",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "Fazan",
+          "offsetMinutes": 3
+        },
+        {
+          "stationId": "ShipbuildingHighSchool",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "ChaykaEast",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "MathsHighSchoolSouth",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "Skobelev",
+          "offsetMinutes": 3
+        },
+        {
+          "stationId": "SportsArena",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "ThePantheon",
+          "offsetMinutes": 3
+        },
+        {
+          "stationId": "Hospital",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "PurvaProlet",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "UniversityOfRuseSouth",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "Pliska",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "BlockDobrudzha",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "DairyKitchenWest",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "Substation",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "ThirdPolyclinic",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "VasilAprilovPrimarySchool",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "IntercityBusStationEast",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "RazpredelitelnaRailwayStation",
+          "offsetMinutes": 0
+        }
+      ],
+      "schedules": {
+        "workday": [
+          "07:15",
+          "09:45",
+          "11:35",
+          "13:40",
+          "15:20",
+          "17:10",
+          "19:00",
+          "21:20"
+        ],
+        "holiday": [
+          "07:25",
+          "09:45",
+          "11:35",
+          "13:40",
+          "15:20",
+          "17:10",
+          "19:00",
+          "21:20"
+        ]
+      }
+    }
+  ]
+}
