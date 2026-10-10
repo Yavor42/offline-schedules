@@ -45,7 +45,7 @@
           "offsetMinutes": 1
         },
         {
-          "stationId": "VocationalSchoolOfEngineering",
+          "stationId": "EngineeringHighSchool",
           "offsetMinutes": 3
         },
         {
@@ -245,7 +245,7 @@
           "offsetMinutes": 2
         },
         {
-          "stationId": "Substation",
+          "stationId": "SubstationSouth",
           "offsetMinutes": 1
         },
         {
