@@ -1696,5 +1696,59 @@
     "ID": "292",
     "oppositeStation": "",
     "smallText": ""
+  },
+  "BasarbovoCemeteryEntrace": {
+    "displayName": "Basarbovo Cemetery - Entrance",
+    "ID": "",
+    "oppositeStation": "BasarbovoCemeteryExit",
+    "smallText": "West"
+  },
+  "BasarbovoCemeteryExit": {
+    "displayName": "Basarbovo Cemetery - Exit",
+    "ID": "",
+    "oppositeStation": "BasarbovoCemeteryEntrace",
+    "smallText": "Exit"
+  },
+  "TheCanalWest": {
+    "displayName": "The Canal - West",
+    "ID": "",
+    "oppositeStation": "TheCanalEast",
+    "smallText": ""
+  },
+  "TheCanalEast": {
+    "displayName": "The Canal - East",
+    "ID": "",
+    "oppositeStation": "TheCanalWest",
+    "smallText": ""
+  },
+  "Basarbovo3West": {
+    "displayName": "Basarbovo 3 - West",
+    "ID": "",
+    "oppositeStation": "Basarbovo3East",
+    "smallText": ""
+  },
+  "Basarbovo3East": {
+    "displayName": "Basarbovo 3 - East",
+    "ID": "",
+    "oppositeStation": "Basarbovo3West",
+    "smallText": ""
+  },
+  "Basarbovo2West": {
+    "displayName": "Basarbovo 2 - West",
+    "ID": "",
+    "oppositeStation": "Basarbovo2East",
+    "smallText": ""
+  },
+  "Basarbovo2East": {
+    "displayName": "Basarbovo 2 - East",
+    "ID": "",
+    "oppositeStation": "Basarbovo2West",
+    "smallText": ""
+  },
+  "Basarbovo1": {
+    "displayName": "Basarbovo 1",
+    "ID": "",
+    "oppositeStation": "",
+    "smallText": ""
   }
 }
