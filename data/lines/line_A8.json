@@ -1,0 +1,176 @@
+{
+  "id": "A8",
+  "type": "bus",
+  "color": "#4aca68",
+  "displayName": "A8",
+  "directions": [
+    {
+      "id": "A8_BasarbovoCemetery",
+      "displayName": "Basarbovo Cemetery",
+      "stops": [
+        {
+          "stationId": "HouseOfCulture",
+          "offsetMinutes": 3
+        },
+        {
+          "stationId": "Serdika",
+          "offsetMinutes": 3
+        },
+        {
+          "stationId": "Oborishte",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "Afrodita",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "Block33MariaLuisa",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "BlockAksakov",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "SaintOuan",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "LeatherFactoryWest",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "ZMMWest",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "ElectrometalWest",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "DagovBridgeWest",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "StrelbishteWest",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "RusanovoBridgeWest",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "SrednaKulaTheTriangleWest",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "AsphaltBaseWest",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "BasarbovoCemeteryEntrance",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "BasarbovoCemeteryWest",
+          "offsetMinutes": 0
+        }
+      ],
+      "schedules": {
+        "workday": [],
+        "holiday": [
+          "08:45",
+          "10:15",
+          "12:00",
+          "13:30",
+          "15:45"
+        ]
+      }
+    },
+    {
+      "id": "A8_HouseOfCulture",
+      "displayName": "House of Culture",
+      "stops": [
+        {
+          "stationId": "BasarbovoCemeteryEast",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "BasarbovoCemeteryExit",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "AsphaltBaseEast",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "SrednaKulaTheTriangleEast",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "RusanovoBridgeEast",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "StrelbishteEast",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "DagovBridgeEast",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "ElectrometalEast",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "ZMMEast",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "LeatherFactoryEast",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "ShipbuildingHighSchool",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "OrhideyaEast",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "BlockElectron",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "CooperativeMarketA8",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "SportsArena",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "ThePantheon",
+          "offsetMinutes": 3
+        },
+        {
+          "stationId": "HouseOfCulture",
+          "offsetMinutes": 0
+        }
+      ],
+      "schedules": {
+        "workday": [],
+        "holiday": [
+          "09:30",
+          "11:00",
+          "12:45",
+          "14:45",
+          "16:30"
+        ]
+      }
+    }
+  ]
+}
