@@ -1,0 +1,210 @@
+{
+  "id": "A10",
+  "type": "bus",
+  "color": "#4aca68",
+  "displayName": "A10",
+  "directions": [
+    {
+      "id": "A10_PrelezaTerminus",
+      "displayName": "Kaseva Chesma & Preleza Terminus",
+      "stops": [
+        {
+          "stationId": "HouseOfCulture",
+          "offsetMinutes": 4
+        },
+        {
+          "stationId": "Serdika",
+          "offsetMinutes": 3
+        },
+        {
+          "stationId": "Oborishte",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "Afrodita",
+          "offsetMinutes": 3
+        },
+        {
+          "stationId": "PCBs",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "Block115South",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "FilipStanislavovStrCharodeykaCemetery",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "Block403South",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "CharodeykaCemeterySouth",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "NikolovLTDSouth",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "IntertradeSouth",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "KolevAutoserviceSouth",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "KasevaChesmaSouth",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "ObrashtaloSouth",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "ZavoyaSouth",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "BoroveteSouth",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "AkatsiiteSouth",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "PrelezaTerminus",
+          "offsetMinutes": 0
+        }
+      ],
+      "schedules": {
+        "workday": [
+          "06:45",
+          "08:00",
+          "09:40",
+          "11:20",
+          "12:35",
+          "13:50",
+          "15:05",
+          "17:10",
+          "18:25",
+          "19:40",
+          "20:55"
+        ],
+        "holiday": [
+          "07:00",
+          "08:30",
+          "10:00",
+          "15:00",
+          "16:30",
+          "18:15"
+        ]
+      }
+    },
+    {
+      "id": "A10_HouseOfCulture",
+      "displayName": "House of Culture",
+      "stops": [
+        {
+          "stationId": "PrelezaTerminus",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "AkatsiiteNorth",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "BoroveteNorth",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "ZavoyaNorth",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "ObrashtaloNorth",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "KasevaChesmaNorth",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "KolevAutoserviceNorth",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "IntertradeNorth",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "NikolovLTDNorth",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "CharodeykaCemeteryNorth",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "Block403North",
+          "offsetMinutes": 1
+        },
+        {
+          "stationId": "Block401",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "Block115North",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "PechatniPlatkiPCBs",
+          "offsetMinutes": 3
+        },
+        {
+          "stationId": "YordanYovkovHighSchool",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "SportsArena",
+          "offsetMinutes": 2
+        },
+        {
+          "stationId": "ThePantheon",
+          "offsetMinutes": 3
+        },
+        {
+          "stationId": "HouseOfCulture",
+          "offsetMinutes": 0
+        }
+      ],
+      "schedules": {
+        "workday": [
+          "06:10",
+          "07:20",
+          "08:35",
+          "10:15",
+          "11:55",
+          "13:10",
+          "14:25",
+          "15:40",
+          "17:45",
+          "19:00",
+          "20:15"
+        ],
+        "holiday": [
+          "07:45",
+          "09:15",
+          "10:45",
+          "15:45",
+          "17:15",
+          "19:00"
+        ]
+      }
+    }
+  ]
+}
