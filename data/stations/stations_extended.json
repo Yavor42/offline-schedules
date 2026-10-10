@@ -1706,7 +1706,7 @@
 	  "BasarbovoCemeteryExit": {
 		"displayName": "Basarbovo Cemetery - Exit",
 		"ID": "",
-		"oppositeStation": "BasarbovoCemeteryEntrace",
+		"oppositeStation": "BasarbovoCemeteryEntrance",
 		"smallText": "Exit"
 	  },
 	  "TheCanalWest": {
