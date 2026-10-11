@@ -101,6 +101,9 @@ main.fill{padding:0;overflow:hidden}
 .leaflet-map-pane,.leaflet-tile-pane{will-change:transform}
 .leaflet-bottom{margin-bottom:env(safe-area-inset-bottom)}
 .mapmsg{position:absolute;inset:0;display:grid;place-items:center;text-align:center;color:var(--mut);padding:30px;z-index:500}
+.hw{display:flex;flex-direction:column;min-height:100%}.hc{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:12px 0}.hlogo{height:92px;width:auto;max-width:70%;object-fit:contain;margin-bottom:6px}.hc .clock{margin-top:8px}.hc .sub{margin-bottom:0;font-size:16px}
+header[hidden]{display:none}
+.time.w-red,.big2.w-red{color:#ff5a5f}.time.w-yellow,.big2.w-yellow{color:#ffd23f}
 </style>
 </head>
 <body>
@@ -126,6 +129,8 @@ const badge=l=>`<span class="badge" style="background:${esc(l.color||'#4d83ff')}
 const eta=d=>d<=0?'now':d<60?d+' min':Math.floor(d/60)+'h '+pad(d%60)+'m';
 const times=(d,o=0)=>d.schedules[dayType(o)]||[];
 let dayStart=360;   // earliest departure in the data; filter times before this mean 'after midnight' (next day)
+const ov=t=>{const x=toMin(t);return x<dayStart?x+1440:x};   // operational-day minutes (after-midnight times sort last)
+const dstat=(list,t)=>{const v=ov(t);let nx=Infinity;list.forEach(x=>{const w=ov(x);if(w>v&&w<nx)nx=w});return nx===Infinity?'red':nx-v>=90?'yellow':''};   // red = last of the day, yellow = nothing for 90+ min
 const uw=t=>t<dayStart&&now()>=dayStart?t+1440:t;   // small times = after midnight: tomorrow if it's daytime now, today if it's already past midnight
 
 async function load(){
@@ -161,12 +166,12 @@ $('#sd').onclick=()=>{const s=history.state||{};
 const V={
 home(){
   const d=new Date();
-  return{t:'Transit',h:`<div class="clock">${fmt(now())}</div><div class="sub">${d.toLocaleDateString(undefined,{weekday:'long',day:'numeric',month:'long'})}</div>
+  return{t:'Transit',h:`<div class="hw"><div class="hc"><img class="hlogo" src="OTP.png" alt="OTP" onerror="this.replaceWith('Transit')"><div class="clock">${fmt(now())}</div><div class="sub">${d.toLocaleDateString(undefined,{weekday:'long',day:'numeric',month:'long'})}</div></div>
   <div class="hero"><button class="big" data-go='{"v":"routes"}'><div class="ic">🚎</div><div><b>Search routes</b><span>Browse lines &amp; directions</span></div></button>
   <button class="big" data-go='{"v":"search"}'><div class="ic">📍</div><div><b>Search stations</b><span>By name or ID · upcoming departures</span></div></button>
   <button class="big" data-go='{"v":"map"}'><div class="ic">🗺️</div><div><b>Transit map</b><span>Pan &amp; zoom the network map</span></div></button></div>
   ${missing.size?`<div class="sub" style="margin-top:22px;font-size:12px">⚠ Not in stations file: ${[...missing].map(esc).join(', ')}</div>`:''}
-  ${(()=>{const w=Object.keys(stations).map(k=>[k,oppWarn(k)]).filter(x=>x[1]);return w.length?`<div class="sub" style="margin-top:12px;font-size:12px">⚠ Opposite station problems: ${w.map(([k,m])=>esc(k)+' ('+esc(m)+')').join('; ')}</div>`:''})()}`}},
+  ${(()=>{const w=Object.keys(stations).map(k=>[k,oppWarn(k)]).filter(x=>x[1]);return w.length?`<div class="sub" style="margin-top:12px;font-size:12px">⚠ Opposite station problems: ${w.map(([k,m])=>esc(k)+' ('+esc(m)+')').join('; ')}</div>`:''})()}</div>`}},
 routes(){
   const g={};lines.forEach(l=>(g[l.type]??=[]).push(l));
   const nm={trolleybus:'Trolleybuses',bus:'Buses'};
@@ -191,7 +196,7 @@ trip(s){
   const stat=diff>0?`Departs in ${eta(diff)}`:n>last?'Finished':diff===0?'Departing now':`Departed ${-diff} min ago`;
   const flag=i===ts.length-1&&diff<0?' · last of the day':'';
   return{t:'Line '+l.displayName,h:`<div class="hd">${badge(l)}<div class="sub" style="margin:6px 0 0">➜ ${snm(d.stops.at(-1).stationId)}</div>
-  <div class="big2">${ts[i]}</div><div style="color:var(--ok);font-weight:600">${stat}${flag}</div>
+  <div class="big2${dstat(ts,ts[i])?' w-'+dstat(ts,ts[i]):''}">${ts[i]}</div><div style="color:var(--ok);font-weight:600">${stat}${flag}</div>
   <div class="sub" style="margin:4px 0 0;font-size:13px">${one?'Only one departure today':`Departure ${i+1} of ${ts.length}`} · ${dayType()}</div>
   <div class="nav"><button data-i="${tg.k}" ${one?'disabled':''} style="color:var(--acc)">${tg.act?'Jump to current departure':'Jump to upcoming departure'}</button></div>
   <div class="nav" style="margin-top:10px"><button data-i="${i-1}" ${one||i<1?'disabled':''}>‹ Previous</button><button data-i="${i+1}" ${one||i>=ts.length-1?'disabled':''}>Next ›</button></div>
@@ -231,7 +236,7 @@ const advCount=()=>F.types.size+(F.after!=null)+(F.before!=null)+(F.via?1:0)+(F.
 const clearAdv=()=>{F.types.clear();F.after=F.before=F.via=F.from=null;F.noTerm=false};
 const tm=v=>v?toMin(v):null;
 function rowHtml(e,n,past){const term=e.i===e.d.stops.length-1;
-  return`<button class="row${past?' past':''}" data-go='${JSON.stringify({v:'trip',l:e.l.id,d:e.d.id,i:e.ti,...(e.y?{y:1}:{})})}'>${badge(e.l)}<div class="grow"><div class="t">${esc(e.d.displayName||sname(e.d.stops.at(-1).stationId))}</div>${term?'<div class="s">Terminates here</div>':''}</div><div><div class="time">${fmt(e.m)}</div><div class="eta">${past?(n-e.m)+' min ago':eta(e.m-n)}</div></div></button>`}
+  return`<button class="row${past?' past':''}" data-go='${JSON.stringify({v:'trip',l:e.l.id,d:e.d.id,i:e.ti,...(e.y?{y:1}:{})})}'>${badge(e.l)}<div class="grow"><div class="t">${esc(e.d.displayName||sname(e.d.stops.at(-1).stationId))}</div>${term?'<div class="s">Terminates here</div>':''}</div><div><div class="time${e.st?' w-'+e.st:''}">${fmt(e.m)}</div><div class="eta">${past?(n-e.m)+' min ago':eta(e.m-n)}</div></div></button>`}
 function initFilters(id){
   const ents=by[id],fx=$('#fx'),deps=$('#fdeps');
   const ls=[...new Map(ents.map(e=>[e.l.id,e.l])).values()].sort((a,b)=>a.displayName.localeCompare(b.displayName,undefined,{numeric:true}));
@@ -268,7 +273,7 @@ function initFilters(id){
       let m=toMin(t)+e.off;if(o)m-=1440;
       if(m<n-PVMIN||(F.sel.size&&!F.sel.has(e.l.id))||(F.types.size&&!F.types.has(e.l.type))||!(A!=null&&B!=null&&A>B?(m>=A||m<=B):!((A!=null&&m<A)||(B!=null&&m>B)))||
         (F.via&&!e.d.stops.some((x,k)=>k>e.i&&x.stationId===F.via))||(F.from&&!e.d.stops.some((x,k)=>k<e.i&&x.stationId===F.from))||(F.noTerm&&e.i===last(e)))return;
-      out.push({...e,m,ti:i,y:o?1:0})})));
+      out.push({...e,m,ti:i,y:o?1:0,st:dstat(times(e.d,o),t)})})));
     out.sort((a,b)=>a.m-b.m);
     const up=out.filter(e=>e.m>=n),pv=out.filter(e=>e.m<n).slice(-PV),pages=Math.max(1,Math.ceil(up.length/PG));
     F.page=Math.min(Math.max(F.page,0),pages-1);
@@ -337,8 +342,9 @@ async function initMap(){
 }
 function render(s,keep){
   s=s||{v:'home'};if(mapObj){mapObj.remove();mapObj=null}refreshDeps=null;closeFx=null;document.querySelector('.vp')?.remove();$('#pgr').innerHTML='';if(!keep)pickOpen=false;main.classList.toggle('fill',s.v==='map');const y=main.scrollTop,v=V[s.v](s);
-  const ttl=$('#ttl');if(s.v==='home')ttl.innerHTML='<img src="OTP.png" alt="OTP" onerror="this.replaceWith(\'Transit\')">';else if(v.sub)ttl.innerHTML=esc(v.t)+'<span class="ttlsub">'+esc(v.sub)+'</span>';else ttl.textContent=v.t;$('#bk').hidden=s.v==='home';
+  const ttl=$('#ttl');if(s.v==='home')ttl.textContent='';else if(v.sub)ttl.innerHTML=esc(v.t)+'<span class="ttlsub">'+esc(v.sub)+'</span>';else ttl.textContent=v.t;$('#bk').hidden=s.v==='home';
   $('#so').hidden=s.v!=='search';
+  document.querySelector('header').hidden=s.v==='home';
   const sd=$('#sd');sd.hidden=!(s.v==='station'||s.v==='trip');
   if(!sd.hidden)sd.disabled=s.v==='station'?!oppOf(s.id).ok:lines.find(x=>x.id===s.l).directions.length<2;
   const au=[0,6].includes(new Date().getDay())?'Holiday':'Workday';
