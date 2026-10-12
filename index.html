@@ -210,7 +210,7 @@ search(){
     const inp=$('#q'),res=$('#res'),sm=$('#sortm'),cb=$('#clrfav'),fs=$('#fs');
     const syncM=()=>{sm.querySelectorAll('[data-s]').forEach(b=>b.querySelector('.tk').textContent=b.dataset.s===sortBy?'✓':'');fs.classList.toggle('on',onlyFav);fs.textContent=onlyFav?'★':'☆';cb.disabled=!favs.size};
     const lineTxt=id=>{const m=new Map((by[id]||[]).map(e=>[e.l.id,e.l]));if(!m.size)return'No lines';const a=[...m.values()];
-      if(a.length<=7)return a.map(l=>l.displayName).join(' · ');
+      if(a.length<=9)return a.map(l=>l.displayName).join(' · ');
       const tr=a.filter(l=>l.type==='trolleybus').length,bu=a.filter(l=>l.type==='bus').length,ot=a.length-tr-bu,p=[];
       if(tr)p.push(tr+' Trolleybus line'+(tr>1?'s':''));if(bu)p.push(bu+' Bus line'+(bu>1?'s':''));if(ot)p.push(ot+' other line'+(ot>1?'s':''));
       return p.join(' and ')};
