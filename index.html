@@ -104,6 +104,7 @@ main.fill{padding:0;overflow:hidden}
 .hw{display:flex;flex-direction:column;min-height:100%}.hc{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:12px 0}.hlogo{height:92px;width:auto;max-width:70%;object-fit:contain;margin-bottom:6px}.hc .clock{margin-top:8px}.hc .sub{margin-bottom:0;font-size:16px}
 header[hidden]{display:none}
 .time.w-red,.big2.w-red,.tm.w-red{color:#ff5a5f}.time.w-yellow,.big2.w-yellow,.tm.w-yellow{color:#ffd23f}
+.eta.d-red{color:#ff5a5f}.eta.d-yellow{color:#ffd23f}.dly{color:#ff5a5f;font-weight:600;font-size:13px;margin-top:4px}
 .pill.star{font-size:20px;line-height:1;padding:7px 12px;color:var(--mut)}.pill.star.on{color:#f5c542}
 </style>
 </head>
@@ -128,6 +129,14 @@ const scode=id=>String(stations[id]?.ID??'').trim();
 const snm=id=>esc(sname(id))+(stations[id]?.smallText?`<span class="ss">${esc(stations[id].smallText)}</span>`:'');
 const badge=l=>`<span class="badge" style="background:${esc(l.color||'#4d83ff')}">${esc(l.displayName||l.id)}</span>`;
 const eta=d=>d<=0?'now':d<60?d+' min':Math.floor(d/60)+'h '+pad(d%60)+'m';
+// turnaround check: minutes between a vehicle of line l finishing a trip and the very next departure it can take; null unless 0-5
+// lines with <=3 directions: the vehicle continues on another direction of the line; more directions: match by terminus (or its opposite platform)
+const turnGap=(l,d,t,o)=>{const D=l.directions,m=ov(t),sid=d.stops[0].stationId,op=oppOf(sid),S=new Set([sid,...(op.ok?[op.id]:[])]),dirs=D.length<=3;let best=null;
+  const deps=ok=>D.filter(ok).flatMap(y=>times(y,o).map(ov));
+  D.forEach(x=>{const from=dirs?x!==d||D.length===1:S.has(x.stops.at(-1).stationId);if(!from)return;
+    const pool=deps(dirs?y=>D.length===1||y!==x:y=>S.has(y.stops[0].stationId));
+    times(x,o).forEach(a=>{const ar=ov(a)+x.cum.at(-1),g=m-ar;if(g<0||g>5||pool.some(z=>z>=ar&&z<m))return;if(best===null||g<best)best=g})});
+  return best};
 const times=(d,o=0)=>d.schedules[dayType(o)]||[];
 let dayStart=360;   // earliest departure in the data; filter times before this mean 'after midnight' (next day)
 const ov=t=>{const x=toMin(t);return x<dayStart?x+1440:x};   // operational-day minutes (after-midnight times sort last)
@@ -199,6 +208,7 @@ trip(s){
   return{t:'Line '+l.displayName,h:`<div class="hd">${badge(l)}<div class="sub" style="margin:6px 0 0">➜ ${snm(d.stops.at(-1).stationId)}</div>
   <div class="big2${dstat(ts,ts[i])?' w-'+dstat(ts,ts[i]):''}">${ts[i]}</div><div style="color:var(--ok);font-weight:600">${stat}${flag}</div>
   <div class="sub" style="margin:4px 0 0;font-size:13px">${one?'Only one departure today':`Departure ${i+1} of ${ts.length}`} · ${dayType()}</div>
+  ${turnGap(l,d,ts[i],yd?-1:0)!=null?'<div class="dly">⚠ This departure may be delayed</div>':''}
   <div class="nav"><button data-i="${tg.k}" ${one?'disabled':''} style="color:var(--acc)">${tg.act?'Jump to current departure':'Jump to upcoming departure'}</button></div>
   <div class="nav" style="margin-top:10px"><button data-i="${i-1}" ${one||i<1?'disabled':''}>‹ Previous</button><button data-i="${i+1}" ${one||i>=ts.length-1?'disabled':''}>Next ›</button></div>
   <div style="position:relative"><div class="nav sm"><div class="half"><button data-i="0" ${one||i<1?'disabled':''}>⏮ First</button><button data-i="${ts.length-1}" ${one||i>=ts.length-1?'disabled':''}>Last ⏭</button></div><button data-pk ${one?'disabled':''}>Choose a departure… ▾</button></div>${menu}</div></div>
@@ -210,7 +220,7 @@ search(){
     const inp=$('#q'),res=$('#res'),sm=$('#sortm'),cb=$('#clrfav'),fs=$('#fs');
     const syncM=()=>{sm.querySelectorAll('[data-s]').forEach(b=>b.querySelector('.tk').textContent=b.dataset.s===sortBy?'✓':'');fs.classList.toggle('on',onlyFav);fs.textContent=onlyFav?'★':'☆';cb.disabled=!favs.size};
     const lineTxt=id=>{const m=new Map((by[id]||[]).map(e=>[e.l.id,e.l]));if(!m.size)return'No lines';const a=[...m.values()];
-      if(a.length<=9)return a.map(l=>l.displayName).join(' · ');
+      if(a.length<=7)return a.map(l=>l.displayName).join(' · ');
       const tr=a.filter(l=>l.type==='trolleybus').length,bu=a.filter(l=>l.type==='bus').length,ot=a.length-tr-bu,p=[];
       if(tr)p.push(tr+' Trolleybus line'+(tr>1?'s':''));if(bu)p.push(bu+' Bus line'+(bu>1?'s':''));if(ot)p.push(ot+' other line'+(ot>1?'s':''));
       return p.join(' and ')};
@@ -242,7 +252,7 @@ const advCount=()=>F.types.size+(F.after!=null)+(F.before!=null)+(F.via?1:0)+(F.
 const clearAdv=()=>{F.types.clear();F.after=F.before=F.via=F.from=null;F.noTerm=false};
 const tm=v=>v?toMin(v):null;
 function rowHtml(e,n,past){const term=e.i===e.d.stops.length-1;
-  return`<button class="row${past?' past':''}" data-go='${JSON.stringify({v:'trip',l:e.l.id,d:e.d.id,i:e.ti,...(e.y?{y:1}:{})})}'>${badge(e.l)}<div class="grow"><div class="t">${esc(e.d.displayName||sname(e.d.stops.at(-1).stationId))}</div>${term?'<div class="s">Terminates here</div>':''}</div><div><div class="time${e.st?' w-'+e.st:''}">${fmt(e.m)}</div><div class="eta">${past?(n-e.m)+' min ago':eta(e.m-n)}</div></div></button>`}
+  return`<button class="row${past?' past':''}" data-go='${JSON.stringify({v:'trip',l:e.l.id,d:e.d.id,i:e.ti,...(e.y?{y:1}:{})})}'>${badge(e.l)}<div class="grow"><div class="t">${esc(e.d.displayName||sname(e.d.stops.at(-1).stationId))}</div>${term?'<div class="s">Terminates here</div>':''}</div><div><div class="time${e.st?' w-'+e.st:''}">${fmt(e.m)}</div><div class="eta${!past&&e.tg!=null?' d-'+(e.tg<=2?'red':'yellow'):''}">${past?(n-e.m)+' min ago':(e.tg!=null?'⚠ ':'')+eta(e.m-n)}</div></div></button>`}
 function initFilters(id){
   const ents=by[id],fx=$('#fx'),deps=$('#fdeps');
   const tv=l=>l.type==='trolleybus'?0:1,ls=[...new Map(ents.map(e=>[e.l.id,e.l])).values()].sort((a,b)=>tv(a)-tv(b)||a.displayName.localeCompare(b.displayName,undefined,{numeric:true}));
@@ -279,7 +289,7 @@ function initFilters(id){
       let m=toMin(t)+e.off;if(o)m-=1440;
       if(m<n-PVMIN||(F.sel.size&&!F.sel.has(e.l.id))||(F.types.size&&!F.types.has(e.l.type))||!(A!=null&&B!=null&&A>B?(m>=A||m<=B):!((A!=null&&m<A)||(B!=null&&m>B)))||
         (F.via&&!e.d.stops.some((x,k)=>k>e.i&&x.stationId===F.via))||(F.from&&!e.d.stops.some((x,k)=>k<e.i&&x.stationId===F.from))||(F.noTerm&&e.i===last(e)))return;
-      out.push({...e,m,ti:i,y:o?1:0,st:dstat(times(e.d,o),t)})})));
+      out.push({...e,m,ti:i,y:o?1:0,st:dstat(times(e.d,o),t),tg:e.i===0?turnGap(e.l,e.d,t,o):null})})));
     out.sort((a,b)=>a.m-b.m);
     const up=out.filter(e=>e.m>=n),pv=out.filter(e=>e.m<n).slice(-PV),pages=Math.max(1,Math.ceil(up.length/PG));
     F.page=Math.min(Math.max(F.page,0),pages-1);
