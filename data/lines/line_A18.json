@@ -6,7 +6,7 @@
   "directions": [
     {
       "id": "A18_Mototehnika",
-      "smallText": "",
+      "smallText": "via University of Ruse and Ohlyuva",
       "displayName": "Mototehnika",
       "stops": [
         {
@@ -164,7 +164,7 @@
     },
     {
       "id": "A18_Block48",
-      "smallText": "",
+      "smallText": "via University of Ruse and Ohlyuva",
       "displayName": "Druzhba 3 - Block 48",
       "stops": [
         {

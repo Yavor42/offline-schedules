@@ -6,7 +6,7 @@
   "directions": [
     {
       "id": "A23_HouseOfCulture",
-      "smallText": "",
+      "smallText": "via \"Hristo Botev\" blvd.",
       "displayName": "House of Culture",
       "stops": [
         {
@@ -106,7 +106,7 @@
     },
     {
       "id": "A23_Block 48",
-      "smallText": "",
+      "smallText": "via Ohlyuva",
       "displayName": "Druzhba 3 - Block 48",
       "stops": [
         {

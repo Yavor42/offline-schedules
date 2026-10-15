@@ -86,8 +86,8 @@
     },
     {
       "id": "T27_2526TutrakanBlvd",
-      "smallText": "",
-      "displayName": "26 \"Tutrakan\" blvd. (Sugar Factory)",
+      "smallText": "Sugar Factory",
+      "displayName": "26 \"Tutrakan\" blvd.",
       "stops": [
         {
           "stationId": "Druzhba3Terminus",
