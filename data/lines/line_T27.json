@@ -6,6 +6,7 @@
   "directions": [
     {
       "id": "T27_Block28",
+      "smallText": "",
       "displayName": "Druzhba 3 - Terminus",
       "stops": [
         {
@@ -80,11 +81,12 @@
           "21:55",
           "23:15"
         ],
-        "holiday": [] 
+        "holiday": []
       }
     },
     {
       "id": "T27_2526TutrakanBlvd",
+      "smallText": "",
       "displayName": "26 \"Tutrakan\" blvd. (Sugar Factory)",
       "stops": [
         {

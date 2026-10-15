@@ -6,6 +6,7 @@
   "directions": [
     {
       "id": "A18_Mototehnika",
+      "smallText": "",
       "displayName": "Mototehnika",
       "stops": [
         {
@@ -163,6 +164,7 @@
     },
     {
       "id": "A18_Block48",
+      "smallText": "",
       "displayName": "Druzhba 3 - Block 48",
       "stops": [
         {

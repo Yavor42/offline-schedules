@@ -6,6 +6,7 @@
   "directions": [
     {
       "id": "A4_ZEIM",
+      "smallText": "",
       "displayName": "ZEIM",
       "stops": [
         {
@@ -132,6 +133,7 @@
     },
     {
       "id": "A4_Block48",
+      "smallText": "",
       "displayName": "Druzhba 3 - Block 48",
       "stops": [
         {

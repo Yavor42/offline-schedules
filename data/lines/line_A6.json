@@ -6,6 +6,7 @@
   "directions": [
     {
       "id": "A6_AsphaltBase",
+      "smallText": "",
       "displayName": "Asphalt Base - Sredna Kula",
       "stops": [
         {
@@ -126,6 +127,7 @@
     },
     {
       "id": "A6_HouseOfCulture",
+      "smallText": "",
       "displayName": "House of Culture",
       "stops": [
         {

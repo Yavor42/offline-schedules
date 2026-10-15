@@ -6,6 +6,7 @@
   "directions": [
     {
       "id": "A3_METRO",
+      "smallText": "",
       "displayName": "METRO Superstore",
       "stops": [
         {

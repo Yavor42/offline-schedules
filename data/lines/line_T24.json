@@ -6,6 +6,7 @@
   "directions": [
     {
       "id": "T24_BOR",
+      "smallText": "",
       "displayName": "BOR",
       "stops": [
         {
@@ -121,6 +122,7 @@
     },
     {
       "id": "T24_Block28",
+      "smallText": "",
       "displayName": "Druzhba 3 - Terminus",
       "stops": [
         {

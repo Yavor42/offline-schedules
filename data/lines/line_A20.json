@@ -6,6 +6,7 @@
   "directions": [
     {
       "id": "A20_SaintOuan",
+      "smallText": "",
       "displayName": "\"Saint Ouan\" str.",
       "stops": [
         {
@@ -130,6 +131,7 @@
     },
     {
       "id": "A20_PragaSqr",
+      "smallText": "",
       "displayName": "\"Praga\" Square - Terminus",
       "stops": [
         {

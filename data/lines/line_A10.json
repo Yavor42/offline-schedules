@@ -6,6 +6,7 @@
   "directions": [
     {
       "id": "A10_PrelezaTerminus",
+      "smallText": "",
       "displayName": "Kaseva Chesma & Preleza Terminus",
       "stops": [
         {
@@ -107,6 +108,7 @@
     },
     {
       "id": "A10_HouseOfCulture",
+      "smallText": "",
       "displayName": "House of Culture",
       "stops": [
         {

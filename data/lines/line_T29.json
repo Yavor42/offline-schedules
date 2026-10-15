@@ -6,6 +6,7 @@
   "directions": [
     {
       "id": "T29_2526Tutrakan",
+      "smallText": "",
       "displayName": "26 \"Tutrakan\" blvd.",
       "stops": [
         {
@@ -130,6 +131,7 @@
     },
     {
       "id": "T29_CharodeykaSouth",
+      "smallText": "",
       "displayName": "Charodeyka-South",
       "stops": [
         {

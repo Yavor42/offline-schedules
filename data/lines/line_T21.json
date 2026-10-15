@@ -6,6 +6,7 @@
   "directions": [
     {
       "id": "T21_OtherRailwayStation",
+      "smallText": "",
       "displayName": "Razpredelitelna Railway Station",
       "stops": [
         {
@@ -128,6 +129,7 @@
     },
     {
       "id": "T21_Charodeyka",
+      "smallText": "",
       "displayName": "Charodeyka-South",
       "stops": [
         {

@@ -6,6 +6,7 @@
   "directions": [
     {
       "id": "A23_HouseOfCulture",
+      "smallText": "",
       "displayName": "House of Culture",
       "stops": [
         {
@@ -105,6 +106,7 @@
     },
     {
       "id": "A23_Block 48",
+      "smallText": "",
       "displayName": "Druzhba 3 - Block 48",
       "stops": [
         {

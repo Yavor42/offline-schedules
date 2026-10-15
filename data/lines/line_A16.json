@@ -6,6 +6,7 @@
   "directions": [
     {
       "id": "A16_METRO",
+      "smallText": "",
       "displayName": "METRO Superstore",
       "stops": [
         {
@@ -101,6 +102,7 @@
     },
     {
       "id": "A16_OtherRailwayStation",
+      "smallText": "",
       "displayName": "Razpredelitelna Railway Station",
       "stops": [
         {

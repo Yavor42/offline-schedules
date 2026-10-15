@@ -6,6 +6,7 @@
   "directions": [
     {
       "id": "A8_BasarbovoCemetery",
+      "smallText": "",
       "displayName": "Basarbovo Cemetery",
       "stops": [
         {
@@ -90,6 +91,7 @@
     },
     {
       "id": "A8_HouseOfCulture",
+      "smallText": "",
       "displayName": "House of Culture",
       "stops": [
         {

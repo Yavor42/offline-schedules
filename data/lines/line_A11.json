@@ -6,6 +6,7 @@
   "directions": [
     {
       "id": "A11_Customs",
+      "smallText": "",
       "displayName": "Danube Bridge / Customs",
       "stops": [
         {
@@ -28,7 +29,7 @@
           "stationId": "VerilaSouth",
           "offsetMinutes": 3
         },
-	    	{
+        {
           "stationId": "VerilaNorth",
           "offsetMinutes": 1
         },
@@ -191,6 +192,7 @@
     },
     {
       "id": "A11_MalyovitsaStr",
+      "smallText": "",
       "displayName": "\"Malyovitsa\" str. - Terminus",
       "stops": [
         {

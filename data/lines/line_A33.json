@@ -6,6 +6,7 @@
   "directions": [
     {
       "id": "A33_ObrChiflik_South",
+      "smallText": "",
       "displayName": "Obraztsov Chiflik (via DZS & Zurnosahranenie)",
       "stops": [
         {
@@ -96,6 +97,7 @@
     },
     {
       "id": "A33_OtherRailwayStation",
+      "smallText": "",
       "displayName": "Razpredelitelna Railway Station",
       "stops": [
         {
@@ -197,6 +199,7 @@
     },
     {
       "id": "A33_ObrChiflik_North",
+      "smallText": "",
       "displayName": "Obraztsov Chiflik (via Astardzhiyka & Nova Ploshtadka)",
       "stops": [
         {
@@ -258,8 +261,8 @@
         {
           "stationId": "Jumbo",
           "offsetMinutes": 2
-        },        
-		{
+        },
+        {
           "stationId": "AstardzhiykaSouth",
           "offsetMinutes": 1
         },

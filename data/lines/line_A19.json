@@ -6,6 +6,7 @@
   "directions": [
     {
       "id": "A19_METRO",
+      "smallText": "",
       "displayName": "METRO Superstore",
       "stops": [
         {
@@ -120,6 +121,7 @@
     },
     {
       "id": "A19_CoopMarketNorth",
+      "smallText": "",
       "displayName": "Cooperative Market / ŽP Prelez",
       "stops": [
         {

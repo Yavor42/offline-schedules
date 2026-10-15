@@ -6,6 +6,7 @@
   "directions": [
     {
       "id": "T2_BOR",
+      "smallText": "",
       "displayName": "BOR",
       "stops": [
         {
@@ -148,6 +149,7 @@
     },
     {
       "id": "T2_Mototehnika",
+      "smallText": "",
       "displayName": "Mototehnika",
       "stops": [
         {

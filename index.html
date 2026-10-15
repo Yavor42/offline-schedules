@@ -203,17 +203,15 @@ trip(s){
   if(s.i==null)history.replaceState({...s,i,...(yd?{y:1}:{})},'');
   const dep=toMin(ts[i]),diff=dep-n,last=toMin(ts.at(-1))+d.cum.at(-1);
   const menu=pickOpen&&!one?`<div class="menu pk"><h3>Select departure</h3><div class="tg">${ts.map((t,k)=>`<button class="tb ${k===i?'cur':''} ${toMin(t)<n?'past':''}" data-i="${k}">${t}</button>`).join('')}</div></div>`:'';
-  const stat=diff>0?`Departs in ${eta(diff)}`:n>last?'Finished':diff===0?'Departing now':`Departed ${-diff} min ago`;
+  const stat=diff>0?`Departs in ${eta(diff)}`:n>last?'Finished':diff===0?'Departing now':`Departed ${eta(-diff)} ago`;
   const flag=i===ts.length-1&&diff<0?' · last of the day':'';
-  return{t:'Line '+l.displayName,h:`<div class="hd">${badge(l)}<div class="sub" style="margin:6px 0 0">➜ ${snm(d.stops.at(-1).stationId)}</div>
-  <div class="big2${dstat(ts,ts[i])?' w-'+dstat(ts,ts[i]):''}">${ts[i]}</div><div style="color:var(--ok);font-weight:600">${stat}${flag}</div>
-  <div class="sub" style="margin:4px 0 0;font-size:13px">${one?'Only one departure today':`Departure ${i+1} of ${ts.length}`} · ${dayType()}</div>
-  ${turnGap(l,d,ts[i],yd?-1:0)!=null?'<div class="dly">⚠ This departure may be delayed</div>':''}
+  return{t:'Line '+l.displayName,h:`<div class="hd">${badge(l)}<div class="sub" style="margin:6px 0 0;font-size:18px;font-weight:600;color:#e8eaed">➜ ${snm(d.stops.at(-1).stationId)}</div>
+  <div class="big2${dstat(ts,ts[i])?' w-'+dstat(ts,ts[i]):''}">${ts[i]}</div><div style="color:#fff;font-weight:600">${stat}${flag}</div>
   <div class="nav"><button data-i="${tg.k}" ${one?'disabled':''} style="color:var(--acc)">${tg.act?'Jump to current departure':'Jump to upcoming departure'}</button></div>
   <div class="nav" style="margin-top:10px"><button data-i="${i-1}" ${one||i<1?'disabled':''}>‹ Previous</button><button data-i="${i+1}" ${one||i>=ts.length-1?'disabled':''}>Next ›</button></div>
   <div style="position:relative"><div class="nav sm"><div class="half"><button data-i="0" ${one||i<1?'disabled':''}>⏮ First</button><button data-i="${ts.length-1}" ${one||i>=ts.length-1?'disabled':''}>Last ⏭</button></div><button data-pk ${one?'disabled':''}>Choose a departure… ▾</button></div>${menu}</div></div>
-  <h2>Stops</h2><div style="--c:${esc(l.color)}">${d.stops.map((st,k)=>{const m=dep+d.cum[k],ds=dstat(ts.map(x=>fmt(toMin(x)+d.cum[k])),fmt(m));
-  return`<button class="st ${m<n?'past':''}" data-go='${JSON.stringify({v:'station',id:st.stationId})}'><span class="tm${ds?' w-'+ds:''}">${fmt(m)}</span><span class="dot"></span><span class="nm">${snm(st.stationId)}${k===d.stops.length-1?'<span class="tag">end</span>':''}</span></button>`}).join('')}</div>`,after(){const m=$('.pk'),c=m&&m.querySelector('.cur');if(c)m.scrollTop=c.offsetTop-m.clientHeight/2+c.offsetHeight/2}}},
+  <div class="uph"><h2>Stops</h2>${turnGap(l,d,ts[i],yd?-1:0)!=null?'<div class="dly" style="margin:20px 4px 10px 0">⚠ This departure may be delayed</div>':''}</div><div style="--c:${esc(l.color)}">${d.stops.map((st,k)=>{const m=dep+d.cum[k],ds=dstat(ts.map(x=>fmt(toMin(x)+d.cum[k])),fmt(m));
+  return`<button class="st ${m<n?'past':''}" data-go='${JSON.stringify({v:'station',id:st.stationId})}'><span class="tm${ds?' w-'+ds:''}">${fmt(m)}</span><span class="dot"></span><span class="nm">${snm(st.stationId)}${k===d.stops.length-1?'<span class="tag">end</span>':''}</span></button>`}).join('')}</div><div class="sub" style="text-align:center;margin:18px 0 8px;font-size:13px">${one?'Only one departure today':`Departure ${i+1} of ${ts.length}`}</div>`,after(){const m=$('.pk'),c=m&&m.querySelector('.cur');if(c)m.scrollTop=c.offsetTop-m.clientHeight/2+c.offsetHeight/2}}},
 map(){return{t:'Transit map',h:'<div id="map"></div>',after:initMap}},
 search(){
   return{t:'Stations',h:`<div class="sw"><input id="q" type="search" placeholder="Station name or ID" autocomplete="off" autocapitalize="off" spellcheck="false" value="${esc(q)}"><button type="button" id="qx" aria-label="Clear" ${q?'':'hidden'}>✕</button></div><div id="sortm" class="sortm" hidden><button data-s="name">Name<span class="tk"></span></button><button data-s="id">ID<span class="tk"></span></button></div><div id="res"></div><button class="clrfav" id="clrfav">Clear favorites</button>`,after(){
@@ -252,7 +250,7 @@ const advCount=()=>F.types.size+(F.after!=null)+(F.before!=null)+(F.via?1:0)+(F.
 const clearAdv=()=>{F.types.clear();F.after=F.before=F.via=F.from=null;F.noTerm=false};
 const tm=v=>v?toMin(v):null;
 function rowHtml(e,n,past){const term=e.i===e.d.stops.length-1;
-  return`<button class="row${past?' past':''}" data-go='${JSON.stringify({v:'trip',l:e.l.id,d:e.d.id,i:e.ti,...(e.y?{y:1}:{})})}'>${badge(e.l)}<div class="grow"><div class="t">${esc(e.d.displayName||sname(e.d.stops.at(-1).stationId))}</div>${term?'<div class="s">Terminates here</div>':''}</div><div><div class="time${e.st?' w-'+e.st:''}">${fmt(e.m)}</div><div class="eta${!past&&e.tg!=null?' d-'+(e.tg<=2?'red':'yellow'):''}">${past?(n-e.m)+' min ago':(e.tg!=null?'⚠ ':'')+eta(e.m-n)}</div></div></button>`}
+  return`<button class="row${past?' past':''}" data-go='${JSON.stringify({v:'trip',l:e.l.id,d:e.d.id,i:e.ti,...(e.y?{y:1}:{})})}'>${badge(e.l)}<div class="grow"><div class="t">${esc(e.d.displayName||sname(e.d.stops.at(-1).stationId))}</div>${term?'<div class="s">Terminates here</div>':''}</div><div><div class="time${e.st?' w-'+e.st:''}">${fmt(e.m)}</div><div class="eta${!past&&e.tg!=null?' d-'+(e.tg<=2?'red':'yellow'):''}">${past?eta(n-e.m)+' ago':(e.tg!=null?'⚠ ':'')+eta(e.m-n)}</div></div></button>`}
 function initFilters(id){
   const ents=by[id],fx=$('#fx'),deps=$('#fdeps');
   const tv=l=>l.type==='trolleybus'?0:1,ls=[...new Map(ents.map(e=>[e.l.id,e.l])).values()].sort((a,b)=>tv(a)-tv(b)||a.displayName.localeCompare(b.displayName,undefined,{numeric:true}));

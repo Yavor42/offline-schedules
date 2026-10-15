@@ -6,6 +6,7 @@
   "directions": [
     {
       "id": "A27A_Block48",
+      "smallText": "",
       "displayName": "Druzhba 3 - Block 48",
       "stops": [
         {
@@ -134,6 +135,7 @@
     },
     {
       "id": "A27A_2526TutrakanBlvd",
+      "smallText": "",
       "displayName": "26 \"Tutrakan\" Blvd.",
       "stops": [
         {

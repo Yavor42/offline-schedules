@@ -6,6 +6,7 @@
   "directions": [
     {
       "id": "T13_OtherRailwayStation",
+      "smallText": "",
       "displayName": "Razpredelitelna Railway Station",
       "stops": [
         {
@@ -126,6 +127,7 @@
     },
     {
       "id": "T13_Block28",
+      "smallText": "",
       "displayName": "Druzhba 3 - Terminus",
       "stops": [
         {

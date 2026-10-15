@@ -6,6 +6,7 @@
   "directions": [
     {
       "id": "A15_Strelbishteto",
+      "smallText": "",
       "displayName": "Strelbishteto - Dolapite",
       "stops": [
         {
@@ -148,6 +149,7 @@
     },
     {
       "id": "A15_Mototehnika",
+      "smallText": "",
       "displayName": "Mototehnika",
       "stops": [
         {

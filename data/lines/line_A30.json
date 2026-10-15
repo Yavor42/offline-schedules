@@ -6,6 +6,7 @@
   "directions": [
     {
       "id": "A30_RigaHotelTerminus",
+      "smallText": "",
       "displayName": "\"Riga\" Hotel",
       "stops": [
         {
@@ -111,6 +112,7 @@
     },
     {
       "id": "A30_Charodeyka",
+      "smallText": "",
       "displayName": "Charodeyka-South",
       "stops": [
         {

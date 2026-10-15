@@ -6,6 +6,7 @@
   "directions": [
     {
       "id": "A50_Basarbovo1",
+      "smallText": "",
       "displayName": "Basarbovo",
       "stops": [
         {
@@ -142,6 +143,7 @@
     },
     {
       "id": "A50_IntercityBusStation",
+      "smallText": "",
       "displayName": "Intercity Bus Station",
       "stops": [
         {

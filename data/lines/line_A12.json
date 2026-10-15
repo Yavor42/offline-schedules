@@ -6,6 +6,7 @@
   "directions": [
     {
       "id": "A12_RailwayStationBorisova",
+      "smallText": "",
       "displayName": "Railway Station - Cosmos",
       "stops": [
         {
@@ -130,6 +131,7 @@
     },
     {
       "id": "A12_Mototehnika",
+      "smallText": "",
       "displayName": "Mototehnika",
       "stops": [
         {
