@@ -1,6 +1,6 @@
 	{
 	  "YordanYovkovHighSchool": {
-		"displayName": "Yordan Yovkov High School",
+		"displayName": "\"Yordan Yovkov\" High School",
 		"ID": "3",
 		"oppositeStation": "Afrodita",
 		"smallText": ""
@@ -72,10 +72,10 @@
 		"smallText": ""
 	  },
 	  "MallRuseIRIS": {
-		"displayName": "Mall Ruse (IRIS)",
+		"displayName": "Mall Ruse",
 		"ID": "15",
 		"oppositeStation": "ThirdPolyclinic",
-		"smallText": ""
+		"smallText": "IRIS"
 	  },
 	  "SubstationNorth": {
 		"displayName": "Substation - North",
@@ -114,7 +114,7 @@
 		"smallText": "aka Eternit"
 	  },
 	  "Block113Charodeyka1": {
-		"displayName": "Block 113 - Charodeyka 1",
+		"displayName": "Block 113 - Charodeyka-South",
 		"ID": "24",
 		"oppositeStation": "",
 		"smallText": ""
@@ -126,7 +126,7 @@
 		"smallText": ""
 	  },
 	  "BratyaMiladinoviPrimarySchool": {
-		"displayName": "Bratya Miladinovi Primary School",
+		"displayName": "\"Bratya Miladinovi\" Primary School",
 		"ID": "26",
 		"oppositeStation": "Pliska",
 		"smallText": ""
@@ -339,13 +339,13 @@
 		"displayName": "ŽP Prelez",
 		"ID": "65",
 		"oppositeStation": "CooperativeMarket",
-		"smallText": "Cooperative Market"
+		"smallText": "West"
 	  },
 	  "CooperativeMarket": {
 		"displayName": "Cooperative Market",
 		"ID": "66",
 		"oppositeStation": "ZPPrelez",
-		"smallText": "ŽP Prelez"
+		"smallText": "East"
 	  },
 	  "RusalkaKindergarten": {
 		"displayName": "\"Rusalka\" Kindergarten",
@@ -354,7 +354,7 @@
 		"smallText": ""
 	  },
 	  "OlimpiPanovPrimarySchool": {
-		"displayName": "Olimpi Panov Primary School",
+		"displayName": "\"Olimpi Panov\" Primary School",
 		"ID": "68",
 		"oppositeStation": "RusalkaKindergarten",
 		"smallText": ""
@@ -366,7 +366,7 @@
 		"smallText": ""
 	  },
 	  "ZalaDunav": {
-		"displayName": "Zala Dunav",
+		"displayName": "\"Dunav\" Sports Hall",
 		"ID": "70",
 		"oppositeStation": "Kolos",
 		"smallText": ""
@@ -624,16 +624,16 @@
 		"smallText": ""
 	  },
 	  "CBAGradskiHaliSouth": {
-		"displayName": "CBA (Gradski Hali) - South",
+		"displayName": "CBA - South",
 		"ID": "113",
 		"oppositeStation": "CBAGradskiHaliNorth",
-		"smallText": ""
+		"smallText": "Gradski Hali"
 	  },
 	  "CBAGradskiHaliNorth": {
-		"displayName": "CBA (Gradski Hali) - North",
+		"displayName": "CBA - North",
 		"ID": "114",
 		"oppositeStation": "CBAGradskiHaliSouth",
-		"smallText": ""
+		"smallText": "Gradski Hali"
 	  },
 	  "RigaHotel": {
 		"displayName": "\"Riga\" Hotel",
@@ -654,7 +654,7 @@
 		"smallText": ""
 	  },
 	  "HristoBotevHighSchool": {
-		"displayName": "Hristo Botev High School",
+		"displayName": "\"Hristo Botev\" High School",
 		"ID": "118",
 		"oppositeStation": "",
 		"smallText": ""
@@ -816,13 +816,13 @@
 		"smallText": ""
 	  },
 	  "YundolaStrBlock7": {
-		"displayName": "\"Yundola\" str., Block 7",
+		"displayName": "\"Yundola\" str. - Block 7",
 		"ID": "146",
 		"oppositeStation": "",
 		"smallText": ""
 	  },
 	  "YundolaStrBlock16": {
-		"displayName": "\"Yundola\" str., Block 16",
+		"displayName": "\"Yundola\" str. - Block 16",
 		"ID": "147",
 		"oppositeStation": "",
 		"smallText": ""
@@ -834,7 +834,7 @@
 		"smallText": ""
 	  },
 	  "SaintOuan": {
-		"displayName": "Saint Ouan",
+		"displayName": "\"Saint Ouan\" str.",
 		"ID": "149",
 		"oppositeStation": "ShipbuildingHighSchool",
 		"smallText": ""
@@ -858,10 +858,10 @@
 		"smallText": ""
 	  },
 	  "Block33MariaLuisa": {
-		"displayName": "Block 33 - \"Maria Luisa\" str.",
+		"displayName": "Block 33",
 		"ID": "153",
 		"oppositeStation": "BlockElectron",
-		"smallText": ""
+		"smallText": "\"Maria Luisa\" str."
 	  },
 	  "BlockAksakov": {
 		"displayName": "Block \"Aksakov\"",
@@ -915,13 +915,13 @@
 		"displayName": "Orgahim - East",
 		"ID": "162",
 		"oppositeStation": "OrgahimWest",
-		"smallText": ""
+		"smallText": "\"Bulgaria\" blvd."
 	  },
 	  "OrgahimWest": {
 		"displayName": "Orgahim - West",
 		"ID": "163",
 		"oppositeStation": "OrgahimEast",
-		"smallText": ""
+		"smallText": "\"Bulgaria\" blvd."
 	  },
 	  "ZEIMEast": {
 		"displayName": "ZEIM - East",
@@ -1008,13 +1008,13 @@
 		"smallText": ""
 	  },
 	  "AlekoKonstantinovPrimarySchoolNorth": {
-		"displayName": "Aleko Konstantinov Primary School - North",
+		"displayName": "\"Aleko Konstantinov\" Primary School - North",
 		"ID": "178",
 		"oppositeStation": "AlekoKonstantinovPrimarySchoolSouth",
 		"smallText": ""
 	  },
 	  "AlekoKonstantinovPrimarySchoolSouth": {
-		"displayName": "Aleko Konstantinov Primary School - South",
+		"displayName": "\"Aleko Konstantinov\" Primary School - South",
 		"ID": "179",
 		"oppositeStation": "AlekoKonstantinovPrimarySchoolNorth",
 		"smallText": ""
@@ -1287,13 +1287,13 @@
 		"displayName": "Monument of Rusofilite - East",
 		"ID": "224",
 		"oppositeStation": "MonumentOfRusofiliteWest",
-		"smallText": ""
+		"smallText": "aka Lozyata"
 	  },
 	  "MonumentOfRusofiliteWest": {
 		"displayName": "Monument of Rusofilite - West",
 		"ID": "225",
 		"oppositeStation": "MonumentOfRusofiliteEast",
-		"smallText": ""
+		"smallText": "aka Lozyata"
 	  },
 	  "AstardzhiykaNorth": {
 		"displayName": "Astardzhiyka - North",
@@ -1530,7 +1530,7 @@
 		"smallText": ""
 	  },
 	  "HristoSmirnenkiPrimarySchool": {
-		"displayName": "Hristo Smirnenki Primary School",
+		"displayName": "\"Hristo Smirnenki\" Primary School",
 		"ID": "264",
 		"oppositeStation": "Church",
 		"smallText": ""
@@ -1707,7 +1707,7 @@
 		"displayName": "Basarbovo Cemetery - Exit",
 		"ID": "",
 		"oppositeStation": "BasarbovoCemeteryEntrance",
-		"smallText": "Exit"
+		"smallText": "East"
 	  },
 	  "TheCanalWest": {
 		"displayName": "The Canal - West",

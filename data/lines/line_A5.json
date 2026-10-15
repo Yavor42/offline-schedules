@@ -108,7 +108,7 @@
     },
     {
       "id": "A5_RailwayNikolaevskaTerminus",
-      "displayName": "Railway Staiton - Nikolaevska str.",
+      "displayName": "Railway Station - Nikolaevska str.",
       "stops": [
         {
           "stationId": "CooperativeMarket",

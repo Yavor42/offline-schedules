@@ -6,7 +6,7 @@
   "directions": [
     {
       "id": "A16A_16thKilometreTerminus",
-      "displayName": "16th Kilometre Terminus (Dolapite Railway Station)",
+      "displayName": "16th Kilometer Terminus (Dolapite Railway Station)",
       "stops": [
         {
           "stationId": "RazpredelitelnaRailwayStation",

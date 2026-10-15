@@ -6,7 +6,7 @@
   "directions": [
     {
       "id": "A20_SaintOuan",
-      "displayName": "Saint Ouan",
+      "displayName": "\"Saint Ouan\" str.",
       "stops": [
         {
           "stationId": "PragaSqrTerminusNorth",
