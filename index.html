@@ -106,6 +106,10 @@ header[hidden]{display:none}
 .time.w-red,.big2.w-red,.tm.w-red{color:#ff5a5f}.time.w-yellow,.big2.w-yellow,.tm.w-yellow{color:#ffd23f}
 .eta.d-red{color:#ff5a5f}.eta.d-yellow{color:#ffd23f}.dly.y{color:#ffd23f}.dly{color:#ff5a5f;font-weight:600;font-size:13px;margin-top:4px}
 .pill.star{font-size:20px;line-height:1;padding:7px 12px;color:var(--mut)}.pill.star.on{color:#f5c542}
+.nb{border-radius:12px;padding:10px 12px;margin:12px 0 4px;font-size:14px;line-height:1.35;border:1px solid}
+.nb b{display:block;font-size:15px}.nb .nm{margin-top:3px;opacity:.92;white-space:pre-line}.nb .np{margin-top:6px;font-size:12px;opacity:.65}
+.nb.info{background:#16304f;border-color:#2f5d99;color:#d6e6ff}.nb.free{background:#0e3a25;border-color:#1f7a4d;color:#d3f5e2}
+.nb.ovr{background:#4a3410;border-color:#b07a1c;color:#ffe7b8}.nb.err{background:#4a1519;border-color:#b3343b;color:#ffd6d8}
 </style>
 </head>
 <body>
@@ -137,13 +141,17 @@ const turnGap=(l,d,t,o)=>{const D=l.directions,m=ov(t),sid=d.stops[0].stationId,
     const pool=deps(dirs?y=>D.length===1||y!==x:y=>S.has(y.stops[0].stationId));
     times(x,o).forEach(a=>{const ar=ov(a)+x.cum.at(-1),g=m-ar;if(g<0||g>5||pool.some(z=>z>=ar&&z<m))return;if(best===null||g<best)best=g})});
   return best};
-const times=(d,o=0)=>d.schedules[dayType(o)]||[];
+const dirLine=new Map();   // direction -> its line (for schedule overrides)
+const ovFor=(d,o=0)=>{if(mode!=='auto')return null;const l=dirLine.get(d);if(!l)return null;const t=Date.now()+o*864e5;   // an active SCHEDULE_OVERRIDE notice (no 3-day lead) swaps the timetable; a manual Workday/Holiday choice wins
+  const n=notices.find(n=>n.ty==='SCHEDULE_OVERRIDE'&&t>=n.st&&t<n.en&&nDir(n,l,d));return n?n.ov:null};
+const times=(d,o=0)=>d.schedules[ovFor(d,o)||dayType(o)]||[];
 let dayStart=360;   // earliest departure in the data; filter times before this mean 'after midnight' (next day)
 const ov=t=>{const x=toMin(t);return x<dayStart?x+1440:x};   // operational-day minutes (after-midnight times sort last)
 const dstat=(list,t)=>{const v=ov(t);let nx=Infinity;list.forEach(x=>{const w=ov(x);if(w>v&&w<nx)nx=w});return nx===Infinity?'red':nx-v>=90?'yellow':''};   // red = last of the day, yellow = nothing for 90+ min
 const uw=t=>t<dayStart&&now()>=dayStart?t+1440:t;   // small times = after midnight: tomorrow if it's daytime now, today if it's already past midnight
 
 async function load(){
+  dirLine.clear();
   const man=await (await fetch('data/manifest.json')).json();
   stations=await (await fetch('data/'+man.stations)).json();
   lines=await Promise.all(man.lines.map(f=>fetch('data/lines/'+f).then(r=>r.json())));
@@ -153,7 +161,7 @@ async function load(){
     const raw=String(s.stationId).trim();s.stationId=stations[raw]?raw:nmap[norm(raw)]||raw;
     if(!stations[s.stationId])missing.add(s.stationId)})));
   lines.forEach(l=>l.directions.forEach(d=>Object.values(d.schedules).forEach(a=>a.length&&(dayStart=Math.min(dayStart,...a.map(toMin))))));
-  lines.forEach(l=>l.directions.forEach(d=>{let c=0;d.cum=d.stops.map(s=>{const v=c;c+=s.offsetMinutes;return v});
+  lines.forEach(l=>l.directions.forEach(d=>{dirLine.set(d,l);let c=0;d.cum=d.stops.map(s=>{const v=c;c+=s.offsetMinutes;return v});
     d.stops.forEach((s,i)=>(by[s.stationId]??=[]).push({l,d,i,off:d.cum[i]}))}));
 }
 // ---- navigation (history-backed so the phone's back gesture works)
@@ -173,6 +181,45 @@ $('#sd').onclick=()=>{const s=history.state||{};
     if(n===2)set({v:'trip',l:l.id,d:l.directions.find(x=>x.id!==s.d).id});else if(n>2)go({v:'dirs',l:l.id})}};
 
 
+// ---- notices (data/notices.json): info / free transit / schedule override banners
+let notices=[],noticeErrs=[],nRaw='';
+const NT={INFORMATION:'info',FREE_TRANSIT:'free',SCHEDULE_OVERRIDE:'ovr'};
+const NK=['stationID','excludeStationID','directionID','excludeDirectionID','lineID','excludeLineID'],NF=['municipalOnly','busOnly','trolleybusOnly','intercityOnly','specialOnly'];
+const NPAIR=[['stationID','excludeStationID'],['directionID','excludeDirectionID'],['lineID','excludeLineID']],DAY3=3*864e5;   // banners show 3 days before they start
+const nDate=(p,end)=>{const v=[p?.year,p?.month,p?.day,p?.hour,p?.minute];return v.every(Number.isInteger)?new Date(v[0],v[1]-1,v[2],v[3],v[4]+(end?1:0)):null};   // end is inclusive of its minute
+function prepNotices(raw){
+  notices=[];noticeErrs=[];
+  (Array.isArray(raw?.notices)?raw.notices:[]).forEach(n=>{
+    if(!n||!NT[n.type]){console.warn('Notice ignored (unknown type):',n&&n.id,n&&n.type);return}
+    const id=n.id||'?',e={},er=[],st=nDate(n.validityPeriod?.start),en=nDate(n.validityPeriod?.end,1),ae=n.affectedEntities||{};
+    if(!st||!en)er.push({msg:`${id}: invalid validityPeriod`});
+    if(n.type==='SCHEDULE_OVERRIDE'&&!['workday','holiday'].includes(n.overrideScheduleType))er.push({msg:`${id}: overrideScheduleType must be "workday" or "holiday"`});
+    NK.forEach(k=>{if(ae[k]==null)return;e[k]=[].concat(ae[k]).map(String);if(k.startsWith('exclude')&&e[k].includes('*'))er.push({msg:`${id}: ${k} cannot contain "*"`})});
+    NF.forEach(k=>{if(ae[k]===true)e[k]=true});
+    NPAIR.forEach(([a,b])=>{const c=(e[a]||[]).filter(x=>x!=='*'&&(e[b]||[]).includes(x));if(c.length)er.push({msg:`${id}: ${c.join(', ')} ${c.length>1?'are':'is'} in both ${a} and ${b}`,st:a==='stationID'?c:[]})});
+    if(!Object.keys(e).length)console.warn('Notice has no usable affectedEntities:',id);
+    if(er.length){er.forEach(x=>{noticeErrs.push(x);console.error('Notice error:',x.msg)});return}
+    notices.push({id,ty:n.type,ov:n.overrideScheduleType,cls:NT[n.type],title:String(n.title||''),msg:String(n.message||''),st,en,e});
+  });
+}
+// which notices apply where: station / direction / line selectors (excludes remove; an exclude on its own means "everything else")
+const nLine=(n,l)=>{const e=n.e,inc=e.lineID||NF.some(k=>e[k]);if(!(inc||e.excludeLineID))return false;
+  const ok=!inc||(e.lineID&&(e.lineID.includes('*')||e.lineID.includes(l.id)))||(e.municipalOnly&&(l.type==='bus'||l.type==='trolleybus'))||(e.busOnly&&l.type==='bus')||(e.trolleybusOnly&&l.type==='trolleybus')||(e.intercityOnly&&l.type==='intercity')||(e.specialOnly&&l.special===true);
+  return !!ok&&!(e.excludeLineID||[]).includes(l.id)};
+const nDir=(n,l,d)=>{const e=n.e;if((e.excludeDirectionID||[]).includes(d.id))return false;
+  const direct=(e.directionID||e.excludeDirectionID)?(!e.directionID||e.directionID.includes('*')||e.directionID.includes(d.id)):false;
+  return direct||nLine(n,l)};
+const nStation=(n,sid)=>{const e=n.e;if((e.excludeStationID||[]).includes(sid))return false;
+  if((e.stationID||e.excludeStationID)&&(!e.stationID||e.stationID.includes('*')||e.stationID.includes(sid)))return true;
+  return(by[sid]||[]).some(x=>nDir(n,x.l,x.d))};
+const nFmt=new Intl.DateTimeFormat('en-GB',{weekday:'short',day:'numeric',month:'short',hour:'2-digit',minute:'2-digit',hour12:false});
+const nBox=n=>`<div class="nb ${n.cls}">${n.title?`<b>${esc(n.title)}</b>`:''}${n.msg?`<div class="nm">${esc(n.msg)}</div>`:''}<div class="np">${Date.now()<n.st?'Starts '+nFmt.format(n.st):'Until '+nFmt.format(new Date(n.en-60000))}</div></div>`;
+const nHtml=f=>{const t=Date.now();return notices.filter(n=>t>=n.st-DAY3&&t<n.en&&f(n)).map(nBox).join('')};
+const nErrHtml=sid=>noticeErrs.filter(x=>x.st?.includes(sid)).map(x=>`<div class="nb err"><b>Notice error</b><div class="nm">${esc(x.msg)}</div></div>`).join('');
+async function loadNotices(){
+  try{const r=await fetch('data/notices.json?t='+Date.now(),{cache:'no-store'});if(!r.ok)return;const txt=await r.text();if(txt===nRaw)return;
+    const j=JSON.parse(txt);prepNotices(j);nRaw=txt;
+    const s=history.state||{v:'home'};if(lines.length&&!(document.activeElement&&document.activeElement.id==='dm')&&s.v!=='map'&&s.v!=='search'&&!(s.v==='trip'&&pickOpen))render(s,true)}catch(e){console.warn('notices.json not loaded',e)}}
 const V={
 home(){
   const d=new Date();
@@ -181,6 +228,7 @@ home(){
   <button class="big" data-go='{"v":"search"}'><div class="ic">📍</div><div><b>Search stations</b><span>By name or ID · upcoming departures</span></div></button>
   <button class="big" data-go='{"v":"map"}'><div class="ic">🗺️</div><div><b>Transit map</b><span>Pan &amp; zoom the network map</span></div></button></div>
   ${missing.size?`<div class="sub" style="margin-top:22px;font-size:12px">⚠ Not in stations file: ${[...missing].map(esc).join(', ')}</div>`:''}
+  ${noticeErrs.length?`<div class="sub" style="margin-top:12px;font-size:12px">⚠ Notice problems: ${noticeErrs.map(x=>esc(x.msg)).join('; ')}</div>`:''}
   ${(()=>{const w=Object.keys(stations).map(k=>[k,oppWarn(k)]).filter(x=>x[1]);return w.length?`<div class="sub" style="margin-top:12px;font-size:12px">⚠ Opposite station problems: ${w.map(([k,m])=>esc(k)+' ('+esc(m)+')').join('; ')}</div>`:''})()}</div>`}},
 routes(){
   const g={};lines.forEach(l=>(g[l.type]??=[]).push(l));
@@ -189,7 +237,7 @@ routes(){
   return{t:'Routes',h:order.filter(k=>g[k]).map(k=>`<h2>${nm[k]||esc(k)}</h2><div class="grid">${g[k].map(l=>`<button class="badge" style="background:${esc(l.color)}" data-go='${JSON.stringify({v:'dirs',l:l.id})}'>${esc(l.displayName)}</button>`).join('')}</div>`).join('')||'<div class="empty">No routes found</div>'}},
 dirs(s){
   const l=lines.find(x=>x.id===s.l);
-  return{t:'Line '+l.displayName,h:`<h2>Choose direction</h2>`+l.directions.map(d=>`<button class="row" data-go='${JSON.stringify({v:'trip',l:l.id,d:d.id})}'>${badge(l)}<div class="grow"><div class="t">➜ ${snm(d.stops.at(-1).stationId)}</div><div class="s">from ${esc(sname(d.stops[0].stationId))} · ${d.stops.length} stops</div></div>›</button>`).join('')}},
+  return{t:'Line '+l.displayName,h:`<h2>Choose direction</h2>`+nHtml(n=>nLine(n,l))+l.directions.map(d=>`<button class="row" data-go='${JSON.stringify({v:'trip',l:l.id,d:d.id})}'>${badge(l)}<div class="grow"><div class="t">➜ ${snm(d.stops.at(-1).stationId)}</div><div class="s">from ${esc(sname(d.stops[0].stationId))} · ${d.stops.length} stops</div></div>›</button>`).join('')}},
 trip(s){
   const l=lines.find(x=>x.id===s.l),d=l.directions.find(x=>x.id===s.d),tot=d.cum.at(-1);
   // target = most recently departed trip still running (not yet at terminus), else next upcoming, else last of the day
@@ -210,7 +258,7 @@ trip(s){
   <div class="nav"><button data-i="${tg.k}" ${one?'disabled':''} style="color:var(--acc)">${tg.act?'Jump to current departure':'Jump to upcoming departure'}</button></div>
   <div class="nav" style="margin-top:10px"><button data-i="${i-1}" ${one||i<1?'disabled':''}>‹ Previous</button><button data-i="${i+1}" ${one||i>=ts.length-1?'disabled':''}>Next ›</button></div>
   <div style="position:relative"><div class="nav sm"><div class="half"><button data-i="0" ${one||i<1?'disabled':''}>⏮ First</button><button data-i="${ts.length-1}" ${one||i>=ts.length-1?'disabled':''}>Last ⏭</button></div><button data-pk ${one?'disabled':''}>Choose a departure… ▾</button></div>${menu}</div></div>
-  <div class="uph"><h2>Stops</h2>${(g=>g!=null?`<div class="dly${g>2?' y':''}" style="margin:20px 4px 10px 0">⚠ This departure may be delayed</div>`:'')(turnGap(l,d,ts[i],yd?-1:0))}</div><div style="--c:${esc(l.color)}">${d.stops.map((st,k)=>{const m=dep+d.cum[k],ds=dstat(ts.map(x=>fmt(toMin(x)+d.cum[k])),fmt(m));
+  ${nHtml(n=>nDir(n,l,d))}<div class="uph"><h2>Stops</h2>${(g=>g!=null?`<div class="dly${g>2?' y':''}" style="margin:20px 4px 10px 0">⚠ This departure may be delayed</div>`:'')(turnGap(l,d,ts[i],yd?-1:0))}</div><div style="--c:${esc(l.color)}">${d.stops.map((st,k)=>{const m=dep+d.cum[k],ds=dstat(ts.map(x=>fmt(toMin(x)+d.cum[k])),fmt(m));
   return`<button class="st ${m<n?'past':''}" data-go='${JSON.stringify({v:'station',id:st.stationId})}'><span class="tm${ds?' w-'+ds:''}">${fmt(m)}</span><span class="dot"></span><span class="nm">${snm(st.stationId)}${k===d.stops.length-1?'<span class="tag">end</span>':''}</span></button>`}).join('')}</div><div class="sub" style="text-align:center;margin:18px 0 8px;font-size:13px">${one?'Only one departure today':`Departure ${i+1} of ${ts.length}`}</div>`,after(){const m=$('.pk'),c=m&&m.querySelector('.cur');if(c)m.scrollTop=c.offsetTop-m.clientHeight/2+c.offsetHeight/2}}},
 map(){return{t:'Transit map',h:'<div id="map"></div>',after:initMap}},
 search(){
@@ -238,9 +286,9 @@ search(){
     const qx=$('#qx');inp.oninput=()=>{qx.hidden=!inp.value;draw()};qx.onclick=()=>{inp.value='';qx.hidden=true;inp.focus();draw()};draw();}}},
 station(s){
   if(F.sid!==s.id)fReset(s.id);
-  const ow=oppWarn(s.id),head=(ow?`<div class="sub" style="margin:4px 4px 0;font-size:12px">⚠ ${esc(ow)}</div>`:'')+'',code=scode(s.id),stx=stations[s.id]?.smallText,sub=[code?'#'+code:'',stx||''].filter(Boolean).join(' · ');
-  if(!(by[s.id]||[]).length)return{t:sname(s.id),sub,h:head+'<h2>Upcoming departures</h2><div class="empty">No upcoming departures</div>'};
-  return{t:sname(s.id),sub,h:head+'<div class="fx" id="fx"></div><div id="pdeps"></div><div class="uph"><h2>Upcoming departures</h2><button class="clr" id="cl" hidden>Clear</button></div><div id="fdeps"></div>',after(){initFilters(s.id)}}}
+  const nb=nErrHtml(s.id)+nHtml(n=>nStation(n,s.id)),ow=oppWarn(s.id),head=(ow?`<div class="sub" style="margin:4px 4px 0;font-size:12px">⚠ ${esc(ow)}</div>`:'')+'',code=scode(s.id),stx=stations[s.id]?.smallText,sub=[code?'#'+code:'',stx||''].filter(Boolean).join(' · ');
+  if(!(by[s.id]||[]).length)return{t:sname(s.id),sub,h:head+nb+'<h2>Upcoming departures</h2><div class="empty">No upcoming departures</div>'};
+  return{t:sname(s.id),sub,h:head+'<div class="fx" id="fx"></div><div id="pdeps"></div>'+nb+'<div class="uph"><h2>Upcoming departures</h2><button class="clr" id="cl" hidden>Clear</button></div><div id="fdeps"></div>',after(){initFilters(s.id)}}}
 };
 // ---- station filters (standard = line chips, advanced = vehicle type / time frame / stops-at; the two are mutually exclusive)
 let F={},refreshDeps=null,closeFx=null,pickOpen=false;
@@ -361,7 +409,8 @@ function render(s,keep){
   document.querySelector('header').hidden=s.v==='home';
   const sd=$('#sd');sd.hidden=!(s.v==='station'||s.v==='trip');
   if(!sd.hidden)sd.disabled=s.v==='station'?!oppOf(s.id).ok:lines.find(x=>x.id===s.l).directions.length<2;
-  const au=[0,6].includes(new Date().getDay())?'Holiday':'Workday';
+  let au=[0,6].includes(new Date().getDay())?'Holiday':'Workday';
+  if(lines.length){const t=new Set(lines.flatMap(l=>l.directions.map(d=>ovFor(d,0)||'x')));if(t.size===1&&!t.has('x'))au=[...t][0]==='holiday'?'Holiday':'Workday'}   // label follows a network-wide override
   main.innerHTML=v.h;$('#ft').hidden=s.v==='map';
   const dm=$('#dm');dm.options[0].text='Auto ('+au+')';dm.value=mode;
   v.after&&v.after();main.scrollTop=keep?y:0;
@@ -375,7 +424,8 @@ main.addEventListener('click',e=>{
   const b=e.target.closest('[data-i]');if(b&&!b.disabled)set({...history.state,i:+b.dataset.i});
 });
 setInterval(()=>{const s=history.state||{v:'home'};if(document.activeElement&&document.activeElement.id==='dm')return;if(s.v==='map'||(s.v==='trip'&&pickOpen))return;if(s.v==='station')refreshDeps&&refreshDeps();else if(s.v!=='search')render(s,true)},20000);
-load().then(()=>{history.replaceState(history.state||{v:'home'},'');render(history.state)})
+loadNotices();setInterval(loadNotices,300000);document.addEventListener('visibilitychange',()=>{if(!document.hidden)loadNotices()});
+load().then(()=>{history.replaceState(history.state||{v:'home'},'');render(history.state);loadNotices()})
  .catch(()=>{main.innerHTML='<div class="empty">Could not load schedule data.<br>Serve this folder over http(s) instead of opening the file directly.<ul style="display:inline-block;text-align:left;margin:14px 0 0;padding-left:20px"><li>GitHub might be down</li><li>Check Internet connection</li><li>Check capitalization and/or name of new line files</li></ul></div>'});
 if('serviceWorker'in navigator)navigator.serviceWorker.register('sw.js').catch(()=>{});
 </script>
