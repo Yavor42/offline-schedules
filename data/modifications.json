@@ -137,6 +137,7 @@
           "segments": [
             {
               "segmentId": 1,
+              "startStationId": "9thKilometerWest",
               "modifications": [
                 {
                   "action": "CANCELLED",
@@ -183,8 +184,8 @@
           "year": 2026,
           "month": 10,
           "day": 18,
-          "hour": 15,
-          "minute": 0
+          "hour": 23,
+          "minute": 59
         }
       },
       "affectedEntities": {
