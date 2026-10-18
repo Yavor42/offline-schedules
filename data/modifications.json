@@ -137,10 +137,10 @@
           "segments": [
             {
               "segmentId": 1,
-              "startStationId": "9thKilometerWest",
               "modifications": [
                 {
                   "action": "CANCELLED",
+				  "previousStationOffsetMinutes": 2,
                   "affectedStations": [
                     {
                       "stationId": "PetrolBaseEntranceNorth"
@@ -191,7 +191,7 @@
         "specialLine": {
           "id": "special1",
           "type": "special",
-          "color": "#FFFF00",
+          "color": "#9F2B68",
           "displayName": "Airshow Special Line",
           "directions": [
             {
@@ -212,7 +212,7 @@
                   "offsetMinutes": 2
                 },
                 {
-                  "stationId": "ShtraklevoAirportTemp",
+                  "stationId": "HadzhiGenovaChesmaNorth",
                   "offsetMinutes": 0
                 }
               ],
@@ -258,10 +258,11 @@
           "segments": [
             {
               "segmentId": 1,
+			  "startStationID": "Block28",
               "modifications": [
                 {
-                  "stationId": "Block28",
                   "action": "ADDED",
+				  "previousStationOffsetMinutes": 3,
                   "affectedStations": [
                     {
                       "stationId": "Druzhba3Block48",
