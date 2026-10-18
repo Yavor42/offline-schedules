@@ -91,8 +91,13 @@ input[type=search]::-webkit-search-cancel-button{-webkit-appearance:none;display
 .st .tm{width:52px;font-variant-numeric:tabular-nums;font-weight:600}
 .st .dot{width:12px;height:12px;border-radius:50%;background:var(--c);flex:none;z-index:1}
 .st::before{content:"";position:absolute;left:76px;top:0;bottom:0;width:3px;margin-left:-1.5px;background:var(--c);opacity:.5}
-.st:first-child::before{top:50%}.st:last-child::before{bottom:50%}
 .st.past{opacity:.38}.st .nm{flex:1}
+.st .nm{display:flex;align-items:baseline}.st .nm .nmw{min-width:0}.pl{color:var(--ok);font-weight:700;margin-right:7px}
+.st.s0 .dot,.st.sN .dot{width:18px;height:15.59px;margin:0 -3px;border-radius:0;clip-path:polygon(0 0,100% 0,50% 100%)}.st.sN .dot{clip-path:polygon(50% 0,100% 100%,0 100%)}
+.st.s0::before{top:calc(50% + 7.8px)}.st.sN::before{bottom:calc(50% + 7.8px)}.st.aft::before{display:none}.st.aft .dot{opacity:.35}
+.st.sx .tm,.st.sx .nm,.xx{color:var(--mut)!important;text-decoration:line-through}
+.tb.x{background:#4a1519;color:#ffd6d8;text-decoration:line-through}.tb.a{background:#0e3a25;color:#d3f5e2}.tb.cur.x,.tb.cur.a{outline:2px solid var(--acc)}
+.row.a{background:#0e3a25}.row.x .t,.row.x .s,.row.x .time,.row.x .eta{color:var(--mut)!important;text-decoration:line-through}.row.x .badge{opacity:.5}
 .tag{font-size:11px;color:var(--mut);border:1px solid var(--line);border-radius:6px;padding:1px 6px;margin-left:6px}
 main.fill{padding:0;overflow:hidden}
 #map{width:100%;height:100%;background:#0b0e13;touch-action:none;outline:0}
@@ -109,6 +114,7 @@ header[hidden]{display:none}
 .nb{border-radius:16px;padding:10px 12px;margin:12px 0 4px;font-size:14px;line-height:1.35;border:1px solid}
 .dn .nb{margin:0 0 8px}.nb b{display:block;font-size:15px}.nb .nm{margin-top:3px;opacity:.92;white-space:pre-line}.nb .np{margin-top:6px;font-size:12px;opacity:.65}
 .nb.info{background:#16304f;border-color:#2f5d99;color:#d6e6ff}.nb.free{background:#0e3a25;border-color:#1f7a4d;color:#d3f5e2}
+.nb.red{background:#4a1519;border-color:#b3343b;color:#ffd6d8}
 .nb.ovr{background:#4a3410;border-color:#b07a1c;color:#ffe7b8}.nb.err{background:#4a1519;border-color:#b3343b;color:#ffd6d8}
 </style>
 </head>
@@ -122,30 +128,45 @@ const pad=n=>String(n).padStart(2,'0');
 const fmt=m=>{m=(m%1440+1440)%1440;return pad(Math.floor(m/60))+':'+pad(m%60)};
 const toMin=t=>{const[a,b]=t.split(':');return +a*60+ +b};
 const now=()=>{const d=new Date();return d.getHours()*60+d.getMinutes()};
-let lines=[],stations={},by={},q='';const missing=new Set();
+let lines=[],baseLines=[],stations={},by={},q='';const missing=new Set(),modMissing=new Set();
+const norm=x=>String(x).toLowerCase().replace(/[^a-z0-9]/g,''),nmap={};
+const fixId=r=>{r=String(r).trim();return stations[r]?r:nmap[norm(r)]||r};
 let mode='auto';try{mode=localStorage.dayMode||'auto'}catch(e){}
 let favs=new Set(),sortBy='id',onlyFav=false;   // favourite stations + station-search sort/filter, kept in localStorage
 try{favs=new Set(JSON.parse(localStorage.favStations||'[]'));sortBy=localStorage.searchSort==='name'?'name':'id';onlyFav=localStorage.favOnly==='1'}catch(e){}
 const saveFav=()=>{try{localStorage.favStations=JSON.stringify([...favs]);localStorage.searchSort=sortBy;localStorage.favOnly=onlyFav?'1':''}catch(e){}};
 const dayType=(o=0)=>{if(mode!=='auto')return mode;const d=new Date();d.setDate(d.getDate()+o);return[0,6].includes(d.getDay())?'holiday':'workday'};
 const sname=id=>stations[id]?.displayName||id.replace(/([a-z])([A-Z])/g,'$1 $2');
-const scode=id=>String(stations[id]?.ID??'').trim();
+const scode=id=>String(stations[id]?.number??'').trim();
 const nmw=(n,s,x='')=>`<span class="nmw"><span class="nn">${n}${x}</span>${s?`<span class="ss">${s}</span>`:''}</span>`;
 const snm=(id,x='')=>nmw(esc(sname(id)),stations[id]?.smallText?esc(stations[id].smallText):'',x);
-const badge=l=>`<span class="badge" style="background:${esc(l.color||'#4d83ff')}">${esc(l.displayName||l.id)}</span>`;
+const bt=l=>l.special?'S':(l.displayName||l.id),ltitle=l=>l.special?l.displayName:'Line '+l.displayName;   // special lines show as an 'S' chip
+const badge=l=>`<span class="badge" style="background:${esc(l.color||'#4d83ff')}">${esc(bt(l))}</span>`;
 const eta=d=>d<=0?'now':d<60?d+' min':Math.floor(d/60)+'h '+pad(d%60)+'m';
 // turnaround check: minutes between a vehicle of line l finishing a trip and the very next departure it can take; null unless 0-5
 // lines with <=3 directions: the vehicle continues on another direction of the line; more directions: match by terminus (or its opposite platform)
 const turnGap=(l,d,t,o)=>{const D=l.directions,m=ov(t),sid=d.stops[0].stationId,op=oppOf(sid),S=new Set([sid,...(op.ok?[op.id]:[])]),dirs=D.length<=3;let best=null;
-  const deps=ok=>D.filter(ok).flatMap(y=>times(y,o).map(ov));
-  D.forEach(x=>{const from=dirs?x!==d||D.length===1:S.has(x.stops.at(-1).stationId);if(!from)return;
+  const deps=ok=>D.filter(ok).flatMap(y=>sched(y,o).lts.map(ov));
+  D.forEach(x=>{const from=dirs?x!==d||D.length===1:S.has(x.stops[x.term].stationId);if(!from)return;
     const pool=deps(dirs?y=>D.length===1||y!==x:y=>S.has(y.stops[0].stationId));
-    times(x,o).forEach(a=>{const ar=ov(a)+x.cum.at(-1),g=m-ar;if(g<0||g>5||pool.some(z=>z>=ar&&z<m))return;if(best===null||g<best)best=g})});
+    sched(x,o).lts.forEach(a=>{const ar=ov(a)+x.tot,g=m-ar;if(g<0||g>5||pool.some(z=>z>=ar&&z<m))return;if(best===null||g<best)best=g})});
   return best};
 const dirLine=new Map();   // direction -> its line (for schedule overrides)
 const ovFor=(d,o=0)=>{if(mode!=='auto')return null;const l=dirLine.get(d);if(!l)return null;const t=Date.now()+o*864e5;   // an active SCHEDULE_OVERRIDE notice (no 3-day lead) swaps the timetable; a manual Workday/Holiday choice wins
   const n=notices.find(n=>n.ty==='SCHEDULE_OVERRIDE'&&t>=n.st&&t<n.en&&nDir(n,l,d));return n?n.ov:null};
-const times=(d,o=0)=>d.schedules[ovFor(d,o)||dayType(o)]||[];
+// schedule entries for a direction on day offset o: [{t, x?:modification that cancels it, a?:modification that adds it}] sorted by operational time; .ts times, .lv live (not cancelled), .lts live times
+const SC=new Map();
+const dtOf=(o,t)=>{const x=new Date();x.setHours(0,0,0,0);x.setDate(x.getDate()+o);return x.getTime()+ov(t)*60000};   // absolute time of a departure (after-midnight times belong to the same operational day)
+function sched(d,o=0){o=o||0;const k=d.id+'|'+o;let r=SC.get(k);if(r)return r;
+  const l=dirLine.get(d),ty=ovFor(d,o)||dayType(o),base=d.schedules[ty]||[],set=new Set(base),inW=(m,t)=>{const x=dtOf(o,t);return x>=m.st&&x<m.en};
+  r=base.map(t=>({t}));
+  if(l&&l.special)r=r.filter(e=>inW(l.mod,e.t));
+  else mods.forEach(m=>{
+    if(m.ty==='REDUCED_SERVICE'){const a=m.red[d.id]?.[ty];if(a)r.forEach(e=>{if(!e.x&&a.includes(e.t)&&inW(m,e.t))e.x=m})}
+    else if(m.ty==='CANCELLATION'){if(m.dirs.has(d.id))r.forEach(e=>{if(!e.x&&inW(m,e.t))e.x=m})}
+    else if(m.ty==='ADDITIONAL_SERVICE'){const a=m.add[d.id]?.[ty];if(a)a.forEach(t=>{if(!set.has(t)&&inW(m,t)){set.add(t);r.push({t,a:m})}})}});
+  r.sort((a,b)=>ov(a.t)-ov(b.t));r.ts=r.map(e=>e.t);r.lv=r.filter(e=>!e.x);r.lts=r.lv.map(e=>e.t);SC.set(k,r);return r}
+const times=(d,o=0)=>sched(d,o).ts;
 let dayStart=360;   // earliest departure in the data; filter times before this mean 'after midnight' (next day)
 const ov=t=>{const x=toMin(t);return x<dayStart?x+1440:x};   // operational-day minutes (after-midnight times sort last)
 const dstat=(list,t)=>{const v=ov(t);let nx=Infinity;list.forEach(x=>{const w=ov(x);if(w>v&&w<nx)nx=w});return nx===Infinity?'red':nx-v>=90?'yellow':''};   // red = last of the day, yellow = nothing for 90+ min
@@ -156,14 +177,13 @@ async function load(){
   const man=await (await fetch('data/manifest.json')).json();
   stations=await (await fetch('data/'+man.stations)).json();
   lines=await Promise.all(man.lines.map(f=>fetch('data/lines/'+f).then(r=>r.json())));
-  const norm=x=>String(x).toLowerCase().replace(/[^a-z0-9]/g,''),nmap={};
   Object.keys(stations).forEach(k=>nmap[norm(k)]=k);
   lines.forEach(l=>l.directions.forEach(d=>d.stops.forEach(s=>{
-    const raw=String(s.stationId).trim();s.stationId=stations[raw]?raw:nmap[norm(raw)]||raw;
+    s.stationId=fixId(s.stationId);
     if(!stations[s.stationId])missing.add(s.stationId)})));
   lines.forEach(l=>l.directions.forEach(d=>Object.values(d.schedules).forEach(a=>a.length&&(dayStart=Math.min(dayStart,...a.map(toMin))))));
-  lines.forEach(l=>l.directions.forEach(d=>{dirLine.set(d,l);let c=0;d.cum=d.stops.map(s=>{const v=c;c+=s.offsetMinutes;return v});
-    d.stops.forEach((s,i)=>(by[s.stationId]??=[]).push({l,d,i,off:d.cum[i]}))}));
+  lines.forEach(l=>l.directions.forEach(d=>{d.s0=d.stops;let c=0;d.c0=d.stops.map(s=>{const v=c;c+=s.offsetMinutes;return v})}));   // original route kept; d.stops/cum/term/tot are the effective (diverted) route
+  baseLines=lines;syncMods(true);
 }
 // ---- navigation (history-backed so the phone's back gesture works)
 const go=s=>{if(s.v==='station')fReset(s.id);history.pushState(s,'');render(s)};
@@ -221,6 +241,98 @@ async function loadNotices(){
   try{const r=await fetch('data/notices.json?t='+Date.now(),{cache:'no-store'});if(!r.ok)return;const txt=await r.text();if(txt===nRaw)return;
     const j=JSON.parse(txt);prepNotices(j);nRaw=txt;
     const s=history.state||{v:'home'};if(lines.length&&!(document.activeElement&&document.activeElement.id==='dm')&&s.v!=='map'&&s.v!=='search'&&!(s.v==='trip'&&pickOpen))render(s,true)}catch(e){console.warn('notices.json not loaded',e)}}
+// ---- modifications (data/modifications.json): reduced / additional service, cancellations, diversions, special lines
+let mods=[],modErrs=[],modRaw='',modVer=0,mkey='';
+const MTY={REDUCED_SERVICE:'red',ADDITIONAL_SERVICE:'free',CANCELLATION:'red',DIVERSION:'ovr',SPECIAL:'free'};
+const hm=t=>{const m=/^(\d{1,2}):(\d{2})$/.exec(String(t).trim());return m&&+m[1]<48&&+m[2]<60?pad(+m[1])+':'+m[2]:null};
+// effective route of direction d with the active diversions act applied. Items keep every original stop; CANCELLED ones are flagged (x), ADDED ones inserted after the segment's start station (add).
+// previousStationOffsetMinutes = minutes from the start station to the next kept stop. The last kept stop is the terminus (its own offset is ignored = 0).
+function buildRoute(d,act,E){
+  const it=d.s0.map(s=>({stationId:s.stationId,raw:s.offsetMinutes}));
+  act.forEach(m=>(m.div[d.id]||[]).forEach(sg=>{
+    const w=x=>E&&E(`${m.id}: ${d.id}, segment ${sg.id}: ${x}`),a=it.findIndex(x=>x.stationId===sg.start&&!x.x);
+    if(a<0)return w(`startStationId ${sg.start} is not on the line`);
+    let pos=a+1;
+    sg.mods.forEach(mo=>{
+      if(mo.action==='CANCELLED')mo.stations.forEach(sid=>{const k=it.findIndex((x,j)=>j>a&&x.stationId===sid&&!x.x);if(k<0)w(`${sid} is not on the line after ${sg.start}`);else it[k].x=m});
+      else{const ins=mo.stations.map(x=>({stationId:x.id,raw:x.off,add:m}));it.splice(pos,0,...ins);pos+=ins.length}
+      if(mo.prev!=null)it[a].jump=mo.prev})}));
+  const cum=[];let p=-1;
+  it.forEach((x,k)=>{if(k===0)cum[0]=0;else{const dp=cum[k-1]+it[k-1].raw;cum[k]=x.x||p<0?dp:cum[p]+(it[p].jump??(dp-cum[p]))}if(!x.x)p=k});
+  let term=it.length-1;while(term>0&&it[term].x)term--;
+  return{stops:it.map(x=>({stationId:x.stationId,offsetMinutes:x.raw,x:x.x,add:x.add})),cum,term,tot:cum[term]}}
+function applyRoute(d,t){
+  const act=mods.filter(m=>m.ty==='DIVERSION'&&t>=m.st&&t<m.en&&m.div[d.id]);
+  if(!act.length){d.stops=d.s0;d.cum=d.c0;d.term=d.s0.length-1;d.tot=d.c0[d.term];return}
+  const r=buildRoute(d,act);d.stops=r.stops;d.cum=r.cum;d.term=r.term;d.tot=r.tot}
+// rebuild lines (base + active special lines), diverted routes and the station index; true when something changed
+function syncMods(force){
+  const t=Date.now(),act=mods.filter(m=>(m.ty==='DIVERSION'||m.ty==='SPECIAL')&&t>=m.st&&t<m.en).map(m=>m.id).join(',');
+  if(!force&&act+'|'+modVer===mkey)return false;mkey=act+'|'+modVer;
+  lines=[...baseLines,...mods.filter(m=>m.ty==='SPECIAL'&&t>=m.st&&t<m.en).map(m=>m.line)];
+  dirLine.clear();by={};SC.clear();
+  lines.forEach(l=>l.directions.forEach(d=>{dirLine.set(d,l);applyRoute(d,t);d.stops.forEach((s,i)=>(by[s.stationId]??=[]).push({l,d,i,off:d.cum[i]}))}));
+  return true}
+function prepMods(raw){
+  mods=[];modErrs=[];modMissing.clear();
+  const dm=new Map(),lm=new Map(baseLines.map(l=>[l.id,l]));baseLines.forEach(l=>l.directions.forEach(d=>dm.set(d.id,{l,d})));
+  const stn=sid=>{sid=fixId(sid);if(!stations[sid])modMissing.add(sid);return sid};
+  (Array.isArray(raw?.modifications)?raw.modifications:[]).forEach(m=>{
+    let ty=String(m?.type||'').toUpperCase().replace(/[\s-]/g,'_');if(ty==='SPECIAL_LINE')ty='SPECIAL';
+    if(!MTY[ty]){console.warn('Modification ignored (unknown type):',m&&m.id,m&&m.type);return}
+    const id=String(m.id||'?'),er=[],E=x=>er.push(`${id}: ${x}`),st=nDate(m.validityPeriod?.start),en=nDate(m.validityPeriod?.end,1),ae=m.affectedEntities&&typeof m.affectedEntities==='object'?m.affectedEntities:{};
+    const o={id,ty,cls:MTY[ty],title:String(m.title||''),msg:String(m.message||''),st,en,dirs:new Set(),stn:new Set(),red:{},add:{},div:{}};
+    if(!st||!en){E('invalid validityPeriod');er.forEach(x=>{modErrs.push(x);console.error('Modification error:',x)});return}
+    if(ty==='REDUCED_SERVICE'||ty==='ADDITIONAL_SERVICE')Object.entries(ae).forEach(([k,v])=>{
+      const x=dm.get(k);if(!x){E(`direction ${k} not found`);return}
+      const rec={};Object.keys(v||{}).forEach(dy=>{
+        if(dy!=='workday'&&dy!=='holiday'){E(`${k}: unknown key "${dy}" (use workday / holiday)`);return}
+        rec[dy]=[].concat(v[dy]).map(t=>{const h=hm(t);if(!h)E(`${k}: invalid time "${t}"`);return h}).filter(Boolean);
+        rec[dy].forEach(t=>{const has=(x.d.schedules[dy]||[]).includes(t);if(ty==='REDUCED_SERVICE'&&!has)E(`${k}: ${t} is not in the ${dy} schedule`);if(ty==='ADDITIONAL_SERVICE'&&has)E(`${k}: ${t} is already in the ${dy} schedule`)})});
+      (ty==='REDUCED_SERVICE'?o.red:o.add)[k]=rec;o.dirs.add(k)});
+    else if(ty==='CANCELLATION')Object.keys(ae).forEach(k=>{if(lm.has(k))lm.get(k).directions.forEach(d=>o.dirs.add(d.id));else if(dm.has(k))o.dirs.add(k);else E(`${k} is not a line or direction`)});
+    else if(ty==='DIVERSION')Object.entries(ae).forEach(([k,v])=>{
+      const x=dm.get(k);if(!x){E(`direction ${k} not found`);return}
+      const segs=Array.isArray(v?.segments)?v.segments:[],seen=new Set(),S=[];if(!segs.length){E(`${k}: no segments`);return}
+      segs.forEach((sg,j)=>{const sid=sg?.segmentId,tag=`${k}, segment ${sid??'#'+(j+1)}`;
+        if(sid==null||sid==='')E(`${k}: segment #${j+1} has no segmentId`);else if(seen.has(String(sid)))E(`${tag}: duplicate segmentId`);else seen.add(String(sid));
+        if(!sg?.startStationId){E(`${tag}: missing startStationId`);return}
+        const ms=(Array.isArray(sg.modifications)?sg.modifications:[]).map(mo=>{
+          const action=String(mo?.action||'').toUpperCase(),list=Array.isArray(mo?.affectedStations)?mo.affectedStations:[];
+          if(action!=='CANCELLED'&&action!=='ADDED'){E(`${tag}: unknown action "${mo?.action}" (use CANCELLED / ADDED)`);return null}
+          if(!list.length){E(`${tag}: ${action} has no affectedStations`);return null}
+          let prev=mo.previousStationOffsetMinutes??sg.previousStationOffsetMinutes;
+          if(prev!=null){if(Number.isFinite(+prev)&&+prev>=0)prev=+prev;else{E(`${tag}: invalid previousStationOffsetMinutes`);prev=null}}
+          const stations_=list.map((a,n)=>{const s=stn(a?.stationId??'');o.stn.add(s);let off=a?.offsetMinutes;
+            if(action==='ADDED'&&!(Number.isFinite(+off)&&off!==null&&+off>=0)){if(n<list.length-1)E(`${tag}: ${s} needs offsetMinutes`);off=n<list.length-1?1:0}
+            return{id:s,off:+off||0}});
+          return{action,prev,stations:stations_.map(z=>action==='ADDED'?z:z.id)}}).filter(Boolean);
+        S.push({id:String(sid??j+1),start:fixId(sg.startStationId),mods:ms})});
+      o.div[k]=S;o.dirs.add(k);buildRoute(x.d,[o],x=>er.push(x))});
+    else{const sl=ae.specialLine;
+      if(!sl||typeof sl!=='object'||!Array.isArray(sl.directions)||!sl.directions.length){E('specialLine with at least one direction is required');}
+      else if(lm.has(String(sl.id)))E(`line id ${sl.id} already exists`);
+      else{const L={id:String(sl.id||id),type:'special',special:true,color:/^#[0-9a-f]{3,8}$/i.test(sl.color||'')?sl.color:'#4d83ff',displayName:String(sl.displayName||sl.id||id),directions:[],mod:o};
+        sl.directions.forEach((d,j)=>{const did=String(d?.id||'');const tag=`line ${L.id}, direction ${did||'#'+(j+1)}`;
+          if(!did||dm.has(did)||L.directions.some(z=>z.id===did)){E(`${tag}: missing or duplicate direction id`);return}
+          if(!Array.isArray(d.stops)||!d.stops.length||d.stops.some(z=>!Number.isFinite(+z?.offsetMinutes))){E(`${tag}: stops need stationId and numeric offsetMinutes`);return}
+          const D={id:did,displayName:String(d.displayName||''),smallText:String(d.smallText||''),stops:d.stops.map(z=>({stationId:stn(z.stationId),offsetMinutes:+z.offsetMinutes})),schedules:{workday:[],holiday:[]}};
+          ['workday','holiday'].forEach(dy=>D.schedules[dy]=[].concat(d.schedules?.[dy]||[]).map(t=>{const h=hm(t);if(!h)E(`${tag}: invalid time "${t}"`);return h}).filter(Boolean).sort((a,b)=>ov(a)-ov(b)));
+          D.s0=D.stops;let c=0;D.c0=D.stops.map(z=>{const v=c;c+=z.offsetMinutes;return v});
+          L.directions.push(D);o.dirs.add(did);D.stops.forEach(z=>o.stn.add(z.stationId))});
+        if(L.directions.length)o.line=L;else E('no valid directions')}
+      if(!o.line){er.forEach(x=>{modErrs.push(x);console.error('Modification error:',x)});return}}
+    er.forEach(x=>{modErrs.push(x);console.error('Modification error:',x)});mods.push(o)})}
+// which modifications apply where (same 3-day lead as notices); the modification that touches the current departure goes first
+const mLine=(m,l)=>l.directions.some(d=>m.dirs.has(d.id)),mDir=(m,d)=>m.dirs.has(d.id);
+const mStation=(m,sid)=>m.ty==='DIVERSION'||m.ty==='SPECIAL'?m.stn.has(sid):(by[sid]||[]).some(x=>m.dirs.has(x.d.id));
+const mHtml=(f,first)=>{const t=Date.now();return mods.filter(m=>t>=m.st-DAY3&&t<m.en&&f(m)).sort((a,b)=>(b===first)-(a===first)).map(nBox).join('')};
+async function loadMods(){
+  try{await loaded0;if(!baseLines.length)return;
+    const r=await fetch('data/modifications.json?t='+Date.now(),{cache:'no-store'});if(!r.ok)return;const txt=await r.text();if(txt===modRaw)return;
+    prepMods(JSON.parse(txt));modRaw=txt;modVer++;syncMods(true);
+    const s=history.state||{v:'home'};if(!(document.activeElement&&document.activeElement.id==='dm')&&s.v!=='map'&&s.v!=='search'&&!(s.v==='trip'&&pickOpen))render(s,true)}
+  catch(e){console.warn('modifications.json not loaded',e);if(e instanceof SyntaxError){modErrs=['modifications.json is not valid JSON ('+e.message+')'];modRaw=''}}}
 const V={
 home(){
   const d=new Date();
@@ -228,51 +340,54 @@ home(){
   <div class="hero"><button class="big" data-go='{"v":"routes"}'><div class="ic">🚎</div><div><b>Search routes</b><span>Browse lines &amp; directions</span></div></button>
   <button class="big" data-go='{"v":"search"}'><div class="ic">📍</div><div><b>Search stations</b><span>By name or ID · upcoming departures</span></div></button>
   <button class="big" data-go='{"v":"map"}'><div class="ic">🗺️</div><div><b>Transit map</b><span>Pan &amp; zoom the network map</span></div></button></div>
-  ${missing.size?`<div class="sub" style="margin-top:22px;font-size:12px">⚠ Not in stations file: ${[...missing].map(esc).join(', ')}</div>`:''}
+  ${missing.size||modMissing.size?`<div class="sub" style="margin-top:22px;font-size:12px">⚠ Not in stations file: ${[...new Set([...missing,...modMissing])].map(esc).join(', ')}</div>`:''}
   ${noticeErrs.length?`<div class="sub" style="margin-top:12px;font-size:12px">⚠ Notice problems: ${noticeErrs.map(x=>esc(x.msg)).join('; ')}</div>`:''}
+  ${modErrs.length?`<div class="sub" style="margin-top:12px;font-size:12px">⚠ Modification problems: ${modErrs.map(esc).join('; ')}</div>`:''}
   ${(()=>{const w=Object.keys(stations).map(k=>[k,oppWarn(k)]).filter(x=>x[1]);return w.length?`<div class="sub" style="margin-top:12px;font-size:12px">⚠ Opposite station problems: ${w.map(([k,m])=>esc(k)+' ('+esc(m)+')').join('; ')}</div>`:''})()}</div>`}},
 routes(){
   const g={};lines.forEach(l=>(g[l.type]??=[]).push(l));
-  const nm={trolleybus:'Trolleybuses',bus:'Buses'};
-  const order=['trolleybus','bus',...Object.keys(g).filter(k=>!nm[k])];
-  return{t:'Routes',h:order.filter(k=>g[k]).map(k=>`<h2>${nm[k]||esc(k)}</h2><div class="grid">${g[k].map(l=>`<button class="badge" style="background:${esc(l.color)}" data-go='${JSON.stringify({v:'dirs',l:l.id})}'>${esc(l.displayName)}</button>`).join('')}</div>`).join('')||'<div class="empty">No routes found</div>'}},
+  const nm={trolleybus:'Trolleybuses',bus:'Buses',special:'Special lines'};
+  const order=['trolleybus','bus',...Object.keys(g).filter(k=>!nm[k]),'special'];
+  return{t:'Routes',h:order.filter(k=>g[k]).map(k=>`<h2>${nm[k]||esc(k)}</h2><div class="grid">${g[k].map(l=>`<button class="badge" style="background:${esc(l.color)}" data-go='${JSON.stringify({v:'dirs',l:l.id})}'>${esc(bt(l))}</button>`).join('')}</div>`).join('')||'<div class="empty">No routes found</div>'}},
 dirs(s){
   const l=lines.find(x=>x.id===s.l);
-  return{t:'Line '+l.displayName,h:`<h2>Choose direction</h2>`+`<div class="dn">${nHtml(n=>nLine(n,l))}</div>`+l.directions.map(d=>{const ls=d.stops.at(-1).stationId,nm=d.displayName||sname(ls),sx=d.displayName?d.smallText:stations[ls]?.smallText;return`<button class="row" data-go='${JSON.stringify({v:'trip',l:l.id,d:d.id})}'>${badge(l)}<div class="grow"><div class="t">${nmw(esc(nm),sx?esc(sx):'')}</div><div class="s">from ${esc(sname(d.stops[0].stationId))}</div></div>›</button>`}).join('')}},
+  return{t:ltitle(l),h:`<h2>Choose direction</h2>`+`<div class="dn">${mHtml(m=>mLine(m,l))}${nHtml(n=>nLine(n,l))}</div>`+l.directions.map(d=>{const ls=d.stops[d.term].stationId,nm=d.displayName||sname(ls),sx=d.displayName?d.smallText:stations[ls]?.smallText;return`<button class="row" data-go='${JSON.stringify({v:'trip',l:l.id,d:d.id})}'>${badge(l)}<div class="grow"><div class="t">${nmw(esc(nm),sx?esc(sx):'')}</div><div class="s">from ${esc(sname(d.stops[0].stationId))}</div></div>›</button>`}).join('')}},
 trip(s){
-  const l=lines.find(x=>x.id===s.l),d=l.directions.find(x=>x.id===s.d),tot=d.cum.at(-1);
-  // target = most recently departed trip still running (not yet at terminus), else next upcoming, else last of the day
-  const target=(t,n)=>{let k=-1;t.forEach((x,j)=>{const m=toMin(x);if(m<=n&&n<m+tot)k=j});if(k>=0)return{k,act:1};k=t.findIndex(x=>toMin(x)>=n);return{k:k<0?t.length-1:k,act:0}};
+  const l=lines.find(x=>x.id===s.l),d=l.directions.find(x=>x.id===s.d),tot=d.tot;
+  // target = most recently departed trip still running (not yet at terminus), else next upcoming, else last of the day; cancelled departures are skipped
+  const target=(sc,n)=>{let k=-1;sc.forEach((e,j)=>{if(e.x)return;const m=ov(e.t);if(m<=n&&n<m+tot)k=j});if(k>=0)return{k,act:1};k=sc.findIndex(e=>!e.x&&ov(e.t)>=n);if(k<0){k=sc.length-1;while(k>0&&sc[k].x)k--}return{k:Math.max(k,0),act:0}};
   let yd=s.y?1:0,i=s.i;
-  if(i==null&&!yd){const yt=times(d,-1),r=target(yt,now()+1440);if(r.act){yd=1;i=r.k}}   // trip from yesterday still running past midnight
-  const ts=times(d,-yd),n=now()+yd*1440;
-  if(!ts.length)return{t:'Line '+l.displayName,h:`<div class="empty">No ${dayType()} departures for this direction</div>`};
-  const one=ts.length===1,tg=target(ts,n);
+  if(i==null&&!yd){const r=target(sched(d,-1),now()+1440);if(r.act){yd=1;i=r.k}}   // trip from yesterday still running past midnight
+  const sc=sched(d,-yd),n=now()+yd*1440;
+  if(!sc.length)return{t:ltitle(l),h:`<div class="empty">No ${dayType()} departures for this direction</div>`};
+  const one=sc.length===1,tg=target(sc,n);
   if(i==null)i=tg.k;
+  i=Math.max(0,Math.min(i,sc.length-1));
   if(s.i==null)history.replaceState({...s,i,...(yd?{y:1}:{})},'');
-  const dep=toMin(ts[i]),diff=dep-n,last=toMin(ts.at(-1))+d.cum.at(-1);
-  const menu=pickOpen&&!one?`<div class="menu pk"><h3>Select departure</h3><div class="tg">${ts.map((t,k)=>`<button class="tb ${k===i?'cur':''} ${toMin(t)<n?'past':''}" data-i="${k}">${t}</button>`).join('')}</div></div>`:'';
-  const stat=diff>0?`Departs in ${eta(diff)}`:n>last?'Finished':diff===0?'Departing now':`Departed ${eta(-diff)} ago`;
-  const flag=i===ts.length-1&&diff<0?' · last of the day':'';
-  return{t:'Line '+l.displayName,h:`<div class="hd">${badge(l)}<div class="sub" style="margin:6px 0 0;font-size:18px;font-weight:600;color:#e8eaed">➜ ${esc(d.displayName||sname(d.stops.at(-1).stationId))}</div>${d.smallText?`<div class="ssd">${esc(d.smallText)}</div>`:''}
-  <div class="big2${dstat(ts,ts[i])?' w-'+dstat(ts,ts[i]):''}">${ts[i]}</div><div style="color:#fff;font-weight:600">${stat}${flag}</div>
+  const q=sc[i],dep=ov(q.t),diff=dep-n,lv=sc.lv,lts=sc.lts,last=(lv.length?ov(lv.at(-1).t):dep)+tot;
+  const menu=pickOpen&&!one?`<div class="menu pk"><h3>Select departure</h3><div class="tg">${sc.map((e,k)=>`<button class="tb ${k===i?'cur':''} ${ov(e.t)<n?'past':''} ${e.x?'x':e.a?'a':''}" data-i="${k}">${e.t}</button>`).join('')}</div></div>`:'';
+  const stat=q.x?'<span style="color:#ff5a5f">Cancelled</span>':diff>0?`Departs in ${eta(diff)}`:n>last?'Finished':diff===0?'Departing now':`Departed ${eta(-diff)} ago`;
+  const flag=!q.x&&lv.length&&q===lv.at(-1)&&diff<0?' · last of the day':'',ds0=q.x?'':dstat(lts,q.t),ns=d.stops.filter(x=>!x.x).length;
+  const nbs=q.x?nBox(q.x):mHtml(m=>mDir(m,d),q.a)+nHtml(n=>nDir(n,l,d));   // a cancelled departure only shows the modification that cancels it; an added one shows its own first
+  return{t:ltitle(l),h:`<div class="hd">${badge(l)}<div class="sub" style="margin:6px 0 0;font-size:18px;font-weight:600;color:#e8eaed">➜ <span class="${q.x?'xx':''}">${esc(d.displayName||sname(d.stops[d.term].stationId))}</span></div>${d.smallText?`<div class="ssd">${esc(d.smallText)}</div>`:''}
+  <div class="big2${ds0?' w-'+ds0:''}${q.x?' xx':''}">${q.t}</div><div style="color:#fff;font-weight:600">${stat}${flag}</div>
   <div class="nav"><button data-i="${tg.k}" ${one?'disabled':''} style="color:var(--acc)">${tg.act?'Jump to current departure':'Jump to upcoming departure'}</button></div>
-  <div class="nav" style="margin-top:10px"><button data-i="${i-1}" ${one||i<1?'disabled':''}>‹ Previous</button><button data-i="${i+1}" ${one||i>=ts.length-1?'disabled':''}>Next ›</button></div>
-  <div style="position:relative"><div class="nav sm"><div class="half"><button data-i="0" ${one||i<1?'disabled':''}>⏮ First</button><button data-i="${ts.length-1}" ${one||i>=ts.length-1?'disabled':''}>Last ⏭</button></div><button data-pk ${one?'disabled':''}>Choose a departure… ▾</button></div>${menu}</div></div>
-  ${nHtml(n=>nDir(n,l,d))}<div class="uph"><h2>Stops</h2>${(g=>g!=null?`<div class="dly${g>2?' y':''}" style="margin:20px 4px 10px 0">⚠ This departure may be delayed</div>`:'')(turnGap(l,d,ts[i],yd?-1:0))}</div><div style="--c:${esc(l.color)}">${d.stops.map((st,k)=>{const m=dep+d.cum[k],ds=dstat(ts.map(x=>fmt(toMin(x)+d.cum[k])),fmt(m));
-  return`<button class="st ${m<n?'past':''}" data-go='${JSON.stringify({v:'station',id:st.stationId})}'><span class="tm${ds?' w-'+ds:''}">${fmt(m)}</span><span class="dot"></span><span class="nm">${snm(st.stationId,k===d.stops.length-1?'<span class="tag">end</span>':'')}</span></button>`}).join('')}</div><div class="sub" style="text-align:center;margin:18px 0 8px;font-size:13px">${(one?'Only one departure today':`Departure ${i+1} of ${ts.length}`)+` · ${d.stops.length} stop${d.stops.length===1?'':'s'}`}</div>`,after(){const m=$('.pk'),c=m&&m.querySelector('.cur');if(c)m.scrollTop=c.offsetTop-m.clientHeight/2+c.offsetHeight/2}}},
+  <div class="nav" style="margin-top:10px"><button data-i="${i-1}" ${one||i<1?'disabled':''}>‹ Previous</button><button data-i="${i+1}" ${one||i>=sc.length-1?'disabled':''}>Next ›</button></div>
+  <div style="position:relative"><div class="nav sm"><div class="half"><button data-i="0" ${one||i<1?'disabled':''}>⏮ First</button><button data-i="${sc.length-1}" ${one||i>=sc.length-1?'disabled':''}>Last ⏭</button></div><button data-pk ${one?'disabled':''}>Choose a departure… ▾</button></div>${menu}</div></div>
+  ${nbs}<div class="uph"><h2>Stops</h2>${(g=>g!=null?`<div class="dly${g>2?' y':''}" style="margin:20px 4px 10px 0">⚠ This departure may be delayed</div>`:'')(q.x?null:turnGap(l,d,q.t,yd?-1:0))}</div><div style="--c:${esc(l.color)}">${d.stops.map((st,k)=>{const m=dep+d.cum[k],sx=q.x||st.x,ds=sx?'':dstat(lts.map(x=>fmt(toMin(x)+d.cum[k])),fmt(m));
+  return`<button class="st${m<n?' past':''}${k===0?' s0':''}${k===d.term?' sN':''}${k>d.term?' aft':''}${sx?' sx':''}" data-go='${JSON.stringify({v:'station',id:st.stationId})}'><span class="tm${ds?' w-'+ds:''}">${fmt(m)}</span><span class="dot"></span><span class="nm">${st.add?'<b class="pl">+</b>':''}${snm(st.stationId)}</span></button>`}).join('')}</div><div class="sub" style="text-align:center;margin:18px 0 8px;font-size:13px">${(one?'Only one departure today':`Departure ${i+1} of ${sc.length}`)+` · ${ns} stop${ns===1?'':'s'}`}</div>`,after(){const m=$('.pk'),c=m&&m.querySelector('.cur');if(c)m.scrollTop=c.offsetTop-m.clientHeight/2+c.offsetHeight/2}}},
 map(){return{t:'Transit map',h:'<div id="map"></div>',after:initMap}},
 search(){
   return{t:'Stations',h:`<div class="sw"><input id="q" type="search" placeholder="Station name or ID" autocomplete="off" autocapitalize="off" spellcheck="false" value="${esc(q)}"><button type="button" id="qx" aria-label="Clear" ${q?'':'hidden'}>✕</button></div><div id="sortm" class="sortm" hidden><button data-s="name">Name<span class="tk"></span></button><button data-s="id">ID<span class="tk"></span></button></div><div id="res"></div><button class="clrfav" id="clrfav">Clear favorites</button>`,after(){
     const inp=$('#q'),res=$('#res'),sm=$('#sortm'),cb=$('#clrfav'),fs=$('#fs');
     const syncM=()=>{sm.querySelectorAll('[data-s]').forEach(b=>b.querySelector('.tk').textContent=b.dataset.s===sortBy?'✓':'');fs.classList.toggle('on',onlyFav);fs.textContent=onlyFav?'★':'☆';cb.disabled=!favs.size};
     const lineTxt=id=>{const m=new Map((by[id]||[]).map(e=>[e.l.id,e.l]));if(!m.size)return'No lines';const a=[...m.values()];
-      if(a.length<=7)return a.map(l=>l.displayName).join(' · ');
+      if(a.length<=7)return a.map(bt).join(' · ');
       const tr=a.filter(l=>l.type==='trolleybus').length,bu=a.filter(l=>l.type==='bus').length,ot=a.length-tr-bu,p=[];
       if(tr)p.push(tr+' Trolleybus line'+(tr>1?'s':''));if(bu)p.push(bu+' Bus line'+(bu>1?'s':''));if(ot)p.push(ot+' other line'+(ot>1?'s':''));
       return p.join(' and ')};
     const draw=()=>{q=inp.value;const t=q.trim().toLowerCase();
-      let all=Object.entries(stations).map(([id,s])=>({id,name:s.displayName,code:String(s.ID??'').trim(),sm:s.smallText||''}));
+      let all=Object.entries(stations).map(([id,s])=>({id,name:s.displayName,code:String(s.number??'').trim(),sm:s.smallText||''}));
       Object.keys(by).forEach(id=>{if(!stations[id])all.push({id,name:sname(id),code:'',sm:''})});
       if(t)all=all.filter(s=>s.name.toLowerCase().includes(t)||s.code===t||s.code.startsWith(t)||s.id.toLowerCase().includes(t)||s.sm.toLowerCase().includes(t));
       if(onlyFav)all=all.filter(s=>favs.has(s.id));
@@ -287,7 +402,7 @@ search(){
     const qx=$('#qx');inp.oninput=()=>{qx.hidden=!inp.value;draw()};qx.onclick=()=>{inp.value='';qx.hidden=true;inp.focus();draw()};draw();}}},
 station(s){
   if(F.sid!==s.id)fReset(s.id);
-  const nb=nErrHtml(s.id)+nHtml(n=>nStation(n,s.id)),ow=oppWarn(s.id),head=(ow?`<div class="sub" style="margin:4px 4px 0;font-size:12px">⚠ ${esc(ow)}</div>`:'')+'',code=scode(s.id),stx=stations[s.id]?.smallText,sub=[code?'#'+code:'',stx||''].filter(Boolean).join(' · ');
+  const nb=nErrHtml(s.id)+mHtml(m=>mStation(m,s.id))+nHtml(n=>nStation(n,s.id)),ow=oppWarn(s.id),head=(ow?`<div class="sub" style="margin:4px 4px 0;font-size:12px">⚠ ${esc(ow)}</div>`:'')+'',code=scode(s.id),stx=stations[s.id]?.smallText,sub=[code?'#'+code:'',stx||''].filter(Boolean).join(' · ');
   if(!(by[s.id]||[]).length)return{t:sname(s.id),sub,h:head+nb+'<h2>Upcoming departures</h2><div class="empty">No upcoming departures</div>'};
   return{t:sname(s.id),sub,h:head+'<div class="fx" id="fx"></div><div id="pdeps"></div>'+nb+'<div class="uph"><h2>Upcoming departures</h2><button class="clr" id="cl" hidden>Clear</button></div><div id="fdeps"></div>',after(){initFilters(s.id)}}}
 };
@@ -298,20 +413,20 @@ const fReset=id=>{F={page:0,prev:false,sid:id,sel:new Set(),types:new Set(),afte
 const advCount=()=>F.types.size+(F.after!=null)+(F.before!=null)+(F.via?1:0)+(F.from?1:0)+(F.noTerm?1:0);
 const clearAdv=()=>{F.types.clear();F.after=F.before=F.via=F.from=null;F.noTerm=false};
 const tm=v=>v?toMin(v):null;
-function rowHtml(e,n,past){const term=e.i===e.d.stops.length-1;
-  return`<button class="row${past?' past':''}" data-go='${JSON.stringify({v:'trip',l:e.l.id,d:e.d.id,i:e.ti,...(e.y?{y:1}:{})})}'>${badge(e.l)}<div class="grow"><div class="t">${esc(e.d.displayName||sname(e.d.stops.at(-1).stationId))}</div>${term?'<div class="s">Terminates here</div>':''}</div><div><div class="time${e.st?' w-'+e.st:''}">${fmt(e.m)}</div><div class="eta${!past&&e.tg!=null?' d-'+(e.tg<=2?'red':'yellow'):''}">${past?eta(n-e.m)+' ago':(e.tg!=null?'⚠ ':'')+eta(e.m-n)}</div></div></button>`}
+function rowHtml(e,n,past){const term=e.i===e.d.term,cx=e.qx||e.sx,ca=!cx&&(e.qa||e.sa);
+  return`<button class="row${past?' past':''}${cx?' x':ca?' a':''}" data-go='${JSON.stringify({v:'trip',l:e.l.id,d:e.d.id,i:e.ti,...(e.y?{y:1}:{})})}'>${badge(e.l)}<div class="grow"><div class="t">${esc(e.d.displayName||sname(e.d.stops[e.d.term].stationId))}</div>${term?'<div class="s">Terminates here</div>':''}</div><div><div class="time${e.st?' w-'+e.st:''}">${fmt(e.m)}</div><div class="eta${!past&&e.tg!=null?' d-'+(e.tg<=2?'red':'yellow'):''}">${past?eta(n-e.m)+' ago':(e.tg!=null?'⚠ ':'')+eta(e.m-n)}</div></div></button>`}
 function initFilters(id){
   const ents=by[id],fx=$('#fx'),deps=$('#fdeps');
   const tv=l=>l.type==='trolleybus'?0:1,ls=[...new Map(ents.map(e=>[e.l.id,e.l])).values()].sort((a,b)=>tv(a)-tv(b)||a.displayName.localeCompare(b.displayName,undefined,{numeric:true}));
   const hasBoth=ls.some(l=>l.type==='trolleybus')&&ls.some(l=>l.type==='bus');
-  const last=e=>e.d.stops.length-1;
+  const last=e=>e.d.term;
   // candidate stations for "Stops at" (after this one) / "Arrives from" (before this one); each list only offers stations that still fit the other filter
   const lst=kind=>{const m=new Map();ents.forEach(e=>{
-    if(kind==='via'){if(F.from&&!e.d.stops.some((x,k)=>k<e.i&&x.stationId===F.from))return;e.d.stops.slice(e.i+1).forEach(x=>x.stationId!==id&&m.set(x.stationId,sname(x.stationId)))}
-    else{if(F.via&&!e.d.stops.some((x,k)=>k>e.i&&x.stationId===F.via))return;e.d.stops.slice(0,e.i).forEach(x=>x.stationId!==id&&m.set(x.stationId,sname(x.stationId)))}});
+    if(kind==='via'){if(F.from&&!e.d.stops.some((x,k)=>k<e.i&&!x.x&&x.stationId===F.from))return;e.d.stops.slice(e.i+1).forEach(x=>x.stationId!==id&&!x.x&&m.set(x.stationId,sname(x.stationId)))}
+    else{if(F.via&&!e.d.stops.some((x,k)=>k>e.i&&!x.x&&x.stationId===F.via))return;e.d.stops.slice(0,e.i).forEach(x=>x.stationId!==id&&!x.x&&m.set(x.stationId,sname(x.stationId)))}});
     return[...m].sort((a,b)=>a[1].localeCompare(b[1]))};
   const multi=ls.length>1,viaOk=multi&&ents.some(e=>e.i<last(e)),fromOk=multi&&ents.some(e=>e.i>0),termAll=ents.every(e=>e.i===last(e));
-  fx.innerHTML=`<div class="chips">${ls.map(l=>`<button class="chip" data-l="${esc(l.id)}" style="--c:${esc(l.color||'#4d83ff')}">${esc(l.displayName)}</button>`).join('')}</div>
+  fx.innerHTML=`<div class="chips">${ls.map(l=>`<button class="chip" data-l="${esc(l.id)}" style="--c:${esc(l.color||'#4d83ff')}">${esc(bt(l))}</button>`).join('')}</div>
    <div class="advwrap"><button class="advbtn" id="ab"></button><button class="advbtn" id="pv"></button><div id="mn"></div></div>`;
   const menu=()=>{const n=now(),d=hasBoth?'':'dis';
     return`<div class="menu">
@@ -330,13 +445,13 @@ function initFilters(id){
     fx.querySelectorAll('.chip').forEach(c=>c.classList.toggle('on',F.sel.has(c.dataset.l)));
     const k=advCount(),ab=$('#ab');ab.textContent='⚙ Advanced filters'+(k?' · '+k:'')+(F.open?' ▴':' ▾');
     ab.classList.toggle('on',k>0);$('#cl').hidden=!(k||F.sel.size)};
-  refreshDeps=()=>{const n=now(),out=[];
+  refreshDeps=()=>{const n=now(),out=[];SC.clear();
     const A=F.after!=null?uw(F.after):null,B=F.before!=null?uw(F.before):null;
-    [0,-1].forEach(o=>ents.forEach(e=>times(e.d,o).forEach((t,i)=>{   // o=-1: yesterday's trips still running past midnight
-      let m=toMin(t)+e.off;if(o)m-=1440;
+    [0,-1].forEach(o=>ents.forEach(e=>sched(e.d,o).forEach((q,i)=>{   // o=-1: yesterday's trips still running past midnight
+      const t=q.t,sp=e.d.stops[e.i];let m=ov(t)+e.off;if(o)m-=1440;
       if(m<n-PVMIN||(F.sel.size&&!F.sel.has(e.l.id))||(F.types.size&&!F.types.has(e.l.type))||!(A!=null&&B!=null&&A>B?(m>=A||m<=B):!((A!=null&&m<A)||(B!=null&&m>B)))||
-        (F.via&&!e.d.stops.some((x,k)=>k>e.i&&x.stationId===F.via))||(F.from&&!e.d.stops.some((x,k)=>k<e.i&&x.stationId===F.from))||(F.noTerm&&e.i===last(e)))return;
-      out.push({...e,m,ti:i,y:o?1:0,st:dstat(times(e.d,o),t),tg:turnGap(e.l,e.d,t,o)})})));
+        (F.via&&!e.d.stops.some((x,k)=>k>e.i&&!x.x&&x.stationId===F.via))||(F.from&&!e.d.stops.some((x,k)=>k<e.i&&!x.x&&x.stationId===F.from))||(F.noTerm&&e.i===last(e)))return;
+      out.push({...e,m,ti:i,y:o?1:0,qx:q.x,qa:q.a,sx:sp.x,sa:sp.add,st:q.x?'':dstat(sched(e.d,o).lts,t),tg:q.x||sp.x?null:turnGap(e.l,e.d,t,o)})})));
     out.sort((a,b)=>a.m-b.m);
     const up=out.filter(e=>e.m>=n),pv=out.filter(e=>e.m<n).slice(-PV),pages=Math.max(1,Math.ceil(up.length/PG));
     F.page=Math.min(Math.max(F.page,0),pages-1);
@@ -404,7 +519,8 @@ async function initMap(){
   }catch(e){el.innerHTML='<div class="mapmsg">Could not load the map.<br>Add tiles/ (or map.png) next to index.html.</div>'}
 }
 function render(s,keep){
-  s=s||{v:'home'};if(mapObj){mapObj.remove();mapObj=null}refreshDeps=null;closeFx=null;document.querySelector('.vp')?.remove();$('#pgr').innerHTML='';if(!keep)pickOpen=false;main.classList.toggle('fill',s.v==='map');const y=main.scrollTop,v=V[s.v](s);
+  s=s||{v:'home'};syncMods();SC.clear();if((s.v==='dirs'||s.v==='trip')&&!lines.some(x=>x.id===s.l)){s={v:'routes'};history.replaceState(s,'')}
+  if(mapObj){mapObj.remove();mapObj=null}refreshDeps=null;closeFx=null;document.querySelector('.vp')?.remove();$('#pgr').innerHTML='';if(!keep)pickOpen=false;main.classList.toggle('fill',s.v==='map');const y=main.scrollTop,v=V[s.v](s);
   const ttl=$('#ttl');if(s.v==='home')ttl.textContent='';else if(v.sub)ttl.innerHTML=esc(v.t)+'<span class="ttlsub">'+esc(v.sub)+'</span>';else ttl.textContent=v.t;$('#bk').hidden=s.v==='home';
   $('#so').hidden=$('#fs').hidden=s.v!=='search';
   document.querySelector('header').hidden=s.v==='home';
@@ -424,9 +540,10 @@ main.addEventListener('click',e=>{
   const g=e.target.closest('[data-go]');if(g)return go(JSON.parse(g.dataset.go));
   const b=e.target.closest('[data-i]');if(b&&!b.disabled)set({...history.state,i:+b.dataset.i});
 });
-setInterval(()=>{const s=history.state||{v:'home'};if(document.activeElement&&document.activeElement.id==='dm')return;if(s.v==='map'||(s.v==='trip'&&pickOpen))return;if(s.v==='station')refreshDeps&&refreshDeps();else if(s.v!=='search')render(s,true)},20000);
-loadNotices();setInterval(loadNotices,300000);document.addEventListener('visibilitychange',()=>{if(!document.hidden)loadNotices()});
-load().then(()=>{history.replaceState(history.state||{v:'home'},'');render(history.state);loadNotices()})
+setInterval(()=>{const s=history.state||{v:'home'};if(document.activeElement&&document.activeElement.id==='dm')return;if(s.v==='map'||(s.v==='trip'&&pickOpen))return;const ch=syncMods();if(s.v==='station'&&!ch)refreshDeps&&refreshDeps();else if(s.v!=='search')render(s,true)},20000);
+const loaded0=load();
+loadNotices();setInterval(loadNotices,300000);document.addEventListener('visibilitychange',()=>{if(!document.hidden){loadNotices();loadMods()}});
+loaded0.then(()=>{history.replaceState(history.state||{v:'home'},'');render(history.state);loadNotices();loadMods();setInterval(loadMods,300000)})
  .catch(()=>{main.innerHTML='<div class="empty">Could not load schedule data.<br>Serve this folder over http(s) instead of opening the file directly.<ul style="display:inline-block;text-align:left;margin:14px 0 0;padding-left:20px"><li>GitHub might be down</li><li>Check Internet connection</li><li>Check capitalization and/or name of new line files</li></ul></div>'});
 if('serviceWorker'in navigator)navigator.serviceWorker.register('sw.js').catch(()=>{});
 </script>
