@@ -141,7 +141,7 @@
               "modifications": [
                 {
                   "action": "CANCELLED",
-				  "previousStationOffsetMinutes": 2,
+				          "previousStationOffsetMinutes": 2,
                   "affectedStations": [
                     {
                       "stationId": "PetrolBaseEntranceNorth"
@@ -220,11 +220,13 @@
               "schedules": {
                 "workday": [
                   "10:00",
-                  "10:30"
+                  "10:30",
+                  "20:00"
                 ],
                 "holiday": [
                   "10:00",
-                  "10:30"
+                  "10:30",
+                  "20:00"
                 ]
               }
             }
@@ -259,11 +261,11 @@
           "segments": [
             {
               "segmentId": 1,
-			  "startStationID": "Block28",
+			        "startStationId": "Block28",
               "modifications": [
                 {
                   "action": "ADDED",
-				  "previousStationOffsetMinutes": 3,
+				          "previousStationOffsetMinutes": 3,
                   "affectedStations": [
                     {
                       "stationId": "Druzhba3Block48",
