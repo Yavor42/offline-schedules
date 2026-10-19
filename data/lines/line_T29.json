@@ -5,7 +5,7 @@
   "displayName": "T29",
   "directions": [
     {
-      "id": "T29_2526Tutrakan",
+      "id": "T29_26Tutrakan",
       "smallText": "Sugar Factory",
       "displayName": "26 \"Tutrakan\" blvd.",
       "stops": [
@@ -130,7 +130,7 @@
       }
     },
     {
-      "id": "T29_CharodeykaSouth",
+      "id": "T29_Charodeyka",
       "smallText": "",
       "displayName": "Charodeyka-South",
       "stops": [

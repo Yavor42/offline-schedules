@@ -5,7 +5,7 @@
   "displayName": "A5",
   "directions": [
     {
-      "id": "A5_CoopMarketSouth",
+      "id": "A5_CoopMarket",
       "smallText": "",
       "displayName": "Cooperative Market / ŽP Prelez",
       "stops": [
@@ -108,7 +108,7 @@
       }
     },
     {
-      "id": "A5_RailwayNikolaevskaTerminus",
+      "id": "A5_RailwayNikolaevska",
       "smallText": "",
       "displayName": "Railway Station - Nikolaevska str.",
       "stops": [

@@ -5,7 +5,7 @@
   "displayName": "T13",
   "directions": [
     {
-      "id": "T13_OtherRailwayStation",
+      "id": "T13_RazpredelitelnaRailwayStation",
       "smallText": "",
       "displayName": "Razpredelitelna Railway Station",
       "stops": [
@@ -22,7 +22,7 @@
           "offsetMinutes": 3
         },
         {
-          "stationId": "PechatniPlatkiPCBS",
+          "stationId": "PechatniPlatkiPCBs",
           "offsetMinutes": 3
         },
         {
