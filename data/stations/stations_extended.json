@@ -326,13 +326,13 @@
   "MathsHighSchoolNorth": {
     "displayName": "Maths High School - North",
     "number": "62",
-    "oppositeStation": "MathsHighschoolSouth",
+    "oppositeStation": "MathsHighSchoolSouth",
     "smallText": ""
   },
   "MathsHighSchoolSouth": {
     "displayName": "Maths High School - South",
     "number": "63",
-    "oppositeStation": "MathsHighschoolNorth",
+    "oppositeStation": "MathsHighSchoolNorth",
     "smallText": ""
   },
   "ZPPrelez": {
