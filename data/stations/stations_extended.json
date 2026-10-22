@@ -3,1752 +3,2336 @@
     "displayName": "\"Yordan Yovkov\" High School",
     "number": "3",
     "oppositeStation": "Afrodita",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Училище „Йордан Йовков“",
+    "smallTextBG": ""
   },
   "Afrodita": {
     "displayName": "Afrodita",
     "number": "4",
     "oppositeStation": "YordanYovkovHighSchool",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Афродита",
+    "smallTextBG": ""
   },
   "CooperativeMarketA8": {
     "displayName": "Cooperative Market - A8",
     "number": "5",
     "oppositeStation": "",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Кооперативен пазар - А8",
+    "smallTextBG": ""
   },
   "SportsArena": {
     "displayName": "Sports Arena",
     "number": "6",
     "oppositeStation": "",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Спортна зала Арена",
+    "smallTextBG": ""
   },
   "Oborishte": {
     "displayName": "Oborishte",
     "number": "7",
     "oppositeStation": "",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Оборище",
+    "smallTextBG": ""
   },
   "ThePantheon": {
     "displayName": "The Pantheon",
     "number": "8",
     "oppositeStation": "Serdika",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Пантеона",
+    "smallTextBG": ""
   },
   "Serdika": {
     "displayName": "Serdika",
     "number": "9",
     "oppositeStation": "ThePantheon",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Сердика",
+    "smallTextBG": ""
   },
   "Mototehnika": {
     "displayName": "Mototehnika",
     "number": "10",
     "oppositeStation": "CAT",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Мототехника",
+    "smallTextBG": ""
   },
   "CAT": {
     "displayName": "C.A.T.",
     "number": "11",
     "oppositeStation": "Mototehnika",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "КАТ",
+    "smallTextBG": ""
   },
   "AVKO": {
     "displayName": "AVKO",
     "number": "12",
     "oppositeStation": "DunavPrintery",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "АВКО",
+    "smallTextBG": ""
   },
   "DunavPrintery": {
-    "displayName": "Dunav Printery",
+    "displayName": "\"Dunav Printery\"",
     "number": "13",
     "oppositeStation": "AVKO",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "„Печатница Дунав“",
+    "smallTextBG": ""
   },
   "ThirdPolyclinic": {
     "displayName": "Third Polyclinic",
     "number": "14",
     "oppositeStation": "MallRuseIRIS",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Трета поликлиника",
+    "smallTextBG": ""
   },
   "MallRuseIRIS": {
     "displayName": "Mall Ruse",
     "number": "15",
     "oppositeStation": "ThirdPolyclinic",
-    "smallText": "IRIS"
+    "smallText": "IRIS",
+    "langBG": "Мол Русе",
+    "smallTextBG": "ИРИС"
   },
   "SubstationNorth": {
     "displayName": "Substation - North",
     "number": "16",
     "oppositeStation": "SubstationSouth",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Подстанция - Север",
+    "smallTextBG": ""
   },
   "SubstationSouth": {
     "displayName": "Substation - South",
     "number": "17",
     "oppositeStation": "SubstationNorth",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Подстанция - Юг",
+    "smallTextBG": ""
   },
   "Stif": {
     "displayName": "Stif",
     "number": "18",
     "oppositeStation": "Olymp",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Стиф",
+    "smallTextBG": ""
   },
   "Olymp": {
     "displayName": "Olymp",
     "number": "19",
     "oppositeStation": "Stif",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Олимп",
+    "smallTextBG": ""
   },
   "NaidenKirov": {
     "displayName": "Naiden Kirov",
     "number": "20",
     "oppositeStation": "PetarKaraminchev",
-    "smallText": "aka Heroes of Ukraine"
+    "smallText": "aka Heroes of Ukraine",
+    "langBG": "Найден Киров",
+    "smallTextBG": "Героите на Украйна"
   },
   "PetarKaraminchev": {
     "displayName": "Petar Karaminchev",
     "number": "21",
     "oppositeStation": "NaidenKirov",
-    "smallText": "aka Eternit"
+    "smallText": "aka Eternit",
+    "langBG": "Петър Караминчев",
+    "smallTextBG": "Етернит"
   },
   "Block113Charodeyka1": {
     "displayName": "Block 113 - Charodeyka-South",
     "number": "24",
     "oppositeStation": "",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Блок 113 - Чародейка-ЮГ",
+    "smallTextBG": ""
   },
   "TsvetnitsaNorth": {
     "displayName": "Tsvetnitsa - North",
     "number": "25",
     "oppositeStation": "TsvetnitsaSouth",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Цветница - Север",
+    "smallTextBG": ""
   },
   "BratyaMiladinoviPrimarySchool": {
     "displayName": "\"Bratya Miladinovi\" Primary School",
     "number": "26",
     "oppositeStation": "Pliska",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Училище „Братя Миладинови“",
+    "smallTextBG": ""
   },
   "UniversityOfRuseNorth": {
     "displayName": "University of Ruse - North",
     "number": "27",
     "oppositeStation": "UniversityOfRuseSouth",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Русенски университет - Север",
+    "smallTextBG": ""
   },
   "EngineeringHighSchool": {
     "displayName": "Engineering High School",
     "number": "28",
     "oppositeStation": "Hospital",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Гимназия по механотехника",
+    "smallTextBG": ""
   },
   "Hospital": {
     "displayName": "Hospital",
     "number": "30",
     "oppositeStation": "EngineeringHighSchool",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Болница",
+    "smallTextBG": ""
   },
   "PurvaProlet": {
     "displayName": "Purva Prolet",
     "number": "31",
     "oppositeStation": "",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Първа пролет",
+    "smallTextBG": ""
   },
   "UniversityOfRuseSouth": {
     "displayName": "University of Ruse - South",
     "number": "32",
     "oppositeStation": "UniversityOfRuseNorth",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Русенски университет - Юг",
+    "smallTextBG": ""
   },
   "Pliska": {
     "displayName": "Pliska",
     "number": "33",
     "oppositeStation": "BratyaMiladinoviPrimarySchool",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Плиска",
+    "smallTextBG": ""
   },
   "Paris": {
     "displayName": "Paris",
     "number": "34",
     "oppositeStation": "",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Париж",
+    "smallTextBG": ""
   },
   "TsvetnitsaSouth": {
     "displayName": "Tsvetnitsa - South",
     "number": "35",
     "oppositeStation": "TsvetnitsaNorth",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Цветница - Юг",
+    "smallTextBG": ""
   },
   "Cosmos": {
     "displayName": "Railway Station - Cosmos",
     "number": "36",
     "oppositeStation": "RailwayStationBorisovaStr",
-    "smallText": "\"Borisova\" str., West"
+    "smallText": "\"Borisova\" str., West",
+    "langBG": "ЖП гара - Космос",
+    "smallTextBG": "ул. „Борисова“, запад"
   },
   "RailwayStationBorisovaStr": {
     "displayName": "Railway Station - Cosmos",
     "number": "37",
     "oppositeStation": "Cosmos",
-    "smallText": "\"Borisova\" str., East"
+    "smallText": "\"Borisova\" str., East",
+    "langBG": "ЖП гара - Космос",
+    "smallTextBG": "ул. „Борисова“, изток"
   },
   "Nekrasov": {
     "displayName": "Nekrasov",
     "number": "38",
     "oppositeStation": "Lermontov",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Некрасов",
+    "smallTextBG": ""
   },
   "Lermontov": {
     "displayName": "Lermontov",
     "number": "39",
     "oppositeStation": "Nekrasov",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Лермонтов",
+    "smallTextBG": ""
   },
   "OrhideyaWest": {
     "displayName": "Orhideya - West",
     "number": "41",
     "oppositeStation": "OrhideyaEast",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Орхидея - Запад",
+    "smallTextBG": ""
   },
   "MedicalCentreEast": {
     "displayName": "Medical Centre - East",
     "number": "43",
     "oppositeStation": "MedicalCentreWest",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Медицински център - Изток",
+    "smallTextBG": ""
   },
   "Borisova": {
     "displayName": "\"Borisova\" str.",
     "number": "44",
     "oppositeStation": "",
-    "smallText": "aka Former Fish Market"
+    "smallText": "aka Former Fish Market",
+    "langBG": "ул. „Борисова“",
+    "smallTextBG": "Бивш рибен магазин"
   },
   "RailwayStationNikolaevskaStr": {
     "displayName": "Railway Station - \"Nikolaevska\" str.",
     "number": "45",
     "oppositeStation": "",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "ЖП гара - ул. „Николаевска“",
+    "smallTextBG": ""
   },
   "ShipbuildingHighSchool": {
     "displayName": "Shipbuilding High School",
     "number": "46",
     "oppositeStation": "SaintOuan",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Гимназия по корабостроене",
+    "smallTextBG": ""
   },
   "ChaykaEast": {
     "displayName": "Chayka - East",
     "number": "47",
     "oppositeStation": "",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Чайка - Изток",
+    "smallTextBG": ""
   },
   "TutrakanOverpass": {
     "displayName": "Tutrakan Overpass",
     "number": "48",
     "oppositeStation": "TraktsiyataLVZ",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Надлез Тутракан",
+    "smallTextBG": ""
   },
   "TraktsiyataLVZ": {
     "displayName": "Traktsiyata",
     "number": "49",
     "oppositeStation": "TutrakanOverpass",
-    "smallText": "aka LVZ"
+    "smallText": "aka LVZ",
+    "langBG": "Тракцията",
+    "smallTextBG": "ЛВЗ"
   },
   "PsychiatricClinicNorth": {
     "displayName": "Psychiatric Clinic - North",
     "number": "50",
     "oppositeStation": "PsychiatricClinicSouth",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Психо диспансер - Север",
+    "smallTextBG": ""
   },
   "PsychiatricClinicSouth": {
     "displayName": "Psychiatric Clinic - South",
     "number": "51",
     "oppositeStation": "PsychiatricClinicNorth",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Психо диспансер - Юг",
+    "smallTextBG": ""
   },
   "25TutrakanBlvd": {
     "displayName": "25 \"Tutrakan\" blvd.",
     "number": "52",
     "oppositeStation": "26TutrakanBlvd",
-    "smallText": "aka Sugar Factory"
+    "smallText": "aka Sugar Factory",
+    "langBG": "бул. „Тутракан“ № 25",
+    "smallTextBG": "Захарен завод"
   },
   "26TutrakanBlvd": {
     "displayName": "26 \"Tutrakan\" blvd.",
     "number": "53",
     "oppositeStation": "25TutrakanBlvd",
-    "smallText": "aka Sugar Factory"
+    "smallText": "aka Sugar Factory",
+    "langBG": "бул. „Тутракан“ № 26",
+    "smallTextBG": "Захарен завод"
   },
   "19TutrakanBlvdBrickFactory": {
     "displayName": "19 \"Tutrakan\" blvd.",
     "number": "54",
     "oppositeStation": "32TutrakanBlvdVocSchoolOfTransport",
-    "smallText": "aka Brick Factory"
+    "smallText": "aka Brick Factory",
+    "langBG": "бул. „Тутракан“ № 19",
+    "smallTextBG": "Тухлена фабрика"
   },
   "32TutrakanBlvdVocSchoolOfTransport": {
     "displayName": "32 \"Tutrakan\" blvd. ",
     "number": "55",
     "oppositeStation": "19TutrakanBlvdBrickFactory",
-    "smallText": "aka School of Transportation"
+    "smallText": "aka School of Transportation",
+    "langBG": "бул. „Тутракан“ № 32",
+    "smallTextBG": "Транспортно училище"
   },
   "EcontExpressShippingNorthNaporniTrabi": {
     "displayName": "Econt Express Shipping - North",
     "number": "56",
     "oppositeStation": "EcontExpressShippingSouthDomostroene",
-    "smallText": "aka Naporni Trabi"
+    "smallText": "aka Naporni Trabi",
+    "langBG": "Куриерска служба Еконт - Север",
+    "smallTextBG": "Напорни тръби"
   },
   "EcontExpressShippingSouthDomostroene": {
     "displayName": "Econt Express Shipping - South",
     "number": "57",
     "oppositeStation": "EcontExpressShippingNorthNaporniTrabi",
-    "smallText": "aka Domostroene"
+    "smallText": "aka Domostroene",
+    "langBG": "Куриерска служба Еконт - Юг",
+    "smallTextBG": "Домостроене"
   },
   "DanubeBridge": {
     "displayName": "Danube Bridge",
     "number": "58",
     "oppositeStation": "Customs",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Дунав мост",
+    "smallTextBG": ""
   },
   "Customs": {
     "displayName": "Customs",
     "number": "59",
     "oppositeStation": "DanubeBridge",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Митница",
+    "smallTextBG": ""
   },
   "SBA": {
     "displayName": "SBA",
     "number": "60",
     "oppositeStation": "Skobelev",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "СБА",
+    "smallTextBG": ""
   },
   "Skobelev": {
     "displayName": "Skobelev",
     "number": "61",
     "oppositeStation": "SBA",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Скобелев",
+    "smallTextBG": ""
   },
   "MathsHighSchoolNorth": {
     "displayName": "Maths High School - North",
     "number": "62",
     "oppositeStation": "MathsHighSchoolSouth",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Математическа гимназия - Север",
+    "smallTextBG": ""
   },
   "MathsHighSchoolSouth": {
     "displayName": "Maths High School - South",
     "number": "63",
     "oppositeStation": "MathsHighSchoolNorth",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Математическа гимназия - Юг",
+    "smallTextBG": ""
   },
   "ZPPrelez": {
     "displayName": "ŽP Prelez",
     "number": "65",
     "oppositeStation": "CooperativeMarket",
-    "smallText": "West"
+    "smallText": "West",
+    "langBG": "ЖП прелез",
+    "smallTextBG": "Запад"
   },
   "CooperativeMarket": {
     "displayName": "Cooperative Market",
     "number": "66",
     "oppositeStation": "ZPPrelez",
-    "smallText": "East"
+    "smallText": "East",
+    "langBG": "Кооперативен пазар",
+    "smallTextBG": "Изток"
   },
   "RusalkaKindergarten": {
     "displayName": "\"Rusalka\" Kindergarten",
     "number": "67",
     "oppositeStation": "OlimpiPanovPrimarySchool",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Детска градина „Русалка“",
+    "smallTextBG": ""
   },
   "OlimpiPanovPrimarySchool": {
     "displayName": "\"Olimpi Panov\" Primary School",
     "number": "68",
     "oppositeStation": "RusalkaKindergarten",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Училище „Олимпи Панов“",
+    "smallTextBG": ""
   },
   "Kolos": {
     "displayName": "Kolos",
     "number": "69",
     "oppositeStation": "ZalaDunav",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Колос",
+    "smallTextBG": ""
   },
   "ZalaDunav": {
     "displayName": "\"Dunav\" Sports Hall",
     "number": "70",
     "oppositeStation": "Kolos",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Зала „Дунав“",
+    "smallTextBG": ""
   },
   "OlympBlock49": {
     "displayName": "Olymp - Block 49",
     "number": "71",
     "oppositeStation": "OlympBlock48",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Олимп - блок 49",
+    "smallTextBG": ""
   },
   "OlympBlock48": {
     "displayName": "Olymp - Block 48",
     "number": "72",
     "oppositeStation": "OlympBlock49",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Олимп - блок 48",
+    "smallTextBG": ""
   },
   "Block6": {
     "displayName": "Block 6",
     "number": "73",
     "oppositeStation": "CBADruzhba3",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Блок 6",
+    "smallTextBG": ""
   },
   "CBADruzhba3": {
     "displayName": "CBA - Druzhba 3",
     "number": "74",
     "oppositeStation": "Block6",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "ЦБА - Дружба 3",
+    "smallTextBG": ""
   },
   "Block33": {
     "displayName": "Block 33",
     "number": "75",
     "oppositeStation": "Block10",
-    "smallText": "\"Dame Gruev\" str."
+    "smallText": "\"Dame Gruev\" str.",
+    "langBG": "Блок 33",
+    "smallTextBG": "ул. „Даме Груев“"
   },
   "Block10": {
     "displayName": "Block 10",
     "number": "76",
     "oppositeStation": "Block33",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Блок 10",
+    "smallTextBG": ""
   },
   "Druzhba3Terminus": {
     "displayName": "Druzhba 3 - Terminus",
     "number": "77",
     "oppositeStation": "Block28",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Дружба 3 - Обръщало",
+    "smallTextBG": ""
   },
   "Block28": {
     "displayName": "Block 28",
     "number": "78",
     "oppositeStation": "Druzhba3Terminus",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Блок 28",
+    "smallTextBG": ""
   },
   "ViKPumpingStationEast": {
     "displayName": "ViK Pumping Station - East",
     "number": "79",
     "oppositeStation": "ViKPumpingStationWest",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Помпена станция на ВиК - Изток",
+    "smallTextBG": ""
   },
   "ViKPumpingStationWest": {
     "displayName": "ViK Pumping Station - West",
     "number": "80",
     "oppositeStation": "ViKPumpingStationEast",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Помпена станция на ВиК - Запад",
+    "smallTextBG": ""
   },
   "VasilLevskiWest": {
     "displayName": "Vasil Levski - West",
     "number": "81",
     "oppositeStation": "VasilLevskiEast",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Васил Левски - Запад",
+    "smallTextBG": ""
   },
   "VasilLevskiEast": {
     "displayName": "Vasil Levski - East",
     "number": "82",
     "oppositeStation": "VasilLevskiWest",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Васил Левски - Изток",
+    "smallTextBG": ""
   },
   "IrrigationSystems": {
     "displayName": "Irrigation Systems",
     "number": "83",
     "oppositeStation": "54GotseDelchevBlvd",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Напоителни системи",
+    "smallTextBG": ""
   },
   "54GotseDelchevBlvd": {
     "displayName": "54 \"Gotse Delchev\" blvd.",
     "number": "84",
     "oppositeStation": "IrrigationSystems",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "бул. „Гоце Делчев“ № 54",
+    "smallTextBG": ""
   },
   "SvirchevServiceEast": {
     "displayName": "Svirchev Service - East",
     "number": "85",
     "oppositeStation": "SvirchevServiceWest",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Сервиз Свирчев - Изток",
+    "smallTextBG": ""
   },
   "SvirchevServiceWest": {
     "displayName": "Svirchev Service - West",
     "number": "86",
     "oppositeStation": "SvirchevServiceEast",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Сервиз Свирчев - Запад",
+    "smallTextBG": ""
   },
   "148GotseDelchevBlvdMonumentOfMaraManeva": {
     "displayName": "Monument of Mara Maneva",
     "number": "87",
     "oppositeStation": "",
-    "smallText": "148 \"Gotse Delchev\" blvd."
+    "smallText": "148 \"Gotse Delchev\" blvd.",
+    "langBG": "Паметник на Мара Манева",
+    "smallTextBG": "бул. „Гоце Делчев“ № 148"
   },
   "BlockKremena": {
     "displayName": "Block \"Kremena\"",
     "number": "88",
     "oppositeStation": "BlockBoryana",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Блок „Кремена“",
+    "smallTextBG": ""
   },
   "BlockBoryana": {
     "displayName": "Block \"Boryana\"",
     "number": "89",
     "oppositeStation": "BlockKremena",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Блок „Боряна“",
+    "smallTextBG": ""
   },
   "BlockZheravNorth": {
     "displayName": "Block \"Zherav\" - North",
     "number": "90",
     "oppositeStation": "BlockZheravSouth",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Блок „Жерав“ - Север",
+    "smallTextBG": ""
   },
   "BlockZheravSouth": {
     "displayName": "Block \"Zherav\" - South",
     "number": "91",
     "oppositeStation": "BlockZheravNorth",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Блок „Жерав“ - Юг",
+    "smallTextBG": ""
   },
   "PragaSqrTerminusNorth": {
     "displayName": "\"Praga\" sqr. Terminus - North",
     "number": "92",
     "oppositeStation": "PragaSqrTerminusSouth",
-    "smallText": "Devyatkata Station"
+    "smallText": "Devyatkata Station",
+    "langBG": "Площад „Прага“ обръщало - Север",
+    "smallTextBG": "Спирката на девятката"
   },
   "PragaSqrTerminusSouth": {
     "displayName": "\"Praga\" sqr. Terminus - South",
     "number": "93",
     "oppositeStation": "PragaSqrTerminusNorth",
-    "smallText": "Devyatkata Station"
+    "smallText": "Devyatkata Station",
+    "langBG": "Площад „Прага“ обръщало - Юг",
+    "smallTextBG": "Спирката на девятката"
   },
   "Block302North": {
     "displayName": "Block 302 - North",
     "number": "94",
     "oppositeStation": "Block302South",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Блок 302 - Север",
+    "smallTextBG": ""
   },
   "Block302South": {
     "displayName": "Block 302 - South",
     "number": "94_1",
     "oppositeStation": "Block302North",
-    "smallText": "\"Filip Stanislavov\" str."
+    "smallText": "\"Filip Stanislavov\" str.",
+    "langBG": "Блок 302 - Юг",
+    "smallTextBG": "ул. „Филип Станиславов“"
   },
   "Block115North": {
     "displayName": "Block 115 - North",
     "number": "95",
     "oppositeStation": "Block115South",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Блок 115 - Север",
+    "smallTextBG": ""
   },
   "Block115South": {
     "displayName": "Block 115 - South",
     "number": "96",
     "oppositeStation": "Block115North",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Блок 115 - Юг",
+    "smallTextBG": ""
   },
   "ShoppingComplex": {
     "displayName": "Shopping Complex",
     "number": "97",
     "oppositeStation": "CharodeykaSouth",
-    "smallText": "Charodeyka-South"
+    "smallText": "Charodeyka-South",
+    "langBG": "Търговски комплекс",
+    "smallTextBG": "Чародейка-ЮГ"
   },
   "FilipStanislavovStrCharodeykaCemetery": {
     "displayName": "\"Filip Stanislavov\" str.",
     "number": "99",
     "oppositeStation": "Block401",
-    "smallText": "Charodeyka Cemetery, Block 401 - East"
+    "smallText": "Charodeyka Cemetery, Block 401 - East",
+    "langBG": "ул. „Филип Станиславов“",
+    "smallTextBG": "Гробища квартал Чародейка, блок 401 - Изток"
   },
   "Block401": {
     "displayName": "Block 401 - West",
     "number": "100",
     "oppositeStation": "FilipStanislavovStrCharodeykaCemetery",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Блок 401 - Запад",
+    "smallTextBG": ""
   },
   "Block403North": {
     "displayName": "Block 403 - North",
     "number": "101",
     "oppositeStation": "Block403South",
-    "smallText": "Former Line 22 Terminus"
+    "smallText": "Former Line 22 Terminus",
+    "langBG": "Блок 403 - Север",
+    "smallTextBG": "Бившо обръщало на линия 22"
   },
   "Block403South": {
     "displayName": "Block 403 - South",
     "number": "102",
     "oppositeStation": "Block403North",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Блок 403 - Юг",
+    "smallTextBG": ""
   },
   "BlockDobrudzha": {
     "displayName": "Block \"Dobrudzha\"",
     "number": "103",
     "oppositeStation": "TovarnaRailwayStop",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Блок „Добруджа“",
+    "smallTextBG": ""
   },
   "TovarnaRailwayStop": {
     "displayName": "Tovarna Railway Stop",
     "number": "104",
     "oppositeStation": "BlockDobrudzha",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Товарна гара",
+    "smallTextBG": ""
   },
   "BlockStrandzha": {
     "displayName": "Block \"Strandzha\"",
     "number": "105",
     "oppositeStation": "",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Блок „Странджа“",
+    "smallTextBG": ""
   },
   "BlockBorimechka": {
     "displayName": "Block \"Borimechka\"",
     "number": "106",
     "oppositeStation": "39PetrohanStr",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Блок „Боримечка“",
+    "smallTextBG": ""
   },
   "BitovKombinatSouth": {
     "displayName": "Bitov Kombinat - South",
     "number": "107",
     "oppositeStation": "BitovKombinatNorth",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Битов комбинат - Юг",
+    "smallTextBG": ""
   },
   "BitovKombinatNorth": {
     "displayName": "Bitov Kombinat - North",
     "number": "108",
     "oppositeStation": "BitovKombinatSouth",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Битов комбинат - Север",
+    "smallTextBG": ""
   },
   "DunavStadiumNorth": {
     "displayName": "\"Dunav\" Stadium - North",
     "number": "109",
     "oppositeStation": "DunavStadiumSouth",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Стадион „Дунав“ - Север",
+    "smallTextBG": ""
   },
   "DunavStadiumSouth": {
     "displayName": "\"Dunav\" Stadium - South",
     "number": "110",
     "oppositeStation": "DunavStadiumNorth",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Стадион „Дунав“ - Юг",
+    "smallTextBG": ""
   },
   "39PetrohanStr": {
     "displayName": "39 \"Petrohan\" str.",
     "number": "111",
     "oppositeStation": "BlockBorimechka",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "ул. „Петрохан“ № 39",
+    "smallTextBG": ""
   },
   "Pastrina": {
     "displayName": "Pastrina",
     "number": "112",
     "oppositeStation": "",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Пъстрина",
+    "smallTextBG": ""
   },
   "CBAGradskiHaliSouth": {
     "displayName": "CBA - South",
     "number": "113",
     "oppositeStation": "CBAGradskiHaliNorth",
-    "smallText": "Gradski Hali"
+    "smallText": "Gradski Hali",
+    "langBG": "ЦБА - Юг",
+    "smallTextBG": "Градски хали"
   },
   "CBAGradskiHaliNorth": {
     "displayName": "CBA - North",
     "number": "114",
     "oppositeStation": "CBAGradskiHaliSouth",
-    "smallText": "Gradski Hali"
+    "smallText": "Gradski Hali",
+    "langBG": "ЦБА - Север",
+    "smallTextBG": "Градски хали"
   },
   "RigaHotel": {
     "displayName": "\"Riga\" Hotel",
     "number": "115",
     "oppositeStation": "",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Хотел „Рига“",
+    "smallTextBG": ""
   },
   "HouseOfCulture": {
     "displayName": "House of Culture",
     "number": "116",
     "oppositeStation": "",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Дом на културата",
+    "smallTextBG": ""
   },
   "StrandzhataTavern": {
     "displayName": "\"Strandzhata\" Tavern",
     "number": "117",
     "oppositeStation": "",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Механа „Странджата“",
+    "smallTextBG": ""
   },
   "HristoBotevHighSchool": {
     "displayName": "\"Hristo Botev\" High School",
     "number": "118",
     "oppositeStation": "",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Училище „Христо Ботев“",
+    "smallTextBG": ""
   },
   "Fazan": {
     "displayName": "Fazan",
     "number": "119",
     "oppositeStation": "Zhiti",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Фазан",
+    "smallTextBG": ""
   },
   "Zhiti": {
     "displayName": "ZHITI",
     "number": "120",
     "oppositeStation": "Fazan",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "ЖИТИ",
+    "smallTextBG": ""
   },
   "Yuta": {
     "displayName": "Yuta",
     "number": "121",
     "oppositeStation": "OrgahimDunavskaKoprina",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Юта",
+    "smallTextBG": ""
   },
   "OrgahimDunavskaKoprina": {
     "displayName": "Orgahim",
     "number": "122",
     "oppositeStation": "Yuta",
-    "smallText": "Dunavska Koprina"
+    "smallText": "Dunavska Koprina",
+    "langBG": "Оргахим",
+    "smallTextBG": "Дунавска коприна"
   },
   "Winery": {
     "displayName": "Winery",
     "number": "123",
     "oppositeStation": "FireBrigade",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Винзавод",
+    "smallTextBG": ""
   },
   "FireBrigade": {
     "displayName": "Fire Brigade",
     "number": "124",
     "oppositeStation": "Winery",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Пожарна",
+    "smallTextBG": ""
   },
   "BOR": {
     "displayName": "BOR",
     "number": "125",
     "oppositeStation": "DairyPlant",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Завод БОР",
+    "smallTextBG": ""
   },
   "DairyPlant": {
     "displayName": "Dairy Plant",
     "number": "126",
     "oppositeStation": "BOR",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Млекозавод",
+    "smallTextBG": ""
   },
   "METROSuperstoreNorth": {
     "displayName": "METRO Superstore - North",
     "number": "127",
     "oppositeStation": "METROSuperstoreSouth",
-    "smallText": "To Prista"
+    "smallText": "To Prista",
+    "langBG": "Магазин МЕТРО - Север",
+    "smallTextBG": "Към Приста"
   },
   "MidiyaEnosNorth": {
     "displayName": "Midiya Enos - North",
     "number": "129",
     "oppositeStation": "MidiyaEnosSouth",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Мидия Енос - Север",
+    "smallTextBG": ""
   },
   "MidiyaEnosSouth": {
     "displayName": "Midiya Enos - South",
     "number": "130",
     "oppositeStation": "MidiyaEnosNorth",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Мидия Енос - Юг",
+    "smallTextBG": ""
   },
   "RoadJunctionOhlyuvaEast": {
     "displayName": "Road Junction \"Ohlyuva\" - East",
     "number": "131",
     "oppositeStation": "RoadJunctionOhlyuvaWest",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Пътен възел „Охлюва“ - Изток",
+    "smallTextBG": ""
   },
   "RoadJunctionOhlyuvaWest": {
     "displayName": "Road Junction \"Ohlyuva\" - West",
     "number": "132",
     "oppositeStation": "RoadJunctionOhlyuvaEast",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Пътен възел „Охлюва“ - Запад",
+    "smallTextBG": ""
   },
   "Technopolis": {
     "displayName": "Technopolis",
     "number": "133",
     "oppositeStation": "PechatniPlatkiPCBs",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Технополис",
+    "smallTextBG": ""
   },
   "PechatniPlatkiPCBs": {
     "displayName": "Pechatni Platki",
     "number": "134",
     "oppositeStation": "Technopolis",
-    "smallText": "PCBs"
+    "smallText": "PCBs",
+    "langBG": "Печатни платки",
+    "smallTextBG": ""
   },
   "MotherBabyHome": {
     "displayName": "Mother & Baby Home",
     "number": "135",
     "oppositeStation": "Block121",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Дом майка и бебе",
+    "smallTextBG": ""
   },
   "Block121": {
     "displayName": "Block 121",
     "number": "136",
     "oppositeStation": "MotherBabyHome",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Блок 121",
+    "smallTextBG": ""
   },
   "IntercityBusStationEast": {
     "displayName": "Eastern Intercity Bus Station - East",
     "number": "137",
     "oppositeStation": "IntercityBusStationWest",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Автогара-Изток - Изток",
+    "smallTextBG": ""
   },
   "IntercityBusStationWest": {
     "displayName": "Eastern Intercity Bus Station - West",
     "number": "138",
     "oppositeStation": "IntercityBusStationEast",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Автогара-Изток - Запад",
+    "smallTextBG": ""
   },
   "RazpredelitelnaRailwayStation": {
     "displayName": "Razpredelitelna Railway Station",
     "number": "139",
     "oppositeStation": "",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Гара Разпределителна",
+    "smallTextBG": ""
   },
   "WholesaleMarketNorth": {
     "displayName": "Wholesale Market - North",
     "number": "140",
     "oppositeStation": "WholesaleMarketSouth",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Търговия на едро - Север",
+    "smallTextBG": ""
   },
   "WholesaleMarketSouth": {
     "displayName": "Wholesale Market - South",
     "number": "141",
     "oppositeStation": "WholesaleMarketNorth",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Търговия на едро - Юг",
+    "smallTextBG": ""
   },
   "ToplivoNorth": {
     "displayName": "Toplivo - North",
     "number": "142",
     "oppositeStation": "ToplivoSouth",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Топливо - Север",
+    "smallTextBG": ""
   },
   "ToplivoSouth": {
     "displayName": "Toplivo - South",
     "number": "143",
     "oppositeStation": "ToplivoNorth",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Топливо - Юг",
+    "smallTextBG": ""
   },
   "DairyKitchenEast": {
     "displayName": "Dairy Kitchen - East",
     "number": "144",
     "oppositeStation": "DairyKitchenWest",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Млечна кухня - Изток",
+    "smallTextBG": ""
   },
   "DairyKitchenWest": {
     "displayName": "Dairy Kitchen - West",
     "number": "145",
     "oppositeStation": "DairyKitchenEast",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Млечна кухня - Запад",
+    "smallTextBG": ""
   },
   "YundolaStrBlock7": {
     "displayName": "\"Yundola\" str. - Block 7",
     "number": "146",
     "oppositeStation": "",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "ул. „Юндола“ - Блок 7",
+    "smallTextBG": ""
   },
   "YundolaStrBlock16": {
     "displayName": "\"Yundola\" str. - Block 16",
     "number": "147",
     "oppositeStation": "",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "ул. „Юндола“ - Блок 16",
+    "smallTextBG": ""
   },
   "ChaykaWest": {
     "displayName": "Chayka - West",
     "number": "148",
     "oppositeStation": "",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Чайка - Запад",
+    "smallTextBG": ""
   },
   "SaintOuan": {
     "displayName": "\"Saint Ouan\" str.",
     "number": "149",
     "oppositeStation": "ShipbuildingHighSchool",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "ул. „Сент Уан“",
+    "smallTextBG": ""
   },
   "StefanStambolov26": {
     "displayName": "26 \"Stefan Stambolov\" blvd.",
     "number": "150",
     "oppositeStation": "",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "бул. „Стефан Стамболов“ № 26",
+    "smallTextBG": ""
   },
   "StefanStambolov64": {
     "displayName": "64 \"Stefan Stambolov\" blvd.",
     "number": "151",
     "oppositeStation": "",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "бул. „Стефан Стамболов“ № 64",
+    "smallTextBG": ""
   },
   "BlockElectron": {
     "displayName": "Block \"Electron\"",
     "number": "152",
     "oppositeStation": "Block33MariaLuisa",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Блок „Електрон“",
+    "smallTextBG": ""
   },
   "Block33MariaLuisa": {
     "displayName": "Block 33",
     "number": "153",
     "oppositeStation": "BlockElectron",
-    "smallText": "\"Maria Luisa\" str."
+    "smallText": "\"Maria Luisa\" str.",
+    "langBG": "Блок 33",
+    "smallTextBG": "ул. „Мария Луиза“"
   },
   "BlockAksakov": {
     "displayName": "Block \"Aksakov\"",
     "number": "154",
     "oppositeStation": "",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Блок „Аксаков“",
+    "smallTextBG": ""
   },
   "BlockPushkinOnNeofitBozveliBlvd": {
     "displayName": "Unnamed - Block \"Pushkin\" on \"Neofit Bozveli\" blvd.",
     "number": "155",
     "oppositeStation": "",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Блок „Пушкин“ на булевард „Неофит Бозвели“",
+    "smallTextBG": ""
   },
   "AfterTsarOsvoboditelBlvdOnNeofitBozveliBlvd": {
     "displayName": "Unnamed - After \"Tsar Osvoboditel\" blvd., on \"Neofit Bozveli\" blvd.",
     "number": "156",
     "oppositeStation": "",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "След бул. „Цар Освободител“ на ул. „Неофит Бозвели“",
+    "smallTextBG": ""
   },
   "Malyovitsa1North": {
     "displayName": "Malyovitsa 1 - North",
     "number": "157",
     "oppositeStation": "Malyovitsa1South",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Мальовица 1 - Север",
+    "smallTextBG": ""
   },
   "Malyovitsa1South": {
     "displayName": "Malyovitsa 1 - South",
     "number": "158",
     "oppositeStation": "Malyovitsa1North",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Мальовица 1 - Юг",
+    "smallTextBG": ""
   },
   "Malyovitsa2North": {
     "displayName": "Malyovitsa 2 - North",
     "number": "159",
     "oppositeStation": "Malyovitsa2South",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Мальовица 2 - Север",
+    "smallTextBG": ""
   },
   "Malyovitsa2South": {
     "displayName": "Malyovitsa 2 - South",
     "number": "160",
     "oppositeStation": "Malyovitsa2North",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Мальовица 2 - Юг",
+    "smallTextBG": ""
   },
   "MalyovitsaStrTerminus": {
     "displayName": "\"Malyovitsa\" str. Terminus",
     "number": "161",
     "oppositeStation": "",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Обръщалото - ул. „Мальовица“",
+    "smallTextBG": ""
   },
   "OrgahimEast": {
     "displayName": "Orgahim - East",
     "number": "162",
     "oppositeStation": "OrgahimWest",
-    "smallText": "\"Bulgaria\" blvd."
+    "smallText": "\"Bulgaria\" blvd.",
+    "langBG": "Оргахим - Изток",
+    "smallTextBG": "бул. „България“"
   },
   "OrgahimWest": {
     "displayName": "Orgahim - West",
     "number": "163",
     "oppositeStation": "OrgahimEast",
-    "smallText": "\"Bulgaria\" blvd."
+    "smallText": "\"Bulgaria\" blvd.",
+    "langBG": "Оргахим - Запад",
+    "smallTextBG": "бул. „България“"
   },
   "ZEIMEast": {
     "displayName": "ZEIM - East",
     "number": "164",
     "oppositeStation": "ZEIMWest",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "ЗЕИМ - Изток",
+    "smallTextBG": ""
   },
   "ZEIMWest": {
     "displayName": "ZEIM - West",
     "number": "165",
     "oppositeStation": "ZEIMEast",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "ЗЕИМ - Запад",
+    "smallTextBG": ""
   },
   "FamiliaHotelEast": {
     "displayName": "\"Familia\" Hotel - East",
     "number": "166",
     "oppositeStation": "FamiliaHotelWest",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Хотел „Фамилия“ - Изток",
+    "smallTextBG": ""
   },
   "FamiliaHotelWest": {
     "displayName": "\"Familia\" Hotel - West",
     "number": "167",
     "oppositeStation": "FamiliaHotelEast",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Хотел „Фамилия“ - Запад",
+    "smallTextBG": ""
   },
   "RoadJunctionNikolovoNorth": {
     "displayName": "Road Junction \"Nikolovo\" - North",
     "number": "168",
     "oppositeStation": "RoadJunctionNikolovoSouth",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Пътен възел „Николово“ - Север",
+    "smallTextBG": ""
   },
   "RoadJunctionNikolovoSouth": {
     "displayName": "Road Junction \"Nikolovo\" - South",
     "number": "169",
     "oppositeStation": "RoadJunctionNikolovoNorth",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Пътен възел „Николово“ - Юг",
+    "smallTextBG": ""
   },
   "BulgariaBlvdAtSianaSignNorth": {
     "displayName": "\"Bulgaria\" blvd. at Siana sign - North",
     "number": "170",
     "oppositeStation": "BulgariaBlvdAtSianaSignSouth",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "бул. „България“ при табела Сиана - Север",
+    "smallTextBG": ""
   },
   "BulgariaBlvdAtSianaSignSouth": {
     "displayName": "\"Bulgaria\" blvd. at Siana sign - South",
     "number": "171",
     "oppositeStation": "BulgariaBlvdAtSianaSignNorth",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "бул. „България“ при табела Сиана - Юг",
+    "smallTextBG": ""
   },
   "EKOGasStationNorth": {
     "displayName": "EKO Gas Station - North",
     "number": "172",
     "oppositeStation": "EKOGasStationSouth",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Бензиностанция ЕКО - Север",
+    "smallTextBG": ""
   },
   "EKOGasStationSouth": {
     "displayName": "EKO Gas Station - South",
     "number": "173",
     "oppositeStation": "EKOGasStationNorth",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Бензиностанция ЕКО - Юг",
+    "smallTextBG": ""
   },
   "VerilaNorth": {
     "displayName": "Verila - North",
     "number": "174",
     "oppositeStation": "VerilaSouth",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Верила - Север",
+    "smallTextBG": ""
   },
   "VerilaSouth": {
     "displayName": "Verila - South",
     "number": "175",
     "oppositeStation": "VerilaNorth",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Верила - Юг",
+    "smallTextBG": ""
   },
   "LeventaNorth": {
     "displayName": "Leventa - North",
     "number": "176",
     "oppositeStation": "LeventaSouth",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Левента - Север",
+    "smallTextBG": ""
   },
   "LeventaSouth": {
     "displayName": "Leventa - South",
     "number": "177",
     "oppositeStation": "LeventaNorth",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Левента - Юг",
+    "smallTextBG": ""
   },
   "AlekoKonstantinovPrimarySchoolNorth": {
     "displayName": "\"Aleko Konstantinov\" Primary School - North",
     "number": "178",
     "oppositeStation": "AlekoKonstantinovPrimarySchoolSouth",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Училище „Алеко Константинов“ - Север",
+    "smallTextBG": ""
   },
   "AlekoKonstantinovPrimarySchoolSouth": {
     "displayName": "\"Aleko Konstantinov\" Primary School - South",
     "number": "179",
     "oppositeStation": "AlekoKonstantinovPrimarySchoolNorth",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Училище „Алеко Константинов“ - Юг",
+    "smallTextBG": ""
   },
   "FishingHutWest": {
     "displayName": "Fishing Hut - West",
     "number": "180",
     "oppositeStation": "FishingHutEast",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Рибарска колиба - Запад",
+    "smallTextBG": ""
   },
   "FishingHutEast": {
     "displayName": "Fishing Hut - East",
     "number": "181",
     "oppositeStation": "FishingHutWest",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Рибарска колиба - Изток",
+    "smallTextBG": ""
   },
   "PristaLodge": {
     "displayName": "Prista Lodge",
     "number": "182",
     "oppositeStation": "OldPeoplesHome",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Хижа Приста",
+    "smallTextBG": ""
   },
   "OldPeoplesHome": {
     "displayName": "Old People's Home",
     "number": "183",
     "oppositeStation": "PristaLodge",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Старчески дом",
+    "smallTextBG": ""
   },
   "KPPEast": {
     "displayName": "KPP - PP - East",
     "number": "184",
     "oppositeStation": "KPPWest",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "КПП - Изток",
+    "smallTextBG": ""
   },
   "KPPWest": {
     "displayName": "KPP - PP - West",
     "number": "185",
     "oppositeStation": "KPPEast",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "КПП - Запад",
+    "smallTextBG": ""
   },
   "9thKilometerEast": {
     "displayName": "9th kilometer - East",
     "number": "186",
     "oppositeStation": "9thKilometerWest",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "9-ти километър - Изток",
+    "smallTextBG": ""
   },
   "9thKilometerWest": {
     "displayName": "9th kilometer - West",
     "number": "187",
     "oppositeStation": "9thKilometerEast",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "9-ти километър - Запад",
+    "smallTextBG": ""
   },
   "PetrolBaseEntranceNorth": {
     "displayName": "Petrol Base Entrace - North",
     "number": "188",
     "oppositeStation": "PetrolBaseEntranceSouth",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Петролна база вход - Север",
+    "smallTextBG": ""
   },
   "PetrolBaseEntranceSouth": {
     "displayName": "Petrol Base Entrance - South",
     "number": "189",
     "oppositeStation": "PetrolBaseEntranceNorth",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Петролна база вход - Юг",
+    "smallTextBG": ""
   },
   "PetrolBaseCentralNorth": {
     "displayName": "Petrol Base Central - North",
     "number": "190",
     "oppositeStation": "PetrolBaseCentralSouth",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Петролна база централна - Север",
+    "smallTextBG": ""
   },
   "PetrolBaseCentralSouth": {
     "displayName": "Petrol Base Central - South",
     "number": "191",
     "oppositeStation": "PetrolBaseCentralNorth",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Петролна база централна - Юг",
+    "smallTextBG": ""
   },
   "PetrolBaseObrashtalo": {
     "displayName": "Petrol Base - Obrashtalo",
     "number": "192",
     "oppositeStation": "",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Петролна база - Обръщало",
+    "smallTextBG": ""
   },
   "16thKilometerTerminus": {
     "displayName": "16th Kilometer Terminus",
     "number": "193",
     "oppositeStation": "",
-    "smallText": "aka Dolapite Railway Station"
+    "smallText": "aka Dolapite Railway Station",
+    "langBG": "Обръщало 16-ти километър",
+    "smallTextBG": "Гара Долапите"
   },
   "HadzhiGenovaChesmaNorth": {
     "displayName": "Hadzhi Genova Chesma - North",
     "number": "194",
     "oppositeStation": "HadzhiGenovaChesmaSouth",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Хаджи Генова чешма - Север",
+    "smallTextBG": ""
   },
   "HadzhiGenovaChesmaSouth": {
     "displayName": "Hadzhi Genova Chesma - South",
     "number": "195",
     "oppositeStation": "HadzhiGenovaChesmaNorth",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Хаджи Генова чешма - Юг",
+    "smallTextBG": ""
   },
   "HipodrumTerminus": {
     "displayName": "Hipodrum - Terminus",
     "number": "196",
     "oppositeStation": "",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Хподрум - Обръщало",
+    "smallTextBG": ""
   },
   "BorderPoliceWest": {
     "displayName": "Border Police - West",
     "number": "197",
     "oppositeStation": "BorderPoliceEast",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Гранична полиция - Запад",
+    "smallTextBG": ""
   },
   "BorderPoliceEast": {
     "displayName": "Border Police - East",
     "number": "198",
     "oppositeStation": "BorderPoliceWest",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Гранична полиция - Изток",
+    "smallTextBG": ""
   },
   "SlatinaWest": {
     "displayName": "Slatina - West",
     "number": "199",
     "oppositeStation": "SlatinaEast",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Слатина - Запад",
+    "smallTextBG": ""
   },
   "SlatinaEast": {
     "displayName": "Slatina - East",
     "number": "200",
     "oppositeStation": "SlatinaWest",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Слатина - Изток",
+    "smallTextBG": ""
   },
   "KEROS": {
     "displayName": "KEROS",
     "number": "201",
     "oppositeStation": "",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "КЕРОС",
+    "smallTextBG": ""
   },
   "CharodeykaCemeteryNorth": {
     "displayName": "Charodeyka Cemetery - North",
     "number": "202",
     "oppositeStation": "CharodeykaCemeterySouth",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Гробщен парк Чародейка - Север",
+    "smallTextBG": ""
   },
   "CharodeykaCemeterySouth": {
     "displayName": "Charodeyka Cemetery - South",
     "number": "203",
     "oppositeStation": "CharodeykaCemeteryNorth",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Гробщен парк Чародейка - Юг",
+    "smallTextBG": ""
   },
   "NikolovLTDNorth": {
     "displayName": "Nikolov LTD - North",
     "number": "204",
     "oppositeStation": "NikolovLTDSouth",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Николов ЕООД - Север",
+    "smallTextBG": ""
   },
   "NikolovLTDSouth": {
     "displayName": "Nikolov LTD - South",
     "number": "205",
     "oppositeStation": "NikolovLTDNorth",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Николов ЕООД - Юг",
+    "smallTextBG": ""
   },
   "IntertradeNorth": {
     "displayName": "Intertrade - North",
     "number": "206",
     "oppositeStation": "IntertradeSouth",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Интертрейд - Север",
+    "smallTextBG": ""
   },
   "IntertradeSouth": {
     "displayName": "Intertrade - South",
     "number": "207",
     "oppositeStation": "IntertradeNorth",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Интертрейд - Юг",
+    "smallTextBG": ""
   },
   "KolevAutoserviceNorth": {
     "displayName": "Kolev Autoservice - North",
     "number": "208",
     "oppositeStation": "KolevAutoserviceSouth",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Автосервиз Колев - Север",
+    "smallTextBG": ""
   },
   "KolevAutoserviceSouth": {
     "displayName": "Kolev Autoservice - South",
     "number": "209",
     "oppositeStation": "KolevAutoserviceNorth",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Автосервиз Колев - Юг",
+    "smallTextBG": ""
   },
   "KasevaChesmaNorth": {
     "displayName": "Kaseva Chesma - North",
     "number": "210",
     "oppositeStation": "KasevaChesmaSouth",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Касева чешма - Север",
+    "smallTextBG": ""
   },
   "KasevaChesmaSouth": {
     "displayName": "Kaseva Chesma - South",
     "number": "211",
     "oppositeStation": "KasevaChesmaNorth",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Касева чешма - Юг",
+    "smallTextBG": ""
   },
   "ObrashtaloNorth": {
     "displayName": "Obrashtalo - Kaseva Chesma - North",
     "number": "212",
     "oppositeStation": "ObrashtaloSouth",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Обръщало - Касева чешма - Север",
+    "smallTextBG": ""
   },
   "ObrashtaloSouth": {
     "displayName": "Obrashtalo - Kaseva Chesma - South",
     "number": "213",
     "oppositeStation": "ObrashtaloNorth",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Обръщало - Касева чешма - Юг",
+    "smallTextBG": ""
   },
   "ZavoyaNorth": {
     "displayName": "Zavoya - North",
     "number": "214",
     "oppositeStation": "ZavoyaSouth",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Завоя - Север",
+    "smallTextBG": ""
   },
   "ZavoyaSouth": {
     "displayName": "Zavoya - South",
     "number": "215",
     "oppositeStation": "ZavoyaNorth",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Завоя - Юг",
+    "smallTextBG": ""
   },
   "BoroveteNorth": {
     "displayName": "Borovete - North",
     "number": "216",
     "oppositeStation": "BoroveteSouth",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Боровете - Север",
+    "smallTextBG": ""
   },
   "BoroveteSouth": {
     "displayName": "Borovete - South",
     "number": "217",
     "oppositeStation": "BoroveteNorth",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Боровете - Юг",
+    "smallTextBG": ""
   },
   "AkatsiiteNorth": {
     "displayName": "Akatsiite - North",
     "number": "218",
     "oppositeStation": "AkatsiiteSouth",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Акациите - Север",
+    "smallTextBG": ""
   },
   "AkatsiiteSouth": {
     "displayName": "Akatsiite - South",
     "number": "219",
     "oppositeStation": "AkatsiiteNorth",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Акациите - Юг",
+    "smallTextBG": ""
   },
   "PrelezaTerminus": {
     "displayName": "Preleza Terminus",
     "number": "220",
     "oppositeStation": "",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Обръщало Прелеза",
+    "smallTextBG": ""
   },
   "Druzhba3Block48": {
     "displayName": "Druzhba 3 - Block 48",
     "number": "221",
-    "oppositeStation": "",
-    "smallText": ""
+    "oppositeStation": "aka Block 45",
+    "smallText": "",
+    "langBG": "Дружба 3 - Блок 48",
+    "smallTextBG": "Блок 45"
   },
   "IzgrevWest": {
     "displayName": "Izgrev - West",
     "number": "222",
     "oppositeStation": "IzgrevEast",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Изгрев - Запад",
+    "smallTextBG": ""
   },
   "IzgrevEast": {
     "displayName": "Izgrev - East",
     "number": "223",
     "oppositeStation": "IzgrevWest",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Изгрев - Изток",
+    "smallTextBG": ""
   },
   "MonumentOfRusofiliteEast": {
     "displayName": "Monument of Rusofilite - East",
     "number": "224",
     "oppositeStation": "MonumentOfRusofiliteWest",
-    "smallText": "aka Lozyata"
+    "smallText": "aka Lozyata",
+    "langBG": "Паметник на русофилите - Изток",
+    "smallTextBG": "Лозята"
   },
   "MonumentOfRusofiliteWest": {
     "displayName": "Monument of Rusofilite - West",
     "number": "225",
     "oppositeStation": "MonumentOfRusofiliteEast",
-    "smallText": "aka Lozyata"
+    "smallText": "aka Lozyata",
+    "langBG": "Паметник на русофилите - Запад",
+    "smallTextBG": "Лозята"
   },
   "AstardzhiykaNorth": {
     "displayName": "Astardzhiyka - North",
     "number": "226",
     "oppositeStation": "AstardzhiykaSouth",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Астърджийка - Север",
+    "smallTextBG": ""
   },
   "AstardzhiykaSouth": {
     "displayName": "Astardzhiyka - South",
     "number": "227",
     "oppositeStation": "AstardzhiykaNorth",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Астърджийка - Юг",
+    "smallTextBG": ""
   },
   "NovaPloshtadkaNorth": {
     "displayName": "Nova Ploshtadka - North",
     "number": "228",
     "oppositeStation": "NovaPloshtadkaSouth",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Нова площадка - Север",
+    "smallTextBG": ""
   },
   "NovaPloshtadkaSouth": {
     "displayName": "Nova Ploshtadka - South",
     "number": "229",
     "oppositeStation": "NovaPloshtadkaNorth",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Нова площадка - Юг",
+    "smallTextBG": ""
   },
   "ForkForObraztsovChiflikNorth": {
     "displayName": "Fork for Obraztsov Chiflik - North",
     "number": "230",
     "oppositeStation": "ForkForObraztsovChiflikSouth",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Образцов чифлик разклон - Север",
+    "smallTextBG": ""
   },
   "CharodeykaSupera": {
     "displayName": "Charodeyka - Supera",
     "number": "230_1",
     "oppositeStation": "",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Чародейка - Супера",
+    "smallTextBG": ""
   },
   "ForkForObraztsovChiflikSouth": {
     "displayName": "Fork for Obraztsov Chiflik - South",
     "number": "231",
     "oppositeStation": "ForkForObraztsovChiflikNorth",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Образцов чифлик разклон - Юг",
+    "smallTextBG": ""
   },
   "ObraztsovChiflikCentre": {
     "displayName": "Obraztsov Chiflik - Centre",
     "number": "232",
     "oppositeStation": "",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Образцов чифлик - Център",
+    "smallTextBG": ""
   },
   "ZurnosahranenieNorth": {
     "displayName": "Zurnosahranenie - North",
     "number": "233",
     "oppositeStation": "ZurnosahranenieSouth",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Зърносъхранение - Север",
+    "smallTextBG": ""
   },
   "ZurnosahranenieSouth": {
     "displayName": "Zurnosahranenie - South",
     "number": "234",
     "oppositeStation": "ZurnosahranenieNorth",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Зърносъхранение - Юг",
+    "smallTextBG": ""
   },
   "DZSNorth": {
     "displayName": "DZS - North",
     "number": "235",
     "oppositeStation": "DZSEast",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "ДЗС - Север",
+    "smallTextBG": ""
   },
   "DZSEast": {
     "displayName": "DZS - East",
     "number": "236",
     "oppositeStation": "DZSNorth",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "ДЗС - Изток",
+    "smallTextBG": ""
   },
   "LeatherFactoryEast": {
     "displayName": "Leather Factory - East",
     "number": "237",
     "oppositeStation": "LeatherFactoryWest",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Кожарски завод - Изток",
+    "smallTextBG": ""
   },
   "LeatherFactoryWest": {
     "displayName": "Leather Factory - West",
     "number": "238",
     "oppositeStation": "LeatherFactoryEast",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Кожарски завод - Запад",
+    "smallTextBG": ""
   },
   "ZMMEast": {
     "displayName": "ZMM - East",
     "number": "239",
     "oppositeStation": "ZMMWest",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "ЗММ - Изток",
+    "smallTextBG": ""
   },
   "ZMMWest": {
     "displayName": "ZMM - West",
     "number": "240",
     "oppositeStation": "ZMMEast",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "ЗММ - Запад",
+    "smallTextBG": ""
   },
   "ElectrometalEast": {
     "displayName": "Electrometal - East",
     "number": "241",
     "oppositeStation": "ElectrometalWest",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Електрометал - Изток",
+    "smallTextBG": ""
   },
   "ElectrometalWest": {
     "displayName": "Electrometal - West",
     "number": "242",
     "oppositeStation": "ElectrometalEast",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Електрометал - Запад",
+    "smallTextBG": ""
   },
   "DagovBridgeEast": {
     "displayName": "Dagov Bridge - East",
     "number": "243",
     "oppositeStation": "DagovBridgeWest",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Дъгов мост - Изток",
+    "smallTextBG": ""
   },
   "DagovBridgeWest": {
     "displayName": "Dagov Bridge - West",
     "number": "244",
     "oppositeStation": "DagovBridgeEast",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Дъгов мост - Запад",
+    "smallTextBG": ""
   },
   "StrelbishteEast": {
     "displayName": "Strelbishte - East",
     "number": "245",
     "oppositeStation": "StrelbishteWest",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Стрелбище - Изток",
+    "smallTextBG": ""
   },
   "StrelbishteWest": {
     "displayName": "Strelbishte - West",
     "number": "246",
     "oppositeStation": "StrelbishteEast",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Стрелбище - Запад",
+    "smallTextBG": ""
   },
   "RusanovoBridgeWest": {
     "displayName": "Rusanovo Bridge - West",
     "number": "247",
     "oppositeStation": "RusanovoBridgeEast",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Русаново мостче - Запад",
+    "smallTextBG": ""
   },
   "RusanovoBridgeEast": {
     "displayName": "Rusanovo Bridge - East",
     "number": "248",
     "oppositeStation": "RusanovoBridgeWest",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Русаново мостче - Изток",
+    "smallTextBG": ""
   },
   "SrednaKulaTheTriangleEast": {
     "displayName": "Sredna Kula - The Triangle - East",
     "number": "249",
     "oppositeStation": "SrednaKulaTheTriangleWest",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Средна кула - Триъгълника - Изток",
+    "smallTextBG": ""
   },
   "SrednaKulaTheTriangleWest": {
     "displayName": "Sredna Kula - The Triangle - West",
     "number": "250",
     "oppositeStation": "SrednaKulaTheTriangleEast",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Средна кула - Триъгълника - Запад",
+    "smallTextBG": ""
   },
   "AsphaltBaseEast": {
     "displayName": "Asphalt Base - East",
     "number": "251",
     "oppositeStation": "AsphaltBaseWest",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Асфалтова база - Изток",
+    "smallTextBG": ""
   },
   "AsphaltBaseWest": {
     "displayName": "Asphalt Base - West",
     "number": "252",
     "oppositeStation": "AsphaltBaseEast",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Асфалтова база - Запад",
+    "smallTextBG": ""
   },
   "BasarbovoCemeteryEast": {
     "displayName": "Basarbovo Cemetery - East",
     "number": "253",
     "oppositeStation": "BasarbovoCemeteryWest",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Гробищен парк Басарбово - Изток",
+    "smallTextBG": ""
   },
   "BasarbovoCemeteryWest": {
     "displayName": "Basarbovo Cemetery - West",
     "number": "254",
     "oppositeStation": "BasarbovoCemeteryEast",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Гробищен парк Басарбово - Запад",
+    "smallTextBG": ""
   },
   "BasarbovoCemetery": {
     "displayName": "Basarbovo Cemetery",
     "number": "255",
     "oppositeStation": "",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Гробищен парк Басарбово",
+    "smallTextBG": ""
   },
   "SrednaKula1North": {
     "displayName": "Sredna Kula 1 - North",
     "number": "256",
     "oppositeStation": "SrednaKula1South",
-    "smallText": "Entrace from Ruse"
+    "smallText": "Entrace from Ruse",
+    "langBG": "Средна кула 1 - Север",
+    "smallTextBG": "Вход от Русе"
   },
   "SrednaKula1South": {
     "displayName": "Sredna Kula 1 - South",
     "number": "257",
     "oppositeStation": "SrednaKula1North",
-    "smallText": "Entrace from Ruse"
+    "smallText": "Entrace from Ruse",
+    "langBG": "Средна кула 1 - Юг",
+    "smallTextBG": "Вход от Русе"
   },
   "SrednaKulaCentralNorth": {
     "displayName": "Sredna Kula Central - North",
     "number": "258",
     "oppositeStation": "SrednaKulaCentralSouth",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Средна кула център - Север",
+    "smallTextBG": ""
   },
   "SrednaKulaCentralSouth": {
     "displayName": "Sredna Kula Central - South",
     "number": "259",
     "oppositeStation": "SrednaKulaCentralNorth",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Средна кула център - Юг",
+    "smallTextBG": ""
   },
   "SrednaKula2North": {
     "displayName": "Sredna Kula 2 - North",
     "number": "260",
     "oppositeStation": "SrednaKula2South",
-    "smallText": "Exit to Dolapite"
+    "smallText": "Exit to Dolapite",
+    "langBG": "Средна кула 2 - Север",
+    "smallTextBG": "Изход към Долапите"
   },
   "SrednaKula2South": {
     "displayName": "Sredna Kula 2 - South",
     "number": "261",
     "oppositeStation": "SrednaKula2North",
-    "smallText": "Exit to Dolapite"
+    "smallText": "Exit to Dolapite",
+    "langBG": "Средна кула 2 - Юг",
+    "smallTextBG": "Изход към Долапите"
   },
   "DolapiteCentralSouth": {
     "displayName": "Dolapite Central - South",
     "number": "262",
     "oppositeStation": "DolapiteCentralEast",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Долапите център - Юг",
+    "smallTextBG": ""
   },
   "DolapiteCentralEast": {
     "displayName": "Dolapite Central - East",
     "number": "263",
     "oppositeStation": "DolapiteCentralSouth",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Долапите център - Изток",
+    "smallTextBG": ""
   },
   "HristoSmirnenkiPrimarySchool": {
     "displayName": "\"Hristo Smirnenki\" Primary School",
     "number": "264",
     "oppositeStation": "Church",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Училище „Христо Смирненски“",
+    "smallTextBG": ""
   },
   "Church": {
     "displayName": "Church",
     "number": "265",
     "oppositeStation": "HristoSmirnenkiPrimarySchool",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Църквата",
+    "smallTextBG": ""
   },
   "ObrashtaloDolapite": {
     "displayName": "Obrashtalo - Dolapite",
     "number": "266",
     "oppositeStation": "",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Обръщало - Долапите",
+    "smallTextBG": ""
   },
   "NesebarStrWest": {
     "displayName": "\"Nesebar\" str. - West",
     "number": "267",
     "oppositeStation": "NesebarStrEast",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "ул. „Несебър“ - Запад",
+    "smallTextBG": ""
   },
   "NesebarStrEast": {
     "displayName": "\"Nesebar\" str. - East",
     "number": "268",
     "oppositeStation": "NesebarStrWest",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "ул. „Несебър“ - Изток",
+    "smallTextBG": ""
   },
   "StrelbishtetoDolapite": {
     "displayName": "Strelbishteto - Dolapite",
     "number": "269",
     "oppositeStation": "",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Стрелбището - Долапите",
+    "smallTextBG": ""
   },
   "RailwayCrossingDolapiteNorth": {
     "displayName": "Railway Crossing Dolapite - North",
     "number": "270",
     "oppositeStation": "RailwayCrossingDolapiteSouth",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "ЖП прелез Долапите - Север",
+    "smallTextBG": ""
   },
   "RailwayCrossingDolapiteSouth": {
     "displayName": "Railway Crossing Dolapite - South",
     "number": "271",
     "oppositeStation": "RailwayCrossingDolapiteNorth",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "ЖП прелез Долапите - Юг",
+    "smallTextBG": ""
   },
   "OrhideyaEast": {
     "displayName": "Orhideya - East",
     "number": "272",
     "oppositeStation": "OrhideyaWest",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Орхидея - Изток",
+    "smallTextBG": ""
   },
   "AleksandarStamboliyskiNorth": {
     "displayName": "Aleksandar Stamboliyski - North",
     "number": "273",
     "oppositeStation": "AleksandarStamboliyskiSouth",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Александър Стамболийски - Север",
+    "smallTextBG": ""
   },
   "AleksandarStamboliyskiSouth": {
     "displayName": "Aleksandar Stamboliyski - South",
     "number": "274",
     "oppositeStation": "AleksandarStamboliyskiNorth",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Александър Стамболийски - Юг",
+    "smallTextBG": ""
   },
   "YouthHouse": {
     "displayName": "Youth House",
     "number": "275",
     "oppositeStation": "",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Младежки дом",
+    "smallTextBG": ""
   },
   "MarielaSoni": {
     "displayName": "Mariela Soni",
     "number": "276",
     "oppositeStation": "",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Мариела Сони",
+    "smallTextBG": ""
   },
   "Bricolage": {
     "displayName": "Bricolage",
     "number": "277",
     "oppositeStation": "Yalta",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Бриколаж",
+    "smallTextBG": ""
   },
   "Kaufland": {
     "displayName": "Kaufland",
     "number": "278",
     "oppositeStation": "",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Кауфланд",
+    "smallTextBG": ""
   },
   "Yalta": {
     "displayName": "Yalta",
     "number": "279",
     "oppositeStation": "Bricolage",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Ялта",
+    "smallTextBG": ""
   },
   "MedicalCentreWest": {
     "displayName": "Medical Centre - West",
     "number": "280",
     "oppositeStation": "MedicalCentreEast",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Медицински център - Запад",
+    "smallTextBG": ""
   },
   "CharodeykaSouth": {
     "displayName": "Charodeyka-South",
     "number": "281",
     "oppositeStation": "ShoppingComplex",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Чародейка-ЮГ",
+    "smallTextBG": ""
   },
   "Jumbo": {
     "displayName": "Jumbo",
     "number": "282",
     "oppositeStation": "",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Магазин Джъмбо",
+    "smallTextBG": ""
   },
   "METROSuperstoreSouth": {
     "displayName": "METRO Superstore - South",
     "number": "284",
     "oppositeStation": "METROSuperstoreNorth",
-    "smallText": "To Ruse"
+    "smallText": "To Ruse",
+    "langBG": "Магазин МЕТРО - Юг",
+    "smallTextBG": "Към Русе"
   },
   "RusenskaKorabostroilnitsa": {
     "displayName": "Rusenska Korabostroilnitsa",
     "number": "285",
     "oppositeStation": "",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Русенска корабостроителница",
+    "smallTextBG": ""
   },
   "METROSuperstoreParking": {
     "displayName": "METRO Superstore - Parking",
     "number": "286",
     "oppositeStation": "",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Магазин МЕТРО - паркинг",
+    "smallTextBG": ""
   },
   "ZdravetsMarket": {
     "displayName": "Zdravets Market",
     "number": "287",
     "oppositeStation": "",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Пазар квартал Здравец",
+    "smallTextBG": ""
   },
   "TerasataRestaurant": {
     "displayName": "\"Terasata\" Restaurant",
     "number": "288",
     "oppositeStation": "",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Ресторант „Терасата“",
+    "smallTextBG": ""
   },
   "TSYUR": {
     "displayName": "TSYUR",
     "number": "289",
     "oppositeStation": "",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "ЦЮР",
+    "smallTextBG": ""
   },
   "RadostKindergarten": {
     "displayName": "\"Radost\" Kindergarten",
     "number": "290",
     "oppositeStation": "",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Детска градина „Радост“",
+    "smallTextBG": ""
   },
   "DKC1": {
     "displayName": "DKC-1",
     "number": "291",
     "oppositeStation": "",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "ДКЦ-1",
+    "smallTextBG": ""
   },
   "VasilAprilovPrimarySchool": {
     "displayName": "\"Vasil Aprilov\" Primary School",
     "number": "292",
     "oppositeStation": "",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Училище „Васил Априлов“",
+    "smallTextBG": ""
   },
   "BasarbovoCemeteryEntrance": {
     "displayName": "Basarbovo Cemetery - Entrance",
     "number": "",
     "oppositeStation": "BasarbovoCemeteryExit",
-    "smallText": "West"
+    "smallText": "West",
+    "langBG": "Гробищен парк Басарбово - Вход",
+    "smallTextBG": "Запад"
   },
   "BasarbovoCemeteryExit": {
     "displayName": "Basarbovo Cemetery - Exit",
     "number": "",
     "oppositeStation": "BasarbovoCemeteryEntrance",
-    "smallText": "East"
+    "smallText": "East",
+    "langBG": "Гробищен парк Басарбово - Изход",
+    "smallTextBG": "Изток"
   },
   "TheCanalWest": {
     "displayName": "The Canal - West",
     "number": "",
     "oppositeStation": "TheCanalEast",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Канала - Запад",
+    "smallTextBG": ""
   },
   "TheCanalEast": {
     "displayName": "The Canal - East",
     "number": "",
     "oppositeStation": "TheCanalWest",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Канала - Изток",
+    "smallTextBG": ""
   },
   "Basarbovo3West": {
     "displayName": "Basarbovo 3 - West",
     "number": "",
     "oppositeStation": "Basarbovo3East",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Басарбово 3 - Запад",
+    "smallTextBG": ""
   },
   "Basarbovo3East": {
     "displayName": "Basarbovo 3 - East",
     "number": "",
     "oppositeStation": "Basarbovo3West",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Басарбово 3 - Изток",
+    "smallTextBG": ""
   },
   "Basarbovo2West": {
     "displayName": "Basarbovo 2 - West",
     "number": "",
     "oppositeStation": "Basarbovo2East",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Басарбово 2 - Запад",
+    "smallTextBG": ""
   },
   "Basarbovo2East": {
     "displayName": "Basarbovo 2 - East",
     "number": "",
     "oppositeStation": "Basarbovo2West",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Басарбово 2 - Изток",
+    "smallTextBG": ""
   },
   "Basarbovo1": {
     "displayName": "Basarbovo 1",
     "number": "",
     "oppositeStation": "",
-    "smallText": ""
+    "smallText": "",
+    "langBG": "Басарбово 1",
+    "smallTextBG": ""
   }
 }

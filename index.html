@@ -30,7 +30,7 @@ header h1{flex:1;margin:0;font-size:20px;font-weight:650;white-space:nowrap;over
 .clrfav{display:block;margin:22px auto 8px;padding:10px 18px;border-radius:12px;border:1px solid var(--line);background:var(--card);color:var(--mut);font-size:13px}.clrfav:disabled{opacity:.35}
 .ss{font-size:12px;font-weight:400;color:#69738a}.nmw{display:flex;flex-wrap:wrap;align-items:baseline;column-gap:6px}.nmw .nn{min-width:0}.ssd{font-size:14px;font-weight:400;color:#a3adc2;margin:3px 0 0}
 .ttlsub{display:block;font-size:12px;font-weight:400;color:var(--mut);line-height:1.2;margin-top:1px}
-#ft{flex:none;background:var(--bg);border-top:1px solid var(--line);padding:6px 14px calc(6px + env(safe-area-inset-bottom))}#ft[hidden]{display:none}
+#ft{position:relative;flex:none;background:var(--bg);border-top:1px solid var(--line);padding:6px 14px calc(6px + env(safe-area-inset-bottom))}#ft[hidden]{display:none}
 .dayft{display:flex;justify-content:center;align-items:center;gap:8px;margin:0;color:var(--mut);font-size:12px}.dayft select{background:var(--card);color:var(--tx);border:1px solid var(--line);border-radius:10px;padding:6px 8px;font-size:13px}
 main{flex:1;overflow-y:auto;padding:4px 14px 16px;-webkit-overflow-scrolling:touch}
 button{font:inherit;color:inherit}
@@ -89,12 +89,12 @@ input[type=search]::-webkit-search-cancel-button{-webkit-appearance:none;display
 .tb.past{opacity:.4}.tb.cur{background:var(--acc);color:#fff;opacity:1}
 .st{display:flex;gap:14px;padding:11px 4px;position:relative;align-items:center;border:0;background:none;width:100%;text-align:left}
 .st .tm{width:52px;font-variant-numeric:tabular-nums;font-weight:600}
-.st .dot{width:12px;height:12px;border-radius:50%;background:var(--c);flex:none;z-index:1}
+.st .dot{width:12px;height:12px;border-radius:50%;background:var(--c);flex:none;position:relative;z-index:2}
 .st::before{content:"";position:absolute;left:76px;top:0;bottom:0;width:3px;margin-left:-1.5px;background:var(--c);opacity:.5}
 .st.past{opacity:.38}.st .nm{flex:1}
 .st .nm{display:flex;align-items:baseline}.st .nm .nmw{min-width:0}.pl{color:var(--ok);font-weight:700;margin-right:7px}
 .st.s0 .dot,.st.sN .dot{width:18px;height:15.59px;margin:0 -3px;border-radius:0;clip-path:polygon(0 0,100% 0,50% 100%)}.st.sN .dot{clip-path:polygon(50% 0,100% 100%,0 100%)}
-.st.s0::before{top:calc(50% + 7.8px)}.st.sN::before{bottom:calc(50% + 7.8px)}.st.aft::before{display:none}.st.aft .dot{opacity:.35}
+.st.s0::before{top:calc(50% + 5px)}.st.sN::before{bottom:calc(50% + 5px)}   /* line runs underneath the triangle, which sits above it */.st.aft::before{display:none}.st.aft .dot{opacity:.35}
 .st.sx .tm,.st.sx .nm,.xx{color:var(--mut)!important;text-decoration:line-through}
 .tb.x{background:#4a1519;color:#ffd6d8;text-decoration:line-through}.tb.a{background:#0e3a25;color:#d3f5e2}.tb.cur.x,.tb.cur.a{outline:2px solid var(--acc)}
 .row.a{background:#0e3a25}.row.x .t,.row.x .s,.row.x .time,.row.x .eta{color:var(--mut)!important;text-decoration:line-through}.row.x .badge{opacity:.5}
@@ -110,6 +110,7 @@ main.fill{padding:0;overflow:hidden}
 header[hidden]{display:none}
 .time.w-red,.big2.w-red,.tm.w-red{color:#ff5a5f}.time.w-yellow,.big2.w-yellow,.tm.w-yellow{color:#ffd23f}
 .eta.d-red{color:#ff5a5f}.eta.d-yellow{color:#ffd23f}.dly.y{color:#ffd23f}.dly{color:#ff5a5f;font-weight:600;font-size:13px;margin-top:4px}
+#lg{position:absolute;right:14px;bottom:calc(5px + env(safe-area-inset-bottom));width:34px;height:34px;padding:0;border-radius:50%;border:1px solid var(--line);font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center}
 .pill.star{font-size:20px;line-height:1;padding:7px 12px;color:var(--mut)}.pill.star.on{color:#f5c542}
 .nb{border-radius:16px;padding:10px 12px;margin:12px 0 4px;font-size:14px;line-height:1.35;border:1px solid}
 .dn .nb{margin:0 0 8px}.nb b{display:block;font-size:15px}.nb .nm{margin-top:3px;opacity:.92;white-space:pre-line}.nb .np{margin-top:6px;font-size:12px;opacity:.65}
@@ -119,12 +120,15 @@ header[hidden]{display:none}
 </style>
 </head>
 <body>
-<div id="app"><header><button class="back" id="bk" hidden>‹</button><h1 id="ttl"></h1><button class="pill star" id="fs" hidden aria-label="Show only favorites" title="Show only favorites">☆</button><button class="pill" id="so" hidden>Sort by… ▾</button><button class="pill" id="sd" hidden aria-label="Switch direction" title="Switch direction">⇄</button></header><main id="main"></main><footer id="ft"><div id="pgr"></div><div class="dayft"><label>Schedule&nbsp; <select id="dm"><option value="auto"></option><option value="workday">Workday</option><option value="holiday">Holiday</option></select></label></div></footer></div>
+<div id="app"><header><button class="back" id="bk" hidden>‹</button><h1 id="ttl"></h1><button class="pill star" id="fs" hidden aria-label="Show only favorites" title="Show only favorites">☆</button><button class="pill" id="so" hidden>Sort by… ▾</button><button class="pill" id="sd" hidden aria-label="Switch direction" title="Switch direction">⇄</button></header><main id="main"></main><footer id="ft"><div id="pgr"></div><div class="dayft"><label><span id="dl">Schedule</span>&nbsp; <select id="dm"><option value="auto"></option><option value="workday">Workday</option><option value="holiday">Holiday</option></select></label></div><button class="pill" id="lg" aria-label="Language"></button></footer></div>
 <script src="lib/leaflet.js"></script>
 <script>
 const $=s=>document.querySelector(s),main=$('#main');
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const pad=n=>String(n).padStart(2,'0');
+// ---- language (EN default / BG): UI strings come from data/lang_bg.json {english text: translation}; empty or missing = English
+let lang='en',STR={};try{lang=localStorage.lang==='bg'?'bg':'en'}catch(e){}
+const $t=(k,...a)=>{const v=(lang==='bg'&&STR[k])||k;return a.length?v.replace(/\{(\d+)\}/g,(m,i)=>a[i]??m):v},$h=(k,...a)=>esc($t(k,...a)),loc=()=>lang==='bg'?'bg':'en';
 const fmt=m=>{m=(m%1440+1440)%1440;return pad(Math.floor(m/60))+':'+pad(m%60)};
 const toMin=t=>{const[a,b]=t.split(':');return +a*60+ +b};
 const now=()=>{const d=new Date();return d.getHours()*60+d.getMinutes()};
@@ -136,13 +140,15 @@ let favs=new Set(),sortBy='id',onlyFav=false;   // favourite stations + station-
 try{favs=new Set(JSON.parse(localStorage.favStations||'[]'));sortBy=localStorage.searchSort==='name'?'name':'id';onlyFav=localStorage.favOnly==='1'}catch(e){}
 const saveFav=()=>{try{localStorage.favStations=JSON.stringify([...favs]);localStorage.searchSort=sortBy;localStorage.favOnly=onlyFav?'1':''}catch(e){}};
 const dayType=(o=0)=>{if(mode!=='auto')return mode;const d=new Date();d.setDate(d.getDate()+o);return[0,6].includes(d.getDay())?'holiday':'workday'};
-const sname=id=>stations[id]?.displayName||id.replace(/([a-z])([A-Z])/g,'$1 $2');
+const sname=id=>(lang==='bg'&&stations[id]?.langBG)||stations[id]?.displayName||id.replace(/([a-z])([A-Z])/g,'$1 $2');
+const ssm=id=>(lang==='bg'&&stations[id]?.smallTextBG)||stations[id]?.smallText||'';
+const dnm=d=>(lang==='bg'&&d.displayNameBG)||d.displayName||'',dsm=d=>(lang==='bg'&&d.smallTextBG)||d.smallText||'';   // direction name / small text in the current language
 const scode=id=>String(stations[id]?.number??'').trim();
 const nmw=(n,s,x='')=>`<span class="nmw"><span class="nn">${n}${x}</span>${s?`<span class="ss">${s}</span>`:''}</span>`;
-const snm=(id,x='')=>nmw(esc(sname(id)),stations[id]?.smallText?esc(stations[id].smallText):'',x);
-const bt=l=>l.special?'S':(l.displayName||l.id),ltitle=l=>l.special?l.displayName:'Line '+l.displayName;   // special lines show as an 'S' chip
+const snm=(id,x='')=>nmw(esc(sname(id)),ssm(id)?esc(ssm(id)):'',x);
+const bt=l=>l.special?'S':(l.displayName||l.id),ltitle=l=>l.special?l.displayName:$t('Line {0}',l.displayName);   // special lines show as an 'S' chip
 const badge=l=>`<span class="badge" style="background:${esc(l.color||'#4d83ff')}">${esc(bt(l))}</span>`;
-const eta=d=>d<=0?'now':d<60?d+' min':Math.floor(d/60)+'h '+pad(d%60)+'m';
+const eta=d=>d<=0?$t('now'):d<60?$t('{0} min',d):$t('{0}h {1}m',Math.floor(d/60),pad(d%60));
 // turnaround check: minutes between a vehicle of line l finishing a trip and the very next departure it can take; null unless 0-5
 // lines with <=3 directions: the vehicle continues on another direction of the line; more directions: match by terminus (or its opposite platform)
 const turnGap=(l,d,t,o)=>{const D=l.directions,m=ov(t),sid=d.stops[0].stationId,op=oppOf(sid),S=new Set([sid,...(op.ok?[op.id]:[])]),dirs=D.length<=3;let best=null;
@@ -174,6 +180,7 @@ const uw=t=>t<dayStart&&now()>=dayStart?t+1440:t;   // small times = after midni
 
 async function load(){
   dirLine.clear();
+  const lp=fetch('data/lang_bg.json').then(r=>r.ok?r.json():{}).catch(()=>({}));
   const man=await (await fetch('data/manifest.json')).json();
   stations=await (await fetch('data/'+man.stations)).json();
   lines=await Promise.all(man.lines.map(f=>fetch('data/lines/'+f).then(r=>r.json())));
@@ -184,6 +191,7 @@ async function load(){
   lines.forEach(l=>l.directions.forEach(d=>Object.values(d.schedules).forEach(a=>a.length&&(dayStart=Math.min(dayStart,...a.map(toMin))))));
   lines.forEach(l=>l.directions.forEach(d=>{d.s0=d.stops;let c=0;d.c0=d.stops.map(s=>{const v=c;c+=s.offsetMinutes;return v})}));   // original route kept; d.stops/cum/term/tot are the effective (diverted) route
   baseLines=lines;syncMods(true);
+  const lj=await lp;Object.keys(lj).forEach(k=>{if(typeof lj[k]==='string'&&lj[k].trim())STR[k]=lj[k]});
 }
 // ---- navigation (history-backed so the phone's back gesture works)
 const go=s=>{if(s.v==='station')fReset(s.id);history.pushState(s,'');render(s)};
@@ -195,6 +203,7 @@ const oppOf=id=>{const o=stations[id]&&stations[id].oppositeStation;return{id:o,
 const oppWarn=id=>{const o=stations[id]&&stations[id].oppositeStation;if(!o)return'';if(!stations[o])return`oppositeStation "${o}" is not in the stations file`;if(o===id)return'oppositeStation points to itself';if(stations[o].oppositeStation!==id)return`${o} does not point back to this station`;return''};
 $('#so').onclick=()=>{const m=$('#sortm');if(!m)return;m.hidden=!m.hidden;if(!m.hidden)m.style.top=($('#so').getBoundingClientRect().bottom+6)+'px'};
 document.addEventListener('click',e=>{const m=$('#sortm');if(m&&!m.hidden&&!e.target.closest('#sortm,#so'))m.hidden=true});
+$('#lg').onclick=()=>{lang=lang==='bg'?'en':'bg';try{localStorage.lang=lang}catch(e){}render(history.state||{v:'home'},true)};
 $('#dm').onchange=()=>{mode=$('#dm').value;try{localStorage.dayMode=mode}catch(e){}render(history.state||{v:'home'},true)};
 $('#sd').onclick=()=>{const s=history.state||{};
   if(s.v==='station'){const o=oppOf(s.id);if(o.ok)set({v:'station',id:o.id})}
@@ -220,7 +229,7 @@ function prepNotices(raw){
     NPAIR.forEach(([a,b])=>{const c=(e[a]||[]).filter(x=>x!=='*'&&(e[b]||[]).includes(x));if(c.length)er.push({msg:`${id}: ${c.join(', ')} ${c.length>1?'are':'is'} in both ${a} and ${b}`,st:a==='stationID'?c:[]})});
     if(!Object.keys(e).length)console.warn('Notice has no usable affectedEntities:',id);
     if(er.length){er.forEach(x=>{noticeErrs.push(x);console.error('Notice error:',x.msg)});return}
-    notices.push({id,ty:n.type,ov:n.overrideScheduleType,cls:NT[n.type],title:String(n.title||''),msg:String(n.message||''),st,en,e});
+    notices.push({id,ty:n.type,ov:n.overrideScheduleType,cls:NT[n.type],title:String(n.title||''),msg:String(n.message||''),titleBG:String(n.titleBG||''),msgBG:String(n.messageBG||''),st,en,e});
   });
 }
 // which notices apply where: station / direction / line selectors (excludes remove; an exclude on its own means "everything else")
@@ -233,8 +242,8 @@ const nDir=(n,l,d)=>{const e=n.e;if((e.excludeDirectionID||[]).includes(d.id))re
 const nStation=(n,sid)=>{const e=n.e;if((e.excludeStationID||[]).includes(sid))return false;
   if((e.stationID||e.excludeStationID)&&(!e.stationID||e.stationID.includes('*')||e.stationID.includes(sid)))return true;
   return(by[sid]||[]).some(x=>nDir(n,x.l,x.d))};
-const nFmt=new Intl.DateTimeFormat('en-GB',{weekday:'short',day:'numeric',month:'short',hour:'2-digit',minute:'2-digit',hour12:false});
-const nBox=n=>`<div class="nb ${n.cls}">${n.title?`<b>${esc(n.title)}</b>`:''}${n.msg?`<div class="nm">${esc(n.msg)}</div>`:''}<div class="np">${Date.now()<n.st?'Starts '+nFmt.format(n.st):'Until '+nFmt.format(new Date(n.en-60000))}</div></div>`;
+const nFmt=()=>new Intl.DateTimeFormat(lang==='bg'?'bg-BG':'en-GB',{weekday:'short',day:'numeric',month:'short',hour:'2-digit',minute:'2-digit',hour12:false});
+const nBox=n=>{const ti=(lang==='bg'&&n.titleBG)||n.title,ms=(lang==='bg'&&n.msgBG)||n.msg,f=nFmt();return`<div class="nb ${n.cls}">${ti?`<b>${esc(ti)}</b>`:''}${ms?`<div class="nm">${esc(ms)}</div>`:''}<div class="np">${Date.now()<n.st?$h('Starts {0}',f.format(n.st)):$h('Until {0}',f.format(new Date(n.en-60000)))}</div></div>`};
 const nHtml=f=>{const t=Date.now();return notices.filter(n=>t>=n.st-DAY3&&t<n.en&&f(n)).map(nBox).join('')};
 const nErrHtml=sid=>noticeErrs.filter(x=>x.st?.includes(sid)).map(x=>`<div class="nb err"><b>Notice error</b><div class="nm">${esc(x.msg)}</div></div>`).join('');
 async function loadNotices(){
@@ -281,7 +290,7 @@ function prepMods(raw){
     let ty=String(m?.type||'').toUpperCase().replace(/[\s-]/g,'_');if(ty==='SPECIAL_LINE')ty='SPECIAL';
     if(!MTY[ty]){console.warn('Modification ignored (unknown type):',m&&m.id,m&&m.type);return}
     const id=String(m.id||'?'),er=[],E=x=>er.push(`${id}: ${x}`),st=nDate(m.validityPeriod?.start),en=nDate(m.validityPeriod?.end,1),ae=m.affectedEntities&&typeof m.affectedEntities==='object'?m.affectedEntities:{};
-    const o={id,ty,cls:MTY[ty],title:String(m.title||''),msg:String(m.message||''),st,en,dirs:new Set(),stn:new Set(),red:{},add:{},div:{}};
+    const o={id,ty,cls:MTY[ty],title:String(m.title||''),msg:String(m.message||''),titleBG:String(m.titleBG||''),msgBG:String(m.messageBG||''),st,en,dirs:new Set(),stn:new Set(),red:{},add:{},div:{}};
     if(!st||!en){E('invalid validityPeriod');er.forEach(x=>{modErrs.push(x);console.error('Modification error:',x)});return}
     if(ty==='REDUCED_SERVICE'||ty==='ADDITIONAL_SERVICE')Object.entries(ae).forEach(([k,v])=>{
       const x=dm.get(k);if(!x){E(`direction ${k} not found`);return}
@@ -316,7 +325,7 @@ function prepMods(raw){
         sl.directions.forEach((d,j)=>{const did=String(d?.id||'');const tag=`line ${L.id}, direction ${did||'#'+(j+1)}`;
           if(!did||dm.has(did)||L.directions.some(z=>z.id===did)){E(`${tag}: missing or duplicate direction id`);return}
           if(!Array.isArray(d.stops)||!d.stops.length||d.stops.some(z=>!Number.isFinite(+z?.offsetMinutes))){E(`${tag}: stops need stationId and numeric offsetMinutes`);return}
-          const D={id:did,displayName:String(d.displayName||''),smallText:String(d.smallText||''),stops:d.stops.map(z=>({stationId:stn(z.stationId),offsetMinutes:+z.offsetMinutes})),schedules:{workday:[],holiday:[]}};
+          const D={id:did,displayName:String(d.displayName||''),smallText:String(d.smallText||''),displayNameBG:String(d.displayNameBG||''),smallTextBG:String(d.smallTextBG||''),stops:d.stops.map(z=>({stationId:stn(z.stationId),offsetMinutes:+z.offsetMinutes})),schedules:{workday:[],holiday:[]}};
           ['workday','holiday'].forEach(dy=>D.schedules[dy]=[].concat(d.schedules?.[dy]||[]).map(t=>{const h=hm(t);if(!h)E(`${tag}: invalid time "${t}"`);return h}).filter(Boolean).sort((a,b)=>ov(a)-ov(b)));
           D.s0=D.stops;let c=0;D.c0=D.stops.map(z=>{const v=c;c+=z.offsetMinutes;return v});
           L.directions.push(D);o.dirs.add(did);D.stops.forEach(z=>o.stn.add(z.stationId))});
@@ -336,22 +345,22 @@ async function loadMods(){
 const V={
 home(){
   const d=new Date();
-  return{t:'Transit',h:`<div class="hw"><div class="hc"><img class="hlogo" src="OTP.png" alt="OTP" onerror="this.replaceWith('Transit')"><div class="clock">${fmt(now())}</div><div class="sub">${d.toLocaleDateString(undefined,{weekday:'long',day:'numeric',month:'long'})}</div></div>
-  <div class="hero"><button class="big" data-go='{"v":"routes"}'><div class="ic">🚎</div><div><b>Search routes</b><span>Browse lines &amp; directions</span></div></button>
-  <button class="big" data-go='{"v":"search"}'><div class="ic">📍</div><div><b>Search stations</b><span>By name or ID · upcoming departures</span></div></button>
-  <button class="big" data-go='{"v":"map"}'><div class="ic">🗺️</div><div><b>Transit map</b><span>Pan &amp; zoom the network map</span></div></button></div>
+  return{t:'Transit',h:`<div class="hw"><div class="hc"><img class="hlogo" src="OTP.png" alt="OTP" onerror="this.replaceWith('Transit')"><div class="clock">${fmt(now())}</div><div class="sub">${d.toLocaleDateString(lang==='bg'?'bg-BG':undefined,{weekday:'long',day:'numeric',month:'long'})}</div></div>
+  <div class="hero"><button class="big" data-go='{"v":"routes"}'><div class="ic">🚎</div><div><b>${$h('Search routes')}</b><span>${$h('Browse lines & directions')}</span></div></button>
+  <button class="big" data-go='{"v":"search"}'><div class="ic">📍</div><div><b>${$h('Search stations')}</b><span>${$h('By name or ID · upcoming departures')}</span></div></button>
+  <button class="big" data-go='{"v":"map"}'><div class="ic">🗺️</div><div><b>${$h('Transit map')}</b><span>${$h('Pan & zoom the network map')}</span></div></button></div>
   ${missing.size||modMissing.size?`<div class="sub" style="margin-top:22px;font-size:12px">⚠ Not in stations file: ${[...new Set([...missing,...modMissing])].map(esc).join(', ')}</div>`:''}
   ${noticeErrs.length?`<div class="sub" style="margin-top:12px;font-size:12px">⚠ Notice problems: ${noticeErrs.map(x=>esc(x.msg)).join('; ')}</div>`:''}
   ${modErrs.length?`<div class="sub" style="margin-top:12px;font-size:12px">⚠ Modification problems: ${modErrs.map(esc).join('; ')}</div>`:''}
   ${(()=>{const w=Object.keys(stations).map(k=>[k,oppWarn(k)]).filter(x=>x[1]);return w.length?`<div class="sub" style="margin-top:12px;font-size:12px">⚠ Opposite station problems: ${w.map(([k,m])=>esc(k)+' ('+esc(m)+')').join('; ')}</div>`:''})()}</div>`}},
 routes(){
   const g={};lines.forEach(l=>(g[l.type]??=[]).push(l));
-  const nm={trolleybus:'Trolleybuses',bus:'Buses',special:'Special lines'};
+  const nm={trolleybus:$h('Trolleybuses'),bus:$h('Buses'),special:$h('Special lines')};
   const order=['trolleybus','bus',...Object.keys(g).filter(k=>!nm[k]),'special'];
-  return{t:'Routes',h:order.filter(k=>g[k]).map(k=>`<h2>${nm[k]||esc(k)}</h2><div class="grid">${g[k].map(l=>`<button class="badge" style="background:${esc(l.color)}" data-go='${JSON.stringify({v:'dirs',l:l.id})}'>${esc(bt(l))}</button>`).join('')}</div>`).join('')||'<div class="empty">No routes found</div>'}},
+  return{t:$t('Routes'),h:order.filter(k=>g[k]).map(k=>`<h2>${nm[k]||esc(k)}</h2><div class="grid">${g[k].map(l=>`<button class="badge" style="background:${esc(l.color)}" data-go='${JSON.stringify({v:'dirs',l:l.id})}'>${esc(bt(l))}</button>`).join('')}</div>`).join('')||`<div class="empty">${$h('No routes found')}</div>`}},
 dirs(s){
   const l=lines.find(x=>x.id===s.l);
-  return{t:ltitle(l),h:`<h2>Choose direction</h2>`+`<div class="dn">${mHtml(m=>mLine(m,l))}${nHtml(n=>nLine(n,l))}</div>`+l.directions.map(d=>{const ls=d.stops[d.term].stationId,nm=d.displayName||sname(ls),sx=d.displayName?d.smallText:stations[ls]?.smallText;return`<button class="row" data-go='${JSON.stringify({v:'trip',l:l.id,d:d.id})}'>${badge(l)}<div class="grow"><div class="t">${nmw(esc(nm),sx?esc(sx):'')}</div><div class="s">from ${esc(sname(d.stops[0].stationId))}</div></div>›</button>`}).join('')}},
+  return{t:ltitle(l),h:`<h2>${$h('Choose direction')}</h2>`+`<div class="dn">${mHtml(m=>mLine(m,l))}${nHtml(n=>nLine(n,l))}</div>`+l.directions.map(d=>{const ls=d.stops[d.term].stationId,nm=dnm(d)||sname(ls),sx=d.displayName?dsm(d):ssm(ls);return`<button class="row" data-go='${JSON.stringify({v:'trip',l:l.id,d:d.id})}'>${badge(l)}<div class="grow"><div class="t">${esc(nm)}</div>${sx?`<div class="ss" style="display:block">${esc(sx)}</div>`:''}<div class="s">${$h('from {0}',sname(d.stops[0].stationId))}</div></div>›</button>`}).join('')}},
 trip(s){
   const l=lines.find(x=>x.id===s.l),d=l.directions.find(x=>x.id===s.d),tot=d.tot;
   // target = most recently departed trip still running (not yet at terminus), else next upcoming, else last of the day; cancelled departures are skipped
@@ -359,52 +368,52 @@ trip(s){
   let yd=s.y?1:0,i=s.i;
   if(i==null&&!yd){const r=target(sched(d,-1),now()+1440);if(r.act){yd=1;i=r.k}}   // trip from yesterday still running past midnight
   const sc=sched(d,-yd),n=now()+yd*1440;
-  if(!sc.length)return{t:ltitle(l),h:`<div class="empty">No ${dayType()} departures for this direction</div>`};
+  if(!sc.length)return{t:ltitle(l),h:`<div class="empty">${$h('No {0} departures for this direction',$t(dayType()))}</div>`};
   const one=sc.length===1,tg=target(sc,n);
   if(i==null)i=tg.k;
   i=Math.max(0,Math.min(i,sc.length-1));
   if(s.i==null)history.replaceState({...s,i,...(yd?{y:1}:{})},'');
   const q=sc[i],dep=ov(q.t),diff=dep-n,lv=sc.lv,lts=sc.lts,last=(lv.length?ov(lv.at(-1).t):dep)+tot;
-  const menu=pickOpen&&!one?`<div class="menu pk"><h3>Select departure</h3><div class="tg">${sc.map((e,k)=>`<button class="tb ${k===i?'cur':''} ${ov(e.t)<n?'past':''} ${e.x?'x':e.a?'a':''}" data-i="${k}">${e.t}</button>`).join('')}</div></div>`:'';
-  const stat=q.x?'<span style="color:#ff5a5f">Cancelled</span>':diff>0?`Departs in ${eta(diff)}`:n>last?'Finished':diff===0?'Departing now':`Departed ${eta(-diff)} ago`;
-  const flag=!q.x&&lv.length&&q===lv.at(-1)&&diff<0?' · last of the day':'',ds0=q.x?'':dstat(lts,q.t),ns=d.stops.filter(x=>!x.x).length;
+  const menu=pickOpen&&!one?`<div class="menu pk"><h3>${$h('Select departure')}</h3><div class="tg">${sc.map((e,k)=>`<button class="tb ${k===i?'cur':''} ${ov(e.t)<n?'past':''} ${e.x?'x':e.a?'a':''}" data-i="${k}">${e.t}</button>`).join('')}</div></div>`:'';
+  const stat=q.x?`<span style="color:#ff5a5f">${$h('Cancelled')}</span>`:diff>0?$h('Departs in {0}',eta(diff)):n>last?$h('Finished'):diff===0?$h('Departing now'):$h('Departed {0} ago',eta(-diff));
+  const flag=!q.x&&lv.length&&q===lv.at(-1)&&diff<0?' · '+$h('last of the day'):'',ds0=q.x?'':dstat(lts,q.t),ns=d.stops.filter(x=>!x.x).length;
   const nbs=q.x?nBox(q.x):mHtml(m=>mDir(m,d),q.a)+nHtml(n=>nDir(n,l,d));   // a cancelled departure only shows the modification that cancels it; an added one shows its own first
-  return{t:ltitle(l),h:`<div class="hd">${badge(l)}<div class="sub" style="margin:6px 0 0;font-size:18px;font-weight:600;color:#e8eaed">➜ <span class="${q.x?'xx':''}">${esc(d.displayName||sname(d.stops[d.term].stationId))}</span></div>${d.smallText?`<div class="ssd">${esc(d.smallText)}</div>`:''}
+  return{t:ltitle(l),h:`<div class="hd">${badge(l)}<div class="sub" style="margin:6px 0 0;font-size:18px;font-weight:600;color:#e8eaed">➜ <span class="${q.x?'xx':''}">${esc(dnm(d)||sname(d.stops[d.term].stationId))}</span></div>${dsm(d)?`<div class="ssd">${esc(dsm(d))}</div>`:''}
   <div class="big2${ds0?' w-'+ds0:''}${q.x?' xx':''}">${q.t}</div><div style="color:#fff;font-weight:600">${stat}${flag}</div>
-  <div class="nav"><button data-i="${tg.k}" ${one?'disabled':''} style="color:var(--acc)">${tg.act?'Jump to current departure':'Jump to upcoming departure'}</button></div>
-  <div class="nav" style="margin-top:10px"><button data-i="${i-1}" ${one||i<1?'disabled':''}>‹ Previous</button><button data-i="${i+1}" ${one||i>=sc.length-1?'disabled':''}>Next ›</button></div>
-  <div style="position:relative"><div class="nav sm"><div class="half"><button data-i="0" ${one||i<1?'disabled':''}>⏮ First</button><button data-i="${sc.length-1}" ${one||i>=sc.length-1?'disabled':''}>Last ⏭</button></div><button data-pk ${one?'disabled':''}>Choose a departure… ▾</button></div>${menu}</div></div>
-  ${nbs}<div class="uph"><h2>Stops</h2>${(g=>g!=null?`<div class="dly${g>2?' y':''}" style="margin:20px 4px 10px 0">⚠ This departure may be delayed</div>`:'')(q.x?null:turnGap(l,d,q.t,yd?-1:0))}</div><div style="--c:${esc(l.color)}">${d.stops.map((st,k)=>{const m=dep+d.cum[k],sx=q.x||st.x,ds=sx?'':dstat(lts.map(x=>fmt(toMin(x)+d.cum[k])),fmt(m));
-  return`<button class="st${m<n?' past':''}${k===0?' s0':''}${k===d.term?' sN':''}${k>d.term?' aft':''}${sx?' sx':''}" data-go='${JSON.stringify({v:'station',id:st.stationId})}'><span class="tm${ds?' w-'+ds:''}">${fmt(m)}</span><span class="dot"></span><span class="nm">${st.add?'<b class="pl">+</b>':''}${snm(st.stationId)}</span></button>`}).join('')}</div><div class="sub" style="text-align:center;margin:18px 0 8px;font-size:13px">${(one?'Only one departure today':`Departure ${i+1} of ${sc.length}`)+` · ${ns} stop${ns===1?'':'s'}`}</div>`,after(){const m=$('.pk'),c=m&&m.querySelector('.cur');if(c)m.scrollTop=c.offsetTop-m.clientHeight/2+c.offsetHeight/2}}},
-map(){return{t:'Transit map',h:'<div id="map"></div>',after:initMap}},
+  <div class="nav"><button data-i="${tg.k}" ${one?'disabled':''} style="color:var(--acc)">${tg.act?$h('Jump to current departure'):$h('Jump to upcoming departure')}</button></div>
+  <div class="nav" style="margin-top:10px"><button data-i="${i-1}" ${one||i<1?'disabled':''}>‹ ${$h('Previous')}</button><button data-i="${i+1}" ${one||i>=sc.length-1?'disabled':''}>${$h('Next')} ›</button></div>
+  <div style="position:relative"><div class="nav sm"><div class="half"><button data-i="0" ${one||i<1?'disabled':''}>⏮ ${$h('First')}</button><button data-i="${sc.length-1}" ${one||i>=sc.length-1?'disabled':''}>${$h('Last')} ⏭</button></div><button data-pk ${one?'disabled':''}>${$h('Choose a departure…')} ▾</button></div>${menu}</div></div>
+  ${nbs}<div class="uph"><h2>${$h('Stops')}</h2>${(g=>g!=null?`<div class="dly${g>2?' y':''}" style="margin:20px 4px 10px 0">⚠ ${$h('This departure may be delayed')}</div>`:'')(q.x?null:turnGap(l,d,q.t,yd?-1:0))}</div><div style="--c:${esc(l.color)}">${d.stops.map((st,k)=>{const m=dep+d.cum[k],sx=q.x||st.x,ds=sx?'':dstat(lts.map(x=>fmt(toMin(x)+d.cum[k])),fmt(m));
+  return`<button class="st${m<n?' past':''}${k===0?' s0':''}${k===d.term?' sN':''}${k>d.term?' aft':''}${sx?' sx':''}" data-go='${JSON.stringify({v:'station',id:st.stationId})}'><span class="tm${ds?' w-'+ds:''}">${fmt(m)}</span><span class="dot"></span><span class="nm">${st.add?'<b class="pl">+</b>':''}${snm(st.stationId)}</span></button>`}).join('')}</div><div class="sub" style="text-align:center;margin:18px 0 8px;font-size:13px">${(one?$h('Only one departure today'):$h('Departure {0} of {1}',i+1,sc.length))+' · '+(ns===1?$h('{0} stop',ns):$h('{0} stops',ns))}</div>`,after(){const m=$('.pk'),c=m&&m.querySelector('.cur');if(c)m.scrollTop=c.offsetTop-m.clientHeight/2+c.offsetHeight/2}}},
+map(){return{t:$t('Transit map'),h:'<div id="map"></div>',after:initMap}},
 search(){
-  return{t:'Stations',h:`<div class="sw"><input id="q" type="search" placeholder="Station name or ID" autocomplete="off" autocapitalize="off" spellcheck="false" value="${esc(q)}"><button type="button" id="qx" aria-label="Clear" ${q?'':'hidden'}>✕</button></div><div id="sortm" class="sortm" hidden><button data-s="name">Name<span class="tk"></span></button><button data-s="id">ID<span class="tk"></span></button></div><div id="res"></div><button class="clrfav" id="clrfav">Clear favorites</button>`,after(){
+  return{t:$t('Stations'),h:`<div class="sw"><input id="q" type="search" placeholder="${$h('Station name or ID')}" autocomplete="off" autocapitalize="off" spellcheck="false" value="${esc(q)}"><button type="button" id="qx" aria-label="${$h('Clear')}" ${q?'':'hidden'}>✕</button></div><div id="sortm" class="sortm" hidden><button data-s="name">${$h('Name')}<span class="tk"></span></button><button data-s="id">${$h('ID')}<span class="tk"></span></button></div><div id="res"></div><button class="clrfav" id="clrfav">${$h('Clear favorites')}</button>`,after(){
     const inp=$('#q'),res=$('#res'),sm=$('#sortm'),cb=$('#clrfav'),fs=$('#fs');
     const syncM=()=>{sm.querySelectorAll('[data-s]').forEach(b=>b.querySelector('.tk').textContent=b.dataset.s===sortBy?'✓':'');fs.classList.toggle('on',onlyFav);fs.textContent=onlyFav?'★':'☆';cb.disabled=!favs.size};
-    const lineTxt=id=>{const m=new Map((by[id]||[]).map(e=>[e.l.id,e.l]));if(!m.size)return'No lines';const a=[...m.values()];
+    const lineTxt=id=>{const m=new Map((by[id]||[]).map(e=>[e.l.id,e.l]));if(!m.size)return $t('No lines');const a=[...m.values()];
       if(a.length<=7)return a.map(bt).join(' · ');
       const tr=a.filter(l=>l.type==='trolleybus').length,bu=a.filter(l=>l.type==='bus').length,ot=a.length-tr-bu,p=[];
-      if(tr)p.push(tr+' Trolleybus line'+(tr>1?'s':''));if(bu)p.push(bu+' Bus line'+(bu>1?'s':''));if(ot)p.push(ot+' other line'+(ot>1?'s':''));
-      return p.join(' and ')};
+      if(tr)p.push(tr>1?$t('{0} Trolleybus lines',tr):$t('{0} Trolleybus line',tr));if(bu)p.push(bu>1?$t('{0} Bus lines',bu):$t('{0} Bus line',bu));if(ot)p.push(ot>1?$t('{0} other lines',ot):$t('{0} other line',ot));
+      return p.join(' '+$t('and')+' ')};
     const draw=()=>{q=inp.value;const t=q.trim().toLowerCase();
-      let all=Object.entries(stations).map(([id,s])=>({id,name:s.displayName,code:String(s.number??'').trim(),sm:s.smallText||''}));
-      Object.keys(by).forEach(id=>{if(!stations[id])all.push({id,name:sname(id),code:'',sm:''})});
-      if(t)all=all.filter(s=>s.name.toLowerCase().includes(t)||s.code===t||s.code.startsWith(t)||s.id.toLowerCase().includes(t)||s.sm.toLowerCase().includes(t));
+      let all=Object.entries(stations).map(([id,s])=>({id,name:sname(id),code:String(s.number??'').trim(),sm:ssm(id),alt:[s.displayName,s.langBG,s.smallText,s.smallTextBG].filter(Boolean).join(' ').toLowerCase()}));
+      Object.keys(by).forEach(id=>{if(!stations[id])all.push({id,name:sname(id),code:'',sm:'',alt:''})});
+      if(t)all=all.filter(s=>s.name.toLowerCase().includes(t)||s.code===t||s.code.startsWith(t)||s.id.toLowerCase().includes(t)||s.sm.toLowerCase().includes(t)||s.alt.includes(t));
       if(onlyFav)all=all.filter(s=>favs.has(s.id));
       const num=c=>/^\d+$/.test(c)?+c:null,byId=(a,b)=>!a.code!==!b.code?(a.code?-1:1):(num(a.code)!==null&&num(b.code)!==null&&num(a.code)!==num(b.code)?num(a.code)-num(b.code):a.code.localeCompare(b.code,undefined,{numeric:true}));
-      all.sort((a,b)=>(t&&a.code===t?-1:t&&b.code===t?1:0)||(sortBy==='id'?byId(a,b):0)||a.name.localeCompare(b.name));
-      res.innerHTML=all.slice(0,60).map(s=>`<button class="row" data-go='${JSON.stringify({v:'station',id:s.id})}'><div class="grow"><div class="t">${nmw(esc(s.name),s.sm?esc(s.sm):'')}</div><div class="s">${lineTxt(s.id)}</div></div><div class="rt">${s.code?`<span class="code">#${esc(s.code)}</span>`:''}<span class="fav ${favs.has(s.id)?'on':''}" role="button" aria-label="Favorite" data-fav="${esc(s.id)}">${favs.has(s.id)?'★':'☆'}</span></div></button>`).join('')||`<div class="empty">${onlyFav&&!t&&!favs.size?'No favorite stations yet.<br>Tap ☆ on a station to add it.':'No stations match'}</div>`;syncM()};
+      all.sort((a,b)=>(t&&a.code===t?-1:t&&b.code===t?1:0)||(sortBy==='id'?byId(a,b):0)||a.name.localeCompare(b.name,loc()));
+      res.innerHTML=all.slice(0,60).map(s=>`<button class="row" data-go='${JSON.stringify({v:'station',id:s.id})}'><div class="grow"><div class="t">${nmw(esc(s.name),s.sm?esc(s.sm):'')}</div><div class="s">${lineTxt(s.id)}</div></div><div class="rt">${s.code?`<span class="code">#${esc(s.code)}</span>`:''}<span class="fav ${favs.has(s.id)?'on':''}" role="button" aria-label="${$h('Favorite')}" data-fav="${esc(s.id)}">${favs.has(s.id)?'★':'☆'}</span></div></button>`).join('')||`<div class="empty">${onlyFav&&!t&&!favs.size?$h('No favorite stations yet.')+'<br>'+$h('Tap ☆ on a station to add it.'):$h('No stations match')}</div>`;syncM()};
     res.onclick=e=>{const f=e.target.closest('[data-fav]');if(!f)return;e.stopPropagation();const k=f.dataset.fav;favs.has(k)?favs.delete(k):favs.add(k);saveFav();
       if(onlyFav)draw();else{const on=favs.has(k);f.classList.toggle('on',on);f.textContent=on?'★':'☆';syncM()}};
     sm.onclick=e=>{const b=e.target.closest('[data-s]');if(b){sortBy=b.dataset.s;saveFav();sm.hidden=true;draw()}};
     fs.onclick=()=>{onlyFav=!onlyFav;saveFav();draw()};
-    cb.onclick=()=>{if(favs.size&&confirm('Clear all favorite stations?')){favs.clear();saveFav();draw()}};
+    cb.onclick=()=>{if(favs.size&&confirm($t('Clear all favorite stations?'))){favs.clear();saveFav();draw()}};
     const qx=$('#qx');inp.oninput=()=>{qx.hidden=!inp.value;draw()};qx.onclick=()=>{inp.value='';qx.hidden=true;inp.focus();draw()};draw();}}},
 station(s){
   if(F.sid!==s.id)fReset(s.id);
-  const nb=nErrHtml(s.id)+mHtml(m=>mStation(m,s.id))+nHtml(n=>nStation(n,s.id)),ow=oppWarn(s.id),head=(ow?`<div class="sub" style="margin:4px 4px 0;font-size:12px">⚠ ${esc(ow)}</div>`:'')+'',code=scode(s.id),stx=stations[s.id]?.smallText,sub=[code?'#'+code:'',stx||''].filter(Boolean).join(' · ');
-  if(!(by[s.id]||[]).length)return{t:sname(s.id),sub,h:head+nb+'<h2>Upcoming departures</h2><div class="empty">No upcoming departures</div>'};
-  return{t:sname(s.id),sub,h:head+'<div class="fx" id="fx"></div><div id="pdeps"></div>'+nb+'<div class="uph"><h2>Upcoming departures</h2><button class="clr" id="cl" hidden>Clear</button></div><div id="fdeps"></div>',after(){initFilters(s.id)}}}
+  const nb=nErrHtml(s.id)+mHtml(m=>mStation(m,s.id))+nHtml(n=>nStation(n,s.id)),ow=oppWarn(s.id),head=(ow?`<div class="sub" style="margin:4px 4px 0;font-size:12px">⚠ ${esc(ow)}</div>`:'')+'',code=scode(s.id),stx=ssm(s.id),sub=[code?'#'+code:'',stx||''].filter(Boolean).join(' · ');
+  if(!(by[s.id]||[]).length)return{t:sname(s.id),sub,h:head+nb+`<h2>${$h('Upcoming departures')}</h2><div class="empty">${$h('No upcoming departures')}</div>`};
+  return{t:sname(s.id),sub,h:head+'<div class="fx" id="fx"></div><div id="pdeps"></div>'+nb+`<div class="uph"><h2>${$h('Upcoming departures')}</h2><button class="clr" id="cl" hidden>${$h('Clear')}</button></div><div id="fdeps"></div>`,after(){initFilters(s.id)}}}
 };
 // ---- station filters (standard = line chips, advanced = vehicle type / time frame / stops-at; the two are mutually exclusive)
 let F={},refreshDeps=null,closeFx=null,pickOpen=false;
@@ -414,7 +423,7 @@ const advCount=()=>F.types.size+(F.after!=null)+(F.before!=null)+(F.via?1:0)+(F.
 const clearAdv=()=>{F.types.clear();F.after=F.before=F.via=F.from=null;F.noTerm=false};
 const tm=v=>v?toMin(v):null;
 function rowHtml(e,n,past){const term=e.i===e.d.term,cx=e.qx||e.sx,ca=!cx&&(e.qa||e.sa);
-  return`<button class="row${past?' past':''}${cx?' x':ca?' a':''}" data-go='${JSON.stringify({v:'trip',l:e.l.id,d:e.d.id,i:e.ti,...(e.y?{y:1}:{})})}'>${badge(e.l)}<div class="grow"><div class="t">${esc(e.d.displayName||sname(e.d.stops[e.d.term].stationId))}</div>${term?'<div class="s">Terminates here</div>':''}</div><div><div class="time${e.st?' w-'+e.st:''}">${fmt(e.m)}</div><div class="eta${!past&&e.tg!=null?' d-'+(e.tg<=2?'red':'yellow'):''}">${past?eta(n-e.m)+' ago':(e.tg!=null?'⚠ ':'')+eta(e.m-n)}</div></div></button>`}
+  return`<button class="row${past?' past':''}${cx?' x':ca?' a':''}" data-go='${JSON.stringify({v:'trip',l:e.l.id,d:e.d.id,i:e.ti,...(e.y?{y:1}:{})})}'>${badge(e.l)}<div class="grow"><div class="t">${esc(dnm(e.d)||sname(e.d.stops[e.d.term].stationId))}</div>${term?`<div class="s">${$h('Terminates here')}</div>`:''}</div><div><div class="time${e.st?' w-'+e.st:''}">${fmt(e.m)}</div><div class="eta${!past&&e.tg!=null?' d-'+(e.tg<=2?'red':'yellow'):''}">${past?$h('{0} ago',eta(n-e.m)):(e.tg!=null?'⚠ ':'')+eta(e.m-n)}</div></div></button>`}
 function initFilters(id){
   const ents=by[id],fx=$('#fx'),deps=$('#fdeps');
   const tv=l=>l.type==='trolleybus'?0:1,ls=[...new Map(ents.map(e=>[e.l.id,e.l])).values()].sort((a,b)=>tv(a)-tv(b)||a.displayName.localeCompare(b.displayName,undefined,{numeric:true}));
@@ -424,26 +433,26 @@ function initFilters(id){
   const lst=kind=>{const m=new Map();ents.forEach(e=>{
     if(kind==='via'){if(F.from&&!e.d.stops.some((x,k)=>k<e.i&&!x.x&&x.stationId===F.from))return;e.d.stops.slice(e.i+1).forEach(x=>x.stationId!==id&&!x.x&&m.set(x.stationId,sname(x.stationId)))}
     else{if(F.via&&!e.d.stops.some((x,k)=>k>e.i&&!x.x&&x.stationId===F.via))return;e.d.stops.slice(0,e.i).forEach(x=>x.stationId!==id&&!x.x&&m.set(x.stationId,sname(x.stationId)))}});
-    return[...m].sort((a,b)=>a[1].localeCompare(b[1]))};
+    return[...m].sort((a,b)=>a[1].localeCompare(b[1],loc()))};
   const multi=ls.length>1,viaOk=multi&&ents.some(e=>e.i<last(e)),fromOk=multi&&ents.some(e=>e.i>0),termAll=ents.every(e=>e.i===last(e));
   fx.innerHTML=`<div class="chips">${ls.map(l=>`<button class="chip" data-l="${esc(l.id)}" style="--c:${esc(l.color||'#4d83ff')}">${esc(bt(l))}</button>`).join('')}</div>
    <div class="advwrap"><button class="advbtn" id="ab"></button><button class="advbtn" id="pv"></button><div id="mn"></div></div>`;
   const menu=()=>{const n=now(),d=hasBoth?'':'dis';
     return`<div class="menu">
-    <h3>Vehicle</h3>${[['trolleybus','Trolleybus'],['bus','Bus']].map(([t,nm])=>`<label class="chk ${d}"><input type="checkbox" data-t="${t}" ${F.types.has(t)?'checked':''} ${hasBoth?'':'disabled'}>${nm}</label>`).join('')}
-    <h3>Departure time</h3>
-    <label class="chk"><input type="checkbox" id="ca" ${F.after!=null?'checked':''}>After<input type="time" id="ta" value="${fmt(F.after??n)}"></label>
-    <label class="chk"><input type="checkbox" id="cb" ${F.before!=null?'checked':''}>Before<input type="time" id="tb" value="${fmt(F.before??Math.min(n+60,1439))}"></label>
-    <h3>Stops at</h3>
-    <label class="chk ${viaOk?'':'dis'}"><input type="checkbox" id="cv" ${F.via?'checked':''}><button type="button" class="selbtn" id="sv">${F.viaSel?esc(sname(F.viaSel)):'Choose a station…'} ▾</button></label>
-    <h3>Arrives from</h3>
-    <label class="chk ${fromOk?'':'dis'}"><input type="checkbox" id="cf" ${F.from?'checked':''}><button type="button" class="selbtn" id="sf">${F.fromSel?esc(sname(F.fromSel)):'Choose a station…'} ▾</button></label>
-    <h3>Terminating lines</h3>
-    <label class="chk ${termAll?'dis':''}"><input type="checkbox" id="ct" ${F.noTerm?'checked':''} ${termAll?'disabled':''}>Exclude terminating lines</label></div>`};
+    <h3>${$h('Vehicle')}</h3>${[['trolleybus',$h('Trolleybus')],['bus',$h('Bus')]].map(([t,nm])=>`<label class="chk ${d}"><input type="checkbox" data-t="${t}" ${F.types.has(t)?'checked':''} ${hasBoth?'':'disabled'}>${nm}</label>`).join('')}
+    <h3>${$h('Departure time')}</h3>
+    <label class="chk"><input type="checkbox" id="ca" ${F.after!=null?'checked':''}>${$h('After')}<input type="time" id="ta" value="${fmt(F.after??n)}"></label>
+    <label class="chk"><input type="checkbox" id="cb" ${F.before!=null?'checked':''}>${$h('Before')}<input type="time" id="tb" value="${fmt(F.before??Math.min(n+60,1439))}"></label>
+    <h3>${$h('Stops at')}</h3>
+    <label class="chk ${viaOk?'':'dis'}"><input type="checkbox" id="cv" ${F.via?'checked':''}><button type="button" class="selbtn" id="sv">${F.viaSel?esc(sname(F.viaSel)):$h('Choose a station…')} ▾</button></label>
+    <h3>${$h('Arrives from')}</h3>
+    <label class="chk ${fromOk?'':'dis'}"><input type="checkbox" id="cf" ${F.from?'checked':''}><button type="button" class="selbtn" id="sf">${F.fromSel?esc(sname(F.fromSel)):$h('Choose a station…')} ▾</button></label>
+    <h3>${$h('Terminating lines')}</h3>
+    <label class="chk ${termAll?'dis':''}"><input type="checkbox" id="ct" ${F.noTerm?'checked':''} ${termAll?'disabled':''}>${$h('Exclude terminating lines')}</label></div>`};
   const drawMenu=()=>$('#mn').innerHTML=F.open?menu():'';
   const sync=()=>{
     fx.querySelectorAll('.chip').forEach(c=>c.classList.toggle('on',F.sel.has(c.dataset.l)));
-    const k=advCount(),ab=$('#ab');ab.textContent='⚙ Advanced filters'+(k?' · '+k:'')+(F.open?' ▴':' ▾');
+    const k=advCount(),ab=$('#ab');ab.textContent='⚙ '+$t('Advanced filters')+(k?' · '+k:'')+(F.open?' ▴':' ▾');
     ab.classList.toggle('on',k>0);$('#cl').hidden=!(k||F.sel.size)};
   refreshDeps=()=>{const n=now(),out=[];SC.clear();
     const A=F.after!=null?uw(F.after):null,B=F.before!=null?uw(F.before):null;
@@ -455,11 +464,11 @@ function initFilters(id){
     out.sort((a,b)=>a.m-b.m);
     const up=out.filter(e=>e.m>=n),pv=out.filter(e=>e.m<n).slice(-PV),pages=Math.max(1,Math.ceil(up.length/PG));
     F.page=Math.min(Math.max(F.page,0),pages-1);
-    $('#pv').textContent='🕒 Previous departures'+(F.prev?' ▴':' ▾');$('#pv').classList.toggle('on',F.prev);
-    $('#pdeps').innerHTML=F.prev?(pv.length?pv.map(e=>rowHtml(e,n,1)).join(''):'<div class="empty" style="padding:18px 20px">No departures in the past hour</div>'):'';
-    deps.innerHTML=(up.length?up.slice(F.page*PG,F.page*PG+PG).map(e=>rowHtml(e,n)).join(''):`<div class="empty">${F.sel.size||advCount()?'No departures match these filters':'No upcoming departures'}</div>`)+
+    $('#pv').textContent='🕒 '+$t('Previous departures')+(F.prev?' ▴':' ▾');$('#pv').classList.toggle('on',F.prev);
+    $('#pdeps').innerHTML=F.prev?(pv.length?pv.map(e=>rowHtml(e,n,1)).join(''):`<div class="empty" style="padding:18px 20px">${$h('No departures in the past hour')}</div>`):'';
+    deps.innerHTML=(up.length?up.slice(F.page*PG,F.page*PG+PG).map(e=>rowHtml(e,n)).join(''):`<div class="empty">${F.sel.size||advCount()?$h('No departures match these filters'):$h('No upcoming departures')}</div>`)+
       '';
-    $('#pgr').innerHTML=pages>1?`<div class="pager"><button data-pg="-1" ${F.page<1?'disabled':''} aria-label="Previous page">←</button><span>Page ${F.page+1} of ${pages}</span><button data-pg="1" ${F.page>=pages-1?'disabled':''} aria-label="Next page">→</button></div>`:''};
+    $('#pgr').innerHTML=pages>1?`<div class="pager"><button data-pg="-1" ${F.page<1?'disabled':''} aria-label="${$h('Previous page')}">←</button><span>${$h('Page {0} of {1}',F.page+1,pages)}</span><button data-pg="1" ${F.page>=pages-1?'disabled':''} aria-label="${$h('Next page')}">→</button></div>`:''};
   $('#pv').onclick=()=>{F.prev=!F.prev;refreshDeps()};
   $('#pgr').onclick=e=>{const b=e.target.closest('[data-pg]');if(!b||b.disabled)return;F.page+=+b.dataset.pg;refreshDeps();main.scrollTop=0};
   const update=()=>{F.page=0;sync();refreshDeps()};
@@ -467,13 +476,13 @@ function initFilters(id){
   const openPick=kind=>{
     document.querySelector('.vp')?.remove();
     const o=document.createElement('div');o.className='vp';
-    o.innerHTML='<div class="vpb"><input type="text" placeholder="Search stations" autocomplete="off" autocapitalize="off" spellcheck="false"><div class="vl"></div></div>';
+    o.innerHTML='<div class="vpb"><input type="text" placeholder="'+$h('Search stations')+'" autocomplete="off" autocapitalize="off" spellcheck="false"><div class="vl"></div></div>';
     document.body.appendChild(o);
     const qi=o.querySelector('input'),vl=o.querySelector('.vl');
-    const sm=k=>stations[k]?.smallText||'';
-    const base=lst(kind),selK=kind==='via'?F.viaSel:F.fromSel,none=kind==='via'?'No stations fit with the current "Arrives from" filter':'No stations fit with the current "Stops at" filter';
+    const sm=k=>ssm(k);
+    const base=lst(kind),selK=kind==='via'?F.viaSel:F.fromSel,none=kind==='via'?$t('No stations fit with the current "{0}" filter',$t('Arrives from')):$t('No stations fit with the current "{0}" filter',$t('Stops at'));
     const draw=()=>{const t=qi.value.trim().toLowerCase(),tc=t.replace(/^#/,''),r=base.filter(([k,nm])=>!t||nm.toLowerCase().includes(t)||sm(k).toLowerCase().includes(t)||(tc&&scode(k).toLowerCase().startsWith(tc)));
-      vl.innerHTML=r.map(([k,nm])=>`<button data-k="${esc(k)}" class="${k===selK?'on':''}">${nmw(esc(nm),sm(k)?esc(sm(k)):'')}</button>`).join('')||`<div class="empty">${base.length?'No stations match':none}</div>`};
+      vl.innerHTML=r.map(([k,nm])=>`<button data-k="${esc(k)}" class="${k===selK?'on':''}">${nmw(esc(nm),sm(k)?esc(sm(k)):'')}</button>`).join('')||`<div class="empty">${base.length?$h('No stations match'):esc(none)}</div>`};
     qi.oninput=draw;draw();
     o.onclick=e=>{const b=e.target.closest('[data-k]');
       if(b){if(kind==='via')F.via=F.viaSel=b.dataset.k;else F.from=F.fromSel=b.dataset.k;F.sel.clear();o.remove();drawMenu();update()}
@@ -518,6 +527,12 @@ async function initMap(){
     mapObj.setMinZoom(mapObj.getZoom()-1);mapObj.setMaxBounds(b.pad(.3));
   }catch(e){el.innerHTML='<div class="mapmsg">Could not load the map.<br>Add tiles/ (or map.png) next to index.html.</div>'}
 }
+function applyLang(){   // translate the static chrome (header buttons, footer) and set the language chip
+  document.documentElement.lang=lang;
+  const fs=$('#fs'),sd=$('#sd');fs.title=$t('Show only favorites');fs.setAttribute('aria-label',fs.title);sd.title=$t('Switch direction');sd.setAttribute('aria-label',sd.title);
+  $('#so').textContent=$t('Sort by…')+' ▾';$('#dl').textContent=$t('Schedule');
+  const dm=$('#dm');dm.options[1].text=$t('Workday');dm.options[2].text=$t('Holiday');
+  const lg=$('#lg');lg.textContent=lang==='bg'?'BG':'EN';lg.title=$t('Language');lg.setAttribute('aria-label',lg.title)}
 function render(s,keep){
   s=s||{v:'home'};syncMods();SC.clear();if((s.v==='dirs'||s.v==='trip')&&!lines.some(x=>x.id===s.l)){s={v:'routes'};history.replaceState(s,'')}
   if(mapObj){mapObj.remove();mapObj=null}refreshDeps=null;closeFx=null;document.querySelector('.vp')?.remove();$('#pgr').innerHTML='';if(!keep)pickOpen=false;main.classList.toggle('fill',s.v==='map');const y=main.scrollTop,v=V[s.v](s);
@@ -526,10 +541,11 @@ function render(s,keep){
   document.querySelector('header').hidden=s.v==='home';
   const sd=$('#sd');sd.hidden=!(s.v==='station'||s.v==='trip');
   if(!sd.hidden)sd.disabled=s.v==='station'?!oppOf(s.id).ok:lines.find(x=>x.id===s.l).directions.length<2;
+  applyLang();
   let au=[0,6].includes(new Date().getDay())?'Holiday':'Workday';
   if(lines.length){const t=new Set(lines.flatMap(l=>l.directions.map(d=>ovFor(d,0)||'x')));if(t.size===1&&!t.has('x'))au=[...t][0]==='holiday'?'Holiday':'Workday'}   // label follows a network-wide override
   main.innerHTML=v.h;$('#ft').hidden=s.v==='map';
-  const dm=$('#dm');dm.options[0].text='Auto ('+au+')';dm.value=mode;
+  const dm=$('#dm');dm.options[0].text=$t('Auto ({0})',$t(au));dm.value=mode;
   v.after&&v.after();main.scrollTop=keep?y:0;
 }
 main.addEventListener('click',e=>{

@@ -6,8 +6,10 @@
   "directions": [
     {
       "id": "T2_BOR",
-      "smallText": "",
       "displayName": "BOR",
+      "smallText": "",
+	    "displayNameBG": "Завод БОР",
+	    "smallTextBG": "",
       "stops": [
         {
           "stationId": "CAT",
@@ -149,8 +151,10 @@
     },
     {
       "id": "T2_Mototehnika",
-      "smallText": "",
       "displayName": "Mototehnika",
+      "smallText": "",
+	  "displayNameBG": "Мототехника",
+	  "smallTextBG": "",
       "stops": [
         {
           "stationId": "DairyPlant",
