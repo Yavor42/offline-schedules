@@ -6,8 +6,10 @@
   "directions": [
     {
       "id": "T9_BOR",
-      "smallText": "",
       "displayName": "BOR",
+      "smallText": "",
+      "displayNameBG": "Завод БОР",
+      "smallTextBG": "",
       "stops": [
         {
           "stationId": "CharodeykaSouth",
@@ -103,8 +105,10 @@
     },
     {
       "id": "T9_Charodeyka",
-      "smallText": "",
       "displayName": "Charodeyka-South",
+      "smallText": "",
+      "displayNameBG": "Чародейка-ЮГ",
+      "smallTextBG": "",
       "stops": [
         {
           "stationId": "DairyPlant",

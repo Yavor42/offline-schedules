@@ -6,8 +6,10 @@
   "directions": [
     {
       "id": "A23_HouseOfCulture",
-      "smallText": "via \"Hristo Botev\" blvd.",
       "displayName": "House of Culture",
+      "smallText": "via \"Hristo Botev\" blvd.",
+      "displayNameBG": "Дом на културата",
+      "smallTextBG": "чрез бул. \"Христо Ботев\"",
       "stops": [
         {
           "stationId": "Druzhba3Block48",
@@ -106,8 +108,10 @@
     },
     {
       "id": "A23_Block 48",
-      "smallText": "via Ohlyuva",
       "displayName": "Druzhba 3 - Block 48",
+      "smallText": "via Ohlyuva",
+      "displayNameBG": "Дружба 3 - Блок 48",
+      "smallTextBG": "чрез ПВ \"Охлюва\"",
       "stops": [
         {
           "stationId": "HouseOfCulture",

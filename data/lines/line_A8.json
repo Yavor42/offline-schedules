@@ -6,8 +6,10 @@
   "directions": [
     {
       "id": "A8_BasarbovoCemetery",
-      "smallText": "",
       "displayName": "Basarbovo Cemetery",
+      "smallText": "",
+      "displayNameBG": "Гробищен парк Басарбово",
+      "smallTextBG": "",
       "stops": [
         {
           "stationId": "HouseOfCulture",
@@ -91,8 +93,10 @@
     },
     {
       "id": "A8_HouseOfCulture",
-      "smallText": "",
       "displayName": "House of Culture",
+      "smallText": "",
+      "displayNameBG": "Дом на културата",
+      "smallTextBG": "",
       "stops": [
         {
           "stationId": "BasarbovoCemeteryEast",

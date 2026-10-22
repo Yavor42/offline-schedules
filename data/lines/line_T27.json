@@ -6,8 +6,10 @@
   "directions": [
     {
       "id": "T27_Block28",
-      "smallText": "",
       "displayName": "Druzhba 3 - Terminus",
+      "smallText": "Block 28",
+      "displayNameBG": "Дружба 3 - Обръщало",
+      "smallTextBG": "Блок 28",
       "stops": [
         {
           "stationId": "25TutrakanBlvd",
@@ -86,8 +88,10 @@
     },
     {
       "id": "T27_26TutrakanBlvd",
-      "smallText": "Sugar Factory",
       "displayName": "26 \"Tutrakan\" blvd.",
+      "smallText": "Sugar Factory",
+      "displayNameBG": "Бул. \"Тутракан\" №26",
+      "smallTextBG": "Захарен завод",
       "stops": [
         {
           "stationId": "Druzhba3Terminus",

@@ -6,8 +6,10 @@
   "directions": [
     {
       "id": "A6_AsphaltBase",
-      "smallText": "",
       "displayName": "Asphalt Base - Sredna Kula",
+      "smallText": "",
+      "displayNameBG": "Асфалтова база - Средна кула",
+      "smallTextBG": "",
       "stops": [
         {
           "stationId": "HouseOfCulture",
@@ -127,8 +129,10 @@
     },
     {
       "id": "A6_HouseOfCulture",
-      "smallText": "",
       "displayName": "House of Culture",
+      "smallText": "",
+      "displayNameBG": "Дом на културата",
+      "smallTextBG": "",
       "stops": [
         {
           "stationId": "AsphaltBaseWest",

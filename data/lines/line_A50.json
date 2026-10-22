@@ -6,8 +6,10 @@
   "directions": [
     {
       "id": "A50_Basarbovo1",
-      "smallText": "",
       "displayName": "Basarbovo",
+      "smallText": "",
+      "displayNameBG": "Село Басарбово",
+      "smallTextBG": "",
       "stops": [
         {
           "stationId": "IntercityBusStationWest",
@@ -143,8 +145,10 @@
     },
     {
       "id": "A50_IntercityBusStation",
-      "smallText": "",
       "displayName": "Intercity Bus Station",
+      "smallText": "",
+      "displayNameBG": "Автогара Изток",
+      "smallTextBG": "",
       "stops": [
         {
           "stationId": "Basarbovo1",

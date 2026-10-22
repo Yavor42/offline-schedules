@@ -8,8 +8,8 @@
       "id": "A16A_16thKilometreTerminus",
       "displayName": "16th Kilometer Terminus",
       "smallText": "Dolapite Railway Station",
-	    "displayNameBG": "Обръщало 16-ти километър",
-	    "smallTextBG": "Гара Долапите",
+      "displayNameBG": "Обръщало 16-ти километър",
+      "smallTextBG": "Гара Долапите",
       "stops": [
         {
           "stationId": "RazpredelitelnaRailwayStation",
@@ -159,8 +159,8 @@
       "id": "A16A_RazpredelitelnaRailwayStation",
       "displayName": "Razpredelitelna Railway Station",
       "smallText": "",
-	  "displayNameBG": "Гара Разпределителна",
-	  "smallTextBG": "",
+      "displayNameBG": "Гара Разпределителна",
+      "smallTextBG": "",
       "stops": [
         {
           "stationId": "16thKilometerTerminus",

@@ -6,8 +6,10 @@
   "directions": [
     {
       "id": "T13_RazpredelitelnaRailwayStation",
-      "smallText": "",
       "displayName": "Razpredelitelna Railway Station",
+      "smallText": "",
+      "displayNameBG": "Гара Разпределителна",
+      "smallTextBG": "",
       "stops": [
         {
           "stationId": "Druzhba3Terminus",
@@ -127,8 +129,10 @@
     },
     {
       "id": "T13_Block28",
-      "smallText": "",
       "displayName": "Druzhba 3 - Terminus",
+      "smallText": "Block 28",
+      "displayNameBG": "Дружба 3 - Обръщало",
+      "smallTextBG": "Блок 28",
       "stops": [
         {
           "stationId": "RazpredelitelnaRailwayStation",

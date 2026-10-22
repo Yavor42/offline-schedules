@@ -6,8 +6,10 @@
   "directions": [
     {
       "id": "A16_METRO",
-      "smallText": "",
       "displayName": "METRO Superstore",
+      "smallText": "",
+      "displayNameBG": "Магазин МЕТРО",
+      "smallTextBG": "",
       "stops": [
         {
           "stationId": "RazpredelitelnaRailwayStation",
@@ -102,8 +104,10 @@
     },
     {
       "id": "A16_RazpredelitelnaRailwayStation",
-      "smallText": "",
       "displayName": "Razpredelitelna Railway Station",
+      "smallText": "",
+      "displayNameBG": "Гара Разпределителна",
+      "smallTextBG": "",
       "stops": [
         {
           "stationId": "METROSuperstoreSouth",

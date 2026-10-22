@@ -6,8 +6,10 @@
   "directions": [
     {
       "id": "A4_ZEIM",
-      "smallText": "",
       "displayName": "ZEIM",
+      "smallText": "",
+      "displayNameBG": "ЗЕИМ",
+      "smallTextBG": "",
       "stops": [
         {
           "stationId": "Druzhba3Block48",
@@ -133,8 +135,10 @@
     },
     {
       "id": "A4_Block48",
-      "smallText": "",
       "displayName": "Druzhba 3 - Block 48",
+      "smallText": "",
+      "displayNameBG": "Дружба 3 - Блок 48",
+      "smallTextBG": "",
       "stops": [
         {
           "stationId": "ZEIMEast",

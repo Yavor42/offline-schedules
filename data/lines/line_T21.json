@@ -6,8 +6,10 @@
   "directions": [
     {
       "id": "T21_RazpredelitelnaRailwayStation",
-      "smallText": "",
       "displayName": "Razpredelitelna Railway Station",
+      "smallText": "",
+      "displayNameBG": "Гара Разпределителна",
+      "smallTextBG": "",
       "stops": [
         {
           "stationId": "CharodeykaSouth",
@@ -129,8 +131,10 @@
     },
     {
       "id": "T21_Charodeyka",
-      "smallText": "",
       "displayName": "Charodeyka-South",
+      "smallText": "",
+      "displayNameBG": "",
+      "smallTextBG": "",
       "stops": [
         {
           "stationId": "RazpredelitelnaRailwayStation",

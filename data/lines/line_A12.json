@@ -6,8 +6,10 @@
   "directions": [
     {
       "id": "A12_RailwayStationBorisova",
-      "smallText": "",
       "displayName": "Railway Station - Cosmos",
+      "smallText": "",
+      "displayNameBG": "ЖП гара - Космос",
+      "smallTextBG": "",
       "stops": [
         {
           "stationId": "CAT",
@@ -131,8 +133,10 @@
     },
     {
       "id": "A12_Mototehnika",
-      "smallText": "",
       "displayName": "Mototehnika",
+      "smallText": "",
+      "displayNameBG": "Мототехника",
+      "smallTextBG": "",
       "stops": [
         {
           "stationId": "RailwayStationBorisovaStr",

@@ -8,8 +8,8 @@
       "id": "T2_BOR",
       "displayName": "BOR",
       "smallText": "",
-	    "displayNameBG": "Завод БОР",
-	    "smallTextBG": "",
+      "displayNameBG": "Завод БОР",
+      "smallTextBG": "",
       "stops": [
         {
           "stationId": "CAT",
@@ -153,8 +153,8 @@
       "id": "T2_Mototehnika",
       "displayName": "Mototehnika",
       "smallText": "",
-	  "displayNameBG": "Мототехника",
-	  "smallTextBG": "",
+      "displayNameBG": "Мототехника",
+      "smallTextBG": "",
       "stops": [
         {
           "stationId": "DairyPlant",

@@ -6,8 +6,10 @@
   "directions": [
     {
       "id": "A11_Customs",
-      "smallText": "",
       "displayName": "Danube Bridge / Customs",
+      "smallText": "",
+      "displayNameBG": "Дунав мост / Митница",
+      "smallTextBG": "",
       "stops": [
         {
           "stationId": "MalyovitsaStrTerminus",
@@ -192,8 +194,10 @@
     },
     {
       "id": "A11_MalyovitsaStr",
-      "smallText": "",
       "displayName": "\"Malyovitsa\" str. - Terminus",
+      "smallText": "",
+      "displayNameBG": "Обръщалото - ул. \"Мальовица\"",
+      "smallTextBG": "",
       "stops": [
         {
           "stationId": "DanubeBridge",

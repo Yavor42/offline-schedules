@@ -6,8 +6,10 @@
   "directions": [
     {
       "id": "A27A_Block48",
-      "smallText": "",
       "displayName": "Druzhba 3 - Block 48",
+      "smallText": "",
+      "displayNameBG": "Дружба 3 - Блок 48",
+      "smallTextBG": "",
       "stops": [
         {
           "stationId": "25TutrakanBlvd",
@@ -135,8 +137,10 @@
     },
     {
       "id": "A27A_26TutrakanBlvd",
+      "displayName": "26 \"Tutrakan\" blvd.",
       "smallText": "Sugar Factory",
-      "displayName": "26 \"Tutrakan\" Blvd.",
+      "displayNameBG": "Бул \"Тутракан\" №26",
+      "smallTextBG": "Захарен завод",
       "stops": [
         {
           "stationId": "Druzhba3Block48",

@@ -6,8 +6,10 @@
   "directions": [
     {
       "id": "A12A_RailwayStationBorisova",
-      "smallText": "",
       "displayName": "Railway Station - Cosmos",
+      "smallText": "",
+      "displayNameBG": "ЖП гара - Космос",
+      "smallTextBG": "",
       "stops": [
         {
           "stationId": "26TutrakanBlvd",
@@ -101,8 +103,10 @@
     },
     {
       "id": "A12A_2526Tutrakan",
-      "smallText": "Sugar Factory",
       "displayName": "25 \"Tutrakan\" blvd.",
+      "smallText": "Sugar Factory",
+      "displayNameBG": "Бул. \"Тутракан\" №25",
+      "smallTextBG": "Захарен завод",
       "stops": [
         {
           "stationId": "RailwayStationBorisovaStr",

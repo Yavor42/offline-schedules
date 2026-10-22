@@ -6,8 +6,10 @@
   "directions": [
     {
       "id": "T29_26Tutrakan",
-      "smallText": "Sugar Factory",
       "displayName": "26 \"Tutrakan\" blvd.",
+      "smallText": "Sugar Factory",
+      "displayNameBG": "Бул. \"Тутракан\" №26",
+      "smallTextBG": "Захарен завод",
       "stops": [
         {
           "stationId": "CharodeykaSouth",
@@ -131,8 +133,10 @@
     },
     {
       "id": "T29_Charodeyka",
-      "smallText": "",
       "displayName": "Charodeyka-South",
+      "smallText": "",
+      "displayNameBG": "Чародейка-ЮГ",
+      "smallTextBG": "",
       "stops": [
         {
           "stationId": "25TutrakanBlvd",

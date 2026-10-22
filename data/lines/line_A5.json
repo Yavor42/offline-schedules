@@ -6,8 +6,10 @@
   "directions": [
     {
       "id": "A5_CoopMarket",
-      "smallText": "",
       "displayName": "Cooperative Market / ŽP Prelez",
+      "smallText": "",
+      "displayNameBG": "Кооперативен пазар / ЖП прелез",
+      "smallTextBG": "",
       "stops": [
         {
           "stationId": "RailwayStationNikolaevskaStr",
@@ -109,8 +111,10 @@
     },
     {
       "id": "A5_RailwayNikolaevska",
-      "smallText": "",
       "displayName": "Railway Station - \"Nikolaevska\" str.",
+      "smallText": "",
+      "displayNameBG": "ЖП гара - ул. \"Николаевска\"",
+      "smallTextBG": "",
       "stops": [
         {
           "stationId": "CooperativeMarket",

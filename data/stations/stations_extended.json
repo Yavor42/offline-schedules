@@ -1690,8 +1690,8 @@
   "Druzhba3Block48": {
     "displayName": "Druzhba 3 - Block 48",
     "number": "221",
-    "oppositeStation": "aka Block 45",
-    "smallText": "",
+    "oppositeStation": "",
+    "smallText": "aka Block 45",
     "langBG": "Дружба 3 - Блок 48",
     "smallTextBG": "Блок 45"
   },

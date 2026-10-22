@@ -6,8 +6,10 @@
   "directions": [
     {
       "id": "A28_Block48",
-      "smallText": "",
       "displayName": "Druzhba 3 - Block 48",
+      "smallText": "",
+      "displayNameBG": "Дружба 3 - Блок 48",
+      "smallTextBG": "",
       "stops": [
         {
           "stationId": "KEROS",
@@ -122,8 +124,10 @@
     },
     {
       "id": "A28_KEROS",
-      "smallText": "",
       "displayName": "KEROS",
+      "smallText": "",
+      "displayNameBG": "КЕРОС",
+      "smallTextBG": "",
       "stops": [
         {
           "stationId": "Druzhba3Block48",

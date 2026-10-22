@@ -6,8 +6,10 @@
   "directions": [
     {
       "id": "A15_Strelbishteto",
-      "smallText": "",
       "displayName": "Strelbishteto - Dolapite",
+      "smallText": "",
+      "displayNameBG": "Стрелбище - Долапите",
+      "smallTextBG": "",
       "stops": [
         {
           "stationId": "CAT",
@@ -149,8 +151,10 @@
     },
     {
       "id": "A15_Mototehnika",
-      "smallText": "",
       "displayName": "Mototehnika",
+      "smallText": "",
+      "displayNameBG": "Мототехника",
+      "smallTextBG": "",
       "stops": [
         {
           "stationId": "StrelbishtetoDolapite",

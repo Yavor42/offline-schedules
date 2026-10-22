@@ -6,8 +6,10 @@
   "directions": [
     {
       "id": "A19_METRO",
-      "smallText": "",
       "displayName": "METRO Superstore",
+      "smallText": "",
+      "displayNameBG": "Магазин МЕТРО",
+      "smallTextBG": "",
       "stops": [
         {
           "stationId": "CooperativeMarket",
@@ -121,8 +123,10 @@
     },
     {
       "id": "A19_CoopMarket",
-      "smallText": "",
       "displayName": "Cooperative Market / ŽP Prelez",
+      "smallText": "",
+      "displayNameBG": "Кооперативен пазар / ЖП прелез",
+      "smallTextBG": "",
       "stops": [
         {
           "stationId": "METROSuperstoreSouth",

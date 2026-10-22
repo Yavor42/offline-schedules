@@ -6,8 +6,10 @@
   "directions": [
     {
       "id": "A33_ObrChiflik_South",
-      "smallText": "via DZS & Zurnosahranenie",
       "displayName": "Obraztsov Chiflik",
+      "smallText": "via DZS & Zurnosahranenie",
+      "displayNameBG": "Образцов чифлик",
+      "smallTextBG": "чрез ДЗС и Зърносахранение",
       "stops": [
         {
           "stationId": "RazpredelitelnaRailwayStation",
@@ -97,8 +99,10 @@
     },
     {
       "id": "A33_RazpredelitelnaRailwayStation",
-      "smallText": "",
       "displayName": "Razpredelitelna Railway Station",
+      "smallText": "",
+      "displayNameBG": "Гара Разпределителна",
+      "smallTextBG": "",
       "stops": [
         {
           "stationId": "ObraztsovChiflikCentre",
@@ -199,8 +203,10 @@
     },
     {
       "id": "A33_ObrChiflik_North",
-      "smallText": "via Astardzhiyka & Nova Ploshtadka",
       "displayName": "Obraztsov Chiflik",
+      "smallText": "via Astardzhiyka & Nova Ploshtadka",
+      "displayNameBG": "Образцов чифлик",
+      "smallTextBG": "чреа Астърджийка и Нова площадка",
       "stops": [
         {
           "stationId": "RazpredelitelnaRailwayStation",

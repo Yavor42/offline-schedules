@@ -6,8 +6,10 @@
   "directions": [
     {
       "id": "A3_METRO",
-      "smallText": "",
       "displayName": "METRO Superstore",
+      "smallText": "",
+      "displayNameBG": "Магазин МЕТРО",
+      "smallTextBG": "",
       "stops": [
         {
           "stationId": "CharodeykaSouth",

@@ -6,8 +6,10 @@
   "directions": [
     {
       "id": "A20_SaintOuan",
-      "smallText": "",
       "displayName": "\"Saint Ouan\" str.",
+      "smallText": "",
+      "displayNameBG": "Ул. \"Сент Уан\"",
+      "smallTextBG": "",
       "stops": [
         {
           "stationId": "PragaSqrTerminusNorth",
@@ -131,8 +133,10 @@
     },
     {
       "id": "A20_PragaSqr",
-      "smallText": "Devyatkata Station",
       "displayName": "\"Praga\" Square - Terminus",
+      "smallText": "Devyatkata Station",
+      "displayNameBG": "Обръщало Площад \"Прага\"",
+      "smallTextBG": "Спирката на девятката",
       "stops": [
         {
           "stationId": "ShipbuildingHighSchool",

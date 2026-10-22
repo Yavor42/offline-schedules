@@ -6,8 +6,10 @@
   "directions": [
     {
       "id": "T24_BOR",
-      "smallText": "",
       "displayName": "BOR",
+      "smallText": "",
+      "displayNameBG": "Завод БОР",
+      "smallTextBG": "",
       "stops": [
         {
           "stationId": "Druzhba3Terminus",
@@ -122,8 +124,10 @@
     },
     {
       "id": "T24_Block28",
-      "smallText": "",
       "displayName": "Druzhba 3 - Terminus",
+      "smallText": "Block 28",
+      "displayNameBG": "Дружба 3 - Обръщало",
+      "smallTextBG": "Блок 28",
       "stops": [
         {
           "stationId": "DairyPlant",

@@ -6,8 +6,10 @@
   "directions": [
     {
       "id": "A10_PrelezaTerminus",
-      "smallText": "",
-      "displayName": "Kaseva Chesma & Preleza Terminus",
+      "displayName": "Kaseva Chesma",
+      "smallText": "Preleza Terminus",
+      "displayNameBG": "Касева чешма",
+      "smallTextBG": "Обръщало прелеза",
       "stops": [
         {
           "stationId": "HouseOfCulture",
@@ -108,8 +110,10 @@
     },
     {
       "id": "A10_HouseOfCulture",
-      "smallText": "",
       "displayName": "House of Culture",
+      "smallText": "",
+      "displayNameBG": "Дом на културата",
+      "smallTextBG": "",
       "stops": [
         {
           "stationId": "PrelezaTerminus",
