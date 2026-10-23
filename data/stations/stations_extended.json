@@ -80,11 +80,11 @@
     "smallTextBG": ""
   },
   "DunavPrintery": {
-    "displayName": "\"Dunav Printery\"",
+    "displayName": "\"Dunav\" Printery",
     "number": "13",
     "oppositeStation": "AVKO",
     "smallText": "",
-    "langBG": "„Печатница Дунав“",
+    "langBG": "Печатница „Дунав“",
     "smallTextBG": ""
   },
   "ThirdPolyclinic": {

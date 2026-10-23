@@ -46,7 +46,7 @@ h2{font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--mut)
 .grid .badge{height:56px;font-size:20px;border-radius:14px;border:0}
 .row{display:flex;align-items:center;gap:12px;padding:14px;margin-bottom:8px;border-radius:16px;background:var(--card);width:100%;border:0;text-align:left}
 .row .grow{flex:1;min-width:0}.row .t{font-weight:600;overflow:hidden;text-overflow:ellipsis}.row .s{color:var(--mut);font-size:13px}
-.time{font-size:22px;font-weight:700;font-variant-numeric:tabular-nums}.eta{font-size:13px;color:#fff;text-align:right}
+.time{font-size:22px;font-weight:700;font-variant-numeric:tabular-nums;text-align:right}.eta{font-size:13px;color:#fff;text-align:right}
 .code{color:var(--mut);font-size:12px;background:var(--card2);padding:3px 8px;border-radius:8px}
 input[type=search]{width:100%;padding:15px 16px;font-size:17px;border:1px solid var(--line);border-radius:14px;background:var(--card);color:var(--tx);outline:0;-webkit-user-select:text;user-select:text;margin:6px 0 12px}
 input[type=search]:focus{border-color:var(--acc)}
@@ -128,7 +128,7 @@ const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',
 const pad=n=>String(n).padStart(2,'0');
 // ---- language (EN default / BG): UI strings come from data/lang_bg.json {english text: translation}; empty or missing = English
 let lang='en',STR={};try{lang=localStorage.lang==='bg'?'bg':'en'}catch(e){}
-const $t=(k,...a)=>{const v=(lang==='bg'&&STR[k])||k;return a.length?v.replace(/\{(\d+)\}/g,(m,i)=>a[i]??m):v},$h=(k,...a)=>esc($t(k,...a)),loc=()=>lang==='bg'?'bg':'en';
+const $t=(k,...a)=>{const v=(lang==='bg'&&STR[k])||k;return a.length?v.replace(/\{(\d+)\}/g,(m,i)=>a[i]??m):v},$h=(k,...a)=>esc($t(k,...a)),loc=()=>lang==='bg'?'bg':'en',sn=x=>String(x).toLowerCase().replace(/["„“№\-.,]/g,'').replace(/\s+/g,' ').trim();   // search normalisation: these symbols are ignored
 const fmt=m=>{m=(m%1440+1440)%1440;return pad(Math.floor(m/60))+':'+pad(m%60)};
 const toMin=t=>{const[a,b]=t.split(':');return +a*60+ +b};
 const now=()=>{const d=new Date();return d.getHours()*60+d.getMinutes()};
@@ -142,7 +142,8 @@ const saveFav=()=>{try{localStorage.favStations=JSON.stringify([...favs]);localS
 const dayType=(o=0)=>{if(mode!=='auto')return mode;const d=new Date();d.setDate(d.getDate()+o);return[0,6].includes(d.getDay())?'holiday':'workday'};
 const sname=id=>(lang==='bg'&&stations[id]?.langBG)||stations[id]?.displayName||id.replace(/([a-z])([A-Z])/g,'$1 $2');
 const ssm=id=>(lang==='bg'&&stations[id]?.smallTextBG)||stations[id]?.smallText||'';
-const dnm=d=>(lang==='bg'&&d.displayNameBG)||d.displayName||'',dsm=d=>(lang==='bg'&&d.smallTextBG)||d.smallText||'';   // direction name / small text in the current language
+const dnm=d=>(lang==='bg'&&d.displayNameBG)||d.displayName||'',dsm=d=>(lang==='bg'&&d.smallTextBG)||d.smallText||'';
+const dlab=d=>{const ls=d.stops[d.term].stationId,nm=dnm(d)||sname(ls),sx=d.displayName?dsm(d):ssm(ls);return nmw(esc(nm),sx?esc(sx):'')};   // direction name + small text (inline if it fits, else next line)   // direction name / small text in the current language
 const scode=id=>String(stations[id]?.number??'').trim();
 const nmw=(n,s,x='')=>`<span class="nmw"><span class="nn">${n}${x}</span>${s?`<span class="ss">${s}</span>`:''}</span>`;
 const snm=(id,x='')=>nmw(esc(sname(id)),ssm(id)?esc(ssm(id)):'',x);
@@ -360,7 +361,7 @@ routes(){
   return{t:$t('Routes'),h:order.filter(k=>g[k]).map(k=>`<h2>${nm[k]||esc(k)}</h2><div class="grid">${g[k].map(l=>`<button class="badge" style="background:${esc(l.color)}" data-go='${JSON.stringify({v:'dirs',l:l.id})}'>${esc(bt(l))}</button>`).join('')}</div>`).join('')||`<div class="empty">${$h('No routes found')}</div>`}},
 dirs(s){
   const l=lines.find(x=>x.id===s.l);
-  return{t:ltitle(l),h:`<h2>${$h('Choose direction')}</h2>`+`<div class="dn">${mHtml(m=>mLine(m,l))}${nHtml(n=>nLine(n,l))}</div>`+l.directions.map(d=>{const ls=d.stops[d.term].stationId,nm=dnm(d)||sname(ls),sx=d.displayName?dsm(d):ssm(ls);return`<button class="row" data-go='${JSON.stringify({v:'trip',l:l.id,d:d.id})}'>${badge(l)}<div class="grow"><div class="t">${esc(nm)}</div>${sx?`<div class="ss" style="display:block">${esc(sx)}</div>`:''}<div class="s">${$h('from {0}',sname(d.stops[0].stationId))}</div></div>›</button>`}).join('')}},
+  return{t:ltitle(l),h:`<h2>${$h('Choose direction')}</h2>`+`<div class="dn">${mHtml(m=>mLine(m,l))}${nHtml(n=>nLine(n,l))}</div>`+l.directions.map(d=>{const ls=d.stops[d.term].stationId,nm=dnm(d)||sname(ls),sx=d.displayName?dsm(d):ssm(ls);return`<button class="row" data-go='${JSON.stringify({v:'trip',l:l.id,d:d.id})}'>${badge(l)}<div class="grow"><div class="t">${nmw(esc(nm),sx?esc(sx):'')}</div><div class="s">${$h('from {0}',sname(d.stops[0].stationId))}</div></div>›</button>`}).join('')}},
 trip(s){
   const l=lines.find(x=>x.id===s.l),d=l.directions.find(x=>x.id===s.d),tot=d.tot;
   // target = most recently departed trip still running (not yet at terminus), else next upcoming, else last of the day; cancelled departures are skipped
@@ -395,10 +396,10 @@ search(){
       const tr=a.filter(l=>l.type==='trolleybus').length,bu=a.filter(l=>l.type==='bus').length,ot=a.length-tr-bu,p=[];
       if(tr)p.push(tr>1?$t('{0} Trolleybus lines',tr):$t('{0} Trolleybus line',tr));if(bu)p.push(bu>1?$t('{0} Bus lines',bu):$t('{0} Bus line',bu));if(ot)p.push(ot>1?$t('{0} other lines',ot):$t('{0} other line',ot));
       return p.join(' '+$t('and')+' ')};
-    const draw=()=>{q=inp.value;const t=q.trim().toLowerCase();
+    const draw=()=>{q=inp.value;const t=sn(q);
       let all=Object.entries(stations).map(([id,s])=>({id,name:sname(id),code:String(s.number??'').trim(),sm:ssm(id),alt:[s.displayName,s.langBG,s.smallText,s.smallTextBG].filter(Boolean).join(' ').toLowerCase()}));
       Object.keys(by).forEach(id=>{if(!stations[id])all.push({id,name:sname(id),code:'',sm:'',alt:''})});
-      if(t)all=all.filter(s=>s.name.toLowerCase().includes(t)||s.code===t||s.code.startsWith(t)||s.id.toLowerCase().includes(t)||s.sm.toLowerCase().includes(t)||s.alt.includes(t));
+      if(t)all=all.filter(s=>sn(s.name).includes(t)||s.code===t||s.code.startsWith(t)||s.id.toLowerCase().includes(t)||sn(s.sm).includes(t)||sn(s.alt).includes(t));
       if(onlyFav)all=all.filter(s=>favs.has(s.id));
       const num=c=>/^\d+$/.test(c)?+c:null,byId=(a,b)=>!a.code!==!b.code?(a.code?-1:1):(num(a.code)!==null&&num(b.code)!==null&&num(a.code)!==num(b.code)?num(a.code)-num(b.code):a.code.localeCompare(b.code,undefined,{numeric:true}));
       all.sort((a,b)=>(t&&a.code===t?-1:t&&b.code===t?1:0)||(sortBy==='id'?byId(a,b):0)||a.name.localeCompare(b.name,loc()));
@@ -423,7 +424,7 @@ const advCount=()=>F.types.size+(F.after!=null)+(F.before!=null)+(F.via?1:0)+(F.
 const clearAdv=()=>{F.types.clear();F.after=F.before=F.via=F.from=null;F.noTerm=false};
 const tm=v=>v?toMin(v):null;
 function rowHtml(e,n,past){const term=e.i===e.d.term,cx=e.qx||e.sx,ca=!cx&&(e.qa||e.sa);
-  return`<button class="row${past?' past':''}${cx?' x':ca?' a':''}" data-go='${JSON.stringify({v:'trip',l:e.l.id,d:e.d.id,i:e.ti,...(e.y?{y:1}:{})})}'>${badge(e.l)}<div class="grow"><div class="t">${esc(dnm(e.d)||sname(e.d.stops[e.d.term].stationId))}</div>${term?`<div class="s">${$h('Terminates here')}</div>`:''}</div><div><div class="time${e.st?' w-'+e.st:''}">${fmt(e.m)}</div><div class="eta${!past&&e.tg!=null?' d-'+(e.tg<=2?'red':'yellow'):''}">${past?$h('{0} ago',eta(n-e.m)):(e.tg!=null?'⚠ ':'')+eta(e.m-n)}</div></div></button>`}
+  return`<button class="row${past?' past':''}${cx?' x':ca?' a':''}" data-go='${JSON.stringify({v:'trip',l:e.l.id,d:e.d.id,i:e.ti,...(e.y?{y:1}:{})})}'>${badge(e.l)}<div class="grow"><div class="t">${dlab(e.d)}</div>${term?`<div class="s">${$h('Terminates here')}</div>`:''}</div><div><div class="time${e.st?' w-'+e.st:''}">${fmt(e.m)}</div><div class="eta${!past&&e.tg!=null?' d-'+(e.tg<=2?'red':'yellow'):''}">${past?$h('{0} ago',eta(n-e.m)):(e.tg!=null?'⚠ ':'')+eta(e.m-n)}</div></div></button>`}
 function initFilters(id){
   const ents=by[id],fx=$('#fx'),deps=$('#fdeps');
   const tv=l=>l.type==='trolleybus'?0:1,ls=[...new Map(ents.map(e=>[e.l.id,e.l])).values()].sort((a,b)=>tv(a)-tv(b)||a.displayName.localeCompare(b.displayName,undefined,{numeric:true}));
@@ -481,7 +482,7 @@ function initFilters(id){
     const qi=o.querySelector('input'),vl=o.querySelector('.vl');
     const sm=k=>ssm(k);
     const base=lst(kind),selK=kind==='via'?F.viaSel:F.fromSel,none=kind==='via'?$t('No stations fit with the current "{0}" filter',$t('Arrives from')):$t('No stations fit with the current "{0}" filter',$t('Stops at'));
-    const draw=()=>{const t=qi.value.trim().toLowerCase(),tc=t.replace(/^#/,''),r=base.filter(([k,nm])=>!t||nm.toLowerCase().includes(t)||sm(k).toLowerCase().includes(t)||(tc&&scode(k).toLowerCase().startsWith(tc)));
+    const draw=()=>{const t=sn(qi.value),tc=t.replace(/^#/,''),r=base.filter(([k,nm])=>!t||sn(nm).includes(t)||sn(sm(k)).includes(t)||(tc&&scode(k).toLowerCase().startsWith(tc)));
       vl.innerHTML=r.map(([k,nm])=>`<button data-k="${esc(k)}" class="${k===selK?'on':''}">${nmw(esc(nm),sm(k)?esc(sm(k)):'')}</button>`).join('')||`<div class="empty">${base.length?$h('No stations match'):esc(none)}</div>`};
     qi.oninput=draw;draw();
     o.onclick=e=>{const b=e.target.closest('[data-k]');
