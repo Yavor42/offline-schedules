@@ -8,7 +8,7 @@
       "id": "A20_SaintOuan",
       "displayName": "\"Saint Ouan\" str.",
       "smallText": "",
-      "displayNameBG": "Ул. \"Сент Уан\"",
+      "displayNameBG": "Ул. „Сент Уан“",
       "smallTextBG": "",
       "stops": [
         {
@@ -135,7 +135,7 @@
       "id": "A20_PragaSqr",
       "displayName": "\"Praga\" Square - Terminus",
       "smallText": "Devyatkata Station",
-      "displayNameBG": "Обръщало Площад \"Прага\"",
+      "displayNameBG": "Обръщало - Площад „Прага“",
       "smallTextBG": "Спирката на девятката",
       "stops": [
         {

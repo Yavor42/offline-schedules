@@ -110,10 +110,10 @@
       }
     },
     {
-      "id": "A5_RailwayNikolaevska",
+      "id": "A5_RailwayStationNikolaevska",
       "displayName": "Railway Station - \"Nikolaevska\" str.",
       "smallText": "",
-      "displayNameBG": "ЖП гара - ул. \"Николаевска\"",
+      "displayNameBG": "ЖП гара - ул. „Николаевска“",
       "smallTextBG": "",
       "stops": [
         {

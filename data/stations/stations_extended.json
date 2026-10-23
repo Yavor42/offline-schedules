@@ -388,7 +388,7 @@
     "number": "56",
     "oppositeStation": "EcontExpressShippingSouthDomostroene",
     "smallText": "aka Naporni Trabi",
-    "langBG": "Куриерска служба Еконт - Север",
+    "langBG": "Еконт експрес - Север",
     "smallTextBG": "Напорни тръби"
   },
   "EcontExpressShippingSouthDomostroene": {
@@ -396,7 +396,7 @@
     "number": "57",
     "oppositeStation": "EcontExpressShippingNorthNaporniTrabi",
     "smallText": "aka Domostroene",
-    "langBG": "Куриерска служба Еконт - Юг",
+    "langBG": "Еконт експрес - Юг",
     "smallTextBG": "Домостроене"
   },
   "DanubeBridge": {
@@ -668,7 +668,7 @@
     "number": "92",
     "oppositeStation": "PragaSqrTerminusSouth",
     "smallText": "Devyatkata Station",
-    "langBG": "Площад „Прага“ обръщало - Север",
+    "langBG": "Обръщало - Площад „Прага“ - Север",
     "smallTextBG": "Спирката на девятката"
   },
   "PragaSqrTerminusSouth": {
@@ -676,7 +676,7 @@
     "number": "93",
     "oppositeStation": "PragaSqrTerminusNorth",
     "smallText": "Devyatkata Station",
-    "langBG": "Площад „Прага“ обръщало - Юг",
+    "langBG": "Обръщало - Площад „Прага“ - Юг",
     "smallTextBG": "Спирката на девятката"
   },
   "Block302North": {

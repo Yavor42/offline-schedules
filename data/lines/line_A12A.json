@@ -9,7 +9,7 @@
       "displayName": "Railway Station - Cosmos",
       "smallText": "",
       "displayNameBG": "ЖП гара - Космос",
-      "smallTextBG": "",
+      "smallTextBG": "Ул. „Борисова“",
       "stops": [
         {
           "stationId": "26TutrakanBlvd",
@@ -105,7 +105,7 @@
       "id": "A12A_2526Tutrakan",
       "displayName": "25 \"Tutrakan\" blvd.",
       "smallText": "Sugar Factory",
-      "displayNameBG": "Бул. \"Тутракан\" №25",
+      "displayNameBG": "Бул. „Тутракан“ №25",
       "smallTextBG": "Захарен завод",
       "stops": [
         {
