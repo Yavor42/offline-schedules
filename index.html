@@ -127,9 +127,10 @@ header[hidden]{display:none}
 const $=s=>document.querySelector(s),main=$('#main');
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const pad=n=>String(n).padStart(2,'0');
+const CYR={а:'a',б:'b',в:'v',г:'g',д:'d',е:'e',ж:'zh',з:'z',и:'i',й:'i',к:'k',л:'l',м:'m',н:'n',о:'o',п:'p',р:'r',с:'s',т:'t',у:'u',ф:'f',х:'h',ц:'ts',ч:'ch',ш:'sh',щ:'sht',ъ:'a',ь:'i',ю:'iu',я:'ia',ё:'e'};
 // ---- language (EN default / BG): UI strings come from data/lang_bg.json {english text: translation}; empty or missing = English
 let lang='en',STR={};try{lang=localStorage.lang==='bg'?'bg':'en'}catch(e){}
-const $t=(k,...a)=>{const v=(lang==='bg'&&STR[k])||k;return a.length?v.replace(/\{(\d+)\}/g,(m,i)=>a[i]??m):v},$h=(k,...a)=>esc($t(k,...a)),loc=()=>lang==='bg'?'bg':'en',sn=x=>String(x).toLowerCase().replace(/["„“№\-.,]/g,'').replace(/а/g,'a').replace(/т/g,'t').replace(/\s+/g,' ').trim();   // + Cyrillic а/т count as Latin a/t (so Т2 finds T2)   // search normalisation: these symbols are ignored
+const $t=(k,...a)=>{const v=(lang==='bg'&&STR[k])||k;return a.length?v.replace(/\{(\d+)\}/g,(m,i)=>a[i]??m):v},$h=(k,...a)=>esc($t(k,...a)),loc=()=>lang==='bg'?'bg':'en',sn=x=>String(x).toLowerCase().replace(/["„“№\-.,]/g,'').replace(/[а-яё]/g,c=>CYR[c]??c).replace(/shch/g,'sht').replace(/kh/g,'h').replace(/tz/g,'ts').replace(/[yj]/g,'i').replace(/w/g,'v').replace(/x/g,'ks').replace(/\s+/g,' ').trim();   // search normalisation: ignored symbols dropped, Cyrillic transliterated to Latin (streamlined system), spelling variants folded (y/j→i, kh→h, tz→ts…) on both the text and the query
 const fmt=m=>{m=(m%1440+1440)%1440;return pad(Math.floor(m/60))+':'+pad(m%60)};
 const toMin=t=>{const[a,b]=t.split(':');return +a*60+ +b};
 const now=()=>{const d=new Date();return d.getHours()*60+d.getMinutes()};
@@ -147,8 +148,14 @@ const dnm=d=>(lang==='bg'&&d.displayNameBG)||d.displayName||'',dsm=d=>(lang==='b
 const dlab=d=>{const ls=d.stops[d.term].stationId,nm=dnm(d)||sname(ls),sx=d.displayName?dsm(d):ssm(ls);return nmw(esc(nm),sx?esc(sx):'')};   // direction name + small text (inline if it fits, else next line)   // direction name / small text in the current language
 const scode=id=>String(stations[id]?.number??'').trim();
 // station match shared by the station search and the Stops at / Arrives from pickers: every word anywhere in name + small text (both languages), or number / id
-const stMatch=(id,q)=>{const t=sn(q);if(!t)return true;const s=stations[id]||{},h=sn([sname(id),ssm(id),s.displayName,s.langBG,s.smallText,s.smallTextBG].filter(Boolean).join(' ')),c=scode(id).toLowerCase(),tc=t.replace(/^#/,'');
-  return t.split(' ').every(w=>h.includes(w))||(tc&&(c===tc||c.startsWith(tc)))||id.toLowerCase().includes(t)};
+// generic synonyms (data/aliases.json: {"groups":[["railway station","gara"],…]}): a query word equal to (or, from 3 letters, the start of) a group member also matches every other member
+let SYN=[],_qk='',_qf=null;
+const qpred=q=>{const key=q+'|'+SYN.length;if(key===_qk)return _qf;
+  const alts=sn(q).split(' ').filter(Boolean).map(w=>{const a=[w];SYN.forEach(g=>{if(g.some(m=>m===w||(w.length>=3&&!m.includes(' ')&&m.startsWith(w))))a.push(...g)});return a});
+  _qk=key;return _qf=h=>alts.every(a=>a.some(x=>h.includes(x)))};
+const als=o=>[].concat(o&&o.aliases||[]).map(String);   // aliases: extra searchable names, never shown
+const stMatch=(id,q)=>{const t=sn(q);if(!t)return true;const s=stations[id]||{},h=sn([sname(id),ssm(id),s.displayName,s.langBG,s.smallText,s.smallTextBG,...als(s)].filter(Boolean).join(' ')),c=sn(scode(id)),tc=t.replace(/^#/,'');
+  return qpred(q)(h)||(tc&&(c===tc||c.startsWith(tc)))||sn(id).includes(t)};
 const nmw=(n,s,x='')=>`<span class="nmw"><span class="nn">${n}${x}</span>${s?`<span class="ss">${s}</span>`:''}</span>`;
 const snm=(id,x='')=>nmw(esc(sname(id)),ssm(id)?esc(ssm(id)):'',x);
 const bt=l=>l.special?'S':(l.displayName||l.id),ltitle=l=>l.special?l.displayName:$t('Line {0}',l.displayName);   // special lines show as an 'S' chip
@@ -185,7 +192,7 @@ const uw=t=>t<dayStart&&now()>=dayStart?t+1440:t;   // small times = after midni
 
 async function load(){
   dirLine.clear();
-  const lp=fetch('data/lang_bg.json').then(r=>r.ok?r.json():{}).catch(()=>({}));
+  const lp=fetch('data/lang_bg.json').then(r=>r.ok?r.json():{}).catch(()=>({})),ap=fetch('data/aliases.json').then(r=>r.ok?r.json():{}).catch(()=>({}));
   const man=await (await fetch('data/manifest.json')).json();
   stations=await (await fetch('data/'+man.stations)).json();
   lines=await Promise.all(man.lines.map(f=>fetch('data/lines/'+f).then(r=>r.json())));
@@ -196,6 +203,7 @@ async function load(){
   lines.forEach(l=>l.directions.forEach(d=>Object.values(d.schedules).forEach(a=>a.length&&(dayStart=Math.min(dayStart,...a.map(toMin))))));
   lines.forEach(l=>l.directions.forEach(d=>{d.s0=d.stops;let c=0;d.c0=d.stops.map(s=>{const v=c;c+=s.offsetMinutes;return v})}));   // original route kept; d.stops/cum/term/tot are the effective (diverted) route
   baseLines=lines;syncMods(true);
+  const aj=await ap;SYN=(Array.isArray(aj.groups)?aj.groups:[]).map(g=>[].concat(g).map(sn).filter(Boolean)).filter(g=>g.length>1);
   const lj=await lp;Object.keys(lj).forEach(k=>{if(typeof lj[k]==='string'&&lj[k].trim())STR[k]=lj[k]});
 }
 // ---- navigation (history-backed so the phone's back gesture works)
@@ -204,14 +212,14 @@ const set=s=>{history.replaceState(s,'');render(s)};
 window.onpopstate=e=>render(e.state||{v:'home'});
 $('#bk').onclick=()=>history.back();
 // line / direction search (🔎 on the routes page): picker overlay listing directions; a line name shows just that line's directions
-const dirHay=(l,d)=>{const ls=d.stops[d.term].stationId,st=stations[ls]||{};return sn([l.displayName,l.id,d.displayName,d.displayNameBG,d.smallText,d.smallTextBG,st.displayName,st.langBG,st.smallText,st.smallTextBG,ls].filter(Boolean).join(' '))};
+const dirHay=(l,d)=>{const ls=d.stops[d.term].stationId,st=stations[ls]||{};return sn([l.displayName,l.id,d.displayName,d.displayNameBG,d.smallText,d.smallTextBG,...als(d),st.displayName,st.langBG,st.smallText,st.smallTextBG,...als(st),ls].filter(Boolean).join(' '))};
 function openDirSearch(){
   document.querySelector('.vp')?.remove();
   const o=document.createElement('div');o.className='vp';
   o.innerHTML='<div class="vpb"><input type="text" placeholder="'+$h('Line or direction')+'" autocomplete="off" autocapitalize="off" spellcheck="false"><div class="vl"></div></div>';
   document.body.appendChild(o);
   const qi=o.querySelector('input'),vl=o.querySelector('.vl'),items=lines.flatMap(l=>l.directions.map(d=>({l,d,h:dirHay(l,d)})));
-  const draw=()=>{const tk=sn(qi.value).split(' ').filter(Boolean),r=items.filter(x=>tk.every(w=>x.h.includes(w)));
+  const draw=()=>{const f=qpred(qi.value),r=items.filter(x=>f(x.h));
     vl.innerHTML=r.map(x=>`<button class="dr" data-l="${esc(x.l.id)}" data-d="${esc(x.d.id)}">${badge(x.l)}<div class="grow"><div>${dlab(x.d)}</div><div class="s">${$h('from {0}',sname(x.d.stops[0].stationId))}</div></div></button>`).join('')||`<div class="empty">${$h('No directions match')}</div>`};
   qi.oninput=draw;draw();
   o.onclick=e=>{const b=e.target.closest('[data-d]');if(b){o.remove();go({v:'trip',l:b.dataset.l,d:b.dataset.d})}else if(!e.target.closest('.vpb'))o.remove()};
@@ -344,7 +352,7 @@ function prepMods(raw){
         sl.directions.forEach((d,j)=>{const did=String(d?.id||'');const tag=`line ${L.id}, direction ${did||'#'+(j+1)}`;
           if(!did||dm.has(did)||L.directions.some(z=>z.id===did)){E(`${tag}: missing or duplicate direction id`);return}
           if(!Array.isArray(d.stops)||!d.stops.length||d.stops.some(z=>!Number.isFinite(+z?.offsetMinutes))){E(`${tag}: stops need stationId and numeric offsetMinutes`);return}
-          const D={id:did,displayName:String(d.displayName||''),smallText:String(d.smallText||''),displayNameBG:String(d.displayNameBG||''),smallTextBG:String(d.smallTextBG||''),stops:d.stops.map(z=>({stationId:stn(z.stationId),offsetMinutes:+z.offsetMinutes})),schedules:{workday:[],holiday:[]}};
+          const D={id:did,displayName:String(d.displayName||''),smallText:String(d.smallText||''),displayNameBG:String(d.displayNameBG||''),smallTextBG:String(d.smallTextBG||''),aliases:als(d),stops:d.stops.map(z=>({stationId:stn(z.stationId),offsetMinutes:+z.offsetMinutes})),schedules:{workday:[],holiday:[]}};
           ['workday','holiday'].forEach(dy=>D.schedules[dy]=[].concat(d.schedules?.[dy]||[]).map(t=>{const h=hm(t);if(!h)E(`${tag}: invalid time "${t}"`);return h}).filter(Boolean).sort((a,b)=>ov(a)-ov(b)));
           D.s0=D.stops;let c=0;D.c0=D.stops.map(z=>{const v=c;c+=z.offsetMinutes;return v});
           L.directions.push(D);o.dirs.add(did);D.stops.forEach(z=>o.stn.add(z.stationId))});
