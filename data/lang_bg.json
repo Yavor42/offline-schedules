@@ -91,9 +91,7 @@
   "Auto ({0})": "Авто ({0})",
   "workday": "работен ден",
   "holiday": "почивен ден",
-  "Station": "Спирка",
-  "line or direction": "линия или направление",
-  "Lines": "Линии",
-  "Directions": "Направления",
-  "No results": "Няма намерени резултати"
+  "Line or direction": "Линия или направление",
+  "No directions match": "Няма съвпадащи направления",
+  "Search": "Търсене"
 }
