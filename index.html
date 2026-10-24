@@ -388,7 +388,7 @@ trip(s){
   return`<button class="st${m<n?' past':''}${k===0?' s0':''}${k===d.term?' sN':''}${k>d.term?' aft':''}${sx?' sx':''}" data-go='${JSON.stringify({v:'station',id:st.stationId})}'><span class="tm${ds?' w-'+ds:''}">${fmt(m)}</span><span class="dot"></span><span class="nm">${st.add?'<b class="pl">+</b>':''}${snm(st.stationId)}</span></button>`}).join('')}</div><div class="sub" style="text-align:center;margin:18px 0 8px;font-size:13px">${(one?$h('Only one departure today'):$h('Departure {0} of {1}',i+1,sc.length))+' · '+(ns===1?$h('{0} stop',ns):$h('{0} stops',ns))}</div>`,after(){const m=$('.pk'),c=m&&m.querySelector('.cur');if(c)m.scrollTop=c.offsetTop-m.clientHeight/2+c.offsetHeight/2}}},
 map(){return{t:$t('Transit map'),h:'<div id="map"></div>',after:initMap}},
 search(){
-  return{t:$t('Stations'),h:`<div class="sw"><input id="q" type="search" placeholder="${$h('Station name or ID')}" autocomplete="off" autocapitalize="off" spellcheck="false" value="${esc(q)}"><button type="button" id="qx" aria-label="${$h('Clear')}" ${q?'':'hidden'}>✕</button></div><div id="sortm" class="sortm" hidden><button data-s="name">${$h('Name')}<span class="tk"></span></button><button data-s="id">${$h('ID')}<span class="tk"></span></button></div><div id="res"></div><button class="clrfav" id="clrfav">${$h('Clear favorites')}</button>`,after(){
+  return{t:$t('Stations'),h:`<div class="sw"><input id="q" type="search" placeholder="${$h('Station, line or direction')}" autocomplete="off" autocapitalize="off" spellcheck="false" value="${esc(q)}"><button type="button" id="qx" aria-label="${$h('Clear')}" ${q?'':'hidden'}>✕</button></div><div id="sortm" class="sortm" hidden><button data-s="name">${$h('Name')}<span class="tk"></span></button><button data-s="id">${$h('ID')}<span class="tk"></span></button></div><div id="res"></div><button class="clrfav" id="clrfav">${$h('Clear favorites')}</button>`,after(){
     const inp=$('#q'),res=$('#res'),sm=$('#sortm'),cb=$('#clrfav'),fs=$('#fs');
     const syncM=()=>{sm.querySelectorAll('[data-s]').forEach(b=>b.querySelector('.tk').textContent=b.dataset.s===sortBy?'✓':'');fs.classList.toggle('on',onlyFav);fs.textContent=onlyFav?'★':'☆';cb.disabled=!favs.size};
     const lineTxt=id=>{const m=new Map((by[id]||[]).map(e=>[e.l.id,e.l]));if(!m.size)return $t('No lines');const a=[...m.values()];
@@ -396,14 +396,23 @@ search(){
       const tr=a.filter(l=>l.type==='trolleybus').length,bu=a.filter(l=>l.type==='bus').length,ot=a.length-tr-bu,p=[];
       if(tr)p.push(tr>1?$t('{0} Trolleybus lines',tr):$t('{0} Trolleybus line',tr));if(bu)p.push(bu>1?$t('{0} Bus lines',bu):$t('{0} Bus line',bu));if(ot)p.push(ot>1?$t('{0} other lines',ot):$t('{0} other line',ot));
       return p.join(' '+$t('and')+' ')};
-    const draw=()=>{q=inp.value;const t=sn(q);
+    const draw=()=>{q=inp.value;const t=sn(q),tk=t.split(' ').filter(Boolean),hit=h=>tk.every(w=>h.includes(w));   // every word must appear somewhere (any order, name + small text together, both languages)
       let all=Object.entries(stations).map(([id,s])=>({id,name:sname(id),code:String(s.number??'').trim(),sm:ssm(id),alt:[s.displayName,s.langBG,s.smallText,s.smallTextBG].filter(Boolean).join(' ').toLowerCase()}));
       Object.keys(by).forEach(id=>{if(!stations[id])all.push({id,name:sname(id),code:'',sm:'',alt:''})});
-      if(t)all=all.filter(s=>sn(s.name).includes(t)||s.code===t||s.code.startsWith(t)||s.id.toLowerCase().includes(t)||sn(s.sm).includes(t)||sn(s.alt).includes(t));
+      if(t)all=all.filter(s=>hit(sn(s.name+' '+s.sm+' '+s.alt))||s.code===t||s.code.startsWith(t)||s.id.toLowerCase().includes(t));
       if(onlyFav)all=all.filter(s=>favs.has(s.id));
       const num=c=>/^\d+$/.test(c)?+c:null,byId=(a,b)=>!a.code!==!b.code?(a.code?-1:1):(num(a.code)!==null&&num(b.code)!==null&&num(a.code)!==num(b.code)?num(a.code)-num(b.code):a.code.localeCompare(b.code,undefined,{numeric:true}));
       all.sort((a,b)=>(t&&a.code===t?-1:t&&b.code===t?1:0)||(sortBy==='id'?byId(a,b):0)||a.name.localeCompare(b.name,loc()));
-      res.innerHTML=all.slice(0,60).map(s=>`<button class="row" data-go='${JSON.stringify({v:'station',id:s.id})}'><div class="grow"><div class="t">${nmw(esc(s.name),s.sm?esc(s.sm):'')}</div><div class="s">${lineTxt(s.id)}</div></div><div class="rt">${s.code?`<span class="code">#${esc(s.code)}</span>`:''}<span class="fav ${favs.has(s.id)?'on':''}" role="button" aria-label="${$h('Favorite')}" data-fav="${esc(s.id)}">${favs.has(s.id)?'★':'☆'}</span></div></button>`).join('')||`<div class="empty">${onlyFav&&!t&&!favs.size?$h('No favorite stations yet.')+'<br>'+$h('Tap ☆ on a station to add it.'):$h('No stations match')}</div>`;syncM()};
+      // lines and directions (by destination / small text, in either language) from the same box
+      const dh=(l,d)=>{const ls=d.stops[d.term].stationId,st=stations[ls]||{};return sn([l.displayName,l.id,d.displayName,d.displayNameBG,d.smallText,d.smallTextBG,st.displayName,st.langBG,st.smallText,st.smallTextBG,ls].filter(Boolean).join(' '))};
+      let lr='',dr='';
+      if(t&&!onlyFav){
+        lr=lines.filter(l=>hit(sn(l.displayName+' '+l.id))).sort((a,b)=>(sn(b.displayName)===t)-(sn(a.displayName)===t)||a.displayName.localeCompare(b.displayName,undefined,{numeric:true})).slice(0,6)
+          .map(l=>`<button class="row" data-go='${JSON.stringify({v:'dirs',l:l.id})}'>${badge(l)}<div class="grow"><div class="t">${l.special?esc(l.displayName):l.directions.map(d=>esc(dnm(d)||sname(d.stops[d.term].stationId))).join(' · ')}</div></div></button>`).join('');
+        const ds=[];lines.forEach(l=>l.directions.forEach(d=>{if(hit(dh(l,d)))ds.push([l,d])}));
+        dr=ds.slice(0,10).map(([l,d])=>`<button class="row" data-go='${JSON.stringify({v:'trip',l:l.id,d:d.id})}'>${badge(l)}<div class="grow"><div class="t">${dlab(d)}</div><div class="s">${$h('from {0}',sname(d.stops[0].stationId))}</div></div></button>`).join('')}
+      const sh=all.slice(0,60).map(s=>`<button class="row" data-go='${JSON.stringify({v:'station',id:s.id})}'><div class="grow"><div class="t">${nmw(esc(s.name),s.sm?esc(s.sm):'')}</div><div class="s">${lineTxt(s.id)}</div></div><div class="rt">${s.code?`<span class="code">#${esc(s.code)}</span>`:''}<span class="fav ${favs.has(s.id)?'on':''}" role="button" aria-label="${$h('Favorite')}" data-fav="${esc(s.id)}">${favs.has(s.id)?'★':'☆'}</span></div></button>`).join('');
+      res.innerHTML=(lr?`<h2>${$h('Lines')}</h2>${lr}`:'')+(dr?`<h2>${$h('Directions')}</h2>${dr}`:'')+(sh&&(lr||dr)?`<h2>${$h('Stations')}</h2>`:'')+sh||`<div class="empty">${onlyFav&&!t&&!favs.size?$h('No favorite stations yet.')+'<br>'+$h('Tap ☆ on a station to add it.'):t&&!onlyFav?$h('No results'):$h('No stations match')}</div>`;syncM()};
     res.onclick=e=>{const f=e.target.closest('[data-fav]');if(!f)return;e.stopPropagation();const k=f.dataset.fav;favs.has(k)?favs.delete(k):favs.add(k);saveFav();
       if(onlyFav)draw();else{const on=favs.has(k);f.classList.toggle('on',on);f.textContent=on?'★':'☆';syncM()}};
     sm.onclick=e=>{const b=e.target.closest('[data-s]');if(b){sortBy=b.dataset.s;saveFav();sm.hidden=true;draw()}};

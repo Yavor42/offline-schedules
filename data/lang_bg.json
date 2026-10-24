@@ -8,7 +8,7 @@
   "Search routes": "Намерете линия",
   "Browse lines & directions": "Посоки и направления",
   "Search stations": "Намерете спирка",
-  "By name or ID": "По име или номер",
+  "By name or ID · upcoming departures": "По име или номер",
   "Transit map": "Транспортна схема",
   "Pan & zoom the network map": "Разгледайте картата на линиите",
   "Trolleybuses": "Тролейбуси",
@@ -90,5 +90,10 @@
   "Language": "Език",
   "Auto ({0})": "Авто ({0})",
   "workday": "работен ден",
-  "holiday": "почивен ден"
+  "holiday": "почивен ден",
+  "Station": "Спирка",
+  "line or direction": "линия или направление",
+  "Lines": "Линии",
+  "Directions": "Направления",
+  "No results": "Няма намерени резултати"
 }
