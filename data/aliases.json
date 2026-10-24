@@ -1,18 +1,19 @@
 {
   "groups": [
-    ["railway station", "gara"],
-    ["terminus", "obrashtalo"],
+    ["railway station", "gara", "train station", "AleksandarStamboliyski"],
+    ["terminus", "obrashtalo", "obrushtalo", "terminal"],
     ["street", "str", "ulitsa", "ul"],
     ["boulevard", "blvd", "bulevard", "bul"],
-    ["hospital", "bolnitsa"],
-    ["polyclinic", "poliklinika"],
-    ["school", "uchilishte"],
+    ["hospital", "bolnitsa", "dkc", "zherav"],
+    ["polyclinic", "poliklinika", "mall ruse", "mol"],
+    ["school", "uchilishte", "daskalo"],
     ["high school", "gimnaziya", "gimnazia"],
     ["university", "universitet", "uni"],
     ["bridge", "most"],
     ["airport", "letishte"],
     ["market", "pazar"],
-    ["pharmacy", "apteka"],
-    ["cemetery", "grobishta"]
+    ["cemetery", "grobishta"],
+    ["engineering", "mehano", "angliiska", "angliska"],
+    ["shipbuilding", "korabno", "koraben"]
   ]
 }
