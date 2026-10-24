@@ -576,19 +576,19 @@
     "smallTextBG": ""
   },
   "VasilLevskiWest": {
-    "displayName": "Vasil Levski - West",
+    "displayName": "\"Vasil Levski\" blvd. - West",
     "number": "81",
     "oppositeStation": "VasilLevskiEast",
     "smallText": "",
-    "langBG": "Васил Левски - Запад",
+    "langBG": "Бул. „Васил Левски“ - Запад",
     "smallTextBG": ""
   },
   "VasilLevskiEast": {
-    "displayName": "Vasil Levski - East",
+    "displayName": "\"Vasil Levski\" blvd. - East",
     "number": "82",
     "oppositeStation": "VasilLevskiWest",
     "smallText": "",
-    "langBG": "Васил Левски - Изток",
+    "langBG": "Бул. „Васил Левски“ - Север",
     "smallTextBG": ""
   },
   "IrrigationSystems": {
@@ -1284,7 +1284,7 @@
     "number": "170",
     "oppositeStation": "BulgariaBlvdAtSianaSignSouth",
     "smallText": "",
-    "langBG": "бул. „България“ при табела Сиана - Север",
+    "langBG": "Бул. „България“ при табела Сиана - Север",
     "smallTextBG": ""
   },
   "BulgariaBlvdAtSianaSignSouth": {
@@ -1292,7 +1292,7 @@
     "number": "171",
     "oppositeStation": "BulgariaBlvdAtSianaSignNorth",
     "smallText": "",
-    "langBG": "бул. „България“ при табела Сиана - Юг",
+    "langBG": "Бул. „България“ при табела Сиана - Юг",
     "smallTextBG": ""
   },
   "EKOGasStationNorth": {

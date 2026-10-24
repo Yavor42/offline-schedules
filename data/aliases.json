@@ -1,6 +1,6 @@
 {
   "groups": [
-    ["railway station", "gara", "train station", "AleksandarStamboliyski"],
+    ["railway station", "gara", "train station", "aleksandar stamboliyski", "train"],
     ["terminus", "obrashtalo", "obrushtalo", "terminal"],
     ["street", "str", "ulitsa", "ul"],
     ["boulevard", "blvd", "bulevard", "bul"],
@@ -14,6 +14,9 @@
     ["market", "pazar"],
     ["cemetery", "grobishta"],
     ["engineering", "mehano", "angliiska", "angliska"],
-    ["shipbuilding", "korabno", "koraben"]
+    ["shipbuilding", "korabno", "koraben"],
+    ["medical centre", "musicalna gimnazia", "musicalna gimnaziya", "music"],
+    ["Nikolaevska", "univermag"],
+    ["sugar factory", "zaharen zavod", "zahar bio", "dkc2", "dkc-2"]
   ]
 }
