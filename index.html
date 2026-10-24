@@ -129,7 +129,7 @@ const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',
 const pad=n=>String(n).padStart(2,'0');
 // ---- language (EN default / BG): UI strings come from data/lang_bg.json {english text: translation}; empty or missing = English
 let lang='en',STR={};try{lang=localStorage.lang==='bg'?'bg':'en'}catch(e){}
-const $t=(k,...a)=>{const v=(lang==='bg'&&STR[k])||k;return a.length?v.replace(/\{(\d+)\}/g,(m,i)=>a[i]??m):v},$h=(k,...a)=>esc($t(k,...a)),loc=()=>lang==='bg'?'bg':'en',sn=x=>String(x).toLowerCase().replace(/["„“№\-.,]/g,'').replace(/\s+/g,' ').trim();   // search normalisation: these symbols are ignored
+const $t=(k,...a)=>{const v=(lang==='bg'&&STR[k])||k;return a.length?v.replace(/\{(\d+)\}/g,(m,i)=>a[i]??m):v},$h=(k,...a)=>esc($t(k,...a)),loc=()=>lang==='bg'?'bg':'en',sn=x=>String(x).toLowerCase().replace(/["„“№\-.,]/g,'').replace(/а/g,'a').replace(/т/g,'t').replace(/\s+/g,' ').trim();   // + Cyrillic а/т count as Latin a/t (so Т2 finds T2)   // search normalisation: these symbols are ignored
 const fmt=m=>{m=(m%1440+1440)%1440;return pad(Math.floor(m/60))+':'+pad(m%60)};
 const toMin=t=>{const[a,b]=t.split(':');return +a*60+ +b};
 const now=()=>{const d=new Date();return d.getHours()*60+d.getMinutes()};
@@ -146,6 +146,9 @@ const ssm=id=>(lang==='bg'&&stations[id]?.smallTextBG)||stations[id]?.smallText|
 const dnm=d=>(lang==='bg'&&d.displayNameBG)||d.displayName||'',dsm=d=>(lang==='bg'&&d.smallTextBG)||d.smallText||'';
 const dlab=d=>{const ls=d.stops[d.term].stationId,nm=dnm(d)||sname(ls),sx=d.displayName?dsm(d):ssm(ls);return nmw(esc(nm),sx?esc(sx):'')};   // direction name + small text (inline if it fits, else next line)   // direction name / small text in the current language
 const scode=id=>String(stations[id]?.number??'').trim();
+// station match shared by the station search and the Stops at / Arrives from pickers: every word anywhere in name + small text (both languages), or number / id
+const stMatch=(id,q)=>{const t=sn(q);if(!t)return true;const s=stations[id]||{},h=sn([sname(id),ssm(id),s.displayName,s.langBG,s.smallText,s.smallTextBG].filter(Boolean).join(' ')),c=scode(id).toLowerCase(),tc=t.replace(/^#/,'');
+  return t.split(' ').every(w=>h.includes(w))||(tc&&(c===tc||c.startsWith(tc)))||id.toLowerCase().includes(t)};
 const nmw=(n,s,x='')=>`<span class="nmw"><span class="nn">${n}${x}</span>${s?`<span class="ss">${s}</span>`:''}</span>`;
 const snm=(id,x='')=>nmw(esc(sname(id)),ssm(id)?esc(ssm(id)):'',x);
 const bt=l=>l.special?'S':(l.displayName||l.id),ltitle=l=>l.special?l.displayName:$t('Line {0}',l.displayName);   // special lines show as an 'S' chip
@@ -265,7 +268,7 @@ const nErrHtml=sid=>noticeErrs.filter(x=>x.st?.includes(sid)).map(x=>`<div class
 async function loadNotices(){
   try{const r=await fetch('data/notices.json?t='+Date.now(),{cache:'no-store'});if(!r.ok)return;const txt=await r.text();if(txt===nRaw)return;
     const j=JSON.parse(txt);prepNotices(j);nRaw=txt;
-    const s=history.state||{v:'home'};if(lines.length&&!(document.activeElement&&document.activeElement.id==='dm')&&s.v!=='map'&&s.v!=='search'&&!(s.v==='trip'&&pickOpen))render(s,true)}catch(e){console.warn('notices.json not loaded',e)}}
+    const s=history.state||{v:'home'};if(lines.length&&!(document.activeElement&&document.activeElement.id==='dm')&&!document.querySelector('.vp')&&s.v!=='map'&&s.v!=='search'&&!(s.v==='trip'&&pickOpen))render(s,true)}catch(e){console.warn('notices.json not loaded',e)}}
 // ---- modifications (data/modifications.json): reduced / additional service, cancellations, diversions, special lines
 let mods=[],modErrs=[],modRaw='',modVer=0,mkey='';
 const MTY={REDUCED_SERVICE:'red',ADDITIONAL_SERVICE:'free',CANCELLATION:'red',DIVERSION:'ovr',SPECIAL:'free'};
@@ -356,7 +359,7 @@ async function loadMods(){
   try{await loaded0;if(!baseLines.length)return;
     const r=await fetch('data/modifications.json?t='+Date.now(),{cache:'no-store'});if(!r.ok)return;const txt=await r.text();if(txt===modRaw)return;
     prepMods(JSON.parse(txt));modRaw=txt;modVer++;syncMods(true);
-    const s=history.state||{v:'home'};if(!(document.activeElement&&document.activeElement.id==='dm')&&s.v!=='map'&&s.v!=='search'&&!(s.v==='trip'&&pickOpen))render(s,true)}
+    const s=history.state||{v:'home'};if(!(document.activeElement&&document.activeElement.id==='dm')&&!document.querySelector('.vp')&&s.v!=='map'&&s.v!=='search'&&!(s.v==='trip'&&pickOpen))render(s,true)}
   catch(e){console.warn('modifications.json not loaded',e);if(e instanceof SyntaxError){modErrs=['modifications.json is not valid JSON ('+e.message+')'];modRaw=''}}}
 const V={
 home(){
@@ -414,7 +417,7 @@ search(){
     const draw=()=>{q=inp.value;const t=sn(q),tk=t.split(' ').filter(Boolean),hit=h=>tk.every(w=>h.includes(w));   // every word must appear somewhere (any order, name + small text together, both languages)
       let all=Object.entries(stations).map(([id,s])=>({id,name:sname(id),code:String(s.number??'').trim(),sm:ssm(id),alt:[s.displayName,s.langBG,s.smallText,s.smallTextBG].filter(Boolean).join(' ').toLowerCase()}));
       Object.keys(by).forEach(id=>{if(!stations[id])all.push({id,name:sname(id),code:'',sm:'',alt:''})});
-      if(t)all=all.filter(s=>hit(sn(s.name+' '+s.sm+' '+s.alt))||s.code===t||s.code.startsWith(t)||s.id.toLowerCase().includes(t));
+      if(t)all=all.filter(s=>stMatch(s.id,q));
       if(onlyFav)all=all.filter(s=>favs.has(s.id));
       const num=c=>/^\d+$/.test(c)?+c:null,byId=(a,b)=>!a.code!==!b.code?(a.code?-1:1):(num(a.code)!==null&&num(b.code)!==null&&num(a.code)!==num(b.code)?num(a.code)-num(b.code):a.code.localeCompare(b.code,undefined,{numeric:true}));
       all.sort((a,b)=>(t&&a.code===t?-1:t&&b.code===t?1:0)||(sortBy==='id'?byId(a,b):0)||a.name.localeCompare(b.name,loc()));
@@ -498,7 +501,7 @@ function initFilters(id){
     const qi=o.querySelector('input'),vl=o.querySelector('.vl');
     const sm=k=>ssm(k);
     const base=lst(kind),selK=kind==='via'?F.viaSel:F.fromSel,none=kind==='via'?$t('No stations fit with the current "{0}" filter',$t('Arrives from')):$t('No stations fit with the current "{0}" filter',$t('Stops at'));
-    const draw=()=>{const t=sn(qi.value),tc=t.replace(/^#/,''),r=base.filter(([k,nm])=>!t||sn(nm).includes(t)||sn(sm(k)).includes(t)||(tc&&scode(k).toLowerCase().startsWith(tc)));
+    const draw=()=>{const r=base.filter(([k])=>stMatch(k,qi.value));
       vl.innerHTML=r.map(([k,nm])=>`<button data-k="${esc(k)}" class="${k===selK?'on':''}">${nmw(esc(nm),sm(k)?esc(sm(k)):'')}</button>`).join('')||`<div class="empty">${base.length?$h('No stations match'):esc(none)}</div>`};
     qi.oninput=draw;draw();
     o.onclick=e=>{const b=e.target.closest('[data-k]');
@@ -573,7 +576,7 @@ main.addEventListener('click',e=>{
   const g=e.target.closest('[data-go]');if(g)return go(JSON.parse(g.dataset.go));
   const b=e.target.closest('[data-i]');if(b&&!b.disabled)set({...history.state,i:+b.dataset.i});
 });
-setInterval(()=>{const s=history.state||{v:'home'};if(document.activeElement&&document.activeElement.id==='dm')return;if(s.v==='map'||(s.v==='trip'&&pickOpen))return;const ch=syncMods();if(s.v==='station'&&!ch)refreshDeps&&refreshDeps();else if(s.v!=='search')render(s,true)},20000);
+setInterval(()=>{const s=history.state||{v:'home'};if(document.activeElement&&document.activeElement.id==='dm')return;if(s.v==='map'||(s.v==='trip'&&pickOpen)||document.querySelector('.vp'))return;const ch=syncMods();if(s.v==='station'&&!ch)refreshDeps&&refreshDeps();else if(s.v!=='search')render(s,true)},20000);
 const loaded0=load();
 loadNotices();setInterval(loadNotices,300000);document.addEventListener('visibilitychange',()=>{if(!document.hidden){loadNotices();loadMods()}});
 loaded0.then(()=>{history.replaceState(history.state||{v:'home'},'');render(history.state);loadNotices();loadMods();setInterval(loadMods,300000)})
