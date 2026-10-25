@@ -2115,17 +2115,17 @@
     "displayName": "Aleksandar Stamboliyski - North",
     "number": "273",
     "oppositeStation": "AleksandarStamboliyskiSouth",
-    "smallText": "",
+    "smallText": "Central Railway Station",
     "langBG": "Александър Стамболийски - Север",
-    "smallTextBG": ""
+    "smallTextBG": "ЖП Гара"
   },
   "AleksandarStamboliyskiSouth": {
     "displayName": "Aleksandar Stamboliyski - South",
     "number": "274",
     "oppositeStation": "AleksandarStamboliyskiNorth",
-    "smallText": "",
+    "smallText": "Central Railway Station",
     "langBG": "Александър Стамболийски - Юг",
-    "smallTextBG": ""
+    "smallTextBG": "ЖП Гара"
   },
   "YouthHouse": {
     "displayName": "Youth House",
