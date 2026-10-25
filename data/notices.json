@@ -6,7 +6,9 @@
       "type": "INFORMATION",
       "forDev": "1. GENERAL INFORMATION (Banner message)",
       "title": "Due to the presidential elections, all lines may experience delays.",
+      "titleBG": "Поради президентските избори, всички линии могат да имат закъснения",
       "message": "Valid until the end of the election day.",
+      "messageBG": "Активно до края на деня",
       "validityPeriod": {
         "start": {
           "year": 2026,
