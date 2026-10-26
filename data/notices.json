@@ -1,35 +1,5 @@
 {
   "updatedAt": "2026-10-25T12:17:56Z",
   "notices": [
-    {
-      "id": "info1",
-      "type": "INFORMATION",
-      "forDev": "1. GENERAL INFORMATION (Banner message)",
-      "title": "Due to the presidential elections, all lines may experience delays.",
-      "titleBG": "Поради президентските избори, всички линии могат да имат закъснения",
-      "message": "Valid until the end of the election day.",
-      "messageBG": "Активно до края на деня",
-      "validityPeriod": {
-        "start": {
-          "year": 2026,
-          "month": 10,
-          "day": 25,
-          "hour": 7,
-          "minute": 0
-        },
-        "end": {
-          "year": 2026,
-          "month": 10,
-          "day": 25,
-          "hour": 23,
-          "minute": 59
-        }
-      },
-      "affectedEntities": {
-        "lineID": [
-          "*"
-        ]
-      }
-    }
   ]
 }
