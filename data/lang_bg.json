@@ -92,5 +92,22 @@
   "Line or direction": "Линия или направление",
   "No directions match": "Няма съвпадащи направления",
   "Search": "Търсене",
-  "matches: {0}": "Съвпада с {0}"
+  "matches: {0}": "Съвпада с {0}",
+  "Info": "Инфо",
+  "Close": "Затовори",
+  "Back": "Назад",
+  "Information": "Информация",
+  "Statistics": "Статистика",
+  "Tracking": "Следене",
+  "How to read colors and delay warnings": "Как да четем цветове и предупреждения за закъснения",
+  "Departure counts and station totals": "Общ брой курсове и спирки",
+  "Coming soon": "ааа",
+  "This section is under construction.": "ббб",
+  "Departure times": "Времена на потегляне",
+  "Delayed departures": "Курсове със закъснения",
+  "Delay warning colors": "Цветове за предупреждения за курсове със закъснения",
+  "How it is calculated": "Как се смятат",
+  "White": "Бяло",
+  "Yellow": "Жълто",
+  "Red": "Червено"
 }
