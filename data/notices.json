@@ -1,5 +1,36 @@
 {
-  "updatedAt": "2026-10-25T12:17:56Z",
+  "updatedAt": "2026-10-28T16:05:53Z",
   "notices": [
+    {
+      "id": "override1",
+      "type": "SCHEDULE_OVERRIDE",
+      "forDev": "2. SCHEDULE OVERRIDE (Forces holiday schedule instead of workday)",
+      "title": "Test",
+      "titleBG": "Проба",
+      "message": "Test",
+      "messageBG": "Проба",
+      "validityPeriod": {
+        "start": {
+          "year": 2026,
+          "month": 10,
+          "day": 28,
+          "hour": 1,
+          "minute": 0
+        },
+        "end": {
+          "year": 2026,
+          "month": 10,
+          "day": 29,
+          "hour": 1,
+          "minute": 0
+        }
+      },
+      "affectedEntities": {
+        "lineID": [
+          "*"
+        ]
+      },
+      "overrideScheduleType": "holiday"
+    }
   ]
 }
