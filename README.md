@@ -17,7 +17,7 @@ View the app here: https://yavor42.github.io/offline-schedules/
 - **Offline support** - Cache the application, schedules, and map for use without mobile data.
 - **Installable PWA** - Add the app to your phone's home screen.
 
-## Getting Started
+## How to run
 
 1. Host the repository using GitHub Pages (or over HTTPS).
 2. Open the published URL while online.
@@ -25,7 +25,7 @@ View the app here: https://yavor42.github.io/offline-schedules/
 4. Add it to your phone's home screen.
 5. Open it whenever you need to check transit schedules, including offline.
 
-## Project Structure
+## File Structure
 
 - `index.html` - Application interface and logic.
 - `sw.js` - Service worker and offline caching.
