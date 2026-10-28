@@ -9,10 +9,10 @@ View the app here: https://yavor42.github.io/offline-schedules/
 - **Route search** - Browse lines by direction.
 - **Station search** - Find stops by name, number, aliases, or Bulgarian and English spellings.
 - **Upcoming departures** - View departure times and countdowns, with filtering, sorting, and favourites.
-- **Interactive transit map** — Offline map of the transport network.
+- **Interactive transit map** - Offline map of the transport network.
 - **Service updates** - Display notices, cancellations, reduced or additional services, diversions, and temporary special lines.
 - **Delay warnings** - Flag departures that may be delayed because of short turnaround times.
-- **Vehicle tracking (experimental)** — Estimate where a vehicle should be along its route by calculating its progress from scheduled departure times and stop-to-stop travel durations. This is schedule-based estimation, not live GPS tracking.
+- **Vehicle tracking (experimental)** - Estimate where a vehicle should be along its route by calculating its progress from scheduled departure times and stop-to-stop travel durations. This is schedule-based estimation, not live GPS tracking.
 - **English and Bulgarian interfaces** - Switch languages directly in the app. (some translations may be missing)
 - **Offline support** - Cache the application, schedules, and map for use without mobile data.
 - **Installable PWA** - Add the app to your phone's home screen.
