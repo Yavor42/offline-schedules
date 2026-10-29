@@ -1,0 +1,106 @@
+{
+  "links": [
+    {
+      "comment": "Razpredelitelna Railway Station and CAT area"
+    },
+    {
+      "linkID": 1,
+      "details": {
+        "originStation": "RazpredelitelnaRailwayStation",
+        "timeToReach": 7,
+        "destinationStation": "CAT"
+      }
+    },
+    {
+      "linkID": 2,
+      "details": {
+        "originStation": "Mototehnika",
+        "timeToReach": 5,
+        "destinationStation": "RazpredelitelnaRailwayStation"
+      }
+    },
+    {
+      "linkID": 3,
+      "details": {
+        "originStation": "RazpredelitelnaRailwayStation",
+        "timeToReach": 3,
+        "destinationStation": "IntercityBusStationWest"
+      }
+    },
+    {
+      "linkID": 4,
+      "details": {
+        "originStation": "IntercityBusStationEast",
+        "timeToReach": 3,
+        "destinationStation": "RazpredelitelnaRailwayStation"
+      }
+    },
+    {
+      "linkID": 5,
+      "details": {
+        "originStation": "IntercityBusStationEast",
+        "timeToReach": 7,
+        "destinationStation": "CAT"
+      }
+    },
+    {
+      "linkID": 6,
+      "details": {
+        "originStation": "Mototehnika",
+        "timeToReach": 8,
+        "destinationStation": "IntercityBusStationWest"
+      }
+    },
+    {
+      "comment": "Druzhba & Charodeyka"
+    },
+    {
+      "linkID": 7,
+      "details": {
+        "originStation": "ShoppingComplex",
+        "timeToReach": 9,
+        "destinationStation": "Druzhba3Terminus"
+      }
+    },
+    {
+      "linkID": 8,
+      "details": {
+        "originStation": "ShoppingComplex",
+        "timeToReach": 13,
+        "destinationStation": "Druzhba3Block48"
+      }
+    },
+    {
+      "linkID": 9,
+      "details": {
+        "originStation": "Druzhba3Block48",
+        "timeToReach": 5,
+        "destinationStation": "Druzhba3Terminus"
+      }
+    },
+    {
+      "linkID": 10,
+      "details": {
+        "originStation": "Block28",
+        "timeToReach": 6,
+        "destinationStation": "Druzhba3Block48"
+      }
+    },
+    {
+      "linkID": 11,
+      "details": {
+        "originStation": "Druzhba3Block48",
+        "timeToReach": 11,
+        "destinationStation": "Charodeyka-South"
+      }
+    },
+    {
+      "linkID": 12,
+      "details": {
+        "originStation": "Block28",
+        "timeToReach": 7,
+        "destinationStation": "Charodeyka-South"
+      }
+    }
+  ]
+}

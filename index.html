@@ -128,7 +128,7 @@ header[hidden]{display:none}
 .tkp.p{opacity:.5}.tkp .n{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.tkp .t{color:var(--mut);font-variant-numeric:tabular-nums}
 .tkm{position:absolute;left:12px;top:0;width:25px;height:25px;border-radius:50%;background:var(--c);color:#fff;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 4px rgba(255,255,255,.14);z-index:2}
 .tkd{position:relative;height:30px;background:var(--card);border-radius:10px;overflow:hidden;cursor:pointer}.tkd b{position:absolute;top:6px;bottom:6px;border-radius:5px;opacity:.85}.tkd .sh{position:absolute;top:0;bottom:0;width:2px;background:var(--mut);opacity:.6}.tkd .nw{position:absolute;top:0;bottom:0;width:2px;background:#fff;z-index:2}
-.tkx{display:flex;gap:10px;align-items:center;padding:11px 10px;margin-bottom:4px;border-radius:10px;font-size:13px}.tkx.on{background:var(--card)}.tkx .tm{display:flex;flex-direction:column;line-height:1.3;min-width:44px;font-variant-numeric:tabular-nums;color:var(--mut)}.tkx .tm b{color:var(--tx);font-weight:600}.tkx .n{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.tkx em{font-style:normal;color:#ffd23f;font-size:11px}
+.tkx{display:flex;gap:10px;align-items:center;padding:11px 10px;margin-bottom:4px;border-radius:10px;font-size:13px}.tkx.on{background:var(--card)}.tkx .tm{display:flex;flex-direction:column;line-height:1.3;min-width:44px;font-variant-numeric:tabular-nums;color:var(--mut)}.tkx .tm b{color:var(--tx);font-weight:600}.tkx .n{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.tkd b.brk{top:6px;bottom:6px;opacity:1;background:repeating-linear-gradient(45deg,rgba(255,210,63,.55) 0 4px,transparent 4px 8px)}.tkx small{display:block;color:var(--mut);font-size:11px;margin-top:2px}.tkx small i{font-style:normal;color:#ffd23f}.tkx em{font-style:normal;color:#ffd23f;font-size:11px}
 .tkf{display:flex;gap:8px;align-items:center;padding:10px 12px calc(10px + env(safe-area-inset-bottom));border-top:1px solid var(--line);background:var(--card)}.tkf input{flex:1;min-width:0}.tkf select{flex:none;width:auto}.tkf .ck{font-size:20px;font-weight:700;font-variant-numeric:tabular-nums;min-width:54px}.tkf .lv{width:auto;padding:0 10px;border-radius:18px;font-size:13px}
 .pill.star{font-size:20px;line-height:1;padding:7px 12px;color:var(--mut)}.pill.star.on{color:#f5c542}
 .nb{border-radius:16px;padding:10px 12px;margin:12px 0 4px;font-size:14px;line-height:1.35;border:1px solid}
@@ -220,7 +220,7 @@ const uw=t=>t<dayStart&&now()>=dayStart?t+1440:t;   // small times = after midni
 
 async function load(){
   dirLine.clear();
-  const lp=fetch('data/lang_bg.json').then(r=>r.ok?r.json():{}).catch(()=>({})),ap=fetch('data/aliases.json').then(r=>r.ok?r.json():{}).catch(()=>({}));
+  const lp=fetch('data/lang_bg.json').then(r=>r.ok?r.json():{}).catch(()=>({})),ap=fetch('data/aliases.json').then(r=>r.ok?r.json():{}).catch(()=>({})),kp=fetch('data/links.json').then(r=>r.ok?r.text():'').catch(()=>'');
   const man=await (await fetch('data/manifest.json')).json();
   stations=await (await fetch('data/'+man.stations)).json();
   lines=await Promise.all(man.lines.map(f=>fetch('data/lines/'+f).then(r=>r.json())));
@@ -232,6 +232,7 @@ async function load(){
   lines.forEach(l=>l.directions.forEach(d=>{d.s0=d.stops;let c=0;d.c0=d.stops.map(s=>{const v=c;c+=s.offsetMinutes;return v})}));   // original route kept; d.stops/cum/term/tot are the effective (diverted) route
   baseLines=lines;syncMods(true);
   const aj=await ap;SYN=(Array.isArray(aj.groups)?aj.groups:[]).map(g=>[].concat(g).map(sn).filter(Boolean)).filter(g=>g.length>1);
+  LINKS=parseLinks(await kp);
   const lj=await lp;Object.keys(lj).forEach(k=>{if(typeof lj[k]==='string'&&lj[k].trim())STR[k]=lj[k]});
 }
 // ---- navigation (history-backed so the phone's back gesture works)
@@ -302,6 +303,9 @@ function openInfo(){
   menu();
   o.onclick=e=>{const p=e.target.closest('[data-p]');if(p){if(p.dataset.p==='track'){o.remove();return openTracking()}return page(p.dataset.p)};if(e.target.closest('[data-b]'))return menu();if(e.target.closest('[data-x]')||!e.target.closest('.vpb'))o.remove()}}
 $('#ib').onclick=openInfo;
+// links.json: 'a vehicle ending at originStation can start departures at destinationStation after timeToReach min' (directed; complements the same/opposite stop rule)
+let LINKS=[];const BRK=25;   // a wait of BRK+ minutes counts as a break
+function parseLinks(t){try{const j=JSON.parse(t.replace(/\}\s*\{/g,'},{').replace(/,(\s*[\]}])/g,'$1'));return(j.links||[]).filter(x=>x.details).map(x=>({id:x.linkID,o:fixId(x.details.originStation),d:fixId(x.details.destinationStation),t:+x.details.timeToReach||0})).filter(k=>{const ok=stations[k.o]&&stations[k.d];if(!ok)console.warn('links.json: unknown station in link',k.id);return ok})}catch(e){console.warn('links.json: unreadable',e);return[]}}
 // ---- tracking (experimental): follows vehicles through the day by chaining timetable trips
 // sweep through today's departures in time order; each takes the best idle vehicle (arrived at its start stop or the opposite one, else the same one), or a new vehicle starts
 function buildTracking(){
@@ -309,18 +313,26 @@ function buildTracking(){
   const deps=[],at=new Map(),idx=new Map(),pool=new Map(),en=[],V=[],early=m=>m<420||m>=1290;
   lines.forEach((l,li)=>l.directions.forEach((d,di)=>{const s=d.stops[0].stationId,e=d.stops[d.term].stationId;sched(d,o0).lts.forEach(t=>{const m=ov(t),x={l,li,d,di,t,m,a:m+d.tot,s,e};deps.push(x);(idx.get(s)||idx.set(s,[]).get(s)).push(x)})}));
   deps.sort((x,y)=>x.m-y.m||x.li-y.li||x.di-y.di);
+  const hw=new Map();   // per line: a wait counts as a break from max(25 min, 3/4 of its usual headway)
+  lines.forEach(l=>{const g=[];l.directions.forEach(d=>{const a=sched(d,o0).lts.map(ov);for(let i=1;i<a.length;i++)if(a[i]>a[i-1])g.push(a[i]-a[i-1])});g.sort((x,y)=>x-y);hw.set(l,Math.max(BRK,.75*(g[g.length>>1]||0)))});
+  const into=new Map();LINKS.forEach(k=>(into.get(k.d)||into.set(k.d,[]).get(k.d)).push(k));
   const ownSoon=(v,m)=>{const op=oppOf(v.at);return [v.at,...(op.ok?[op.id]:[])].some(x=>(idx.get(x)||[]).some(y=>y.l===v.l&&!y.v&&y.m>=m&&y.m<=v.a+60))};   // a vehicle isn't taken from its own line while that line still has a departure for it nearby
   deps.forEach(D=>{
     for(let i=en.length;i--;)if(en[i].a<=D.m){const v=en.splice(i,1)[0];(pool.get(v.at)||pool.set(v.at,[]).get(v.at)).push(v)}
-    const op=oppOf(D.s);let best=null,bc=1e9;
+    const op=oppOf(D.s);let best=null,bc=1e9,bl=null;
     [D.s,...(op.ok?[op.id]:[])].forEach(x=>(pool.get(x)||[]).forEach(v=>{if(v.l.type!==D.l.type)return;const L=D.m-v.a,same=v.l===D.l,o2=oppOf(v.at),pref=o2.ok?o2.id:v.at;
       if(L>(D.m>=840&&D.m<=990?150:90)||(!same&&L>40))return;   // longer breaks are fine around the afternoon shift change
       let c=L+(D.s===pref?0:15);   // opposite stop first, the same stop second
+      if(same&&L>=hw.get(D.l))c=-L+(D.s===pref?0:15);   // a vehicle whose break is over goes first (longest wait first)
       if(!same){if(ownSoon(v,D.m))return;c+=early(D.m)?20:60}   // other lines: heavily penalised, cheaper very early / very late
-      if(c<bc){bc=c;best=v}}));
+      if(c<bc){bc=c;best=v;bl=null}}));
+    [D.s,...(op.ok?[op.id]:[])].forEach(x=>(into.get(x)||[]).forEach(k=>(pool.get(k.o)||[]).forEach(v=>{   // links: only a secondary option
+      if(v.l.type!==D.l.type)return;const L=D.m-v.a,same=v.l===D.l;if(L<k.t||L>(same?90:k.t+40))return;
+      let c=L+25;if(!same){if(ownSoon(v,D.m))return;c+=early(D.m)?20:60}
+      if(c<bc){bc=c;best=v;bl=k.id}})));
     let v=best,lay=null;
     if(v){const a=pool.get(v.at);a.splice(a.indexOf(v),1);lay=D.m-v.a}else{v={trips:[]};V.push(v)}
-    (at.get(D.d.id+'|'+D.t)||at.set(D.d.id+'|'+D.t,[]).get(D.d.id+'|'+D.t)).push({v,i:v.trips.length});v.trips.push({l:D.l,li:D.li,d:D.d,di:D.di,s:D.m,a:D.a,lay,chg:!!v.trips.length&&v.l!==D.l,sh:D.m<900?1:2});
+    (at.get(D.d.id+'|'+D.t)||at.set(D.d.id+'|'+D.t,[]).get(D.d.id+'|'+D.t)).push({v,i:v.trips.length});v.trips.push({l:D.l,li:D.li,d:D.d,di:D.di,s:D.m,a:D.a,lay,brk:lay!=null&&lay>=hw.get(D.l),lk:bl,chg:!!v.trips.length&&v.l!==D.l,sh:D.m<900?1:2});
     v.a=D.a;v.at=D.e;v.l=D.l;D.v=v;en.push(v)});
   const key=v=>{const t=v.trips[0];return [t.li,0,t.s]};   // numbering starts at the first line, earliest departure first
   V.sort((x,y)=>{const a=key(x),b=key(y);return a[0]-b[0]||a[1]-b[1]||a[2]-b[2]});V.forEach((v,i)=>v.id=i+1);
@@ -342,8 +354,8 @@ function openTracking(key){
   const fill=()=>{q('#tks').innerHTML=F.length?F.map(v=>`<option value="${V.indexOf(v)}">#${v.id} · ${esc(bt(v.trips[0].l))} · ${fm(v.trips[0].s)}–${fm(v.trips.at(-1).a)}</option>`).join(''):`<option>${$h('No vehicles found')}</option>`;if(F.includes(S.v))q('#tks').value=V.indexOf(S.v)};
   const stOf=(v,T)=>{const tr=v.trips;if(T<tr[0].s)return{k:'pre',i:0};for(let i=0;i<tr.length;i++)if(T<tr[i].a)return{k:T>=tr[i].s?'run':'wait',i};return{k:'end',i:tr.length-1}};
   const setV=v=>{S.v=v;S.key='';const t0=v.trips[0].s,t1=v.trips.at(-1).a,W=t1-t0||1,pc=x=>((x-t0)/W*100)+'%';if(F.includes(v))q('#tks').value=V.indexOf(v);
-    q('#tkd').innerHTML=v.trips.map((t,i)=>`<b data-i="${i}" style="left:${pc(t.s)};width:${(t.a-t.s)/W*100}%;background:${esc(t.l.color||'#4d83ff')}"></b>`).join('')+(t0<900&&t1>900?`<span class="sh" style="left:${pc(900)}"></span>`:'')+'<span class="nw" id="tkq"></span>';
-    q('#tkl').innerHTML=v.trips.map((t,i)=>(i&&t.sh!==v.trips[i-1].sh?`<div class="imn">${$h('Shift change')} · ~15:00</div>`:'')+`<div class="tkx" data-i="${i}"><span class="tm"><b>${fm(t.s)}</b><span>${fm(t.a)}</span></span>${badge(t.l)}<span class="n">→ ${esc(sname(t.d.stops[t.d.term].stationId))}</span>${t.chg?`<em>${$h('Changed line')}</em>`:t.lay?`<em>${$t('{0} min',t.lay)}</em>`:''}</div>`).join('')};
+    q('#tkd').innerHTML=v.trips.map((t,i)=>`<b data-i="${i}" style="left:${pc(t.s)};width:${(t.a-t.s)/W*100}%;background:${esc(t.l.color||'#4d83ff')}"></b>`).join('')+v.trips.map((t,i)=>i&&t.brk?`<b class="brk" style="left:${pc(v.trips[i-1].a)};width:${(t.s-v.trips[i-1].a)/W*100}%"></b>`:'').join('')+(t0<900&&t1>900?`<span class="sh" style="left:${pc(900)}"></span>`:'')+'<span class="nw" id="tkq"></span>';
+    q('#tkl').innerHTML=v.trips.map((t,i)=>(i&&t.sh!==v.trips[i-1].sh?`<div class="imn">${$h('Shift change')} · ~15:00</div>`:'')+`<div class="tkx" data-i="${i}"><span class="tm"><b>${fm(t.s)}</b><span>${fm(t.a)}</span></span>${badge(t.l)}<span class="n">→ ${esc(sname(t.d.stops[t.d.term].stationId))}${(nt=>nt?`<small>${nt}</small>`:'')([t.brk?`<i>${$h('Break {0} min',t.lay)}</i>`:t.lay?$t('{0} min',t.lay):'',t.chg?$h('Changed line'):'',t.lk?$h('Link #{0}',t.lk):''].filter(Boolean).join(' · '))}</span></div>`).join('')};
   const upd=()=>{const v=S.v,T=S.T,st=stOf(v,T),t=v.trips[st.i],k=v.id+'|'+st.i,col=t.l.color||'#4d83ff';
     if(S.key!==k){S.key=k;S.rows=trkRows(t.d);S.j=-1;q('#tkw').innerHTML=`<div class="tkfl" id="tkf"></div>`+S.rows.map(r=>`<div class="tkp"><u></u><span class="n">${esc(r.n)}</span><span class="t">${fm(t.s+r.c)}</span></div>`).join('')+`<div class="tkm" id="tkm">#${v.id}</div>`;q('.tkr').style.setProperty('--c',col)}
     const R2=S.rows,e=T-t.s;let pos=st.k==='end'?R2.length-1:0,j=0;
@@ -354,7 +366,7 @@ function openTracking(key){
     const dest=esc(sname(t.d.stops[t.d.term].stationId)),first=esc(sname(t.d.stops[0].stationId)),prev=st.i?esc(sname(v.trips[st.i-1].d.stops[v.trips[st.i-1].d.term].stationId)):first;
     q('#tkst').innerHTML=`<div class="tkt">${badge(t.l)}<div><b>${$h('Vehicle #{0}',v.id)}</b> <span class="s" style="color:var(--mut)">→ ${dest}</span><div style="margin-top:2px">${
       st.k==='run'?($h('Next stop: {0} in {1}',R2[j+1]?.n||'',eta(Math.ceil((R2[j+1]?.c??R2[j].c)-e))).replace(/&/g,'&amp;')):
-      st.k==='wait'?$h('Waiting at {0} · departs {1} ({2})',st.i?sname(v.trips[st.i-1].d.stops[v.trips[st.i-1].d.term].stationId):sname(t.d.stops[0].stationId),fm(t.s),eta(Math.ceil(t.s-T))):
+      st.k==='wait'?$h(t.brk?'On a break at {0} · departs {1} ({2})':'Waiting at {0} · departs {1} ({2})',st.i?sname(v.trips[st.i-1].d.stops[v.trips[st.i-1].d.term].stationId):sname(t.d.stops[0].stationId),fm(t.s),eta(Math.ceil(t.s-T))):
       $h('Finished the day at {0}',sname(t.d.stops[t.d.term].stationId))}</div></div></div>`;
     q('#tkk').textContent=fm(T)+(S.live?' •':'');q('#tkt').min=v.trips[0].s-10;q('#tkt').max=v.trips.at(-1).a+10;q('#tkt').value=T;q('#tkp').textContent=S.play?'❚❚':'▶';
     const t0=v.trips[0].s,W=(v.trips.at(-1).a-t0)||1;q('#tkq').style.left=Math.max(0,Math.min(100,(T-t0)/W*100))+'%';
