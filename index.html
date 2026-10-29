@@ -128,7 +128,7 @@ header[hidden]{display:none}
 .tkp.p{opacity:.5}.tkp .n{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.tkp .t{color:var(--mut);font-variant-numeric:tabular-nums}
 .tkm{position:absolute;left:12px;top:0;width:25px;height:25px;border-radius:50%;background:var(--c);color:#fff;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 4px rgba(255,255,255,.14);z-index:2}
 .tkd{position:relative;height:30px;background:var(--card);border-radius:10px;overflow:hidden;cursor:pointer}.tkd b{position:absolute;top:6px;bottom:6px;border-radius:5px;opacity:.85}.tkd .sh{position:absolute;top:0;bottom:0;width:2px;background:var(--mut);opacity:.6}.tkd .nw{position:absolute;top:0;bottom:0;width:2px;background:#fff;z-index:2}
-.tkx{display:flex;gap:10px;align-items:center;padding:11px 10px;margin-bottom:4px;border-radius:10px;font-size:13px}.tkx.on{background:var(--card)}.tkx .tm{display:flex;flex-direction:column;line-height:1.3;min-width:44px;font-variant-numeric:tabular-nums;color:var(--mut)}.tkx .tm b{color:var(--tx);font-weight:600}.tkx .n{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.tkd b.brk{top:6px;bottom:6px;opacity:1;background:repeating-linear-gradient(45deg,rgba(255,210,63,.55) 0 4px,transparent 4px 8px)}.tkx small{display:block;color:var(--mut);font-size:11px;margin-top:2px}.tkx small i{font-style:normal;color:#ffd23f}.tkx em{font-style:normal;color:#ffd23f;font-size:11px}
+.tkx{display:flex;gap:10px;align-items:center;padding:11px 10px;margin-bottom:4px;border-radius:10px;font-size:13px}.tkx.on{background:var(--card)}.tkx .tm{display:flex;flex-direction:column;line-height:1.3;min-width:44px;font-variant-numeric:tabular-nums;color:var(--mut)}.tkx .tm b{color:var(--tx);font-weight:600}.tkx .n{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.tkd b.brk{top:6px;bottom:6px;opacity:1;background:repeating-linear-gradient(45deg,rgba(255,210,63,.55) 0 4px,transparent 4px 8px)}.tkx small{display:block;color:var(--mut);font-size:11px;margin-top:2px}.tkx small i{font-style:normal;color:#ffd23f}.tkm{transition:top 1s linear}.tkfl{transition:height 1s linear}.tkd b.sel{opacity:1;outline:2px solid #fff;outline-offset:-2px}.tkx em{font-style:normal;color:#ffd23f;font-size:11px}
 .tkf{display:flex;gap:8px;align-items:center;padding:10px 12px calc(10px + env(safe-area-inset-bottom));border-top:1px solid var(--line);background:var(--card)}.tkf input{flex:1;min-width:0}.tkf select{flex:none;width:auto}.tkf .ck{font-size:20px;font-weight:700;font-variant-numeric:tabular-nums;min-width:54px}.tkf .lv{width:auto;padding:0 10px;border-radius:18px;font-size:13px}
 .pill.star{font-size:20px;line-height:1;padding:7px 12px;color:var(--mut)}.pill.star.on{color:#f5c542}
 .nb{border-radius:16px;padding:10px 12px;margin:12px 0 4px;font-size:14px;line-height:1.35;border:1px solid}
@@ -281,28 +281,34 @@ function infoHtml(){
   <div>${$h('No warning only means that no tight connection was found in the timetable, not that the departure will be on time.')}</div></div>`}
 function statsHtml(){
   const m0=Math.floor(Date.now()/6e4)*6e4,mid=new Date();mid.setHours(24,0,0,0);const end=mid.getTime(),o0=now()<dayStart?-1:0,W=[5,10,30,60],up=W.map(()=>0);
-  let tot=0,bus=0,tb=0,oth=0,dl=0,eod=0,wd=0,hd=0;
+  let tot=0,bus=0,tb=0,oth=0,dl=0,eod=0,wd=0,hd=0;const nm=now()+(o0<0?1440:0);
   lines.forEach(l=>l.directions.forEach(d=>{
-    sched(d,o0).lv.forEach(e=>{tot++;if(l.type==='bus')bus++;else if(l.type==='trolleybus')tb++;else oth++;if(turnGap(l,d,e.t,o0)!=null)dl++});
+    sched(d,o0).lv.forEach(e=>{const m=ov(e.t);if(nm<m||nm>=m+d.tot)return;tot++;if(l.type==='bus')bus++;else if(l.type==='trolleybus')tb++;else oth++;if(turnGap(l,d,e.t,o0)!=null)dl++});
     [-1,0].forEach(o=>sched(d,o).lv.forEach(e=>{const x=dtOf(o,e.t),a=x-m0;if(a<0)return;W.forEach((w,i)=>{if(a<=w*6e4)up[i]++});if(x<end)eod++}))}));
   baseLines.forEach(l=>l.directions.forEach(d=>{wd+=(d.schedules.workday||[]).length;hd+=(d.schedules.holiday||[]).length}));
   const ks=Object.keys(stations),sw=ks.filter(k=>(by[k]||[]).length).length;
   const T=(n,k,x='')=>`<div class="it${x}"><b>${nf(n)}</b><span>${k}</span></div>`,N=k=>`<div class="imn">${$h(k)}</div>`;
-  return `<div class="ims">${$h('Departures today')}</div><div class="ig">${T(tot,$h('Active departures'),' wide')}${T(bus,$h('Buses'))}${T(tb,$h('Trolleybuses'))}${oth?T(oth,$h('Other lines')):''}${T(dl,$h('With delay warning'),oth?'':' wide')}</div>${N('Active departures are today’s departures that are not cancelled, added ones included. Each trip is counted once, at its first stop.')}
+  return `<div class="ims">${$h('Departures now')}</div><div class="ig">${T(tot,$h('Active departures'),' wide')}${T(bus,$h('Buses'))}${T(tb,$h('Trolleybuses'))}${oth?T(oth,$h('Other lines')):''}${T(dl,$h('With delay warning'),oth?'':' wide')}</div>${N('Active departures are trips on the road right now: started, not yet arrived and not cancelled. Each trip is counted once.')}
   <div class="ims">${$h('Upcoming departures')}</div><div class="ig">${W.map((w,i)=>T(up[i],$h('Next {0} min',w))).join('')}${T(eod,$h('Until 00:00'),' wide')}</div>
   <div class="ims">${$h('Timetable totals')}</div><div class="ig">${T(wd,$h('Workdays'))}${T(hd,$h('Holidays'))}</div>${N('All trips in the timetable files, without cancellations or additions.')}
   <div class="ims">${$h('Stations')}</div><div class="ig">${T(sw,$h('With active lines'))}${T(ks.length-sw,$h('Without active lines'))}</div>${N('Stations that at least one line currently stops at, and stations that none does.')}`}
-function openInfo(){
-  document.querySelector('.vp')?.remove();
-  const o=document.createElement('div');o.className='vp';o.innerHTML='<div class="vpb im"><div class="imh"></div><div class="vl"></div></div>';document.body.appendChild(o);
+const pushOv=k=>history.pushState({...(history.state||{v:'home'}),_ov:k},'');   // every overlay level is a history entry, so the back gesture closes one level at a time
+function infoShow(k){   // k: menu | info | stats
+  document.querySelectorAll('.vp').forEach(x=>{if(!x.querySelector('.imh'))x.remove()});
+  let o=document.querySelector('.vp');
+  if(!o){o=document.createElement('div');o.className='vp';o.innerHTML='<div class="vpb im"><div class="imh"></div><div class="vl"></div></div>';document.body.appendChild(o);
+    o.onclick=e=>{const p=e.target.closest('[data-p]');if(p){if(p.dataset.p==='track'){pushOv('trk');o.remove();return openTracking()}pushOv(p.dataset.p);return infoShow(p.dataset.p)}
+      if(e.target.closest('[data-b],[data-x]')||!e.target.closest('.vpb'))history.back()}}
   const hd=o.querySelector('.imh'),vl=o.querySelector('.vl');
-  const menu=()=>{hd.innerHTML=`<b>${$h('Info')}</b><button class="imx" data-x aria-label="${$h('Close')}">✕</button>`;vl.className='vl';
-    vl.innerHTML=[['info','i','Information','How to read colors and delay warnings'],['stats','Σ','Statistics','Departure counts and station totals'],['track','◉','Tracking','Follow vehicles through the day']].map(r=>`<button class="dr" data-p="${r[0]}"><span class="ic">${r[1]}</span><div class="grow"><div>${$h(r[2])}</div><div class="s">${$h(r[3])}</div></div></button>`).join('')};
-  const page=p=>{const T={info:['Information',infoHtml],stats:['Statistics',statsHtml],}[p];
-    hd.innerHTML=`<button class="imx" data-b aria-label="${$h('Back')}">‹</button><b>${$h(T[0])}</b>`;vl.className='vl ip';vl.innerHTML=T[1]();vl.scrollTop=0};
-  menu();
-  o.onclick=e=>{const p=e.target.closest('[data-p]');if(p){if(p.dataset.p==='track'){o.remove();return openTracking()}return page(p.dataset.p)};if(e.target.closest('[data-b]'))return menu();if(e.target.closest('[data-x]')||!e.target.closest('.vpb'))o.remove()}}
-$('#ib').onclick=openInfo;
+  if(k==='menu'){hd.innerHTML=`<b>${$h('Info')}</b><button class="imx" data-x aria-label="${$h('Close')}">✕</button>`;vl.className='vl';
+    vl.innerHTML=[['info','i','Information','How to read colors and delay warnings'],['stats','Σ','Statistics','Departure counts and station totals'],['track','◉','Tracking','Follow vehicles through the day']].map(r=>`<button class="dr" data-p="${r[0]}"><span class="ic">${r[1]}</span><div class="grow"><div>${$h(r[2])}</div><div class="s">${$h(r[3])}</div></div></button>`).join('');return}
+  const P={info:['Information',infoHtml],stats:['Statistics',statsHtml]}[k];
+  hd.innerHTML=`<button class="imx" data-b aria-label="${$h('Back')}">‹</button><b>${$h(P[0])}</b>`;vl.className='vl ip';vl.innerHTML=P[1]();vl.scrollTop=0}
+$('#ib').onclick=()=>{pushOv('menu');infoShow('menu')};
+window.addEventListener('popstate',()=>setTimeout(()=>{const k=history.state&&history.state._ov,tk=document.querySelector('.trk');
+  if(!k){document.querySelector('.vp .imh')&&document.querySelector('.vp').remove();tk?.remove();return}
+  if(k==='trk'){if(!tk){document.querySelector('.vp .imh')&&document.querySelector('.vp').remove();openTracking()}return}
+  tk?.remove();infoShow(k)},0));
 // links.json: 'a vehicle ending at originStation can start departures at destinationStation after timeToReach min' (directed; complements the same/opposite stop rule)
 let LINKS=[];const BRK=25;   // a wait of BRK+ minutes counts as a break
 function parseLinks(t){try{const j=JSON.parse(t.replace(/\}\s*\{/g,'},{').replace(/,(\s*[\]}])/g,'$1'));return(j.links||[]).filter(x=>x.details).map(x=>({id:x.linkID,o:fixId(x.details.originStation),d:fixId(x.details.destinationStation),t:+x.details.timeToReach||0})).filter(k=>{const ok=stations[k.o]&&stations[k.d];if(!ok)console.warn('links.json: unknown station in link',k.id);return ok})}catch(e){console.warn('links.json: unreadable',e);return[]}}
@@ -337,52 +343,48 @@ function buildTracking(){
   const key=v=>{const t=v.trips[0];return [t.li,0,t.s]};   // numbering starts at the first line, earliest departure first
   V.sort((x,y)=>{const a=key(x),b=key(y);return a[0]-b[0]||a[1]-b[1]||a[2]-b[2]});V.forEach((v,i)=>v.id=i+1);
   return{V,at,base,chg:V.reduce((n,v)=>n+v.trips.filter(t=>t.chg).length,0)}}
-const trkRows=d=>{let c=0;const r=[];d.stops.slice(0,d.term+1).forEach((x,k)=>{if(!x.x)r.push({n:sname(x.stationId),c});c+=x.offsetMinutes||0});const f=d.tot&&c?d.tot/c:1;r.forEach(x=>x.c*=f);return r};
+const trkRows=d=>{let c=0;const r=[];d.stops.slice(0,d.term+1).forEach(x=>{if(!x.x)r.push({n:sname(x.stationId),c});c+=x.offsetMinutes||0});const f=d.tot&&c?d.tot/c:1;r.forEach(x=>x.c*=f);return r};
 const trkBtns=(d,q,yd)=>{if(q.x||-yd!==(now()<dayStart?-1:0))return '';const a=buildTracking().at.get(d.id+'|'+q.t);if(!a)return '';
   return `<div class="nav" style="margin:6px 0 28px">${a.map((h,k)=>`<button data-trk="${esc(d.id)}|${q.t}|${k}" style="color:var(--acc)">${a.length>1?$h('Track #{0}',h.v.id):$h('Track')}</button>`).join('')}</div>`};
 function openTracking(key){
-  document.querySelector('.vp')?.remove();document.querySelector('.trk')?.remove();
+  document.querySelector('.trk')?.remove();
   const R=buildTracking(),V=R.V,o=document.createElement('div');o.className='trk';
-  const fm=m=>pad(Math.floor(m/60)%24)+':'+pad(Math.floor(m)%60),nowOp=()=>(Date.now()-R.base)/6e4;
+  const fm=m=>pad(Math.floor(m/60)%24)+':'+pad(Math.floor(m)%60),nowOp=()=>(Date.now()-R.base)/6e4,dn=d=>dnm(d)||sname(d.stops[d.term].stationId);
   o.innerHTML=`<div class="tkh"><button class="imx" data-x aria-label="${$h('Back')}">‹</button><b>${$h('Tracking')}</b><span class="xp">${$h('Experimental')}</span><span class="tkc">${V.length?$h('{0} vehicles · {1} line changes',V.length,R.chg):''}</span></div>`+(V.length?
-  `<div class="tkb"><input type="search" id="tkq2" class="tkse" placeholder="${$h('Search line')}" autocomplete="off" autocapitalize="off" spellcheck="false"><div class="tkv"><button class="imx" data-v="-1">‹</button><select id="tks"></select><button class="imx" data-v="1">›</button></div>
-  <div class="imc" id="tkst"></div><div class="tkr"><div class="tkw" id="tkw"></div></div><div class="ims">${$h('Trips of the day')}</div><div class="tkd" id="tkd"></div><div id="tkl" style="margin-top:6px"></div></div>
-  <div class="tkf"><button class="imx" id="tkp">▶</button><span class="ck" id="tkk"></span><input type="range" id="tkt" step="0.1"><select id="tksp">${[1,30,120,600].map(x=>`<option value="${x}"${x===120?' selected':''}>${x}×</option>`).join('')}</select><button class="imx lv" id="tkn">${$h('Live')}</button></div>`
+  `<div class="tkb"><input type="search" id="tkq2" class="tkse" placeholder="${$h('Line or direction')}" autocomplete="off" autocapitalize="off" spellcheck="false"><div class="tkv"><button class="imx" data-v="-1">‹</button><select id="tks"></select><button class="imx" data-v="1">›</button></div>
+  <div class="imc" id="tkst"></div><div class="tkr"><div class="tkw" id="tkw"></div></div><div class="ims">${$h('Trips of the day')}</div><div class="tkd" id="tkd"></div><div id="tkl" style="margin-top:6px"></div></div>`
   :`<div class="empty">${$h('No trips to follow today')}</div>`);
-  document.body.appendChild(o);if(!V.length){o.onclick=e=>e.target.closest('[data-x]')&&o.remove();return}
-  const q=s=>o.querySelector(s),S={v:V[0],T:nowOp(),play:false,sp:120,live:true,key:'',j:-1};let F=V;
+  document.body.appendChild(o);
+  if(!V.length){o.onclick=e=>{if(e.target.closest('[data-x]'))history.back()};return}
+  const q=s=>o.querySelector(s),S={v:null,sel:0,key:'',j:-1},hay=new Map(),H=(l,d)=>hay.get(d)||(hay.set(d,dirHay(l,d)),hay.get(d));let F=V;
+  const rk=(l,d,s)=>{const t=sn(s),tk=t.split(' ').filter(Boolean),ln=sn(l.displayName);return Math.min(ln===t?0:ln.startsWith(t)?1:9,rankName(sn(dn(d)),t,tk,s))};
+  const filt=s=>{if(!sn(s))return V;const f=qpred(s),sc=new Map();V.forEach(v=>{let b=99;v.trips.forEach(x=>{if(f(H(x.l,x.d)))b=Math.min(b,rk(x.l,x.d,s))});sc.set(v,b)});return V.filter(v=>sc.get(v)<99).sort((a,b)=>sc.get(a)-sc.get(b))};   // same matching and ranking as the line selector
+  const auto=v=>{const i=v.trips.findIndex(t=>nowOp()<t.a);return i<0?v.trips.length-1:i};
   const fill=()=>{q('#tks').innerHTML=F.length?F.map(v=>`<option value="${V.indexOf(v)}">#${v.id} · ${esc(bt(v.trips[0].l))} · ${fm(v.trips[0].s)}–${fm(v.trips.at(-1).a)}</option>`).join(''):`<option>${$h('No vehicles found')}</option>`;if(F.includes(S.v))q('#tks').value=V.indexOf(S.v)};
-  const stOf=(v,T)=>{const tr=v.trips;if(T<tr[0].s)return{k:'pre',i:0};for(let i=0;i<tr.length;i++)if(T<tr[i].a)return{k:T>=tr[i].s?'run':'wait',i};return{k:'end',i:tr.length-1}};
-  const setV=v=>{S.v=v;S.key='';const t0=v.trips[0].s,t1=v.trips.at(-1).a,W=t1-t0||1,pc=x=>((x-t0)/W*100)+'%';if(F.includes(v))q('#tks').value=V.indexOf(v);
+  const setV=(v,i)=>{S.v=v;S.sel=i??auto(v);S.key='';const t0=v.trips[0].s,t1=v.trips.at(-1).a,W=t1-t0||1,pc=x=>((x-t0)/W*100)+'%';if(F.includes(v))q('#tks').value=V.indexOf(v);
     q('#tkd').innerHTML=v.trips.map((t,i)=>`<b data-i="${i}" style="left:${pc(t.s)};width:${(t.a-t.s)/W*100}%;background:${esc(t.l.color||'#4d83ff')}"></b>`).join('')+v.trips.map((t,i)=>i&&t.brk?`<b class="brk" style="left:${pc(v.trips[i-1].a)};width:${(t.s-v.trips[i-1].a)/W*100}%"></b>`:'').join('')+(t0<900&&t1>900?`<span class="sh" style="left:${pc(900)}"></span>`:'')+'<span class="nw" id="tkq"></span>';
-    q('#tkl').innerHTML=v.trips.map((t,i)=>(i&&t.sh!==v.trips[i-1].sh?`<div class="imn">${$h('Shift change')} · ~15:00</div>`:'')+`<div class="tkx" data-i="${i}"><span class="tm"><b>${fm(t.s)}</b><span>${fm(t.a)}</span></span>${badge(t.l)}<span class="n">→ ${esc(sname(t.d.stops[t.d.term].stationId))}${(nt=>nt?`<small>${nt}</small>`:'')([t.brk?`<i>${$h('Break {0} min',t.lay)}</i>`:t.lay?$t('{0} min',t.lay):'',t.chg?$h('Changed line'):'',t.lk?$h('Link #{0}',t.lk):''].filter(Boolean).join(' · '))}</span></div>`).join('')};
-  const upd=()=>{const v=S.v,T=S.T,st=stOf(v,T),t=v.trips[st.i],k=v.id+'|'+st.i,col=t.l.color||'#4d83ff';
-    if(S.key!==k){S.key=k;S.rows=trkRows(t.d);S.j=-1;q('#tkw').innerHTML=`<div class="tkfl" id="tkf"></div>`+S.rows.map(r=>`<div class="tkp"><u></u><span class="n">${esc(r.n)}</span><span class="t">${fm(t.s+r.c)}</span></div>`).join('')+`<div class="tkm" id="tkm">#${v.id}</div>`;q('.tkr').style.setProperty('--c',col)}
-    const R2=S.rows,e=T-t.s;let pos=st.k==='end'?R2.length-1:0,j=0;
-    if(st.k==='run'){while(j+1<R2.length&&R2[j+1].c<=e)j++;const n=R2[j+1];pos=j+(n?Math.min(1,(e-R2[j].c)/Math.max(.1,n.c-R2[j].c)):0)}
+    q('#tkl').innerHTML=v.trips.map((t,i)=>(i&&t.sh!==v.trips[i-1].sh?`<div class="imn">${$h('Shift change')} · ~15:00</div>`:'')+`<div class="tkx" data-i="${i}"><span class="tm"><b>${fm(t.s)}</b><span>${fm(t.a)}</span></span>${badge(t.l)}<span class="n">→ ${esc(dn(t.d))}${(nt=>nt?`<small>${nt}</small>`:'')([t.brk?`<i>${$h('Break {0} min',t.lay)}</i>`:t.lay?$t('{0} min',t.lay):'',t.chg?$h('Changed line'):'',t.lk?$h('Link #{0}',t.lk):''].filter(Boolean).join(' · '))}</span></div>`).join('')};
+  const upd=()=>{const T=nowOp(),v=S.v,t=v.trips[S.sel],k=v.id+'|'+S.sel;
+    if(S.key!==k){S.key=k;S.rows=trkRows(t.d);S.j=-1;const w=q('#tkw');w.innerHTML=`<div class="tkfl" id="tkf"></div>`+S.rows.map(r=>`<div class="tkp"><u></u><span class="n">${esc(r.n)}</span><span class="t"></span></div>`).join('')+`<div class="tkm" id="tkm">#${v.id}</div>`;S.tn=[...w.querySelectorAll('.t')];S.pn=[...w.querySelectorAll('.tkp')];q('.tkr').style.setProperty('--c',t.l.color||'#4d83ff');q('.tkr').scrollTop=0}
+    const R2=S.rows,e=T-t.s,run=T>=t.s&&T<t.a;let pos=T>=t.a?R2.length-1:0,j=0;
+    if(run){while(j+1<R2.length&&R2[j+1].c<=e)j++;const n=R2[j+1];pos=j+(n?Math.min(1,(e-R2[j].c)/Math.max(.1,n.c-R2[j].c)):0)}
     q('#tkm').style.top=(pos*34+17-12.5)+'px';q('#tkf').style.height=(pos*34)+'px';
-    o.querySelectorAll('.tkp').forEach((r,i)=>r.classList.toggle('p',i<Math.floor(pos+.001)&&st.k!=='pre'&&st.k!=='wait'));
-    if(st.k==='run'&&j!==S.j){S.j=j;q('.tkr').scrollTop=Math.max(0,j*34-68)}
-    const dest=esc(sname(t.d.stops[t.d.term].stationId)),first=esc(sname(t.d.stops[0].stationId)),prev=st.i?esc(sname(v.trips[st.i-1].d.stops[v.trips[st.i-1].d.term].stationId)):first;
-    q('#tkst').innerHTML=`<div class="tkt">${badge(t.l)}<div><b>${$h('Vehicle #{0}',v.id)}</b> <span class="s" style="color:var(--mut)">→ ${dest}</span><div style="margin-top:2px">${
-      st.k==='run'?($h('Next stop: {0} in {1}',R2[j+1]?.n||'',eta(Math.ceil((R2[j+1]?.c??R2[j].c)-e))).replace(/&/g,'&amp;')):
-      st.k==='wait'?$h(t.brk?'On a break at {0} · departs {1} ({2})':'Waiting at {0} · departs {1} ({2})',st.i?sname(v.trips[st.i-1].d.stops[v.trips[st.i-1].d.term].stationId):sname(t.d.stops[0].stationId),fm(t.s),eta(Math.ceil(t.s-T))):
-      $h('Finished the day at {0}',sname(t.d.stops[t.d.term].stationId))}</div></div></div>`;
-    q('#tkk').textContent=fm(T)+(S.live?' •':'');q('#tkt').min=v.trips[0].s-10;q('#tkt').max=v.trips.at(-1).a+10;q('#tkt').value=T;q('#tkp').textContent=S.play?'❚❚':'▶';
+    S.pn.forEach((r,i)=>r.classList.toggle('p',i<Math.floor(pos+.001)&&(run||T>=t.a)));
+    S.tn.forEach((n,i)=>{const ab=t.s+R2[i].c,d=Math.ceil(ab-T);n.textContent=d>0?$t('in {0} / {1}',eta(d),fm(ab)):fm(ab)});   // 'in 5 min / 09:41'
+    if(run&&j!==S.j){S.j=j;q('.tkr').scrollTop=Math.max(0,j*34-68)}
+    const txt=T<t.s?$h('Departs in {0}',eta(Math.ceil(t.s-T))):run?$h('Next stop: {0} in {1}',R2[j+1]?.n||'',eta(Math.max(1,Math.ceil((R2[j+1]?.c??R2[j].c)-e)))):(m=>m<1?$h('Just finished'):$h('Finished {0} ago',eta(m)))(Math.floor(T-t.a));
+    q('#tkst').innerHTML=`<div class="tkt">${badge(t.l)}<div><b>${$h('Vehicle #{0}',v.id)}</b> <span class="s" style="color:var(--mut)">→ ${esc(dn(t.d))}</span><div style="margin-top:2px">${txt}</div></div></div>`;
     const t0=v.trips[0].s,W=(v.trips.at(-1).a-t0)||1;q('#tkq').style.left=Math.max(0,Math.min(100,(T-t0)/W*100))+'%';
-    o.querySelectorAll('.tkx').forEach(x=>x.classList.toggle('on',+x.dataset.i===st.i&&st.k!=='end'&&st.k!=='pre'))};
-  const go=T=>{S.live=false;S.T=T;upd()},sel=i=>{if(!F.length)return;setV(F[(i+F.length)%F.length]);upd()};
-  q('#tkq2').oninput=e=>{const b=sn(e.target.value);F=b?V.filter(v=>v.trips.some(t=>sn(t.l.displayName).startsWith(b)||sn(t.l.id).startsWith(b))):V;fill();if(F.length&&!F.includes(S.v))sel(0)};
-  q('#tks').onchange=e=>{const v=V[+e.target.value];if(v)sel(F.indexOf(v))};q('#tksp').onchange=e=>S.sp=+e.target.value;q('#tkt').oninput=e=>go(+e.target.value);
-  q('#tkn').onclick=()=>{S.live=true;S.play=false;S.T=nowOp();upd()};q('#tkp').onclick=()=>{S.play=!S.play;if(S.play)S.live=false;upd()};
-  o.onclick=e=>{if(e.target.closest('[data-x]')){clearInterval(iv);return o.remove()}const b=e.target.closest('[data-v]');if(b)return sel(F.indexOf(S.v)+ +b.dataset.v);
-    const x=e.target.closest('[data-i]');if(x)return go(S.v.trips[+x.dataset.i].s);
-    const d=e.target.closest('#tkd');if(d){const r=d.getBoundingClientRect(),t0=S.v.trips[0].s,W=(S.v.trips.at(-1).a-t0)||1;go(t0+(e.clientX-r.left)/r.width*W)}};
-  const iv=setInterval(()=>{if(!o.isConnected)return clearInterval(iv);if(S.live)S.T=nowOp();else if(S.play){S.T+=.25*S.sp/60;if(S.T>S.v.trips.at(-1).a+10){S.T=S.v.trips.at(-1).a+10;S.play=false}}upd()},250);
-  const hit=key&&R.at.get(key.split('|').slice(0,2).join('|'))?.[+key.split('|')[2]||0];
-  if(hit){const t=hit.v.trips[hit.i],n=nowOp();S.v=hit.v;if(n>=t.s&&n<t.a)S.T=n;else{S.live=false;S.T=t.s}}   // opened from a trip: show its vehicle, at that trip
-  fill();setV(S.v);upd()}
-document.addEventListener('click',e=>{const b=e.target.closest('[data-trk]');if(b)openTracking(b.dataset.trk)});
+    o.querySelectorAll('.tkx').forEach(x=>x.classList.toggle('on',+x.dataset.i===S.sel));o.querySelectorAll('#tkd b[data-i]').forEach(x=>x.classList.toggle('sel',+x.dataset.i===S.sel))};
+  const pick=i=>{if(!F.length)return;setV(F[(i+F.length)%F.length]);upd()};
+  q('#tks').onchange=e=>{const v=V[+e.target.value];if(v)pick(F.indexOf(v))};
+  q('#tkq2').oninput=e=>{F=filt(e.target.value);fill();if(F.length&&!F.includes(S.v))pick(0)};
+  o.onclick=e=>{if(e.target.closest('[data-x]'))return history.back();const b=e.target.closest('[data-v]');if(b)return pick(F.indexOf(S.v)+ +b.dataset.v);
+    const x=e.target.closest('[data-i]');if(x){S.sel=+x.dataset.i;S.key='';upd()}};
+  const iv=setInterval(()=>{if(!o.isConnected)return clearInterval(iv);upd()},1000);
+  const hit=key&&R.at.get(key.split('|').slice(0,2).join('|'))?.[+key.split('|')[2]||0];   // opened from a trip: show its vehicle and that trip
+  fill();setV(hit?hit.v:V[0],hit?hit.i:undefined);upd()}
+document.addEventListener('click',e=>{const b=e.target.closest('[data-trk]');if(b){pushOv('trk');openTracking(b.dataset.trk)}});
 // opposite station data check: '' = no data; otherwise returns a problem description (empty string = fine)
 const oppOf=id=>{const o=stations[id]&&stations[id].oppositeStation;return{id:o,ok:!!o&&o!==id&&!!stations[o]}};
 const oppWarn=id=>{const o=stations[id]&&stations[id].oppositeStation;if(!o)return'';if(!stations[o])return`oppositeStation "${o}" is not in the stations file`;if(o===id)return'oppositeStation points to itself';if(stations[o].oppositeStation!==id)return`${o} does not point back to this station`;return''};
@@ -530,9 +532,9 @@ async function loadMods(){
 const V={
 home(){
   const d=new Date();
-  return{t:'Transit',h:`<div class="hw"><div class="hc"><img class="hlogo" src="OTP.png" alt="OTP" onerror="this.replaceWith('Transit')"><div class="clock">${fmt(now())}</div><div class="sub">${d.toLocaleDateString(lang==='bg'?'bg-BG':undefined,{weekday:'long',day:'numeric',month:'long'})}</div></div>
+  return{t:'Transit',h:`<div class="hw"><div class="hc"><img class="hlogo" src="${lang==='bg'?'OTP_bg.png':'OTP.png'}" alt="OTP" onerror="this.replaceWith('Transit')"><div class="clock">${fmt(now())}</div><div class="sub">${d.toLocaleDateString(lang==='bg'?'bg-BG':undefined,{weekday:'long',day:'numeric',month:'long'})}</div></div>
   <div class="hero"><button class="big" data-go='{"v":"routes"}'><div class="ic">🚎</div><div><b>${$h('Search routes')}</b><span>${$h('Browse lines & directions')}</span></div></button>
-  <button class="big" data-go='{"v":"search"}'><div class="ic">📍</div><div><b>${$h('Search stations')}</b><span>${$h('By name or ID · upcoming departures')}</span></div></button>
+  <button class="big" data-go='{"v":"search"}'><div class="ic">📍</div><div><b>${$h('Search stations')}</b><span>${$h('By name or ID')}</span></div></button>
   <button class="big" data-go='{"v":"map"}'><div class="ic">🗺️</div><div><b>${$h('Transit map')}</b><span>${$h('Pan & zoom the network map')}</span></div></button></div>
   ${missing.size||modMissing.size?`<div class="sub" style="margin-top:22px;font-size:12px">⚠ Not in stations file: ${[...new Set([...missing,...modMissing])].map(esc).join(', ')}</div>`:''}
   ${noticeErrs.length?`<div class="sub" style="margin-top:12px;font-size:12px">⚠ Notice problems: ${noticeErrs.map(x=>esc(x.msg)).join('; ')}</div>`:''}

@@ -119,5 +119,15 @@
   "Waiting at {0} · departs {1} ({2})": "Чака на {0} · потегля след {1} ({2})",
   "Finished the day at {0}": "Приключи деня на спирка {0}",
   "Live": "На живо",
-  "No trips to follow today": "Няма превозни средства за следене днес"
+  "No trips to follow today": "Няма превозни средства за следене днес",
+  "Track": "Следене на превозно средство",
+  "Track #{0}": "Следене на превозно средство № {0}",
+  "No vehicles found": "Няма намерени превозни средства",
+  "Break {0} min": "Почивка {0} мин",
+  "Finished {0} ago": "Приключи преди {0}",
+  "Just finished": "Тъкмо приключи",
+  "In {0} / {1}": "След {0} / {1}",
+  "Departures now": "Курсове сега",
+  "Active departures are trips on the road right now: started, not yet arrived and not cancelled. Each trip is counted once.": "Активни курсове са тези, които сега се изпълняват и не отменени. Всяко пътуване се брои веднъж.",
+  "By name or ID": "По име или идентификатор"
 }
