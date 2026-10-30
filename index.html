@@ -23,12 +23,12 @@ header{display:flex;align-items:center;gap:10px;padding:10px 14px;min-height:56p
 header h1 img{display:block;height:44px;width:auto;max-width:100%;object-fit:contain}
 header h1{flex:1;margin:0;font-size:20px;font-weight:650;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .back#rs{flex:none;font-size:18px}.vl button.dr{display:flex;align-items:center;gap:12px}.vl .dr .grow{flex:1;min-width:0}.vl .dr .s{color:var(--mut);font-size:13px;font-weight:400}
-.back{width:40px;height:40px;border-radius:50%;border:0;background:var(--card);color:var(--tx);font-size:22px}
+.back{width:40px;height:40px;border-radius:50%;border:0;background:var(--card);color:var(--tx);font-size:22px;display:grid;place-items:center;padding:0;line-height:1}.back[hidden]{display:none}.back svg,.imx svg{display:block}.back.star{color:var(--mut)}.back.star.on{color:#f5c542}#so{height:40px;border-radius:20px;padding:0 16px;font-size:14px}.imx{display:grid;place-items:center}
 .pill{border:0;border-radius:20px;background:var(--card);color:var(--tx);font-size:13px;padding:8px 12px;white-space:nowrap;flex:none}.pill:disabled{opacity:.35}.pill[hidden]{display:none}.back:disabled{opacity:.35}.back#sd{flex:none;font-size:20px;padding:0}
 .rt{display:flex;flex-direction:column;align-items:flex-end;gap:2px}.fav{font-size:23px;line-height:1;padding:5px 7px;margin:-2px -7px -7px 0;color:var(--mut)}.fav.on{color:#f5c542}
 .sortm{position:fixed;right:14px;z-index:25;min-width:230px;background:var(--card2);border:1px solid var(--line);border-radius:14px;box-shadow:0 14px 34px rgba(0,0,0,.65);padding:6px}.sortm[hidden]{display:none}
 .sortm button,.sortm label{display:flex;align-items:center;justify-content:space-between;width:100%;padding:13px 12px;border:0;background:none;color:var(--tx);font-size:16px;border-radius:10px;text-align:left}.sortm hr{border:0;border-top:1px solid var(--line);margin:4px 6px}.sortm .tk{width:22px;text-align:right;color:var(--acc);font-weight:700}.sortm input{width:20px;height:20px;accent-color:var(--acc)}
-.clrfav{display:block;margin:22px auto 8px;padding:10px 18px;border-radius:12px;border:1px solid var(--line);background:var(--card);color:var(--mut);font-size:13px}.clrfav:disabled{opacity:.35}
+.clrfav{display:block;margin:12px auto 8px;padding:10px 18px;border-radius:12px;border:1px solid var(--line);background:var(--card);color:var(--mut);font-size:13px}.clrfav:disabled{opacity:.35}
 .ss{font-size:12px;font-weight:400;color:#69738a}.nmw{display:flex;flex-wrap:wrap;align-items:baseline;column-gap:6px}.nmw .nn{min-width:0}.ssd{font-size:14px;font-weight:400;color:#a3adc2;margin:3px 0 0}
 .ttlsub{display:block;font-size:12px;font-weight:400;color:var(--mut);line-height:1.2;margin-top:1px}
 #ft{position:relative;flex:none;background:var(--bg);border-top:1px solid var(--line);padding:6px 14px calc(6px + env(safe-area-inset-bottom))}#ft[hidden]{display:none}
@@ -36,12 +36,12 @@ header h1{flex:1;margin:0;font-size:20px;font-weight:650;white-space:nowrap;over
 main{flex:1;overflow-y:auto;padding:4px 14px 16px;-webkit-overflow-scrolling:touch}
 button{font:inherit;color:inherit}
 button:active,.row:active{filter:brightness(1.3);transform:scale(.985)}
-.hero{display:flex;flex-direction:column;gap:14px;margin-top:8px}
+.hero{display:flex;flex-direction:column;gap:12px;margin-top:8px}
 .big{display:flex;align-items:center;gap:16px;width:100%;padding:26px 20px;border:0;border-radius:22px;background:var(--card);text-align:left}
 .big .ic{font-size:34px;width:64px;height:64px;border-radius:18px;background:var(--card2);display:grid;place-items:center}
 .big b{display:block;font-size:20px}.big span{color:var(--mut);font-size:14px}
 .clock{font-size:54px;font-weight:700;margin:14px 0 0;letter-spacing:-1px}.sub{color:var(--mut);margin-bottom:10px}
-h2{font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--mut);margin:20px 4px 10px}
+h2{font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--mut);margin:16px 4px 8px}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(76px,1fr));gap:10px}
 .badge{display:inline-grid;place-items:center;min-width:46px;height:32px;padding:0 10px;border-radius:9px;font-weight:700;color:#fff;font-size:15px}
 .grid .badge{height:56px;font-size:20px;border-radius:14px;border:0}
@@ -57,20 +57,20 @@ input[type=search]::-webkit-search-cancel-button{-webkit-appearance:none;display
 .vpb input{margin:10px;width:calc(100% - 20px);padding:13px 14px;font-size:16px;border:1px solid var(--line);border-radius:12px;background:var(--card);color:var(--tx);outline:0;-webkit-user-select:text;user-select:text}.vpb input:focus{border-color:var(--acc)}
 .vl{overflow-y:auto;padding:0 6px 8px}.vl button{display:block;width:100%;text-align:left;padding:13px 12px;border:0;border-radius:10px;background:none;color:var(--tx);font-size:16px}.vl button.on{background:var(--card);color:var(--acc);font-weight:700}.vl .empty{padding:24px 10px}.vl .s{color:var(--mut);font-size:13px;font-weight:400;margin-top:2px}
 .selbtn{margin-left:auto;max-width:190px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;background:var(--card);color:var(--tx);border:1px solid var(--line);border-radius:10px;padding:9px 10px;font-size:16px}
-.fx{margin:0 -14px 4px}
-.chips{display:flex;gap:8px;overflow-x:auto;padding:2px 14px 8px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.fx{margin:0 -14px 12px}#mn{display:contents}#pdeps:not(:empty){margin-bottom:4px}
+.chips{display:flex;gap:8px;overflow-x:auto;padding:2px 14px 0;scrollbar-width:none;-webkit-overflow-scrolling:touch}
 .chips::-webkit-scrollbar{display:none}
 .chip{flex:none;height:38px;min-width:54px;padding:0 16px;border-radius:19px;border:1.5px solid var(--c);font-weight:700;font-size:15px;color:var(--tx);background:transparent;box-shadow:inset 0 0 7px color-mix(in srgb,var(--c) 38%,transparent)}
 .chip.on{background:var(--c);color:#fff;box-shadow:none}
-.advwrap{position:relative;padding:2px 14px 8px;display:flex;gap:10px;align-items:center}
+.advwrap{position:relative;padding:12px 14px 0;display:flex;gap:10px;align-items:center}
 .advbtn{flex:1 1 0;min-width:0;height:34px;padding:0 4px;border-radius:17px;border:1px solid var(--line);background:var(--card);font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .advbtn.on{border-color:var(--acc);color:var(--acc)}
 
 @media(max-width:380px){.advbtn{font-size:11px}}
-.uph{display:flex;align-items:center;justify-content:space-between}.uph h2{flex:1}.uph .clr{margin:20px 4px 10px 0}
+.uph{display:flex;align-items:center;justify-content:space-between}.uph h2{flex:1;margin:0 4px 8px}.uph .clr{margin:0 4px 8px 0}
 .row.past{opacity:.6}
 .pager{display:flex;align-items:center;justify-content:center;gap:18px;margin:0 0 6px;color:var(--mut)}.pager button{width:44px;height:36px;border-radius:10px;border:1px solid var(--line);background:var(--card);font-size:20px}.pager button:disabled{opacity:.3}
-.clr{background:none;border:0;color:var(--mut);font-size:13px;text-decoration:underline}
+#spg .pager{margin:12px 0 0}.clr{background:none;border:0;color:var(--mut);font-size:13px;text-decoration:underline}
 .menu{position:absolute;left:14px;top:calc(100% - 4px);width:min(calc(100% - 28px),350px);z-index:6;background:var(--card2);border:1px solid var(--line);border-radius:16px;box-shadow:0 14px 34px rgba(0,0,0,.65);padding:2px 14px 10px}
 .menu h3{margin:12px 0 2px;font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--mut)}
 .chk{display:flex;align-items:center;gap:12px;min-height:46px}
@@ -80,10 +80,10 @@ input[type=search]::-webkit-search-cancel-button{-webkit-appearance:none;display
 .empty{text-align:center;color:var(--mut);padding:50px 20px}
 .hd{background:var(--card);border-radius:22px;padding:18px;margin-top:6px;text-align:center}
 .hd .big2{font-size:56px;font-weight:750;letter-spacing:-1px;font-variant-numeric:tabular-nums;line-height:1.1;margin:8px 0 2px}
-.nav{display:flex;gap:10px;margin-top:14px}
+.nav{display:flex;gap:10px;margin-top:12px}
 .nav button{flex:1;padding:14px;border:0;border-radius:14px;background:var(--card2);font-weight:600}
 .nav button:disabled{opacity:.3}
-.nav button{min-width:0}.nav .half{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px;min-width:0}.nav.sm{margin-top:10px;display:grid;grid-template-columns:minmax(0,1fr)}.nav.sm button{font-size:14px;padding:12px 8px;white-space:nowrap}.nav button[data-lp]{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;touch-action:manipulation}
+.nav button{min-width:0}.nav .half{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px;min-width:0}.nav.sm{margin-top:12px;display:grid;grid-template-columns:minmax(0,1fr)}.nav.sm button{font-size:14px;padding:12px 8px;white-space:nowrap}.nav button[data-lp]{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;touch-action:manipulation}
 .pk{left:0;right:0;width:auto;top:calc(100% + 6px);max-height:46vh;overflow-y:auto;overscroll-behavior:contain;text-align:left;padding-bottom:12px}
 .tg{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:8px}
 .tb{padding:11px 0;border:0;border-radius:10px;background:var(--card);font-weight:600;font-size:15px;font-variant-numeric:tabular-nums}
@@ -123,23 +123,23 @@ header[hidden]{display:none}
 .xp{font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#ffd23f;border:1px solid #ffd23f;border-radius:6px;padding:1px 5px}.tkb{flex:1;overflow:auto;padding:0 12px 12px}
 .tkse{width:100%;box-sizing:border-box;margin-bottom:8px;background:var(--card);color:var(--tx);border:1px solid var(--line);border-radius:10px;padding:9px 10px;font-size:14px}.tkv{display:flex;gap:8px;margin-bottom:8px}.trk select{flex:1;min-width:0;background:var(--card);color:var(--tx);border:1px solid var(--line);border-radius:10px;padding:8px;font-size:14px}.trk .imx{font-size:16px}
 .tkt{display:flex;gap:10px;align-items:center}.tkt .badge{flex:none}.tkr{position:relative;margin-top:8px;background:var(--card);border-radius:14px;max-height:34vh;overflow:auto}.tkw{position:relative}
-.tkw::before{content:'';position:absolute;left:23px;top:17px;bottom:17px;width:3px;background:var(--line);border-radius:2px}.tkfl{position:absolute;left:23px;top:17px;width:3px;height:0;background:var(--c);border-radius:2px}
-.tkp{height:34px;display:flex;align-items:center;gap:12px;padding:0 12px 0 14px;font-size:14px;position:relative}.tkp u{flex:none;width:20px;height:34px;position:relative}.tkp u::after{content:'';position:absolute;left:5px;top:11.5px;width:11px;height:11px;box-sizing:border-box;border-radius:50%;background:var(--card2);border:2px solid var(--mut)}
-.tkp.p{opacity:.5}.tkp .n{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.tkp .t{color:var(--mut);font-variant-numeric:tabular-nums}
+.tkrl{position:absolute;left:23px;top:17px;width:3px;background:var(--line);border-radius:2px}.tkfl{position:absolute;left:23px;top:17px;width:3px;height:0;background:var(--c);border-radius:2px}
+.tkp{min-height:34px;display:flex;align-items:center;gap:12px;padding:6px 12px 6px 14px;font-size:14px;position:relative}.tkp u{flex:none;width:20px;align-self:stretch;position:relative}.tkp u::after{content:'';position:absolute;left:5px;top:50%;margin-top:-5.5px;width:11px;height:11px;box-sizing:border-box;border-radius:50%;background:var(--card2);border:2px solid var(--mut)}
+.tkp.p{opacity:.5}.tkp .n{flex:1;min-width:0;line-height:1.25}.tkp .t{flex:none;width:8.6em;text-align:right;color:var(--mut);font-variant-numeric:tabular-nums}
 .tkm{position:absolute;left:12px;top:0;width:25px;height:25px;border-radius:50%;background:var(--c);color:#fff;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 4px rgba(255,255,255,.14);z-index:2}
 .tkd{position:relative;height:30px;background:var(--card);border-radius:10px;overflow:hidden;cursor:pointer}.tkd b{position:absolute;top:6px;bottom:6px;border-radius:5px;opacity:.85}.tkd .sh{position:absolute;top:0;bottom:0;width:2px;background:var(--mut);opacity:.6}.tkd .nw{position:absolute;top:0;bottom:0;width:2px;background:#fff;z-index:2}
-.tkx{display:flex;gap:10px;align-items:center;padding:11px 10px;margin-bottom:4px;border-radius:10px;font-size:13px}.tkx.on{background:var(--card)}.tkx .tm{display:flex;flex-direction:column;line-height:1.3;min-width:44px;font-variant-numeric:tabular-nums;color:var(--mut)}.tkx .tm b{color:var(--tx);font-weight:600}.tkx .n{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.tkd b.brk{top:6px;bottom:6px;opacity:1;background:repeating-linear-gradient(45deg,rgba(255,210,63,.55) 0 4px,transparent 4px 8px)}.tkx small{display:block;color:var(--mut);font-size:11px;margin-top:2px}.tkx small i{font-style:normal;color:#ffd23f}.tkm{transition:top 1s linear}.tkfl{transition:height 1s linear}.tkd b.sel{opacity:1;outline:2px solid #fff;outline-offset:-2px}.tkx em{font-style:normal;color:#ffd23f;font-size:11px}
+.tkg{padding:2px 10px;font-size:11px;line-height:1.2;color:var(--mut);font-variant-numeric:tabular-nums}.tkg.y{color:#ffd23f}.tkx{display:flex;gap:10px;align-items:center;padding:9px 10px;margin-bottom:0;border-radius:10px;font-size:13px}.tkx.on{background:var(--card)}.tkx .tm{display:flex;flex-direction:column;line-height:1.3;min-width:44px;font-variant-numeric:tabular-nums;color:var(--mut)}.tkx .tm b{color:var(--tx);font-weight:600}.tkx .n{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.tkd b.brk{top:6px;bottom:6px;opacity:1;background:repeating-linear-gradient(45deg,rgba(255,210,63,.55) 0 4px,transparent 4px 8px)}.tkx small{display:block;color:var(--mut);font-size:11px;margin-top:2px}.tkx small i{font-style:normal;color:#ffd23f}.tkm{transition:top 1s linear}.tkfl{transition:height 1s linear}.tkd b.sel{opacity:1;outline:2px solid #fff;outline-offset:-2px}.tkx em{font-style:normal;color:#ffd23f;font-size:11px}
 .tkf{display:flex;gap:8px;align-items:center;padding:10px 12px calc(10px + env(safe-area-inset-bottom));border-top:1px solid var(--line);background:var(--card)}.tkf input{flex:1;min-width:0}.tkf select{flex:none;width:auto}.tkf .ck{font-size:20px;font-weight:700;font-variant-numeric:tabular-nums;min-width:54px}.tkf .lv{width:auto;padding:0 10px;border-radius:18px;font-size:13px}
 .pill.star{font-size:20px;line-height:1;padding:7px 12px;color:var(--mut)}.pill.star.on{color:#f5c542}
-.nb{border-radius:16px;padding:10px 12px;margin:12px 0 4px;font-size:14px;line-height:1.35;border:1px solid}
-.dn .nb{margin:0 0 8px}.nb b{display:block;font-size:15px}.nb .nm{margin-top:3px;opacity:.92;white-space:pre-line}.nb .np{margin-top:6px;font-size:12px;opacity:.65}
+.nb{border-radius:16px;padding:10px 12px;margin:0 0 12px;font-size:14px;line-height:1.35;border:1px solid}
+.dn .nb{margin:0 0 12px}.nb b{display:block;font-size:15px}.nb .nm{margin-top:3px;opacity:.92;white-space:pre-line}.nb .np{margin-top:6px;font-size:12px;opacity:.65}
 .nb.info{background:#16304f;border-color:#2f5d99;color:#d6e6ff}.nb.free{background:#0e3a25;border-color:#1f7a4d;color:#d3f5e2}
 .nb.red{background:#4a1519;border-color:#b3343b;color:#ffd6d8}
 .nb.ovr{background:#4a3410;border-color:#b07a1c;color:#ffe7b8}.nb.err{background:#4a1519;border-color:#b3343b;color:#ffd6d8}
 </style>
 </head>
 <body>
-<div id="app"><header><button class="back" id="bk" hidden>‹</button><h1 id="ttl"></h1><button class="pill star" id="fs" hidden aria-label="Show only favorites" title="Show only favorites">☆</button><button class="pill" id="so" hidden>Sort by… ▾</button><button class="back" id="sd" hidden aria-label="Switch direction" title="Switch direction">⇄</button><button class="back" id="rs" hidden aria-label="Search" title="Search">🔎</button></header><main id="main"></main><footer id="ft"><div id="pgr"></div><div class="dayft"><label><span id="dl">Schedule</span>&nbsp; <select id="dm"><option value="auto"></option><option value="workday">Workday</option><option value="holiday">Holiday</option></select></label></div><button class="pill" id="ib" aria-label="Info">i</button><button class="pill" id="lg" aria-label="Language"></button></footer></div>
+<div id="app"><header><button class="back" id="bk" hidden aria-label="Back"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M19 12H5m6-6-6 6 6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button><h1 id="ttl"></h1><button class="back star" id="fs" hidden aria-label="Show only favorites" title="Show only favorites">☆</button><button class="pill" id="so" hidden>Sort by… ▾</button><button class="back" id="sd" hidden aria-label="Switch direction" title="Switch direction">⇄</button><button class="back" id="rs" hidden aria-label="Search" title="Search">🔎</button></header><main id="main"></main><footer id="ft"><div id="pgr"></div><div class="dayft"><label><span id="dl">Schedule</span>&nbsp; <select id="dm"><option value="auto"></option><option value="workday">Workday</option><option value="holiday">Holiday</option></select></label></div><button class="pill" id="ib" aria-label="Info">i</button><button class="pill" id="lg" aria-label="Language"></button></footer></div>
 <script src="lib/leaflet.js"></script>
 <script>
 const $=s=>document.querySelector(s),main=$('#main');
@@ -152,12 +152,8 @@ let lang='en',STR={};try{lang=localStorage.lang==='bg'?'bg':'en'}catch(e){}
 const LANG_AL={
  "info.delay.intro": "A vehicle that has just finished one trip often starts the next one straight away. If it only arrives a few minutes before that departure is due, the departure may leave late. The app has no live data, so this is an estimate from the timetable.",
  "info.delay.nowarn": "No warning only means that no tight connection was found in the timetable, not that the departure will be on time.",
- "info.delay.step2": "A trip arrives at its last stop at its departure time plus the travel time of its route (changed routes use their changed travel time).",
  "info.times.red": "Last departure of the day on this line and direction. Cancelled departures are ignored and trips after midnight still count as part of the same day.",
  "info.times.white": "Normal. The next departure on this line and direction leaves less than 90 minutes later.",
- "info.delay.step1": "For each departure, the app looks for a trip that ends at its first stop (or at the stop across the road).",
- "info.delay.step3": "The departure is flagged when such a trip arrives 0 to 5 minutes before it and no other departure leaves in between.",
- "info.delay.step4": "On lines with up to 3 directions the vehicle is assumed to come from another direction of the same line (or from the same direction if the line has only one). On lines with more directions, any trip of the line that ends there counts.",
  "info.delay.where": "On the departure screen the warning appears next to “Stops”. In station lists, a warning sign and a colored countdown appear at every stop of that trip.",
  "info.delay.yellow": "3 to 5 minutes between arrival and departure. Tight, a small delay is possible.",
  "info.delay.red": "Only 0 to 2 minutes between arrival and departure. A delay is very likely.",
@@ -293,8 +289,6 @@ function infoHtml(){
   ${imRow('12:20','w-yellow',cw('Yellow','y')+$h('Long wait ahead. The next departure on this line and direction is 90 minutes or more after this one, so if you miss it you wait at least 1h 30m.'))}
   ${imRow('23:05','w-red',cw('Red','r')+$h('Last departure of the day on this line and direction. Cancelled departures are ignored and trips after midnight still count as part of the same day.'))}</div>
   <div class="ims">${$h('Delayed departures')}</div><div class="imc"><div>${$h('A vehicle that has just finished one trip often starts the next one straight away. If it only arrives a few minutes before that departure is due, the departure may leave late. The app has no live data, so this is an estimate from the timetable.')}</div>
-  <div><b>${$h('How it is calculated')}</b></div><ol><li>${$h('For each departure, the app looks for a trip that ends at its first stop (or at the stop across the road).')}</li><li>${$h('A trip arrives at its last stop at its departure time plus the travel time of its route (changed routes use their changed travel time).')}</li><li>${$h('The departure is flagged when such a trip arrives 0 to 5 minutes before it and no other departure leaves in between.')}</li><li>${$h('On lines with up to 3 directions the vehicle is assumed to come from another direction of the same line (or from the same direction if the line has only one). On lines with more directions, any trip of the line that ends there counts.')}</li></ol></div>
-  <div class="ims">${$h('Delay warning colors')}</div><div class="imc">
   ${imRow('⚠ 12 min','w-red',cw('Red','r')+$h('Only 0 to 2 minutes between arrival and departure. A delay is very likely.'))}
   ${imRow('⚠ 12 min','w-yellow',cw('Yellow','y')+$h('3 to 5 minutes between arrival and departure. Tight, a small delay is possible.'))}
   <div>${$h('On the departure screen the warning appears next to “Stops”. In station lists, a warning sign and a colored countdown appear at every stop of that trip.')}</div>
@@ -312,6 +306,7 @@ function statsHtml(){
   <div class="ims">${$h('Upcoming departures')}</div><div class="ig">${W.map((w,i)=>T(up[i],$h('Next {0} min',w))).join('')}${T(eod,$h('Until 00:00'),' wide')}</div>
   <div class="ims">${$h('Timetable totals')}</div><div class="ig">${T(wd,$h('Workdays'))}${T(hd,$h('Holidays'))}</div>${N('All trips in the timetable files, without cancellations or additions.')}
   <div class="ims">${$h('Stations')}</div><div class="ig">${T(sw,$h('With active lines'))}${T(ks.length-sw,$h('Without active lines'))}</div>${N('Stations that at least one line currently stops at, and stations that none does.')}`}
+const BK='<svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M19 12H5m6-6-6 6 6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 const pushOv=k=>history.pushState({...(history.state||{v:'home'}),_ov:k},'');   // every overlay level is a history entry, so the back gesture closes one level at a time
 function infoShow(k){   // k: menu | info | stats
   document.querySelectorAll('.vp').forEach(x=>{if(!x.querySelector('.imh'))x.remove()});
@@ -323,7 +318,7 @@ function infoShow(k){   // k: menu | info | stats
   if(k==='menu'){hd.innerHTML=`<b>${$h('Info')}</b><button class="imx" data-x aria-label="${$h('Close')}">✕</button>`;vl.className='vl';
     vl.innerHTML=[['info','i','Information','How to read colors and delay warnings'],['stats','Σ','Statistics','Departure counts and station totals'],['track','◉','Tracking','Follow vehicles through the day']].map(r=>`<button class="dr" data-p="${r[0]}"><span class="ic">${r[1]}</span><div class="grow"><div>${$h(r[2])}</div><div class="s">${$h(r[3])}</div></div></button>`).join('');return}
   const P={info:['Information',infoHtml],stats:['Statistics',statsHtml]}[k];
-  hd.innerHTML=`<button class="imx" data-b aria-label="${$h('Back')}">‹</button><b>${$h(P[0])}</b>`;vl.className='vl ip';vl.innerHTML=P[1]();vl.scrollTop=0}
+  hd.innerHTML=`<button class="imx" data-b aria-label="${$h('Back')}">${BK}</button><b>${$h(P[0])}</b>`;vl.className='vl ip';vl.innerHTML=P[1]();vl.scrollTop=0}
 $('#ib').onclick=()=>{pushOv('menu');infoShow('menu')};
 window.addEventListener('popstate',()=>setTimeout(()=>{const k=history.state&&history.state._ov,tk=document.querySelector('.trk');
   if(!k){document.querySelector('.vp .imh')&&document.querySelector('.vp').remove();tk?.remove();return}
@@ -365,12 +360,12 @@ function buildTracking(){
   return{V,at,base,chg:V.reduce((n,v)=>n+v.trips.filter(t=>t.chg).length,0)}}
 const trkRows=d=>{let c=0;const r=[];d.stops.slice(0,d.term+1).forEach(x=>{if(!x.x)r.push({n:sname(x.stationId),c});c+=x.offsetMinutes||0});const f=d.tot&&c?d.tot/c:1;r.forEach(x=>x.c*=f);return r};
 const trkBtns=(d,q,yd)=>{if(q.x||-yd!==(now()<dayStart?-1:0))return '';const a=buildTracking().at.get(d.id+'|'+q.t);if(!a)return '';
-  return `<div class="nav" style="margin:6px 0 28px">${a.map((h,k)=>`<button data-trk="${esc(d.id)}|${q.t}|${k}" style="color:var(--acc)">${a.length>1?$h('Track #{0}',h.v.id):$h('Track')}</button>`).join('')}</div>`};
+  return `<div class="sub" style="text-align:center;margin:0 0 24px;font-size:13px">${a.map((h,k)=>`<button class="clr" style="padding:0" data-trk="${esc(d.id)}|${q.t}|${k}">${a.length>1?$h('Track #{0}',h.v.id):$h('Track')}</button>`).join(' · ')}</div>`};
 function openTracking(key){
   document.querySelector('.trk')?.remove();
   const R=buildTracking(),V=R.V,o=document.createElement('div');o.className='trk';
   const fm=m=>pad(Math.floor(m/60)%24)+':'+pad(Math.floor(m)%60),nowOp=()=>(Date.now()-R.base)/6e4,dn=d=>dnm(d)||sname(d.stops[d.term].stationId);
-  o.innerHTML=`<div class="tkh"><button class="imx" data-x aria-label="${$h('Back')}">‹</button><b>${$h('Tracking')}</b><span class="xp">${$h('Experimental')}</span><span class="tkc">${V.length?$h('{0} vehicles · {1} line changes',V.length,R.chg):''}</span></div>`+(V.length?
+  o.innerHTML=`<div class="tkh"><button class="imx" data-x aria-label="${$h('Back')}">${BK}</button><b>${$h('Tracking')}</b><span class="xp">${$h('Experimental')}</span><span class="tkc">${V.length?$h('{0} vehicles',V.length)+'<br>'+$h('{0} line changes',R.chg):''}</span></div>`+(V.length?
   `<div class="tkb"><input type="search" id="tkq2" class="tkse" placeholder="${$h('Line or direction')}" autocomplete="off" autocapitalize="off" spellcheck="false"><div class="tkv"><button class="imx" data-v="-1">‹</button><select id="tks"></select><button class="imx" data-v="1">›</button></div>
   <div class="imc" id="tkst"></div><div class="tkr"><div class="tkw" id="tkw"></div></div><div class="ims">${$h('Trips of the day')}</div><div class="tkd" id="tkd"></div><div id="tkl" style="margin-top:6px"></div></div>`
   :`<div class="empty">${$h('No trips to follow today')}</div>`);
@@ -383,15 +378,17 @@ function openTracking(key){
   const fill=()=>{q('#tks').innerHTML=F.length?F.map(v=>`<option value="${V.indexOf(v)}">#${v.id} · ${esc(bt(v.trips[0].l))} · ${fm(v.trips[0].s)}–${fm(v.trips.at(-1).a)}</option>`).join(''):`<option>${$h('No vehicles found')}</option>`;if(F.includes(S.v))q('#tks').value=V.indexOf(S.v)};
   const setV=(v,i)=>{S.v=v;S.sel=i??auto(v);S.key='';const t0=v.trips[0].s,t1=v.trips.at(-1).a,W=t1-t0||1,pc=x=>((x-t0)/W*100)+'%';if(F.includes(v))q('#tks').value=V.indexOf(v);
     q('#tkd').innerHTML=v.trips.map((t,i)=>`<b data-i="${i}" style="left:${pc(t.s)};width:${(t.a-t.s)/W*100}%;background:${esc(t.l.color||'#4d83ff')}"></b>`).join('')+v.trips.map((t,i)=>i&&t.brk?`<b class="brk" style="left:${pc(v.trips[i-1].a)};width:${(t.s-v.trips[i-1].a)/W*100}%"></b>`:'').join('')+(t0<900&&t1>900?`<span class="sh" style="left:${pc(900)}"></span>`:'')+'<span class="nw" id="tkq"></span>';
-    q('#tkl').innerHTML=v.trips.map((t,i)=>(i&&t.sh!==v.trips[i-1].sh?`<div class="imn">${$h('Shift change')} · ~15:00</div>`:'')+`<div class="tkx" data-i="${i}"><span class="tm"><b>${fm(t.s)}</b><span>${fm(t.a)}</span></span>${badge(t.l)}<span class="n">→ ${esc(dn(t.d))}${(nt=>nt?`<small>${nt}</small>`:'')([t.brk?`<i>${$h('Break {0} min',t.lay)}</i>`:t.lay?$t('{0} min',t.lay):'',t.chg?$h('Changed line'):'',t.lk?$h('Link #{0}',t.lk):''].filter(Boolean).join(' · '))}</span></div>`).join('')};
+    q('#tkl').innerHTML=v.trips.map((t,i)=>(i?`<div class="tkg${t.brk?' y':''}">${$t('{0} min',t.lay)}</div>`:'')+(i&&t.sh!==v.trips[i-1].sh?`<div class="imn">${$h('Shift change')} · ~15:00</div>`:'')+`<div class="tkx" data-i="${i}"><span class="tm"><b>${fm(t.s)}</b><span>${fm(t.a)}</span></span>${badge(t.l)}<span class="n">→ ${esc(dn(t.d))}${(nt=>nt?`<small>${nt}</small>`:'')([t.chg?$h('Changed line'):'',t.lk?$h('Link #{0}',t.lk):''].filter(Boolean).join(' · '))}</span></div>`).join('')};   // wait between trips sits between their times, yellow = break
   const upd=()=>{const T=nowOp(),v=S.v,t=v.trips[S.sel],k=v.id+'|'+S.sel;
-    if(S.key!==k){S.key=k;S.rows=trkRows(t.d);S.j=-1;const w=q('#tkw');w.innerHTML=`<div class="tkfl" id="tkf"></div>`+S.rows.map(r=>`<div class="tkp"><u></u><span class="n">${esc(r.n)}</span><span class="t"></span></div>`).join('')+`<div class="tkm" id="tkm">#${v.id}</div>`;S.tn=[...w.querySelectorAll('.t')];S.pn=[...w.querySelectorAll('.tkp')];q('.tkr').style.setProperty('--c',t.l.color||'#4d83ff');q('.tkr').scrollTop=0}
+    if(S.key!==k){S.key=k;S.rows=trkRows(t.d);S.j=-1;const w=q('#tkw');w.innerHTML=`<div class="tkrl" id="tkrl"></div><div class="tkfl" id="tkf"></div>`+S.rows.map(r=>`<div class="tkp"><u></u><span class="n">${esc(r.n)}</span><span class="t"></span></div>`).join('')+`<div class="tkm" id="tkm">#${v.id}</div>`;S.tn=[...w.querySelectorAll('.t')];S.pn=[...w.querySelectorAll('.tkp')];q('.tkr').style.setProperty('--c',t.l.color||'#4d83ff');q('.tkr').scrollTop=0}
     const R2=S.rows,e=T-t.s,run=T>=t.s&&T<t.a;let pos=T>=t.a?R2.length-1:0,j=0;
     if(run){while(j+1<R2.length&&R2[j+1].c<=e)j++;const n=R2[j+1];pos=j+(n?Math.min(1,(e-R2[j].c)/Math.max(.1,n.c-R2[j].c)):0)}
-    q('#tkm').style.top=(pos*34+17-12.5)+'px';q('#tkf').style.height=(pos*34)+'px';
-    S.pn.forEach((r,i)=>r.classList.toggle('p',i<Math.floor(pos+.001)&&(run||T>=t.a)));
     S.tn.forEach((n,i)=>{const ab=t.s+R2[i].c,d=Math.ceil(ab-T);n.textContent=d>0?$t('in {0} / {1}',eta(d),fm(ab)):fm(ab)});   // 'in 5 min / 09:41'
-    if(run&&j!==S.j){S.j=j;q('.tkr').scrollTop=Math.max(0,j*34-68)}
+    const ct=S.pn.map(r=>r.offsetTop+r.offsetHeight/2),P=p=>{const i=Math.min(Math.floor(p),ct.length-1);return ct[i]+(i+1<ct.length?(ct[i+1]-ct[i])*(p-i):0)};   // rows can be 1-2+ lines tall, so positions come from the layout
+    q('#tkrl').style.top=q('#tkf').style.top=ct[0]+'px';q('#tkrl').style.height=(ct.at(-1)-ct[0])+'px';
+    q('#tkm').style.top=(P(pos)-12.5)+'px';q('#tkf').style.height=(P(pos)-ct[0])+'px';
+    S.pn.forEach((r,i)=>r.classList.toggle('p',i<Math.floor(pos+.001)&&(run||T>=t.a)));
+    if(run&&j!==S.j){S.j=j;q('.tkr').scrollTop=Math.max(0,ct[j]-68)}
     const txt=T<t.s?$h('Departs in {0}',eta(Math.ceil(t.s-T))):run?$h('Next stop: {0} in {1}',R2[j+1]?.n||'',eta(Math.max(1,Math.ceil((R2[j+1]?.c??R2[j].c)-e)))):(m=>m<1?$h('Just finished'):$h('Finished {0} ago',eta(m)))(Math.floor(T-t.a));
     q('#tkst').innerHTML=`<div class="tkt">${badge(t.l)}<div><b>${$h('Vehicle #{0}',v.id)}</b> <span class="s" style="color:var(--mut)">→ ${esc(dn(t.d))}</span><div style="margin-top:2px">${txt}</div></div></div>`;
     const t0=v.trips[0].s,W=(v.trips.at(-1).a-t0)||1;q('#tkq').style.left=Math.max(0,Math.min(100,(T-t0)/W*100))+'%';
@@ -591,11 +588,11 @@ trip(s){
   <div class="nav" style="margin-top:10px"><button data-i="${i-1}" data-lp="0" ${one||i<1?'disabled':''}>‹ ${$h('Previous')}</button><button data-i="${i+1}" data-lp="${sc.length-1}" ${one||i>=sc.length-1?'disabled':''}>${$h('Next')} ›</button></div>
   <div style="position:relative"><div class="nav sm"><button data-pk ${one?'disabled':''}>${$h('Choose a departure…')} ▾</button></div>${menu}</div></div>
   ${nbs}<div class="uph"><h2>${$h('Stops')}</h2>${(g=>g!=null?`<div class="dly${g>2?' y':''}" style="margin:20px 4px 10px 0">⚠ ${$h('This departure may be delayed')}</div>`:'')(q.x?null:turnGap(l,d,q.t,yd?-1:0))}</div><div style="--c:${esc(l.color)}">${d.stops.map((st,k)=>{const m=dep+d.cum[k],sx=q.x||st.x,ds=sx?'':dstat(lts.map(x=>fmt(toMin(x)+d.cum[k])),fmt(m));
-  return`<button class="st${m<n?' past':''}${k===0?' s0':''}${k===d.term?' sN':''}${k>d.term?' aft':''}${sx?' sx':''}" data-go='${JSON.stringify({v:'station',id:st.stationId})}'><span class="tm${ds?' w-'+ds:''}">${fmt(m)}</span><span class="dot"></span><span class="nm">${st.add?'<b class="pl">+</b>':''}${snm(st.stationId)}</span></button>`}).join('')}</div><div class="sub" style="text-align:center;margin:18px 0 8px;font-size:13px">${(one?$h('Only one departure today'):$h('Departure {0} of {1}',i+1,sc.length))+' · '+(ns===1?$h('{0} stop',ns):$h('{0} stops',ns))}</div>${trkBtns(d,q,yd)}`,after(){const m=$('.pk'),c=m&&m.querySelector('.cur');if(c)m.scrollTop=c.offsetTop-m.clientHeight/2+c.offsetHeight/2}}},
+  return`<button class="st${m<n?' past':''}${k===0?' s0':''}${k===d.term?' sN':''}${k>d.term?' aft':''}${sx?' sx':''}" data-go='${JSON.stringify({v:'station',id:st.stationId})}'><span class="tm${ds?' w-'+ds:''}">${fmt(m)}</span><span class="dot"></span><span class="nm">${st.add?'<b class="pl">+</b>':''}${snm(st.stationId)}</span></button>`}).join('')}</div><div class="sub" style="text-align:center;margin:14px 0 4px;font-size:13px">${(one?$h('Only one departure today'):$h('Departure {0} of {1}',i+1,sc.length))+' · '+(ns===1?$h('{0} stop',ns):$h('{0} stops',ns))}</div>${trkBtns(d,q,yd)}`,after(){const m=$('.pk'),c=m&&m.querySelector('.cur');if(c)m.scrollTop=c.offsetTop-m.clientHeight/2+c.offsetHeight/2}}},
 map(){return{t:$t('Transit map'),h:'<div id="map"></div>',after:initMap}},
 search(){
-  return{t:$t('Stations'),h:`<div class="sw"><input id="q" type="search" placeholder="${$h('Station name or ID')}" autocomplete="off" autocapitalize="off" spellcheck="false" value="${esc(q)}"><button type="button" id="qx" aria-label="${$h('Clear')}" ${q?'':'hidden'}>✕</button></div><div id="sortm" class="sortm" hidden><button data-s="name">${$h('Name')}<span class="tk"></span></button><button data-s="id">${$h('ID')}<span class="tk"></span></button></div><div id="res"></div><button class="clrfav" id="clrfav">${$h('Clear favorites')}</button>`,after(){
-    const inp=$('#q'),res=$('#res'),sm=$('#sortm'),cb=$('#clrfav'),fs=$('#fs');
+  return{t:$t('Stations'),h:`<div class="sw"><input id="q" type="search" placeholder="${$h('Station name or ID')}" autocomplete="off" autocapitalize="off" spellcheck="false" value="${esc(q)}"><button type="button" id="qx" aria-label="${$h('Clear')}" ${q?'':'hidden'}>✕</button></div><div id="sortm" class="sortm" hidden><button data-s="name">${$h('Name')}<span class="tk"></span></button><button data-s="id">${$h('ID')}<span class="tk"></span></button></div><div id="res"></div><div id="spg"></div><button class="clrfav" id="clrfav">${$h('Clear favorites')}</button>`,after(){
+    const inp=$('#q'),res=$('#res'),sm=$('#sortm'),cb=$('#clrfav'),fs=$('#fs'),SPG=30;let sPg=0;
     const syncM=()=>{sm.querySelectorAll('[data-s]').forEach(b=>b.querySelector('.tk').textContent=b.dataset.s===sortBy?'✓':'');fs.classList.toggle('on',onlyFav);fs.textContent=onlyFav?'★':'☆';cb.disabled=!favs.size};
     const lineTxt=id=>{const m=new Map((by[id]||[]).map(e=>[e.l.id,e.l]));if(!m.size)return $t('No lines');const a=[...m.values()];
       if(a.length<=7)return a.map(bt).join(' · ');
@@ -610,14 +607,14 @@ search(){
       const num=c=>/^\d+$/.test(c)?+c:null,byId=(a,b)=>!a.code!==!b.code?(a.code?-1:1):(num(a.code)!==null&&num(b.code)!==null&&num(a.code)!==num(b.code)?num(a.code)-num(b.code):a.code.localeCompare(b.code,undefined,{numeric:true}));
       if(t)all.forEach(s=>s.rk=stRank(s.id,q));
       all.sort((a,b)=>(t?a.rk-b.rk||(favs.has(b.id)-favs.has(a.id)):0)||(t&&a.code===t?-1:t&&b.code===t?1:0)||(sortBy==='id'?byId(a,b):0)||a.name.localeCompare(b.name,loc()));
-      const sh=all.slice(0,60).map(s=>`<button class="row" data-go='${JSON.stringify({v:'station',id:s.id})}'><div class="grow"><div class="t">${nmw(esc(s.name),s.sm?esc(s.sm):'')}</div><div class="s">${lineTxt(s.id)}</div>${t&&stNote(s.id,q)?`<div class="s">${$h('matches: {0}',stNote(s.id,q))}</div>`:''}</div><div class="rt">${s.code?`<span class="code">#${esc(s.code)}</span>`:''}<span class="fav ${favs.has(s.id)?'on':''}" role="button" aria-label="${$h('Favorite')}" data-fav="${esc(s.id)}">${favs.has(s.id)?'★':'☆'}</span></div></button>`).join('');
-      res.innerHTML=sh||`<div class="empty">${onlyFav&&!t&&!favs.size?$h('No favorite stations yet.')+'<br>'+$h('Tap ☆ on a station to add it.'):$h('No stations match')}</div>`;syncM()};
+      const pages=Math.max(1,Math.ceil(all.length/SPG));sPg=Math.min(Math.max(sPg,0),pages-1);const sh=all.slice(sPg*SPG,sPg*SPG+SPG).map(s=>`<button class="row" data-go='${JSON.stringify({v:'station',id:s.id})}'><div class="grow"><div class="t">${nmw(esc(s.name),s.sm?esc(s.sm):'')}</div><div class="s">${lineTxt(s.id)}</div>${t&&stNote(s.id,q)?`<div class="s">${$h('matches: {0}',stNote(s.id,q))}</div>`:''}</div><div class="rt">${s.code?`<span class="code">#${esc(s.code)}</span>`:''}<span class="fav ${favs.has(s.id)?'on':''}" role="button" aria-label="${$h('Favorite')}" data-fav="${esc(s.id)}">${favs.has(s.id)?'★':'☆'}</span></div></button>`).join('');
+      res.innerHTML=sh||`<div class="empty">${onlyFav&&!t&&!favs.size?$h('No favorite stations yet.')+'<br>'+$h('Tap ☆ on a station to add it.'):$h('No stations match')}</div>`;$('#spg').innerHTML=pages>1?`<div class="pager"><button data-pg="-1" ${sPg<1?'disabled':''} aria-label="${$h('Previous page')}">←</button><span>${$h('Page {0} of {1}',sPg+1,pages)}</span><button data-pg="1" ${sPg>=pages-1?'disabled':''} aria-label="${$h('Next page')}">→</button></div>`:'';syncM()};
     res.onclick=e=>{const f=e.target.closest('[data-fav]');if(!f)return;e.stopPropagation();const k=f.dataset.fav;favs.has(k)?favs.delete(k):favs.add(k);saveFav();
       if(onlyFav)draw();else{const on=favs.has(k);f.classList.toggle('on',on);f.textContent=on?'★':'☆';syncM()}};
-    sm.onclick=e=>{const b=e.target.closest('[data-s]');if(b){sortBy=b.dataset.s;saveFav();sm.hidden=true;draw()}};
-    fs.onclick=()=>{onlyFav=!onlyFav;saveFav();draw()};
+    sm.onclick=e=>{const b=e.target.closest('[data-s]');if(b){sortBy=b.dataset.s;saveFav();sm.hidden=true;sPg=0;draw()}};
+    fs.onclick=()=>{onlyFav=!onlyFav;saveFav();sPg=0;draw()};$('#spg').onclick=e=>{const b=e.target.closest('[data-pg]');if(!b||b.disabled)return;sPg+=+b.dataset.pg;draw();main.scrollTop=0};
     cb.onclick=()=>{if(favs.size&&confirm($t('Clear all favorite stations?'))){favs.clear();saveFav();draw()}};
-    const qx=$('#qx');inp.oninput=()=>{qx.hidden=!inp.value;draw()};qx.onclick=()=>{inp.value='';qx.hidden=true;inp.focus();draw()};draw();}}},
+    const qx=$('#qx');inp.oninput=()=>{qx.hidden=!inp.value;sPg=0;draw()};qx.onclick=()=>{inp.value='';qx.hidden=true;inp.focus();sPg=0;draw()};draw();}}},
 station(s){
   if(F.sid!==s.id)fReset(s.id);
   const nb=nErrHtml(s.id)+mHtml(m=>mStation(m,s.id))+nHtml(n=>nStation(n,s.id)),ow=oppWarn(s.id),head=(ow?`<div class="sub" style="margin:4px 4px 0;font-size:12px">⚠ ${esc(ow)}</div>`:'')+'',code=scode(s.id),stx=ssm(s.id),sub=[code?'#'+code:'',stx||''].filter(Boolean).join(' · ');
