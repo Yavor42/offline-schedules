@@ -1,0 +1,101 @@
+{
+  "oppositeStationBlocks": 
+  {
+      "stations": ["Block121", "MotherBabyHome", "MonumentOfRusofiliteEast", "MonumentOfRusofiliteWest", "IzgrevEast", "IzgrevWest", "AstardzhiykaNorth",
+	  "AstardzhiykaSouth", "NovaPloshtadkaSouth", "NovaPloshtadkaNorth", "ForkForObraztsovChiflikNorth", "ForkForObraztsovChiflikSouth", "StrelbishteWest",
+	  "StrelbishteEast", "RusanovoBridgeWest", "RusanovoBridgeEast", "FishingHutEast", "FishingHutWest", "KPPWest", 
+	  "KPPEast", "9thKilometerEast", "9thKilometerWest"]
+  },
+	
+  
+  "oppositeStationOverwrites": [
+	{
+		"overwriteID": 1,
+		"stations": ["Block10", "Block33"],
+		"transferTime": 6,
+		"minimumConnectionTime": 3
+	},
+    {
+		"overwriteID": 2,
+        "stations": ["SaintOuan", "ShipbuildingHighSchool"],
+        "transferTime": 7,
+        "minimumConnectionTime": 3
+    },
+    {
+		"overwriteID": 3,
+        "stations": ["Technopolis", "PechatniPlatkiPCBs"],
+		"connectionType": "underpass",
+        "transferTime": 5,
+        "minimumConnectionTime": 3
+    },
+    {
+		"overwriteID": 4,
+        "stations": ["VerilaSouth", "VerilaNorth"],
+		"connectionType": "underpass",
+        "transferTime": 5,
+        "minimumConnectionTime": 3
+    },
+    {
+		"overwriteID": 5,
+        "stations": ["LeventaSouth", "LeventaNorth"],
+		"connectionType": "underpass",
+        "transferTime": 5,
+        "minimumConnectionTime": 3
+    },
+    {
+		"overwriteID": 6,
+        "stations": ["AlekoKonstantinovPrimarySchoolNorth", "AlekoKonstantinovPrimarySchoolSouth"],
+		"connectionType": "underpass",
+        "transferTime": 5,
+        "minimumConnectionTime": 3
+    },
+    {
+		"overwriteID": 7,
+        "stations": ["OldPeoplesHome", "PristaLodge"],
+		"connectionType": "underpass",
+        "transferTime": 7,
+        "minimumConnectionTime": 3	
+    }
+  ],
+  
+  
+    "zones": [
+	{
+		"zoneID": 1,
+        "stations": ["Stif", "Olymp", "OlympBlock48", "OlympBlock49", "DairyKitchenEast", "DairyKitchenWest"],
+        "transferTime": 5,
+        "minimumConnectionTime": 8
+    },
+	{
+		"zoneID": 2,
+        "stations": ["BratyaMiladinoviPrimarySchool", "Pliska", "Paris"],
+        "transferTime": 4,
+        "minimumConnectionTime": 7
+    },
+	{
+		"zoneID": 3,
+        "stations": ["HouseOfCulture", "EngineeringHighSchool"],
+        "transferTime": 3,
+        "minimumConnectionTime": 5
+    },
+	{
+		"zoneID": 4,
+        "stations": ["Borisova", "MedicalCentreWest", "MathsHighSchoolNorth", "MedicalCentreEast"],
+        "transferTime": 5,
+        "minimumConnectionTime": 8
+    },
+	{
+		"zoneID": 5,
+        "stations": ["AleksandarStamboliyskiNorth", "AleksandarStamboliyskiSouth", "RailwayStationBorisovaStr", "Cosmos", "RailwayStationNikolaevskaStr"],
+        "transferTime": 5,
+        "minimumConnectionTime": 8
+    },
+	{
+		"zoneID": 6,
+        "stations": ["SBA", "Skobelev", "SportsArena", "Oborishte", "Yalta", "Bricolage", "Kaufland"],
+        "transferTime": 8,
+        "minimumConnectionTime": 12
+    }
+    ]
+  
+}
