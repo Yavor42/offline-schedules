@@ -64,7 +64,7 @@ input[type=search]::-webkit-search-cancel-button{-webkit-appearance:none;display
 .chip.on{background:var(--c);color:#fff;box-shadow:none}
 .advwrap{position:relative;padding:12px 14px 0;display:flex;gap:10px;align-items:center}
 .advbtn{flex:1 1 0;min-width:0;height:34px;padding:0 4px;border-radius:17px;border:1px solid var(--line);background:var(--card);font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.advbtn.on{border-color:var(--acc);color:var(--acc)}
+.advbtn.on{border-color:var(--acc);color:var(--acc)}.advbtn:disabled{opacity:.45}
 
 @media(max-width:380px){.advbtn{font-size:11px}}
 .uph{display:flex;align-items:center;justify-content:space-between}.uph h2{flex:1;margin:0 4px 8px}.uph .clr{margin:0 4px 8px 0}
@@ -78,7 +78,7 @@ input[type=search]::-webkit-search-cancel-button{-webkit-appearance:none;display
 .chk input[type=checkbox]{width:22px;height:22px;margin:0;flex:none;accent-color:var(--acc)}
 .chk input[type=time],.chk select{margin-left:auto;max-width:190px;background:var(--card);color:var(--tx);border:1px solid var(--line);border-radius:10px;padding:8px 10px;font-size:16px;-webkit-user-select:text;user-select:text}
 .empty{text-align:center;color:var(--mut);padding:50px 20px}
-.hd{background:var(--card);border-radius:22px;padding:18px;margin-top:6px;text-align:center}
+.hd{background:var(--card);border-radius:22px;padding:18px;margin:6px 0 12px;text-align:center}
 .hd .big2{font-size:56px;font-weight:750;letter-spacing:-1px;font-variant-numeric:tabular-nums;line-height:1.1;margin:8px 0 2px}
 .nav{display:flex;gap:10px;margin-top:12px}
 .nav button{flex:1;padding:14px;border:0;border-radius:14px;background:var(--card2);font-weight:600}
@@ -587,7 +587,7 @@ trip(s){
   <div class="nav"><button data-i="${tg.k}" ${one?'disabled':''} style="color:var(--acc)">${tg.act?$h('Jump to current departure'):$h('Jump to upcoming departure')}</button></div>
   <div class="nav" style="margin-top:10px"><button data-i="${i-1}" data-lp="0" ${one||i<1?'disabled':''}>‹ ${$h('Previous')}</button><button data-i="${i+1}" data-lp="${sc.length-1}" ${one||i>=sc.length-1?'disabled':''}>${$h('Next')} ›</button></div>
   <div style="position:relative"><div class="nav sm"><button data-pk ${one?'disabled':''}>${$h('Choose a departure…')} ▾</button></div>${menu}</div></div>
-  ${nbs}<div class="uph"><h2>${$h('Stops')}</h2>${(g=>g!=null?`<div class="dly${g>2?' y':''}" style="margin:20px 4px 10px 0">⚠ ${$h('This departure may be delayed')}</div>`:'')(q.x?null:turnGap(l,d,q.t,yd?-1:0))}</div><div style="--c:${esc(l.color)}">${d.stops.map((st,k)=>{const m=dep+d.cum[k],sx=q.x||st.x,ds=sx?'':dstat(lts.map(x=>fmt(toMin(x)+d.cum[k])),fmt(m));
+  ${nbs}<div class="uph"><h2>${$h('Stops')}</h2>${(g=>g!=null?`<div class="dly${g>2?' y':''}" style="margin:0 4px 8px 0">⚠ ${$h('This departure may be delayed')}</div>`:'')(q.x?null:turnGap(l,d,q.t,yd?-1:0))}</div><div style="--c:${esc(l.color)}">${d.stops.map((st,k)=>{const m=dep+d.cum[k],sx=q.x||st.x,ds=sx?'':dstat(lts.map(x=>fmt(toMin(x)+d.cum[k])),fmt(m));
   return`<button class="st${m<n?' past':''}${k===0?' s0':''}${k===d.term?' sN':''}${k>d.term?' aft':''}${sx?' sx':''}" data-go='${JSON.stringify({v:'station',id:st.stationId})}'><span class="tm${ds?' w-'+ds:''}">${fmt(m)}</span><span class="dot"></span><span class="nm">${st.add?'<b class="pl">+</b>':''}${snm(st.stationId)}</span></button>`}).join('')}</div><div class="sub" style="text-align:center;margin:14px 0 4px;font-size:13px">${(one?$h('Only one departure today'):$h('Departure {0} of {1}',i+1,sc.length))+' · '+(ns===1?$h('{0} stop',ns):$h('{0} stops',ns))}</div>${trkBtns(d,q,yd)}`,after(){const m=$('.pk'),c=m&&m.querySelector('.cur');if(c)m.scrollTop=c.offsetTop-m.clientHeight/2+c.offsetHeight/2}}},
 map(){return{t:$t('Transit map'),h:'<div id="map"></div>',after:initMap}},
 search(){
@@ -661,18 +661,19 @@ function initFilters(id){
     const k=advCount(),ab=$('#ab');ab.textContent='⚙ '+$t('Advanced filters')+(k?' · '+k:'')+(F.open?' ▴':' ▾');
     ab.classList.toggle('on',k>0);$('#cl').hidden=!(k||F.sel.size)};
   refreshDeps=()=>{const n=now(),out=[];SC.clear();
-    const A=F.after!=null?uw(F.after):null,B=F.before!=null?uw(F.before):null;
+    const A=F.after!=null?uw(F.after):null,B=F.before!=null?uw(F.before):null,tf=A!=null||B!=null;   // tf: a time window is set, so earlier departures of today stay in the list
     [0,-1].forEach(o=>ents.forEach(e=>sched(e.d,o).forEach((q,i)=>{   // o=-1: yesterday's trips still running past midnight
       const t=q.t,sp=e.d.stops[e.i];let m=ov(t)+e.off;if(o)m-=1440;
-      if(m<n-PVMIN||(F.sel.size&&!F.sel.has(e.l.id))||(F.types.size&&!F.types.has(e.l.type))||!(A!=null&&B!=null&&A>B?(m>=A||m<=B):!((A!=null&&m<A)||(B!=null&&m>B)))||
+      if((m<n-PVMIN&&!tf)||(F.sel.size&&!F.sel.has(e.l.id))||(F.types.size&&!F.types.has(e.l.type))||!(A!=null&&B!=null&&A>B?(m>=A||m<=B):!((A!=null&&m<A)||(B!=null&&m>B)))||
         (F.via&&!e.d.stops.some((x,k)=>k>e.i&&!x.x&&x.stationId===F.via))||(F.from&&!e.d.stops.some((x,k)=>k<e.i&&!x.x&&x.stationId===F.from))||(!F.inclTerm&&!termAll&&e.i===last(e)))return;
       out.push({...e,m,ti:i,y:o?1:0,qx:q.x,qa:q.a,sx:sp.x,sa:sp.add,st:q.x?'':dstat(sched(e.d,o).lts,t),tg:q.x||sp.x?null:turnGap(e.l,e.d,t,o)})})));
     out.sort((a,b)=>a.m-b.m);
-    const up=out.filter(e=>e.m>=n),pv=out.filter(e=>e.m<n).slice(-PV),pages=Math.max(1,Math.ceil(up.length/PG));
+    const up=out.filter(e=>e.m>=n),pv=out.filter(e=>e.m<n&&e.m>=n-PVMIN).slice(-PV),sim=tf?out.filter(e=>e.m<n):[],pages=Math.max(1,Math.ceil(up.length/PG));
     F.page=Math.min(Math.max(F.page,0),pages-1);
     $('#pv').textContent='🕒 '+$t('Previous departures')+(F.prev?' ▴':' ▾');$('#pv').classList.toggle('on',F.prev);
-    $('#pdeps').innerHTML=F.prev?(pv.length?pv.map(e=>rowHtml(e,n,1)).join(''):`<div class="empty" style="padding:18px 20px">${$h('No departures in the past hour')}</div>`):'';
-    deps.innerHTML=(up.length?up.slice(F.page*PG,F.page*PG+PG).map(e=>rowHtml(e,n)).join(''):`<div class="empty">${F.sel.size||advCount()?$h('No departures match these filters'):$h('No upcoming departures')}</div>`)+
+    $('#pv').disabled=sim.length>0;   // the simulated rows already cover the past part of the window
+    $('#pdeps').innerHTML=sim.length?sim.map(e=>rowHtml(e,n,1)).join(''):F.prev?(pv.length?pv.map(e=>rowHtml(e,n,1)).join(''):`<div class="empty" style="padding:18px 20px">${$h('No departures in the past hour')}</div>`):'';
+    deps.innerHTML=(up.length?up.slice(F.page*PG,F.page*PG+PG).map(e=>rowHtml(e,n)).join(''):`<div class="empty">${F.sel.size||advCount()?$h(sim.length?'No upcoming departures':'No departures match these filters'):$h('No upcoming departures')}</div>`)+
       '';
     $('#pgr').innerHTML=pages>1?`<div class="pager"><button data-pg="-1" ${F.page<1?'disabled':''} aria-label="${$h('Previous page')}">←</button><span>${$h('Page {0} of {1}',F.page+1,pages)}</span><button data-pg="1" ${F.page>=pages-1?'disabled':''} aria-label="${$h('Next page')}">→</button></div>`:''};
   $('#pv').onclick=()=>{F.prev=!F.prev;refreshDeps()};
