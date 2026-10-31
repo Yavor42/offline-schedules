@@ -82,19 +82,19 @@
 		"zoneID": 4,
         "stations": ["Borisova", "MedicalCentreWest", "MathsHighSchoolNorth", "MedicalCentreEast"],
         "transferTime": 5,
-        "minimumConnectionTime": 8
+        "minimumConnectionTime": 3
     },
 	{
 		"zoneID": 5,
         "stations": ["AleksandarStamboliyskiNorth", "AleksandarStamboliyskiSouth", "RailwayStationBorisovaStr", "Cosmos", "RailwayStationNikolaevskaStr"],
         "transferTime": 5,
-        "minimumConnectionTime": 8
+        "minimumConnectionTime": 3
     },
 	{
 		"zoneID": 6,
         "stations": ["SBA", "Skobelev", "SportsArena", "Oborishte", "Yalta", "Bricolage", "Kaufland"],
         "transferTime": 8,
-        "minimumConnectionTime": 12
+        "minimumConnectionTime": 3
     }
     ]
   
