@@ -725,7 +725,7 @@
     "oppositeStation": "Block401",
     "smallText": "Charodeyka Cemetery, Block 401 - East",
     "langBG": "ул. „Филип Станиславов“",
-    "smallTextBG": "Гробища квартал Чародейка, блок 401 - Изток"
+    "smallTextBG": "Гробища кв. Чародейка, блок 401 - Изток"
   },
   "Block401": {
     "displayName": "Block 401 - West",
@@ -1160,7 +1160,7 @@
     "smallTextBG": ""
   },
   "BlockPushkinOnNeofitBozveliBlvd": {
-    "displayName": "Unnamed - Block \"Pushkin\" on \"Neofit Bozveli\" blvd.",
+    "displayName": "Block \"Pushkin\" on \"Neofit Bozveli\" blvd.",
     "number": "155",
     "oppositeStation": "",
     "smallText": "",
@@ -1168,11 +1168,11 @@
     "smallTextBG": ""
   },
   "AfterTsarOsvoboditelBlvdOnNeofitBozveliBlvd": {
-    "displayName": "Unnamed - After \"Tsar Osvoboditel\" blvd., on \"Neofit Bozveli\" blvd.",
+    "displayName": "After \"Tsar Osvoboditel\" blvd., on \"Neofit Bozveli\" blvd.",
     "number": "156",
     "oppositeStation": "",
     "smallText": "",
-    "langBG": "След бул. „Цар Освободител“ на ул. „Неофит Бозвели“",
+    "langBG": "След бул. „Цар Освободител“ на бул. „Неофит Бозвели“",
     "smallTextBG": ""
   },
   "Malyovitsa1North": {
@@ -1424,7 +1424,7 @@
     "smallTextBG": ""
   },
   "PetrolBaseEntranceNorth": {
-    "displayName": "Petrol Base Entrace - North",
+    "displayName": "Petrol Base Entrance - North",
     "number": "188",
     "oppositeStation": "PetrolBaseEntranceSouth",
     "smallText": "",
@@ -1492,7 +1492,7 @@
     "number": "196",
     "oppositeStation": "",
     "smallText": "",
-    "langBG": "Хподрум - Обръщало",
+    "langBG": "Хиподрум - Обръщало",
     "smallTextBG": ""
   },
   "BorderPoliceWest": {
@@ -1979,7 +1979,7 @@
     "displayName": "Sredna Kula 1 - North",
     "number": "256",
     "oppositeStation": "SrednaKula1South",
-    "smallText": "Entrace from Ruse",
+    "smallText": "Entrance from Ruse",
     "langBG": "Средна кула 1 - Север",
     "smallTextBG": "Вход от Русе"
   },
@@ -1987,7 +1987,7 @@
     "displayName": "Sredna Kula 1 - South",
     "number": "257",
     "oppositeStation": "SrednaKula1North",
-    "smallText": "Entrace from Ruse",
+    "smallText": "Entrance from Ruse",
     "langBG": "Средна кула 1 - Юг",
     "smallTextBG": "Вход от Русе"
   },
@@ -2117,7 +2117,7 @@
     "oppositeStation": "AleksandarStamboliyskiSouth",
     "smallText": "Central Railway Station",
     "langBG": "Александър Стамболийски - Север",
-    "smallTextBG": "ЖП Гара"
+    "smallTextBG": "ЖП гара"
   },
   "AleksandarStamboliyskiSouth": {
     "displayName": "Aleksandar Stamboliyski - South",
@@ -2125,7 +2125,7 @@
     "oppositeStation": "AleksandarStamboliyskiNorth",
     "smallText": "Central Railway Station",
     "langBG": "Александър Стамболийски - Юг",
-    "smallTextBG": "ЖП Гара"
+    "smallTextBG": "ЖП гара"
   },
   "YouthHouse": {
     "displayName": "Youth House",
