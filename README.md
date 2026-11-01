@@ -1,7 +1,7 @@
 # Offline Transit
 
 Vibe-coded personal project.
-A phone-first Progressive Web App (PWA) for offline of browsing public transport schedules. Data is from Municipal Transport Ruse (https://transport-ruse.com/)
+A phone-first Progressive Web App for offline of browsing public transport schedules. Data is from Municipal Transport Ruse (https://transport-ruse.com/)
 View the app here: https://yavor42.github.io/offline-schedules/
 
 ## Features
@@ -13,6 +13,7 @@ View the app here: https://yavor42.github.io/offline-schedules/
 - **Service updates** - Display notices, cancellations, reduced or additional services, diversions, and temporary special lines.
 - **Delay warnings** - Flag departures that may be delayed because of short turnaround times.
 - **Vehicle tracking (experimental)** - Estimate where a vehicle should be along its route by calculating its progress from scheduled departure times and stop-to-stop travel durations. This is schedule-based estimation, not live GPS tracking.
+- **Navigation system** - Directions from station to station. Very limited walking directions only.
 - **English and Bulgarian interfaces** - Switch languages directly in the app. (some translations may be missing)
 - **Offline support** - Cache the application, schedules, and map for use without mobile data.
 - **Installable PWA** - Add the app to your phone's home screen.
@@ -22,7 +23,7 @@ View the app here: https://yavor42.github.io/offline-schedules/
 1. Host the repository using GitHub Pages (or over HTTPS).
 2. Open the published URL while online.
 3. Allow the app to load and cache its files.
-4. Add it to your phone's home screen.
+4. Add it to phone's home screen.
 5. Open it whenever you need to check transit schedules, including offline.
 
 ## File Structure
@@ -37,7 +38,9 @@ View the app here: https://yavor42.github.io/offline-schedules/
 - `data/modifications.json` - Cancellations, additional services, diversions, and special lines.
 - `data/lang_bg.json` - Bulgarian interface translations.
 - `data/aliases.json` - Search synonyms.
-- `tiles/` and `lib/` - Offline map tiles and Leaflet assets.
+- `data/links.json` - Links data for vehicle tracking.
+- `data/transfer_points.json` - Transfer points for navigation system.
+- `tiles/`, `tiles_bg` and `lib/` - Offline map tiles and Leaflet assets.
 
 ## Data and Updates
 

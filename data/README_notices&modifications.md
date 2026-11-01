@@ -1,7 +1,7 @@
 # Notices and Modifications - Data Format
 
 (AI generated and human reviewed!)
-This document explains how to structure `data/notices.json` and `data/modifications.json` for the Offline Transit (OTP) application.
+This document explains how to structure `data/notices.json` and `data/modifications.json` for the Offline Transit application.
 
 Both files are optional. If a file is missing, its feature remains disabled. Updates are checked at startup, when the tab becomes visible, and approximately every five minutes. The service worker uses network-first caching, with a cached copy available offline.
 
@@ -18,7 +18,7 @@ Notices communicate information to passengers and can optionally override the sc
     {
       "id": "notice1",
       "type": "INFORMATION",
-      "forDev": false,
+      "forDev": "Optional data for developer",
       "title": "Service information",
       "message": "Please check your departure time.",
       "titleBG": "",
@@ -65,9 +65,9 @@ The end minute is inclusive.
 
 ### Notice types
 
-- `INFORMATION` — Blue informational banner.
-- `FREE_TRANSIT` — Dark green free-transit banner.
-- `SCHEDULE_OVERRIDE` — Amber banner that can change the timetable type while valid.
+- `INFORMATION` - Blue informational banner.
+- `FREE_TRANSIT` - Dark green free-transit banner.
+- `SCHEDULE_OVERRIDE` - Amber banner that can change the timetable type while valid.
 
 Unknown types are ignored.
 
@@ -83,11 +83,11 @@ An inclusion list containing `"*"` matches everything. Exclusion lists cannot co
 
 Additional boolean filters:
 
-- `municipalOnly` — Buses and trolleybuses.
-- `busOnly` — Buses.
-- `trolleybusOnly` — Trolleybuses.
-- `intercityOnly` — Lines of type `intercity`. (none exist of this type at the moment)
-- `specialOnly` — Special lines.
+- `municipalOnly` - Buses and trolleybuses.
+- `busOnly` - Buses.
+- `trolleybusOnly` - Trolleybuses.
+- `intercityOnly` - Lines of type `intercity`. (none exist of this type at the moment)
+- `specialOnly` - Special lines.
 
 Inclusion criteria are combined as a union, and exclusions are then subtracted. An exclusion without an inclusion applies to everything except the excluded entities. A station exclusion takes precedence at that station.
 
@@ -119,7 +119,7 @@ Modifications describe actual changes to the service. They can alter departures,
     {
       "id": "modification1",
       "type": "CANCELLATION",
-      "forDev": false,
+      "forDev": "Optional data for developer",
       "title": "Cancelled service",
       "message": "This service will not operate.",
       "titleBG": "",
@@ -268,7 +268,9 @@ A `SPECIAL` modification contains a `specialLine` object:
       {
         "id": "SPECIAL1_OUT",
         "displayName": "Outbound",
+        "displayNameBG": "Изходящ",
         "smallText": "",
+        "smallTextBG": "",
         "stops": [
           {
             "stationId": "StationA",
@@ -289,7 +291,7 @@ A `SPECIAL` modification contains a `specialLine` object:
 }
 ```
 
-Direction objects use the same structure as regular line directions. Optional fields include `displayNameBG`, `smallTextBG`, and `aliases`.
+Direction objects use the same structure as regular line directions.
 
 Rules:
 
