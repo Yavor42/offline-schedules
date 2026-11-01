@@ -185,6 +185,7 @@
   "Trip on": "Пътуване на линия",
   "Arrival at {0}": "Пристигане около {0} ч.",
   "Go back a step": "Назад една стъпка",
-  "No upcoming departures with the current filters": "Няма предстоящи курсове с текущите филтри"
+  "No upcoming departures with the current filters": "Няма предстоящи курсове с текущите филтри",
+  "No upcoming departures": "Няма предстоящи курсове"
 }
 
