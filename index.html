@@ -56,7 +56,7 @@ input[type=search]::-webkit-search-cancel-button{-webkit-appearance:none;display
 .vp{position:fixed;inset:0;z-index:30;background:rgba(0,0,0,.6);padding:7vh 14px 0}.vpb{max-width:420px;margin:0 auto;max-height:68vh;display:flex;flex-direction:column;background:var(--card2);border:1px solid var(--line);border-radius:16px;box-shadow:0 14px 34px rgba(0,0,0,.65);overflow:hidden}
 .vpb input{margin:10px;width:calc(100% - 20px);padding:13px 14px;font-size:16px;border:1px solid var(--line);border-radius:12px;background:var(--card);color:var(--tx);outline:0;-webkit-user-select:text;user-select:text}.vpb input:focus{border-color:var(--acc)}
 .vl{overflow-y:auto;padding:0 6px 8px}.vl button{display:block;width:100%;text-align:left;padding:13px 12px;border:0;border-radius:10px;background:none;color:var(--tx);font-size:16px}.vl button.on{background:var(--card);color:var(--acc);font-weight:700}.vl .empty{padding:24px 10px}.vl .s{color:var(--mut);font-size:13px;font-weight:400;margin-top:2px}
-.selbtn{margin-left:auto;max-width:190px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;background:var(--card);color:var(--tx);border:1px solid var(--line);border-radius:10px;padding:9px 10px;font-size:16px}
+.selbtn{margin-left:0;flex:1;min-width:0;max-width:none;text-align:left;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;background:var(--card);color:var(--tx);border:1px solid var(--line);border-radius:10px;padding:9px 10px;font-size:16px}
 .fx{margin:0 -14px 12px}#mn{display:contents}#pdeps:not(:empty){margin-bottom:4px}
 .chips{display:flex;gap:8px;overflow-x:auto;padding:2px 14px 0;scrollbar-width:none;-webkit-overflow-scrolling:touch}
 .chips::-webkit-scrollbar{display:none}
@@ -76,7 +76,7 @@ input[type=search]::-webkit-search-cancel-button{-webkit-appearance:none;display
 .chk{display:flex;align-items:center;gap:12px;min-height:46px}
 .chk.dis{opacity:.35;pointer-events:none}
 .chk input[type=checkbox]{width:22px;height:22px;margin:0;flex:none;accent-color:var(--acc)}
-.chk input[type=time],.chk select{margin-left:auto;max-width:190px;background:var(--card);color:var(--tx);border:1px solid var(--line);border-radius:10px;padding:8px 10px;font-size:16px;-webkit-user-select:text;user-select:text}
+.chk .lb{min-width:5.4em}.chk input[type=time],.chk select{margin-left:0;max-width:190px;background:var(--card);color:var(--tx);border:1px solid var(--line);border-radius:10px;padding:8px 10px;font-size:16px;-webkit-user-select:text;user-select:text}
 .empty{text-align:center;color:var(--mut);padding:50px 20px}
 .hd{background:var(--card);border-radius:22px;padding:18px;margin:6px 0 12px;text-align:center}
 .hd .big2{font-size:56px;font-weight:750;letter-spacing:-1px;font-variant-numeric:tabular-nums;line-height:1.1;margin:8px 0 2px}
@@ -140,6 +140,7 @@ header[hidden]{display:none}
 .nsd{margin:2px 0;font-size:13px;color:var(--mut)}.nsd summary{padding:3px 0;cursor:pointer}.nsd .nsr{padding:2px 0 2px 10px}
 .nvb{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 12px}.nvb button{flex:1 1 auto;min-height:44px;border-radius:22px;border:1px solid var(--line);background:var(--card);color:var(--tx);padding:0 16px;font-size:15px;display:inline-flex;align-items:center;justify-content:center;gap:8px}.nvb button.pri{background:var(--acc);border-color:var(--acc);color:#fff}
 .tp{position:fixed;left:14px;right:14px;bottom:calc(var(--fh,70px) + 10px);z-index:20;max-width:492px;margin:0 auto;display:flex;align-items:center;gap:10px;background:var(--card2);border:1px solid var(--line);border-radius:26px;padding:8px 8px 8px 16px;box-shadow:0 6px 20px rgba(0,0,0,.4);color:var(--tx);text-align:left;font-size:14px}.tp[hidden]{display:none}.tp .tpt{flex:1;min-width:0}.tp .tpt .s{font-size:12px;color:var(--mut)}.tp .tpb{flex:none;width:40px;height:40px;border-radius:50%;border:0;background:var(--card);color:var(--tx);display:grid;place-items:center;padding:0}body.tpon main{padding-bottom:calc(16px + 76px)}
+.ce{color:#fdeedf}.big2.cy{color:#ffd23f}.big2.cr{color:#ff5a5f}.big2.ce{color:#fdeedf}.tp .tpt .s.cy{color:#ffd23f}.tp .tpt .s.cr{color:#ff5a5f}.tp .tpt .s.ce{color:#fdeedf}.nt{white-space:nowrap;text-align:right;flex:none}.nsr>span:first-child{min-width:0}.nsh{display:flex;align-items:center;gap:8px;padding:3px 0}.nsh b{flex:1;min-width:0}.clr:disabled{opacity:.4;text-decoration:none}h1.wrapt{white-space:normal;font-size:19px;line-height:1.2;overflow:visible}
 .pill.star{font-size:20px;line-height:1;padding:7px 12px;color:var(--mut)}.pill.star.on{color:#f5c542}
 .nb{border-radius:16px;padding:10px 12px;margin:0 0 12px;font-size:14px;line-height:1.35;border:1px solid}
 .dn .nb{margin:0 0 12px}.nb b{display:block;font-size:15px}.nb .nm{margin-top:3px;opacity:.92;white-space:pre-line}.nb .np{margin-top:6px;font-size:12px;opacity:.65}
@@ -367,7 +368,7 @@ function navPlan(o,d,T0,arrBy){const R=navData(),adj=navLinks(),all=[],seen=new 
   gs=gs.filter(g=>!gs.some(h=>h!==g&&h.rep.start>=g.rep.start&&h.rep.arr<=g.rep.arr&&h.rep.n<=g.rep.n&&(h.rep.start>g.rep.start||h.rep.arr<g.rep.arr||h.rep.n<g.rep.n)));
   gs.sort((a,b)=>a.rep.arr-b.rep.arr||a.rep.start-b.rep.start);return{groups:gs.slice(0,8),o,d}}
 const NAV={form:{o:null,d:null,dep:'',arr:''},res:null,cur:null,P:null,grp:null,min:false,missed:null};
-const nfm=m=>fmt(Math.round(m)),ncl=d=>Math.abs(d)>=3?'cr':Math.abs(d)>=1?'cy':'';   // 1-2 min off: yellow, more: red
+const nfm=m=>fmt(Math.round(m)),ncl=d=>d<=-1?'ce':d>=3?'cr':d>=1?'cy':'';   // 1-2 min off: yellow, more: red
 const jNow=J=>{const d=new Date();let n=d.getHours()*60+d.getMinutes()+d.getSeconds()/60;if(J.arr>=1440&&n<J.board0-720)n+=1440;return n};
 const rideIx=J=>J.legs.map((x,i)=>x.k==='ride'?i:-1).filter(i=>i>=0);
 const lineChain=(g,li0)=>g.rep.legs.map((x,li)=>x.k==='ride'?[...new Set(g.members.map(m=>m.legs[li].l.id))].map(id=>badge(lines.find(l=>l.id===id))).join('<span class="nsep">/</span>'):'').filter(Boolean).join('<span class="nsep">›</span>');
@@ -388,14 +389,14 @@ const CHEV_D='<svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"
 // per ride leg: shown board/alight time. Boarding early/late moves the rest of the ride by that difference; getting off replaces the estimate with the real time
 const legInfo=(J,P,li)=>{const x=J.legs[li],A=P.act[li]||{},sh=A.b!=null?Math.round(A.b-x.dep):0;return{x,sh,board:A.b??x.dep,alight:A.a??x.arr+sh,bd:A.b!=null?sh:0,ad:A.a!=null?Math.round(A.a-x.arr):sh}};
 const finalEst=(J,P)=>{const RI=rideIx(J),f=legInfo(J,P,RI.at(-1)),e=J.legs.at(-1);return f.alight+(e.k==='walk'?e.t:0)};
-function navDetail(){const J=NAV.cur,P=NAV.P,RI=rideIx(J),tm=(v,d,o)=>`<span class="${ncl(d)}">${nfm(v)}</span>${d?` <s class="s">${nfm(o)}</s>`:''}`,fe=finalEst(J,P);
+function navDetail(){const J=NAV.cur,P=NAV.P,RI=rideIx(J),tm=(v,d,o)=>`<span class="nt"><span class="${ncl(d)}">${nfm(v)}</span>${d?` <s class="s">${nfm(o)}</s>`:''}</span>`,fe=finalEst(J,P);
   const steps=J.legs.map((x,li)=>{
     if(x.k==='conn')return `<div class="ns w">↔ ${$h('Change lines at {0}',sname(x.at))}<div class="s">${$h('Allow at least {0} min',x.c)}</div></div>`;
     if(x.k==='walk')return `<div class="ns w">🚶 ${$h('Walk to {0}',sname(x.b))} · ${$t('{0} min',x.t)}${x.c?`<div class="s">${$h('Then allow at least {0} min to change lines',x.c)}</div>`:''}${x.u?`<div class="nuw">${$h('You must use an underpass to complete this transfer.')}</div>`:''}</div>`;
     const f=legInfo(J,P,li),n=x.ai-x.bi-1,cur=li===P.i&&!P.done,done=li<P.i||P.done,pr=RI[RI.indexOf(li)-1];let warn='';
     if(pr!=null&&!done&&(pr<P.i||P.done||pr===P.i)){const pf=legInfo(J,P,pr),need=J.legs.slice(pr+1,li).reduce((a,y)=>a+(y.k==='walk'?y.t+y.c:y.k==='conn'?y.c:0),0);if(pf.alight+need>x.dep&&!P.on)warn=`<div class="nuw cr">⚠ ${$h('You may miss this connection')}</div>`}
     const rows=x.rt.stp.slice(x.bi+1,x.ai).map((p,k)=>`<div class="nsr"><span>${esc(sname(p))}</span><span class="${ncl(f.sh)}">${nfm(x.tr.dep+x.rt.off[x.bi+1+k]+f.sh)}</span></div>`).join('');
-    return `<div class="ns${cur?' cur':''}${done?' done':''}"><div class="nsr">${badge(x.l)}<b style="flex:1;margin-left:8px">→ ${esc(dnm(x.d)||sname(x.d.stops[x.d.term].stationId))}</b></div>
+    return `<div class="ns${cur?' cur':''}${done?' done':''}"><div class="nsh">${badge(x.l)}<b>→ ${esc(dnm(x.d)||sname(x.d.stops[x.d.term].stationId))}</b></div>
     <div class="nsr"><span>${$h('Board at {0}',sname(x.b))}</span>${tm(f.board,f.bd,x.dep)}</div>
     ${n>0?`<details class="nsd"><summary>${n===1?$h('{0} stop',1):$h('{0} stops',n)}</summary>${rows}</details>`:''}
     <div class="nsr"><span>${$h('Get off at {0}',sname(x.p))}</span>${tm(f.alight,f.ad,x.arr)}</div>${warn}</div>`}).join('');
@@ -405,8 +406,11 @@ function navDetail(){const J=NAV.cur,P=NAV.P,RI=rideIx(J),tm=(v,d,o)=>`<span cla
   else btn=`<div class="nvb"><button class="pri" data-nv="off">${$h('I got off at {0}',sname(J.legs[P.i].p))}</button></div>`;
   return `<div class="nvh"><button class="mini" data-nv="min" aria-label="${$h('Minimize')}">${CHEV_D}</button></div>
   <div class="hd" style="padding:14px"><div class="olb" style="display:flex;justify-content:center;align-items:center;gap:6px;flex-wrap:wrap">${J.legs.filter(x=>x.k==='ride').map(x=>badge(x.l)).join('<span class="nsep">›</span>')}</div><div class="big2 ${ncl(Math.round(fe-J.arr))}" style="margin-top:8px">${nfm(fe)}</div><div class="s" style="color:var(--mut)">${$h('Arrival')} · ${eta(Math.max(0,Math.round(fe-J.start)))}</div></div>
-  ${btn}${steps}<div style="text-align:center;margin:8px 0 24px"><button class="clr" data-nv="end">${$h('End trip')}</button></div>`}
-function viewNavtrip(){return{t:$t('Trip'),h:NAV.cur?navDetail():`<div class="empty">${$h('No active trip')}</div>`}}
+  ${btn}${steps}<div style="text-align:center;margin:8px 0 24px"><button class="clr" data-nv="back" ${P.i===RI[0]&&!P.on&&!P.done?'disabled':''}>${$h('Go back a step')}</button> · <button class="clr" data-nv="end">${$h('End trip')}</button></div>`}
+function viewNavtrip(){if(!NAV.cur){   // no trip: don't show an empty page, step over it when going back
+    if(NAV.seen)setTimeout(()=>history.back());else{history.replaceState({v:'nav'},'');setTimeout(()=>render({v:'nav'}))}
+    return{t:$t('Trip'),h:''}}
+  return{t:$t('Trip'),h:navDetail()}}
 function syncPill(){let el=$('#tp');if(!el){el=document.createElement('div');el.id='tp';el.className='tp';el.hidden=true;el.dataset.nv='max';document.body.appendChild(el)}
   const s=history.state||{v:'home'},on=!!(NAV.min&&NAV.cur&&s.v!=='navtrip');document.body.classList.toggle('tpon',on);
   document.documentElement.style.setProperty('--fh',($('#ft').hidden?0:$('#ft').offsetHeight)+'px');if(!on){el.hidden=true;return}
@@ -417,12 +421,13 @@ function navAct(a,b){const J=NAV.cur,P=NAV.P;
   if(a==='go'){const F=NAV.form;NAV.missed=null;
     if(!F.o||!F.d||F.o===F.d){NAV.res={err:'Choose an origin and a destination'};$('#nvres').innerHTML=navRes();return}
     NAV.res=navPlan(F.o,F.d,F.dep?uw(toMin(F.dep)):now(),F.arr?uw(toMin(F.arr)):null);$('#nvres').innerHTML=navRes();return}
-  if(a==='opt'){NAV.grp=NAV.res.groups[+b.dataset.n];NAV.cur=NAV.grp.members[0];NAV.P={i:rideIx(NAV.cur)[0],on:false,act:{},done:false};NAV.min=false;return go({v:'navtrip'})}
+  if(a==='opt'){NAV.grp=NAV.res.groups[+b.dataset.n];NAV.cur=NAV.grp.members[0];NAV.P={i:rideIx(NAV.cur)[0],on:false,act:{},done:false};NAV.min=false;NAV.seen=true;return go({v:'navtrip'})}
   if(a==='max'){NAV.min=false;return go({v:'navtrip'})}
   if(a==='min'){NAV.min=true;return go({v:'home'})}
   if(a==='end'){NAV.cur=null;NAV.P=null;NAV.grp=null;NAV.min=false;return go({v:'nav'})}
   if(!J)return;
-  if(a==='on'){if(b.dataset.m!=null&&P.i===rideIx(J)[0]){NAV.cur=NAV.grp.members[+b.dataset.m]}P.act[P.i]={b:Math.round(jNow(NAV.cur))};P.on=true}
+  if(a==='back'){if(P.done){P.done=false;P.on=true;if(P.act[P.i])delete P.act[P.i].a}else if(P.on){P.on=false;delete P.act[P.i]}else{const pr=rideIx(J)[rideIx(J).indexOf(P.i)-1];if(pr!=null){P.i=pr;P.on=true;if(P.act[pr])delete P.act[pr].a}}}
+  else if(a==='on'){if(b.dataset.m!=null&&P.i===rideIx(J)[0]){NAV.cur=NAV.grp.members[+b.dataset.m]}P.act[P.i]={b:Math.round(jNow(NAV.cur))};P.on=true}
   else if(a==='off'){P.act[P.i].a=Math.round(jNow(J));P.on=false;const nx=rideIx(J).find(i=>i>P.i);if(nx!=null)P.i=nx;else P.done=true}
   else if(a==='miss'){const o=J.legs[P.i].b;NAV.form.o=o;NAV.form.d=J.dest;NAV.form.dep='';NAV.missed=sname(o);NAV.res=navPlan(o,J.dest,Math.ceil(jNow(J)),null);NAV.cur=null;NAV.P=null;NAV.min=false;return go({v:'nav'})}
   render(history.state,true)}
@@ -764,31 +769,31 @@ function initFilters(id){
     if(kind==='via'){if(F.from&&!e.d.stops.some((x,k)=>k<e.i&&!x.x&&x.stationId===F.from))return;e.d.stops.slice(e.i+1).forEach(x=>x.stationId!==id&&!x.x&&m.set(x.stationId,sname(x.stationId)))}
     else{if(F.via&&!e.d.stops.some((x,k)=>k>e.i&&!x.x&&x.stationId===F.via))return;e.d.stops.slice(0,e.i).forEach(x=>x.stationId!==id&&!x.x&&m.set(x.stationId,sname(x.stationId)))}});
     return[...m].sort((a,b)=>a[1].localeCompare(b[1],loc()))};
-  const multi=ls.length>1,viaOk=multi&&ents.some(e=>e.i<last(e)),fromOk=multi&&ents.some(e=>e.i>0),termAll=ents.every(e=>e.i===last(e));
+  const multi=ls.length>1,viaOk=multi&&ents.some(e=>e.i<last(e)),fromOk=multi&&ents.some(e=>e.i>0),termAll=ents.every(e=>e.i===last(e)),termNone=ents.every(e=>e.i!==last(e));
   fx.innerHTML=`<div class="chips">${ls.map(l=>`<button class="chip" data-l="${esc(l.id)}" style="--c:${esc(l.color||'#4d83ff')}">${esc(bt(l))}</button>`).join('')}</div>
    <div class="advwrap"><button class="advbtn" id="ab"></button><button class="advbtn" id="pv"></button><div id="mn"></div></div>`;
   const menu=()=>{const n=now(),d=hasBoth?'':'dis';
     return`<div class="menu">
     <h3>${$h('Vehicle')}</h3>${[['trolleybus',$h('Trolleybus')],['bus',$h('Bus')]].map(([t,nm])=>`<label class="chk ${d}"><input type="checkbox" data-t="${t}" ${F.types.has(t)?'checked':''} ${hasBoth?'':'disabled'}>${nm}</label>`).join('')}
     <h3>${$h('Departure time')}</h3>
-    <label class="chk"><input type="checkbox" id="ca" ${F.after!=null?'checked':''}>${$h('After')}<input type="time" id="ta" value="${fmt(F.after??n)}"></label>
-    <label class="chk"><input type="checkbox" id="cb" ${F.before!=null?'checked':''}>${$h('Before')}<input type="time" id="tb" value="${fmt(F.before??Math.min(n+60,1439))}"></label>
+    <label class="chk"><input type="checkbox" id="ca" ${F.after!=null?'checked':''}><span class="lb">${$h('After')}</span><input type="time" id="ta" value="${fmt(F.after??n)}"></label>
+    <label class="chk"><input type="checkbox" id="cb" ${F.before!=null?'checked':''}><span class="lb">${$h('Before')}</span><input type="time" id="tb" value="${fmt(F.before??Math.min(n+60,1439))}"></label>
     <h3>${$h('Stops at')}</h3>
     <label class="chk ${viaOk?'':'dis'}"><input type="checkbox" id="cv" ${F.via?'checked':''}><button type="button" class="selbtn" id="sv">${F.viaSel?esc(sname(F.viaSel)):$h('Choose a station…')} ▾</button></label>
     <h3>${$h('Arrives from')}</h3>
     <label class="chk ${fromOk?'':'dis'}"><input type="checkbox" id="cf" ${F.from?'checked':''}><button type="button" class="selbtn" id="sf">${F.fromSel?esc(sname(F.fromSel)):$h('Choose a station…')} ▾</button></label>
     <h3>${$h('Terminating lines')}</h3>
-    <label class="chk ${termAll?'dis':''}"><input type="checkbox" id="ct" ${F.inclTerm||termAll?'checked':''} ${termAll?'disabled':''}>${$h('Include terminating lines')}</label></div>`};
+    <label class="chk ${termAll||termNone?'dis':''}"><input type="checkbox" id="ct" ${(F.inclTerm&&!termNone)||termAll?'checked':''} ${termAll||termNone?'disabled':''}>${$h('Include terminating lines')}</label></div>`};
   const drawMenu=()=>$('#mn').innerHTML=F.open?menu():'';
   const sync=()=>{
     fx.querySelectorAll('.chip').forEach(c=>c.classList.toggle('on',F.sel.has(c.dataset.l)));
     const k=advCount(),ab=$('#ab');ab.textContent='⚙ '+$t('Advanced filters')+(k?' · '+k:'')+(F.open?' ▴':' ▾');
     ab.classList.toggle('on',k>0);$('#cl').hidden=!(k||F.sel.size)};
   refreshDeps=()=>{const n=now(),out=[];SC.clear();
-    const A=F.after!=null?uw(F.after):null,B=F.before!=null?uw(F.before):null,tf=A!=null||B!=null;   // tf: a time window is set, so earlier departures of today stay in the list
+    const A=F.after!=null?uw(F.after):null,B=F.before!=null?uw(F.before):null,tf=A!=null||B!=null,win=m=>A!=null&&B!=null?(A>B?(m>=A||m<=B):(m>=A&&m<=B)):A!=null?(m>=A&&m<=A+180):B!=null?(m<=B&&m>=B-180):true;   // one-sided time filters reach 3 hours only; tf: a time window is set, so earlier departures of today stay in the list
     [0,-1].forEach(o=>ents.forEach(e=>sched(e.d,o).forEach((q,i)=>{   // o=-1: yesterday's trips still running past midnight
       const t=q.t,sp=e.d.stops[e.i];let m=ov(t)+e.off;if(o)m-=1440;
-      if((m<n-PVMIN&&!tf)||(F.sel.size&&!F.sel.has(e.l.id))||(F.types.size&&!F.types.has(e.l.type))||!(A!=null&&B!=null&&A>B?(m>=A||m<=B):!((A!=null&&m<A)||(B!=null&&m>B)))||
+      if((m<n-PVMIN&&!tf)||(F.sel.size&&!F.sel.has(e.l.id))||(F.types.size&&!F.types.has(e.l.type))||!win(m)||
         (F.via&&!e.d.stops.some((x,k)=>k>e.i&&!x.x&&x.stationId===F.via))||(F.from&&!e.d.stops.some((x,k)=>k<e.i&&!x.x&&x.stationId===F.from))||(!F.inclTerm&&!termAll&&e.i===last(e)))return;
       out.push({...e,m,ti:i,y:o?1:0,qx:q.x,qa:q.a,sx:sp.x,sa:sp.add,st:q.x?'':dstat(sched(e.d,o).lts,t),tg:q.x||sp.x?null:turnGap(e.l,e.d,t,o)})})));
     out.sort((a,b)=>a.m-b.m);
@@ -797,7 +802,7 @@ function initFilters(id){
     $('#pv').textContent='🕒 '+$t('Previous departures')+(F.prev?' ▴':' ▾');$('#pv').classList.toggle('on',F.prev);
     $('#pv').disabled=sim.length>0;   // the simulated rows already cover the past part of the window
     $('#pdeps').innerHTML=sim.length?sim.map(e=>rowHtml(e,n,1)).join(''):F.prev?(pv.length?pv.map(e=>rowHtml(e,n,1)).join(''):`<div class="empty" style="padding:18px 20px">${$h('No departures in the past hour')}</div>`):'';
-    deps.innerHTML=(up.length?up.slice(F.page*PG,F.page*PG+PG).map(e=>rowHtml(e,n)).join(''):`<div class="empty">${F.sel.size||advCount()?$h(sim.length?'No upcoming departures':'No departures match these filters'):$h('No upcoming departures')}</div>`)+
+    deps.innerHTML=(up.length?up.slice(F.page*PG,F.page*PG+PG).map(e=>rowHtml(e,n)).join(''):`<div class="empty">${F.sel.size||advCount()?$h('No upcoming departures with the current filters'):$h('No upcoming departures')}</div>`)+
       '';
     $('#pgr').innerHTML=pages>1?`<div class="pager"><button data-pg="-1" ${F.page<1?'disabled':''} aria-label="${$h('Previous page')}">←</button><span>${$h('Page {0} of {1}',F.page+1,pages)}</span><button data-pg="1" ${F.page>=pages-1?'disabled':''} aria-label="${$h('Next page')}">→</button></div>`:''};
   $('#pv').onclick=()=>{F.prev=!F.prev;refreshDeps()};
@@ -843,8 +848,9 @@ let mapObj=null;
 async function initMap(){
   const el=$('#map');
   try{
-    let meta=null,w,h;
-    try{const r=await fetch('tiles/meta.json');if(r.ok)meta=await r.json()}catch(e){}
+    let meta=null,w,h,td='tiles';
+    if(lang==='bg'){try{const r=await fetch('tiles_bg/meta.json');if(r.ok){meta=await r.json();td='tiles_bg'}}catch(e){}}   // Bulgarian map, falls back to the English one
+    if(!meta){try{const r=await fetch('tiles/meta.json');if(r.ok)meta=await r.json()}catch(e){}}
     if(meta){w=meta.w;h=meta.h}
     else{const im=new Image();im.src='map.png';await new Promise((ok,no)=>{im.onload=ok;im.onerror=no});w=im.naturalWidth;h=im.naturalHeight}   // fallback: single big image (slow)
     if(!el.isConnected)return;
@@ -852,7 +858,7 @@ async function initMap(){
     mapObj=L.map(el,{crs:L.CRS.Simple,zoomSnap:.25,zoomDelta:.5,minZoom:-10,maxZoom:2,attributionControl:false,zoomControl:false,maxBoundsViscosity:.9,fadeAnimation:false,bounceAtZoomLimits:false});
     L.control.zoom({position:'bottomright'}).addTo(mapObj);
     if(meta){const N=meta.levels;
-      new(L.TileLayer.extend({getTileUrl(c){return'tiles/'+(c.z+N)+'/'+c.x+'/'+c.y+'.png'}}))('',{tileSize:meta.tile,minZoom:-10,maxZoom:2,minNativeZoom:-N,maxNativeZoom:0,bounds:b,noWrap:true,keepBuffer:3}).addTo(mapObj)}
+      new(L.TileLayer.extend({getTileUrl(c){return td+'/'+(c.z+N)+'/'+c.x+'/'+c.y+'.png'}}))('',{tileSize:meta.tile,minZoom:-10,maxZoom:2,minNativeZoom:-N,maxNativeZoom:0,bounds:b,noWrap:true,keepBuffer:3}).addTo(mapObj)}
     else L.imageOverlay('map.png',b).addTo(mapObj);
     mapObj.fitBounds(b);
     mapObj.setMinZoom(mapObj.getZoom()-1);mapObj.setMaxBounds(b.pad(.3));
@@ -867,7 +873,7 @@ function applyLang(){   // translate the static chrome (header buttons, footer) 
 function render(s,keep){
   s=s||{v:'home'};syncMods();SC.clear();if((s.v==='dirs'||s.v==='trip')&&!lines.some(x=>x.id===s.l)){s={v:'routes'};history.replaceState(s,'')}
   if(mapObj){mapObj.remove();mapObj=null}refreshDeps=null;closeFx=null;document.querySelector('.vp')?.remove();$('#pgr').innerHTML='';if(!keep)pickOpen=false;main.classList.toggle('fill',s.v==='map');const y=main.scrollTop,v=V[s.v](s);
-  const ttl=$('#ttl');if(s.v==='home')ttl.textContent='';else if(v.sub)ttl.innerHTML=esc(v.t)+'<span class="ttlsub">'+esc(v.sub)+'</span>';else ttl.textContent=v.t;$('#bk').hidden=s.v==='home';
+  const ttl=$('#ttl');if(s.v==='home')ttl.textContent='';else if(v.sub)ttl.innerHTML=esc(v.t)+'<span class="ttlsub">'+esc(v.sub)+'</span>';else ttl.textContent=v.t;$('#bk').hidden=s.v==='home';ttl.classList.toggle('wrapt',s.v==='station');
   $('#so').hidden=$('#fs').hidden=s.v!=='search';$('#rs').hidden=$('#nv').hidden=s.v!=='routes';
   document.querySelector('header').hidden=s.v==='home';
   const sd=$('#sd');sd.hidden=!(s.v==='station'||s.v==='trip');
