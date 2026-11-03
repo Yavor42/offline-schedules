@@ -101,6 +101,22 @@
         "timeToReach": 7,
         "destinationStation": "Charodeyka-South"
       }
+    },
+    {
+      "linkID": 13,
+      "details": {
+        "originStation": "METROSuperstoreSouth",
+        "timeToReach": 5,
+        "destinationStation": "METROSuperstoreNorth"
+      }
+    },
+        {
+      "linkID": 14,
+      "details": {
+        "originStation": "METROSuperstoreNorth",
+        "timeToReach": 5,
+        "destinationStation": "METROSuperstoreSouth"
+      }
     }
   ]
 }
