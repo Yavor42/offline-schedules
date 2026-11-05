@@ -790,7 +790,7 @@ function initFilters(id){
     const k=advCount(),ab=$('#ab');ab.textContent='⚙️ '+$t('Advanced filters')+(k?' · '+k:'')+(F.open?' ▴':' ▾');
     ab.classList.toggle('on',k>0);$('#cl').hidden=!(k||F.sel.size)};
   refreshDeps=()=>{const n=now(),out=[];SC.clear();
-    const A=F.after!=null?uw(F.after):null,B=F.before!=null?uw(F.before):null,tf=A!=null||B!=null,win=m=>A!=null&&B!=null?(A>B?(m>=A||m<=B):(m>=A&&m<=B)):A!=null?(m>=A&&m<=A+180):B!=null?(m<=B&&m>=B-180):true;   // one-sided time filters reach 3 hours only; tf: a time window is set, so earlier departures of today stay in the list
+    const A=F.after!=null?uw(F.after):null,B=F.before!=null?uw(F.before):null,tf=A!=null||B!=null,bad=A!=null&&B!=null&&A>B&&!(n<dayStart&&B<dayStart&&A>=dayStart),win=m=>bad?false:A!=null&&B!=null?(A>B?(m>=A||m<=B):(m>=A&&m<=B)):A!=null?(m>=A&&m<=A+180):B!=null?(m<=B&&m>=B-180):true;   // one-sided time filters reach 3 hours only; tf: a time window is set, so earlier departures of today stay in the list
     [0,-1].forEach(o=>ents.forEach(e=>sched(e.d,o).forEach((q,i)=>{   // o=-1: yesterday's trips still running past midnight
       const t=q.t,sp=e.d.stops[e.i];let m=ov(t)+e.off;if(o)m-=1440;
       if((m<n-PVMIN&&!tf)||(F.sel.size&&!F.sel.has(e.l.id))||(F.types.size&&!F.types.has(e.l.type))||!win(m)||
@@ -801,8 +801,8 @@ function initFilters(id){
     F.page=Math.min(Math.max(F.page,0),pages-1);
     $('#pv').textContent='🕒 '+$t('Previous departures')+(F.prev?' ▴':' ▾');$('#pv').classList.toggle('on',F.prev);
     $('#pv').disabled=sim.length>0;   // the simulated rows already cover the past part of the window
-    $('#pdeps').innerHTML=sim.length?sim.map(e=>rowHtml(e,n,1)).join(''):F.prev?(pv.length?pv.map(e=>rowHtml(e,n,1)).join(''):`<div class="empty" style="padding:18px 20px">${$h('No departures in the past hour')}</div>`):'';
-    deps.innerHTML=(up.length?up.slice(F.page*PG,F.page*PG+PG).map(e=>rowHtml(e,n)).join(''):`<div class="empty">${F.sel.size||advCount()?$h('No upcoming departures with the current filters'):$h('No upcoming departures')}</div>`)+
+    $('#pdeps').innerHTML=bad?'':sim.length?sim.map(e=>rowHtml(e,n,1)).join(''):F.prev?(pv.length?pv.map(e=>rowHtml(e,n,1)).join(''):`<div class="empty" style="padding:18px 20px">${$h('No departures in the past hour')}</div>`):'';
+    deps.innerHTML=(bad?`<div class="empty">${$h('The "After" time must be earlier than the "Before" time')}</div>`:up.length?up.slice(F.page*PG,F.page*PG+PG).map(e=>rowHtml(e,n)).join(''):`<div class="empty">${F.sel.size||advCount()?$h('No upcoming departures with the current filters'):$h('No upcoming departures')}</div>`)+
       '';
     $('#pgr').innerHTML=pages>1?`<div class="pager"><button data-pg="-1" ${F.page<1?'disabled':''} aria-label="${$h('Previous page')}">←</button><span>${$h('Page {0} of {1}',F.page+1,pages)}</span><button data-pg="1" ${F.page>=pages-1?'disabled':''} aria-label="${$h('Next page')}">→</button></div>`:''};
   $('#pv').onclick=()=>{F.prev=!F.prev;refreshDeps()};
