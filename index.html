@@ -23,7 +23,7 @@ header{display:flex;align-items:center;gap:10px;padding:10px 14px;min-height:56p
 header h1 img{display:block;height:44px;width:auto;max-width:100%;object-fit:contain}
 header h1{flex:1;margin:0;font-size:20px;font-weight:650;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .back#rs{flex:none;font-size:18px}.vl button.dr{display:flex;align-items:center;gap:12px}.vl .dr .grow{flex:1;min-width:0}.vl .dr .s{color:var(--mut);font-size:13px;font-weight:400}
-.back{width:40px;height:40px;border-radius:50%;border:0;background:var(--card);color:var(--tx);font-size:22px;display:grid;place-items:center;padding:0;line-height:1}.back[hidden]{display:none}.back svg,.imx svg{display:block}.back.star{color:var(--mut)}.back.star.on{color:#f5c542}#so{height:40px;border-radius:20px;padding:0 16px;font-size:14px}.imx{display:grid;place-items:center}
+.back{width:40px;height:40px;border-radius:50%;border:0;background:var(--card);color:var(--tx);font-size:22px;display:grid;place-items:center;padding:0;line-height:1}.back[hidden]{display:none}.back svg,.imx svg{display:block}.back.star{color:var(--mut)}.back.star.on{color:#f5c542}#so,#mt{height:40px;border-radius:20px;padding:0 16px;font-size:14px}.imx{display:grid;place-items:center}
 .pill{border:0;border-radius:20px;background:var(--card);color:var(--tx);font-size:13px;padding:8px 12px;white-space:nowrap;flex:none}.pill:disabled{opacity:.35}.pill[hidden]{display:none}.back:disabled{opacity:.35}.back#sd{flex:none;font-size:20px;padding:0}
 .rt{display:flex;flex-direction:column;align-items:flex-end;gap:2px}.fav{font-size:23px;line-height:1;padding:5px 7px;margin:-2px -7px -7px 0;color:var(--mut)}.fav.on{color:#f5c542}
 .sortm{position:fixed;right:14px;z-index:25;min-width:230px;background:var(--card2);border:1px solid var(--line);border-radius:14px;box-shadow:0 14px 34px rgba(0,0,0,.65);padding:6px}.sortm[hidden]{display:none}
@@ -101,11 +101,15 @@ input[type=search]::-webkit-search-cancel-button{-webkit-appearance:none;display
 .row.a{background:#0e3a25}.row.x .t,.row.x .s,.row.x .time,.row.x .eta{color:var(--mut)!important;text-decoration:line-through}.row.x .badge{opacity:.5}
 .tag{font-size:11px;color:var(--mut);border:1px solid var(--line);border-radius:6px;padding:1px 6px;margin-left:6px}
 main.fill{padding:0;overflow:hidden}
-#map{width:100%;height:100%;background:#0b0e13;touch-action:none;outline:0}
+#map{position:relative;isolation:isolate;width:100%;height:100%;background:#0b0e13;touch-action:none;outline:0}
 .leaflet-bar a,.leaflet-bar a:hover{background:var(--card2);color:var(--tx);border-color:var(--line)}
 .leaflet-bar{border:1px solid var(--line);box-shadow:0 4px 14px rgba(0,0,0,.5)}
 .leaflet-map-pane,.leaflet-tile-pane{will-change:transform}
 .leaflet-bottom{margin-bottom:env(safe-area-inset-bottom)}
+.stp{background:none;border:0}.stp i{display:block;width:16px;height:16px;margin:6px;border-radius:50%;background:var(--acc);border:3px solid #fff;box-shadow:0 1px 6px rgba(0,0,0,.6)}
+.leaflet-popup-content-wrapper,.leaflet-popup-tip{background:var(--card2);color:var(--tx)}.leaflet-popup-content{margin:12px 14px;font:14px/1.35 system-ui,sans-serif}.leaflet-popup-content .pn{font-weight:700;font-size:15px}.leaflet-popup-content .ps{color:var(--mut);margin-top:2px}
+.leaflet-popup-content button{margin-top:10px;width:100%;border:0;border-radius:10px;padding:9px 12px;background:var(--acc);color:#fff;font-size:14px;font-weight:600}
+.mapattr{position:absolute;left:0;bottom:env(safe-area-inset-bottom,0px);z-index:700;font:11px/1.2 system-ui,sans-serif;padding:3px 7px;background:rgba(14,17,22,.7);color:var(--mut);border-top-right-radius:6px}.mapattr a{color:inherit}
 .mapmsg{position:absolute;inset:0;display:grid;place-items:center;text-align:center;color:var(--mut);padding:30px;z-index:500}
 .hw{display:flex;flex-direction:column;min-height:100%}.hc{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:12px 0}.hlogo{height:92px;width:auto;max-width:70%;object-fit:contain;margin-bottom:6px}.hc .clock{margin-top:8px}.hc .sub{margin-bottom:0;font-size:16px}
 header[hidden]{display:none}
@@ -150,7 +154,7 @@ header[hidden]{display:none}
 </style>
 </head>
 <body>
-<div id="app"><header><button class="back" id="bk" hidden aria-label="Back"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M19 12H5m6-6-6 6 6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button><h1 id="ttl"></h1><button class="back star" id="fs" hidden aria-label="Show only favorites" title="Show only favorites">☆</button><button class="pill" id="so" hidden>Sort by… ▾</button><button class="back" id="sd" hidden aria-label="Switch direction" title="Switch direction">⇄</button><button class="back" id="nv" hidden aria-label="Navigation" title="Navigation">🧭</button><button class="back" id="rs" hidden aria-label="Search" title="Search">🔎</button></header><main id="main"></main><footer id="ft"><div id="pgr"></div><div class="dayft"><label><span id="dl">Schedule</span>&nbsp; <select id="dm"><option value="auto"></option><option value="workday">Workday</option><option value="holiday">Holiday</option></select></label></div><button class="pill" id="ib" aria-label="Info">i</button><button class="pill" id="lg" aria-label="Language"></button></footer></div>
+<div id="app"><header><button class="back" id="bk" hidden aria-label="Back"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M19 12H5m6-6-6 6 6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button><h1 id="ttl"></h1><button class="back star" id="fs" hidden aria-label="Show only favorites" title="Show only favorites">☆</button><button class="pill" id="so" hidden>Sort by… ▾</button><button class="pill" id="mt" hidden>Map type… ▾</button><button class="back" id="sd" hidden aria-label="Switch direction" title="Switch direction">⇄</button><button class="back" id="nv" hidden aria-label="Navigation" title="Navigation">🧭</button><button class="back" id="rs" hidden aria-label="Search" title="Search">🔎</button></header><main id="main"></main><footer id="ft"><div id="pgr"></div><div class="dayft"><label><span id="dl">Schedule</span>&nbsp; <select id="dm"><option value="auto"></option><option value="workday">Workday</option><option value="holiday">Holiday</option></select></label></div><button class="pill" id="ib" aria-label="Info">i</button><button class="pill" id="lg" aria-label="Language"></button></footer></div>
 <script src="lib/leaflet.js"></script>
 <script>
 const $=s=>document.querySelector(s),main=$('#main');
@@ -533,6 +537,8 @@ document.addEventListener('click',e=>{const b=e.target.closest('[data-trk]');if(
 const oppOf=id=>{const o=stations[id]&&stations[id].oppositeStation;return{id:o,ok:!!o&&o!==id&&!!stations[o]}};
 const oppWarn=id=>{const o=stations[id]&&stations[id].oppositeStation;if(!o)return'';if(!stations[o])return`oppositeStation "${o}" is not in the stations file`;if(o===id)return'oppositeStation points to itself';if(stations[o].oppositeStation!==id)return`${o} does not point back to this station`;return''};
 $('#so').onclick=()=>{const m=$('#sortm');if(!m)return;m.hidden=!m.hidden;if(!m.hidden)m.style.top=($('#so').getBoundingClientRect().bottom+6)+'px'};
+$('#mt').onclick=()=>{const m=$('#mapm');if(!m)return;m.hidden=!m.hidden;if(!m.hidden)m.style.top=($('#mt').getBoundingClientRect().bottom+6)+'px'};
+document.addEventListener('click',e=>{const m=$('#mapm');if(m&&!m.hidden&&!e.target.closest('#mapm,#mt'))m.hidden=true;const b=e.target.closest('#mapm [data-k]');if(b){const k=b.dataset.k,cur=history.state||{};if((cur.k||'transit')!==k){const st={v:'map',k};history.replaceState(st,'');render(st)}else m.hidden=true}});
 document.addEventListener('click',e=>{const m=$('#sortm');if(m&&!m.hidden&&!e.target.closest('#sortm,#so'))m.hidden=true});
 $('#lg').onclick=()=>{lang=lang==='bg'?'en':'bg';try{localStorage.lang=lang}catch(e){}render(history.state||{v:'home'},true)};
 $('#dm').onchange=()=>{mode=$('#dm').value;try{localStorage.dayMode=mode}catch(e){}render(history.state||{v:'home'},true)};
@@ -718,7 +724,7 @@ trip(s){
   <div style="position:relative"><div class="nav sm"><button data-pk ${one?'disabled':''}>${$h('Choose a departure…')} ▾</button></div>${menu}</div></div>
   ${nbs}<div class="uph"><h2>${$h('Stops')}</h2>${(g=>g!=null?`<div class="dly${g>2?' y':''}" style="margin:0 4px 8px 0">⚠ ${$h('This departure may be delayed')}</div>`:'')(q.x?null:turnGap(l,d,q.t,yd?-1:0))}</div><div style="--c:${esc(l.color)}">${d.stops.map((st,k)=>{const m=dep+d.cum[k],sx=q.x||st.x,ds=sx?'':dstat(lts.map(x=>fmt(toMin(x)+d.cum[k])),fmt(m));
   return`<button class="st${m<n?' past':''}${k===0?' s0':''}${k===d.term?' sN':''}${k>d.term?' aft':''}${sx?' sx':''}" data-go='${JSON.stringify({v:'station',id:st.stationId})}'><span class="tm${ds?' w-'+ds:''}">${fmt(m)}</span><span class="dot"></span><span class="nm">${st.add?'<b class="pl">+</b>':''}${snm(st.stationId)}</span></button>`}).join('')}</div><div class="sub" style="text-align:center;margin:14px 0 4px;font-size:13px">${(one?$h('Only one departure today'):$h('Departure {0} of {1}',i+1,sc.length))+' · '+(ns===1?$h('{0} stop',ns):$h('{0} stops',ns))}</div>${trkBtns(d,q,yd)}`,after(){const m=$('.pk'),c=m&&m.querySelector('.cur');if(c)m.scrollTop=c.offsetTop-m.clientHeight/2+c.offsetHeight/2}}},
-map(){return{t:$t('Transit map'),h:'<div id="map"></div>',after:initMap}},
+map(s){const k=s.k==='street'?'street':'transit';return{t:k==='street'?$t('Street map'):$t('Transit map'),h:`<div id="map"></div><div id="mapm" class="sortm" hidden><button data-k="transit">${$h('Transit map')}<span class="tk">${k==='transit'?'✓':''}</span></button><button data-k="street">${$h('Street map')}<span class="tk">${k==='street'?'✓':''}</span></button></div>`,after:k==='street'?initStreet:initMap}},
 search(){
   return{t:$t('Stations'),h:`<div class="sw"><input id="q" type="search" placeholder="${$h('Station name or ID')}" autocomplete="off" autocapitalize="off" spellcheck="false" value="${esc(q)}"><button type="button" id="qx" aria-label="${$h('Clear')}" ${q?'':'hidden'}>✕</button></div><div id="sortm" class="sortm" hidden><button data-s="name">${$h('Name')}<span class="tk"></span></button><button data-s="id">${$h('ID')}<span class="tk"></span></button></div><div id="res"></div><div id="spg"></div><button class="clrfav" id="clrfav">${$h('Clear favorites')}</button>`,after(){
     const inp=$('#q'),res=$('#res'),sm=$('#sortm'),cb=$('#clrfav'),fs=$('#fs'),SPG=30;let sPg=0;
@@ -864,17 +870,41 @@ async function initMap(){
     mapObj.setMinZoom(mapObj.getZoom()-1);mapObj.setMaxBounds(b.pad(.3));
   }catch(e){el.innerHTML='<div class="mapmsg">Could not load the map.<br>Add tiles/ (or map.png) next to index.html.</div>'}
 }
+async function initStreet(){
+  const el=$('#map'),msg=t=>{let m=el.querySelector('.mapmsg');if(!t){m&&m.remove();return}if(!m){m=document.createElement('div');m.className='mapmsg';el.appendChild(m)}m.textContent=t};
+  if(!navigator.onLine)return msg($t('The street map needs an internet connection'));   // online only: tiles are never cached
+  try{
+    let meta={},co={};
+    try{const r=await fetch('osm/meta.json',{cache:'no-store'});if(r.ok)meta=await r.json()}catch(e){}
+    try{const r=await fetch('data/station_coords.json');if(r.ok)co=await r.json()}catch(e){}
+    if(!el.isConnected)return;
+    const z0=meta.minzoom??12,z1=meta.maxzoom??17,bd=meta.bounds,c=meta.center||[25.9657,43.8356,13];
+    const b=bd?L.latLngBounds([[bd[1],bd[0]],[bd[3],bd[2]]]):null;
+    mapObj=L.map(el,{minZoom:z0,maxZoom:z1,attributionControl:false,zoomControl:false,maxBounds:b?b.pad(.2):undefined,maxBoundsViscosity:.9,fadeAnimation:false,bounceAtZoomLimits:false});
+    L.control.zoom({position:'bottomright'}).addTo(mapObj);
+    const mp=mapObj,tl=L.tileLayer('osm/'+((meta.tiles&&meta.tiles[0])||'{z}/{x}/{y}.png'),{minZoom:z0,maxZoom:z1,bounds:b||undefined,noWrap:true,keepBuffer:3,errorTileUrl:'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=='}).addTo(mp);
+    tl.on('tileload',()=>msg(''));tl.on('tileerror',()=>{if(!navigator.onLine)msg($t('The street map needs an internet connection'))});
+    const onOff=()=>{if(!el.isConnected||mapObj!==mp)return window.removeEventListener('offline',onOff);msg($t('The street map needs an internet connection'))};window.addEventListener('offline',onOff);
+    mp.setView([c[1],c[0]],Math.min(Math.max(c[2]??13,z0),z1));
+    const at=document.createElement('div');at.className='mapattr';const a=document.createElement('a');a.href='https://www.openstreetmap.org/copyright';a.target='_blank';a.rel='noopener';a.textContent=meta.attribution||'© OpenStreetMap contributors';at.appendChild(a);L.DomEvent.disableClickPropagation(at);el.appendChild(at);
+    Object.entries(co).forEach(([id,p])=>{if(!stations[id]||typeof p?.lat!=='number'||typeof p?.lng!=='number')return;
+      const n=document.createElement('div'),h=document.createElement('div');h.className='pn';h.textContent=sname(id);n.appendChild(h);
+      if(ssm(id)){const t=document.createElement('div');t.className='ps';t.textContent=ssm(id);n.appendChild(t)}
+      const bt=document.createElement('button');bt.textContent=$t('Open station');bt.onclick=()=>go({v:'station',id});n.appendChild(bt);
+      L.marker([p.lat,p.lng],{icon:L.divIcon({className:'stp',html:'<i></i>',iconSize:[28,28],iconAnchor:[14,14],popupAnchor:[0,-12]}),keyboard:false}).bindPopup(n,{closeButton:false,autoPanPadding:[20,20]}).addTo(mp)})
+  }catch(e){msg($t('Could not load the street map'))}
+}
 function applyLang(){   // translate the static chrome (header buttons, footer) and set the language chip
   document.documentElement.lang=lang;
   const nv=$('#nv');nv.title=$t('Navigation');nv.setAttribute('aria-label',nv.title);const rs=$('#rs');rs.title=$t('Search');rs.setAttribute('aria-label',rs.title);const fs=$('#fs'),sd=$('#sd');fs.title=$t('Show only favorites');fs.setAttribute('aria-label',fs.title);sd.title=$t('Switch direction');sd.setAttribute('aria-label',sd.title);
-  $('#so').textContent=$t('Sort by…')+' ▾';$('#dl').textContent=$t('Schedule');
+  $('#so').textContent=$t('Sort by…')+' ▾';$('#mt').textContent=$t('Map type…')+' ▾';$('#dl').textContent=$t('Schedule');
   const dm=$('#dm');dm.options[1].text=$t('Workday');dm.options[2].text=$t('Holiday');
   const ib=$('#ib');ib.title=$t('Info');ib.setAttribute('aria-label',ib.title);const lg=$('#lg');lg.textContent=lang==='bg'?'BG':'EN';lg.title=$t('Language');lg.setAttribute('aria-label',lg.title)}
 function render(s,keep){
   s=s||{v:'home'};syncMods();SC.clear();if((s.v==='dirs'||s.v==='trip')&&!lines.some(x=>x.id===s.l)){s={v:'routes'};history.replaceState(s,'')}
   if(mapObj){mapObj.remove();mapObj=null}refreshDeps=null;closeFx=null;document.querySelector('.vp')?.remove();$('#pgr').innerHTML='';if(!keep)pickOpen=false;main.classList.toggle('fill',s.v==='map');const y=main.scrollTop,v=V[s.v](s);
   const ttl=$('#ttl');if(s.v==='home')ttl.textContent='';else if(v.sub)ttl.innerHTML=esc(v.t)+'<span class="ttlsub">'+esc(v.sub)+'</span>';else ttl.textContent=v.t;$('#bk').hidden=s.v==='home';ttl.classList.toggle('wrapt',s.v==='station');
-  $('#so').hidden=$('#fs').hidden=s.v!=='search';$('#rs').hidden=$('#nv').hidden=s.v!=='routes';
+  $('#so').hidden=$('#fs').hidden=s.v!=='search';$('#mt').hidden=s.v!=='map';$('#rs').hidden=$('#nv').hidden=s.v!=='routes';
   document.querySelector('header').hidden=s.v==='home';
   const sd=$('#sd');sd.hidden=!(s.v==='station'||s.v==='trip');
   if(!sd.hidden)sd.disabled=s.v==='station'?!oppOf(s.id).ok:lines.find(x=>x.id===s.l).directions.length<2;

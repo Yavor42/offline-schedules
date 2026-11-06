@@ -1,0 +1,11 @@
+{
+  "_readme": "lat/lng per station key (same keys as stations_extended.json). Stations without an entry are not shown on the street map.",
+  "YordanYovkovHighSchool": {
+    "lat": 43.8408,
+    "lng": 25.9604
+  },
+  "Afrodita": {
+    "lat": 43.8410,
+    "lng": 25.9598
+  }
+}
