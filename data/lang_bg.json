@@ -143,8 +143,8 @@
   "Other lines": "Други линии",
   "Timetable totals": "Общ брой курсове",
   "Until 00:00": "До 00:00",
-  "With active lines": "Със активни линии",
-  "With delay warning": "Със предупреждение за закъснение",
+  "With active lines": "С активни линии",
+  "With delay warning": "С предупреждение за закъснение",
   "Without active lines": "Без активни линии",
   "Workdays": "Работни дни",
   "in {0} / {1}": "след {0} / {1}",
@@ -189,9 +189,12 @@
   "No upcoming departures": "Няма предстоящи курсове",
   "The \"After\" time must be earlier than the \"Before\" time": "Часът във филтър „Преди“ трябва да е по-рано от часът във филтер „След“",
   "Street map": "Улична карта",
-  "Map type": "Вид карта",
+  "Map type...": "Вид карта",
   "Open station": "Виж спирката",
   "The street map needs an internet connection": "Уличната карта изисква връзка с Интернет",
-  "Could not load the street map": "Неуспешно зареждане на улична карта"
+  "Could not load the street map": "Неуспешно зареждане на улична карта",
+  "Map settings": "Настройки на картата",
+  "Show stations with no lines": "Показване на спирки без линии",
+  "Zoom in to view stations": "Увеличете за да видите спирките"
 }
 

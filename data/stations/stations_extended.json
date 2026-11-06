@@ -1160,7 +1160,7 @@
     "smallTextBG": ""
   },
   "BlockPushkinOnNeofitBozveliBlvd": {
-    "displayName": "Block \"Pushkin\"",
+    "displayName": "Block \"Pushkin\" on \"Neofit Bozveli\" blvd.",
     "number": "155",
     "oppositeStation": "",
     "smallText": "",
@@ -1170,8 +1170,8 @@
   "AfterTsarOsvoboditelBlvdOnNeofitBozveliBlvd": {
     "displayName": "After \"Tsar Osvoboditel\" blvd., on \"Neofit Bozveli\" blvd.",
     "number": "156",
-    "oppositeStation": "Block \"Vela Piskova\"",
-    "smallText": "",
+    "oppositeStation": "",
+    "smallText": "Block \"Vela Piskova\"",
     "langBG": "След бул. „Цар Освободител“ на бул. „Неофит Бозвели“",
     "smallTextBG": "Блок „Вела Пискова“"
   },
