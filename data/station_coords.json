@@ -1,19 +1,1167 @@
 {
   "_readme": "lat/lng per station key (same keys as stations_extended.json). Stations without an entry are not shown on the street map.",
   "YordanYovkovHighSchool": {
-    "lat": 43.8408,
-    "lng": 25.9604
+    "lat": 43.8407,
+    "lng": 25.9605
   },
   "Afrodita": {
-    "lat": 43.8410,
+    "lat": 43.84116,
     "lng": 25.9598
   },
   "CooperativeMarketA8": {
-    "lat": 43.8429,
-    "lng": 25.9606
+    "lat": 43.84278,
+    "lng": 25.96068
+  },
+  "SportsArena": {
+    "lat": 43.84701,
+    "lng": 25.9604
   },
   "Oborishte": {
-    "lat": 43.8449,
-    "lng": 25.9600
+    "lat": 43.84495,
+    "lng": 25.96016
+  },
+  "ThePantheon": {
+    "lat": 43.84969,
+    "lng": 25.95913
+  },
+  "Serdika": {
+    "lat": 43.84868,
+    "lng": 25.95922
+  },
+  "Mototehnika": {
+    "lat": 43.85354,
+    "lng": 26.0036
+  },
+  "CAT": {
+    "lat": 43.85366,
+    "lng": 26.00265
+  },
+  "AVKO": {
+    "lat": 43.85297,
+    "lng": 25.99722
+  },
+  "DunavPrintery": {
+    "lat": 43.8527,
+    "lng": 25.99709
+  },
+  "ThirdPolyclinic": {
+    "lat": 43.85176,
+    "lng": 25.98985
+  },
+  "MallRuseIRIS": {
+    "lat": 43.85211,
+    "lng": 25.99034
+  },
+  "SubstationNorth": {
+    "lat": 43.85141,
+    "lng": 25.98471
+  },
+  "SubstationSouth": {
+    "lat": 43.85085,
+    "lng": 25.98275
+  },
+  "Stif": {
+    "lat": 43.85055,
+    "lng": 25.97865
+  },
+  "Olymp": {
+    "lat": 43.85024,
+    "lng": 25.97792
+  },
+  "NaidenKirov": {
+    "lat": 43.84903,
+    "lng": 25.97357
+  },
+  "PetarKaraminchev": {
+    "lat": 43.84923,
+    "lng": 25.97336
+  },
+  "Block113Charodeyka1": {
+    "lat": 43.83118,
+    "lng": 25.97454
+  },
+  "TsvetnitsaNorth": {
+    "lat": 43.86164,
+    "lng": 25.97763
+  },
+  "BratyaMiladinoviPrimarySchool": {
+    "lat": 43.859,
+    "lng": 25.97213
+  },
+  "UniversityOfRuseNorth": {
+    "lat": 43.85687,
+    "lng": 25.96776
+  },
+  "EngineeringHighSchool": {
+    "lat": 43.85514,
+    "lng": 25.96365
+  },
+  "Hospital": {
+    "lat": 43.85373,
+    "lng": 25.9627
+  },
+  "PurvaProlet": {
+    "lat": 43.85464,
+    "lng": 25.96578
+  },
+  "UniversityOfRuseSouth": {
+    "lat": 43.85625,
+    "lng": 25.96907
+  },
+  "Pliska": {
+    "lat": 43.85837,
+    "lng": 25.97346
+  },
+  "Paris": {
+    "lat": 43.85883,
+    "lng": 25.97441
+  },
+  "TsvetnitsaSouth": {
+    "lat": 43.86068,
+    "lng": 25.97818
+  },
+  "Cosmos": {
+    "lat": 43.83477,
+    "lng": 25.95575
+  },
+  "RailwayStationBorisovaStr": {
+    "lat": 43.83481,
+    "lng": 25.95593
+  },
+  "Nekrasov": {
+    "lat": 43.83781,
+    "lng": 25.95522
+  },
+  "Lermontov": {
+    "lat": 43.83823,
+    "lng": 25.95536
+  },
+  "OrhideyaWest": {
+    "lat": 43.84072,
+    "lng": 25.9547
+  },
+  "MedicalCentreEast": {
+    "lat": 43.84403,
+    "lng": 25.95435
+  },
+  "Borisova": {
+    "lat": 43.84528,
+    "lng": 25.95416
+  },
+  "RailwayStationNikolaevskaStr": {
+    "lat": 43.83441,
+    "lng": 25.95466
+  },
+  "ShipbuildingHighSchool": {
+    "lat": 43.8379,
+    "lng": 25.95102
+  },
+  "ChaykaEast": {
+    "lat": 43.84064,
+    "lng": 25.94817
+  },
+  "TutrakanOverpass": {
+    "lat": 43.86506,
+    "lng": 25.98446
+  },
+  "TraktsiyataLVZ": {
+    "lat": 43.8647,
+    "lng": 25.98425
+  },
+  "PsychiatricClinicNorth": {
+    "lat": 43.86683,
+    "lng": 25.9879
+  },
+  "PsychiatricClinicSouth": {
+    "lat": 43.86671,
+    "lng": 25.98828
+  },
+  "25TutrakanBlvd": {
+    "lat": 43.86842,
+    "lng": 25.99185
+  },
+  "26TutrakanBlvd": {
+    "lat": 43.86834,
+    "lng": 25.99234
+  },
+  "19TutrakanBlvdBrickFactory": {
+    "lat": 43.87247,
+    "lng": 26.0034
+  },
+  "32TutrakanBlvdVocSchoolOfTransport": {
+    "lat": 43.87226,
+    "lng": 26.00358
+  },
+  "EcontExpressShippingNorthNaporniTrabi": {
+    "lat": 43.87373,
+    "lng": 26.00992
+  },
+  "EcontExpressShippingSouthDomostroene": {
+    "lat": 43.87247,
+    "lng": 26.01141
+  },
+  "DanubeBridge": {
+    "lat": 43.87563,
+    "lng": 26.01551
+  },
+  "Customs": {
+    "lat": 43.8753,
+    "lng": 26.01566
+  },
+  "SBA": {
+    "lat": 43.84528,
+    "lng": 25.95692
+  },
+  "Skobelev": {
+    "lat": 43.84489,
+    "lng": 25.95669
+  },
+  "MathsHighSchoolNorth": {
+    "lat": 43.84458,
+    "lng": 25.95236
+  },
+  "MathsHighSchoolSouth": {
+    "lat": 43.84381,
+    "lng": 25.95135
+  },
+  "ZPPrelez": {
+    "lat": 43.84159,
+    "lng": 25.96497
+  },
+  "CooperativeMarket": {
+    "lat": 43.84190,
+    "lng": 25.96542
+  },
+  "RusalkaKindergarten": {
+    "lat": 43.8441,
+    "lng": 25.97002
+  },
+  "OlimpiPanovPrimarySchool": {
+    "lat": 43.84417,
+    "lng": 25.97077
+  },
+  "Kolos": {
+    "lat": 43.84538,
+    "lng": 25.97493
+  },
+  "ZalaDunav": {
+    "lat": 43.84591,
+    "lng": 25.97588
+  },
+  "OlympBlock49": {
+    "lat": 43.85024,
+    "lng": 25.97792
+  },
+  "OlympBlock48": {
+    "lat": 43.85024,
+    "lng": 25.97792
+  },
+  "Block6": {
+    "lat": 43.83058,
+    "lng": 25.97043
+  },
+  "CBADruzhba3": {
+    "lat": 43.82921,
+    "lng": 25.97022
+  },
+  "Block33": {
+    "lat": 43.82584,
+    "lng": 25.97088
+  },
+  "Block10": {
+    "lat": 43.8272,
+    "lng": 25.97214
+  },
+  "Druzhba3Terminus": {
+    "lat": 43.82527,
+    "lng": 25.96886
+  },
+  "Block28": {
+    "lat": 43.82516,
+    "lng": 25.96811
+  },
+  "ViKPumpingStationEast": {
+    "lat": 43.83015,
+    "lng": 25.9602
+  },
+  "ViKPumpingStationWest": {
+    "lat": 43.8302,
+    "lng": 25.95998
+  },
+  "VasilLevskiWest": {
+    "lat": 43.82774,
+    "lng": 25.9635
+  },
+  "VasilLevskiEast": {
+    "lat": 43.82769,
+    "lng": 25.96338
+  },
+  "IrrigationSystems": {
+    "lat": 43.82361,
+    "lng": 25.96852
+  },
+  "54GotseDelchevBlvd": {
+    "lat": 43.82339,
+    "lng": 25.96855
+  },
+  "SvirchevServiceEast": {
+    "lat": 43.82064,
+    "lng": 25.97167
+  },
+  "SvirchevServiceWest": {
+    "lat": 43.82056,
+    "lng": 25.97153
+  },
+  "148GotseDelchevBlvdMonumentOfMaraManeva": {
+    "lat": 43.81528,
+    "lng": 25.97811
+  },
+  "BlockKremena": {
+    "lat": 43.8477,
+    "lng": 25.98801
+  },
+  "BlockBoryana": {
+    "lat": 43.84761,
+    "lng": 25.98754
+  },
+  "BlockZheravNorth": {
+    "lat": 43.84943,
+    "lng": 25.99207
+  },
+  "BlockZheravSouth": {
+    "lat": 43.84931,
+    "lng": 25.99221
+  },
+  "PragaSqrTerminusNorth": {
+    "lat": 43.85078,
+    "lng": 25.9958
+  },
+  "PragaSqrTerminusSouth": {
+    "lat": 43.85085,
+    "lng": 25.99629
+  },
+  "Block302North": {
+    "lat": 43.83936,
+    "lng": 25.97571
+  },
+  "Block302South": {
+    "lat": 43.83903,
+    "lng": 25.97623
+  },
+  "Block115North": {
+    "lat": 43.83272,
+    "lng": 25.97367
+  },
+  "Block115South": {
+    "lat": 43.83273,
+    "lng": 25.97421
+  },
+  "ShoppingComplex": {
+    "lat": 43.83206,
+    "lng": 25.97728
+  },
+  "FilipStanislavovStrCharodeykaCemetery": {
+    "lat": 43.83587,
+    "lng": 25.97371
+  },
+  "Block401": {
+    "lat": 43.8359,
+    "lng": 25.97357
+  },
+  "Block403North": {
+    "lat": 43.83744,
+    "lng": 25.97385
+  },
+  "Block403South": {
+    "lat": 43.83793,
+    "lng": 25.97495
+  },
+  "BlockDobrudzha": {
+    "lat": 43.85704,
+    "lng": 25.97515
+  },
+  "TovarnaRailwayStop": {
+    "lat": 43.85678,
+    "lng": 25.97597
+  },
+  "BlockStrandzha": {
+    "lat": 43.8407,
+    "lng": 25.97094
+  },
+  "BlockBorimechka": {
+    "lat": 43.84186,
+    "lng": 25.97419
+  },
+  "BitovKombinatSouth": {
+    "lat": 43.84474,
+    "lng": 25.9816
+  },
+  "BitovKombinatNorth": {
+    "lat": 43.84482,
+    "lng": 25.98151
+  },
+  "DunavStadiumNorth": {
+    "lat": 43.84383,
+    "lng": 25.97746
+  },
+  "DunavStadiumSouth": {
+    "lat": 43.84377,
+    "lng": 25.97768
+  },
+  "39PetrohanStr": {
+    "lat": 43.84222,
+    "lng": 25.97329
+  },
+  "Pastrina": {
+    "lat": 43.84141,
+    "lng": 25.97048
+  },
+  "CBAGradskiHaliSouth": {
+    "lat": 43.85165,
+    "lng": 25.95693
+  },
+  "CBAGradskiHaliNorth": {
+    "lat": 43.85183,
+    "lng": 25.95739
+  },
+  "RigaHotel": {
+    "lat": 43.85245,
+    "lng": 25.95336
+  },
+  "HouseOfCulture": {
+    "lat": 43.85587,
+    "lng": 25.96218
+  },
+  "StrandzhataTavern": {
+    "lat": 43.84637,
+    "lng": 25.9503
+  },
+  "HristoBotevHighSchool": {
+    "lat": 43.84459,
+    "lng": 25.94778
+  },
+  "Fazan": {
+    "lat": 43.83412,
+    "lng": 25.94221
+  },
+  "Zhiti": {
+    "lat": 43.83419,
+    "lng": 25.94206
+  },
+  "Yuta": {
+    "lat": 43.83129,
+    "lng": 25.93895
+  },
+  "OrgahimDunavskaKoprina": {
+    "lat": 43.83124,
+    "lng": 25.93916
+  },
+  "Winery": {
+    "lat": 43.82573,
+    "lng": 25.93491
+  },
+  "FireBrigade": {
+    "lat": 43.82627,
+    "lng": 25.93564
+  },
+  "BOR": {
+    "lat": 43.82277,
+    "lng": 25.93279
+  },
+  "DairyPlant": {
+    "lat": 43.82206,
+    "lng": 25.93253
+  },
+  "METROSuperstoreNorth": {
+    "lat": 43.81379,
+    "lng": 25.92814
+  },
+  "MidiyaEnosNorth": {
+    "lat": 43.83219,
+    "lng": 25.95162
+  },
+  "MidiyaEnosSouth": {
+    "lat": 43.83203,
+    "lng": 25.95176
+  },
+  "RoadJunctionOhlyuvaEast": {
+    "lat": 43.82835,
+    "lng": 25.95009
+  },
+  "RoadJunctionOhlyuvaWest": {
+    "lat": 43.82856,
+    "lng": 25.94994
+  },
+  "Technopolis": {
+    "lat": 43.83287,
+    "lng": 25.96942
+  },
+  "PechatniPlatkiPCBs": {
+    "lat": 43.83334,
+    "lng": 25.96939
+  },
+  "MotherBabyHome": {
+    "lat": 43.82873,
+    "lng": 25.97598
+  },
+  "Block121": {
+    "lat": 43.82966,
+    "lng": 25.9751
+  },
+  "IntercityBusStationEast": {
+    "lat": 43.85558,
+    "lng": 25.99725
+  },
+  "IntercityBusStationWest": {
+    "lat": 43.85558,
+    "lng": 25.99725
+  },
+  "RazpredelitelnaRailwayStation": {
+    "lat": 43.85766,
+    "lng": 25.99747
+  },
+  "WholesaleMarketNorth": {
+    "lat": 43.85468,
+    "lng": 25.98389
+  },
+  "WholesaleMarketSouth": {
+    "lat": 43.85449,
+    "lng": 25.98379
+  },
+  "ToplivoNorth": {
+    "lat": 43.85562,
+    "lng": 25.99108
+  },
+  "ToplivoSouth": {
+    "lat": 43.85545,
+    "lng": 25.99127
+  },
+  "DairyKitchenEast": {
+    "lat": 43.85235,
+    "lng": 25.97904
+  },
+  "DairyKitchenWest": {
+    "lat": 43.85233,
+    "lng": 25.97873
+  },
+  "YundolaStrBlock7": {
+    "lat": 43.85035,
+    "lng": 25.9823
+  },
+  "YundolaStrBlock16": {
+    "lat": 43.84637,
+    "lng": 25.98372
+  },
+  "ChaykaWest": {
+    "lat": 43.8409,
+    "lng": 25.94755
+  },
+  "SaintOuan": {
+    "lat": 43.83764,
+    "lng": 25.94904
+  },
+  "StefanStambolov26": {
+    "lat": 43.83655,
+    "lng": 25.94946
+  },
+  "StefanStambolov64": {
+    "lat": 43.83283,
+    "lng": 25.95019
+  },
+  "BlockElectron": {
+    "lat": 43.84237,
+    "lng": 25.95652
+  },
+  "Block33MariaLuisa": {
+    "lat": 43.82584,
+    "lng": 25.97088
+  },
+  "BlockAksakov": {
+    "lat": 43.8404,
+    "lng": 25.9509
+  },
+  "BlockPushkinOnNeofitBozveliBlvd": {
+    "lat": 43.83901,
+    "lng": 25.95547
+  },
+  "AfterTsarOsvoboditelBlvdOnNeofitBozveliBlvd": {
+    "lat": 43.83974,
+    "lng": 25.95882
+  },
+  "Malyovitsa1North": {
+    "lat": 43.82714,
+    "lng": 25.95364
+  },
+  "Malyovitsa1South": {
+    "lat": 43.82698,
+    "lng": 25.95338
+  },
+  "Malyovitsa2North": {
+    "lat": 43.82874,
+    "lng": 25.9587
+  },
+  "Malyovitsa2South": {
+    "lat": 43.82864,
+    "lng": 25.9587
+  },
+  "MalyovitsaStrTerminus": {
+    "lat": 43.82388,
+    "lng": 25.94797
+  },
+  "OrgahimEast": {
+    "lat": 43.86925,
+    "lng": 26.01594
+  },
+  "OrgahimWest": {
+    "lat": 43.86938,
+    "lng": 26.01531
+  },
+  "ZEIMEast": {
+    "lat": 43.86227,
+    "lng": 26.01526
+  },
+  "ZEIMWest": {
+    "lat": 43.86141,
+    "lng": 26.01455
+  },
+  "FamiliaHotelEast": {
+    "lat": 43.86230,
+    "lng": 26.01531
+  },
+  "FamiliaHotelWest": {
+    "lat": 43.86011,
+    "lng": 26.01447
+  },
+  "RoadJunctionNikolovoNorth": {
+    "lat": 43.85233,
+    "lng": 26.00570
+  },
+  "RoadJunctionNikolovoSouth": {
+    "lat": 43.85197,
+    "lng": 26.00545
+  },
+  "BulgariaBlvdAtSianaSignNorth": {
+    "lat": 43.84712,
+    "lng": 25.99116
+  },
+  "BulgariaBlvdAtSianaSignSouth": {
+    "lat": 43.84706,
+    "lng": 25.99176
+  },
+  "EKOGasStationNorth": {
+    "lat": 43.84405,
+    "lng": 25.98274
+  },
+  "EKOGasStationSouth": {
+    "lat": 43.84385,
+    "lng": 25.98304
+  },
+  "VerilaNorth": {
+    "lat": 43.8342,
+    "lng": 25.96212
+  },
+  "VerilaSouth": {
+    "lat": 43.83399,
+    "lng": 25.96223
+  },
+  "LeventaNorth": {
+    "lat": 43.83212,
+    "lng": 25.95621
+  },
+  "LeventaSouth": {
+    "lat": 43.8319,
+    "lng": 25.95644
+  },
+  "AlekoKonstantinovPrimarySchoolNorth": {
+    "lat": 43.83099,
+    "lng": 25.95338
+  },
+  "AlekoKonstantinovPrimarySchoolSouth": {
+    "lat": 43.83075,
+    "lng": 25.9534
+  },
+  "FishingHutWest": {
+    "lat": 43.80817,
+    "lng": 25.92351
+  },
+  "FishingHutEast": {
+    "lat": 43.80867,
+    "lng": 25.92474
+  },
+  "PristaLodge": {
+    "lat": 43.79693,
+    "lng": 25.91751
+  },
+  "OldPeoplesHome": {
+    "lat": 43.79687,
+    "lng": 25.91811
+  },
+  "KPPEast": {
+    "lat": 43.78958,
+    "lng": 25.91435
+  },
+  "KPPWest": {
+    "lat": 43.78877,
+    "lng": 25.9139
+  },
+  "9thKilometerEast": {
+    "lat": 43.77484,
+    "lng": 25.89763
+  },
+  "9thKilometerWest": {
+    "lat": 43.77429,
+    "lng": 25.89733
+  },
+  "PetrolBaseEntranceNorth": {
+    "lat": 43.76802,
+    "lng": 25.89422
+  },
+  "PetrolBaseEntranceSouth": {
+    "lat": 43.76788,
+    "lng": 25.89426
+  },
+  "PetrolBaseCentralNorth": {
+    "lat": 43.76615,
+    "lng": 25.88712
+  },
+  "PetrolBaseCentralSouth": {
+    "lat": 43.766,
+    "lng": 25.88715
+  },
+  "PetrolBaseObrashtalo": {
+    "lat": 43.76427,
+    "lng": 25.8729
+  },
+  "16thKilometerTerminus": {
+    "lat": 43.76338,
+    "lng": 25.90255
+  },
+  "HadzhiGenovaChesmaNorth": {
+    "lat": 43.85327,
+    "lng": 26.01611
+  },
+  "HadzhiGenovaChesmaSouth": {
+    "lat": 43.85303,
+    "lng": 26.01587
+  },
+  "HipodrumTerminus": {
+    "lat": 43.85446,
+    "lng": 26.0252
+  },
+  "BorderPoliceWest": {
+    "lat": 43.87841,
+    "lng": 26.02019
+  },
+  "BorderPoliceEast": {
+    "lat": 43.87863,
+    "lng": 26.0199
+  },
+  "SlatinaWest": {
+    "lat": 43.87901,
+    "lng": 26.0264
+  },
+  "SlatinaEast": {
+    "lat": 43.87921,
+    "lng": 26.02636
+  },
+  "KEROS": {
+    "lat": 43.87033,
+    "lng": 26.03857
+  },
+  "CharodeykaCemeteryNorth": {
+    "lat": 43.83855,
+    "lng": 25.97895
+  },
+  "CharodeykaCemeterySouth": {
+    "lat": 43.83844,
+    "lng": 25.97873
+  },
+  "NikolovLTDNorth": {
+    "lat": 43.84051,
+    "lng": 25.98599
+  },
+  "NikolovLTDSouth": {
+    "lat": 43.84035,
+    "lng": 25.98577
+  },
+  "IntertradeNorth": {
+    "lat": 43.84031,
+    "lng": 25.99005
+  },
+  "IntertradeSouth": {
+    "lat": 43.84022,
+    "lng": 25.99009
+  },
+  "KolevAutoserviceNorth": {
+    "lat": 43.83806,
+    "lng": 25.99981
+  },
+  "KolevAutoserviceSouth": {
+    "lat": 43.8379,
+    "lng": 26.0001
+  },
+  "KasevaChesmaNorth": {
+    "lat": 43.83677,
+    "lng": 26.00535
+  },
+  "KasevaChesmaSouth": {
+    "lat": 43.83667,
+    "lng": 26.00561
+  },
+  "ObrashtaloNorth": {
+    "lat": 43.83677,
+    "lng": 26.00535
+  },
+  "ObrashtaloSouth": {
+    "lat": 43.83667,
+    "lng": 26.00561
+  },
+  "ZavoyaNorth": {
+    "lat": 43.83408,
+    "lng": 26.01535
+  },
+  "ZavoyaSouth": {
+    "lat": 43.83402,
+    "lng": 26.01535
+  },
+  "BoroveteNorth": {
+    "lat": 26.01823,
+    "lng": 43.83042
+  },
+  "BoroveteSouth": {
+    "lat": 43.83035,
+    "lng": 26.01814
+  },
+  "AkatsiiteNorth": {
+    "lat": 43.82765,
+    "lng": 26.02393
+  },
+  "AkatsiiteSouth": {
+    "lat": 43.8273,
+    "lng": 26.0244
+  },
+  "PrelezaTerminus": {
+    "lat": 43.82619,
+    "lng": 26.03185
+  },
+  "Druzhba3Block48": {
+    "lat": 43.82361,
+    "lng": 25.97427
+  },
+  "IzgrevWest": {
+    "lat": 43.82345,
+    "lng": 25.9803
+  },
+  "IzgrevEast": {
+    "lat": 43.8236,
+    "lng": 25.98056
+  },
+  "MonumentOfRusofiliteEast": {
+    "lat": 43.81321,
+    "lng": 25.98163
+  },
+  "MonumentOfRusofiliteWest": {
+    "lat": 43.81419,
+    "lng": 25.982
+  },
+  "AstardzhiykaNorth": {
+    "lat": 43.80713,
+    "lng": 25.99416
+  },
+  "AstardzhiykaSouth": {
+    "lat": 43.80687,
+    "lng": 25.99465
+  },
+  "NovaPloshtadkaNorth": {
+    "lat": 43.8046,
+    "lng": 26.00799
+  },
+  "NovaPloshtadkaSouth": {
+    "lat": 43.80411,
+    "lng": 26.00877
+  },
+  "ForkForObraztsovChiflikNorth": {
+    "lat": 43.80816,
+    "lng": 26.03891
+  },
+  "CharodeykaSupera": {
+    "lat": 1,
+    "lng": 1
+  },
+  "ForkForObraztsovChiflikSouth": {
+    "lat": 43.80816,
+    "lng": 26.03891
+  },
+  "ObraztsovChiflikCentre": {
+    "lat": 43.80816,
+    "lng": 26.03891
+  },
+  "ZurnosahranenieNorth": {
+    "lat": 43.78786,
+    "lng": 26.0187
+  },
+  "ZurnosahranenieSouth": {
+    "lat": 43.78782,
+    "lng": 26.01876
+  },
+  "DZSNorth": {
+    "lat": 43.78363,
+    "lng": 26.01481
+  },
+  "DZSEast": {
+    "lat": 43.78366,
+    "lng": 26.01496
+  },
+  "LeatherFactoryEast": {
+    "lat": 43.83516,
+    "lng": 25.94545
+  },
+  "LeatherFactoryWest": {
+    "lat": 43.83514,
+    "lng": 25.94529
+  },
+  "ZMMEast": {
+    "lat": 43.83077,
+    "lng": 25.94638
+  },
+  "ZMMWest": {
+    "lat": 43.83016,
+    "lng": 25.94575
+  },
+  "ElectrometalEast": {
+    "lat": 43.82708,
+    "lng": 25.94285
+  },
+  "ElectrometalWest": {
+    "lat": 43.82738,
+    "lng": 25.94305
+  },
+  "DagovBridgeEast": {
+    "lat": 43.82148,
+    "lng": 25.93708
+  },
+  "DagovBridgeWest": {
+    "lat": 43.82157,
+    "lng": 25.93705
+  },
+  "StrelbishteEast": {
+    "lat": 43.81624,
+    "lng": 25.94
+  },
+  "StrelbishteWest": {
+    "lat": 43.81607,
+    "lng": 25.93988
+  },
+  "RusanovoBridgeWest": {
+    "lat": 43.8125,
+    "lng": 25.94221
+  },
+  "RusanovoBridgeEast": {
+    "lat": 43.81337,
+    "lng": 25.94159
+  },
+  "SrednaKulaTheTriangleEast": {
+    "lat": 43.80677,
+    "lng": 25.94301
+  },
+  "SrednaKulaTheTriangleWest": {
+    "lat": 43.80689,
+    "lng": 25.94315
+  },
+  "AsphaltBaseEast": {
+    "lat": 43.80342,
+    "lng": 25.946
+  },
+  "AsphaltBaseWest": {
+    "lat": 43.80427,
+    "lng": 25.94598
+  },
+  "BasarbovoCemeteryEast": {
+    "lat": 43.79394,
+    "lng": 25.94749
+  },
+  "BasarbovoCemeteryWest": {
+    "lat": 43.79293,
+    "lng": 25.94769
+  },
+  "BasarbovoCemetery": {
+    "lat": 43.79320,
+    "lng": 25.94682
+  },
+  "SrednaKula1North": {
+    "lat": 43.80666,
+    "lng": 25.94119
+  },
+  "SrednaKula1South": {
+    "lat": 43.80649,
+    "lng": 25.94122
+  },
+  "SrednaKulaCentralNorth": {
+    "lat": 43.80671,
+    "lng": 25.93706
+  },
+  "SrednaKulaCentralSouth": {
+    "lat": 43.80662,
+    "lng": 25.93719
+  },
+  "SrednaKula2North": {
+    "lat": 43.80592,
+    "lng": 25.93025
+  },
+  "SrednaKula2South": {
+    "lat": 43.80581,
+    "lng": 25.93032
+  },
+  "DolapiteCentralSouth": {
+    "lat": 43.7977,
+    "lng": 25.93162
+  },
+  "DolapiteCentralEast": {
+    "lat": 43.79774,
+    "lng": 25.9319
+  },
+  "HristoSmirnenkiPrimarySchool": {
+    "lat": 43.79552,
+    "lng": 25.92894
+  },
+  "Church": {
+    "lat": 43.79592,
+    "lng": 25.92996
+  },
+  "ObrashtaloDolapite": {
+    "lat": 43.79314,
+    "lng": 25.92375
+  },
+  "NesebarStrWest": {
+    "lat": 43.78899,
+    "lng": 25.92247
+  },
+  "NesebarStrEast": {
+    "lat": 43.78913,
+    "lng": 25.92277
+  },
+  "StrelbishtetoDolapite": {
+    "lat": 43.78414,
+    "lng": 25.92086
+  },
+  "RailwayCrossingDolapiteNorth": {
+    "lat": 43.79467,
+    "lng": 25.92239
+  },
+  "RailwayCrossingDolapiteSouth": {
+    "lat": 43.79461,
+    "lng": 25.92233
+  },
+  "AleksandarStamboliyskiNorth": {
+    "lat": 43.8342,
+    "lng": 25.95526
+  },
+  "AleksandarStamboliyskiSouth": {
+    "lat": 43.83398,
+    "lng": 25.95581
+  },
+  "YouthHouse": {
+    "lat": 43.84677,
+    "lng": 25.95717
+  },
+  "MarielaSoni": {
+    "lat": 43.84242,
+    "lng": 25.94823
+  },
+  "Bricolage": {
+    "lat": 43.84605,
+    "lng": 25.96162
+  },
+  "Kaufland": {
+    "lat": 43.84706,
+    "lng": 25.96674
+  },
+  "Yalta": {
+    "lat": 43.84639,
+    "lng": 25.96203
+  },
+  "MedicalCentreWest": {
+    "lat": 43.84455,
+    "lng": 25.95401
+  },
+  "CharodeykaSouth": {
+    "lat": 43.83226,
+    "lng": 25.97729
+  },
+  "Jumbo": {
+    "lat": 43.80481,
+    "lng": 25.9847
+  },
+  "METROSuperstoreSouth": {
+    "lat": 43.81361,
+    "lng": 25.9286
+  },
+  "RusenskaKorabostroilnitsa": {
+    "lat": 43.83611,
+    "lng": 25.93903
+  },
+  "METROSuperstoreParking": {
+    "lat": 43.81469,
+    "lng": 25.92735
+  },
+  "ZdravetsMarket": {
+    "lat": 43.84894,
+    "lng": 25.97996
+  },
+  "TerasataRestaurant": {
+    "lat": 43.85079,
+    "lng": 25.94914
+  },
+  "TSYUR": {
+    "lat": 43.83857,
+    "lng": 25.95908
+  },
+  "RadostKindergarten": {
+    "lat": 43.85412,
+    "lng": 25.95855
+  },
+  "DKC1": {
+    "lat": 43.8577,
+    "lng": 25.95986
+  },
+  "VasilAprilovPrimarySchool": {
+    "lat": 43.8527,
+    "lng": 25.99709
+  },
+  "BasarbovoCemeteryEntrance": {
+    "lat": 43.79814,
+    "lng": 25.94575
+  },
+  "BasarbovoCemeteryExit": {
+    "lat": 43.79823,
+    "lng": 25.94607
+  },
+  "TheCanalWest": {
+    "lat": 43.78605,
+    "lng": 25.94998
+  },
+  "TheCanalEast": {
+    "lat": 43.78602,
+    "lng": 25.95009
+  },
+  "Basarbovo3West": {
+    "lat": 43.77914,
+    "lng": 25.95014
+  },
+  "Basarbovo3East": {
+    "lat": 43.77852,
+    "lng": 25.95053
+  },
+  "Basarbovo2West": {
+    "lat": 43.77414,
+    "lng": 25.95086
+  },
+  "Basarbovo2East": {
+    "lat": 43.77407,
+    "lng": 25.95103
+  },
+  "Basarbovo1": {
+    "lat": 43.76937,
+    "lng": 25.95109
   }
 }
