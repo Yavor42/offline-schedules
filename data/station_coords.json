@@ -140,6 +140,10 @@
     "lat": 43.84072,
     "lng": 25.9547
   },
+  "OrhideyaEast": {
+    "lat": 43.84090,
+    "lng": 25.95482
+  },
   "MedicalCentreEast": {
     "lat": 43.84403,
     "lng": 25.95435
@@ -197,8 +201,8 @@
     "lng": 26.00992
   },
   "EcontExpressShippingSouthDomostroene": {
-    "lat": 43.87247,
-    "lng": 26.01141
+    "lat": 43.87367,
+    "lng": 26.01140
   },
   "DanubeBridge": {
     "lat": 43.87563,
@@ -257,8 +261,8 @@
     "lng": 25.97792
   },
   "Block6": {
-    "lat": 43.83058,
-    "lng": 25.97043
+    "lat": 43.82929,
+    "lng": 25.97039
   },
   "CBADruzhba3": {
     "lat": 43.82921,
@@ -573,8 +577,8 @@
     "lng": 25.95652
   },
   "Block33MariaLuisa": {
-    "lat": 43.82584,
-    "lng": 25.97088
+    "lat": 43.84073,
+    "lng": 25.95700
   },
   "BlockAksakov": {
     "lat": 43.8404,
@@ -625,12 +629,12 @@
     "lng": 26.01455
   },
   "FamiliaHotelEast": {
-    "lat": 43.86230,
+    "lat": 43.85935,
     "lng": 26.01531
   },
   "FamiliaHotelWest": {
     "lat": 43.86011,
-    "lng": 26.01447
+    "lng": 26.01498
   },
   "RoadJunctionNikolovoNorth": {
     "lat": 43.85233,
@@ -749,20 +753,20 @@
     "lng": 26.0252
   },
   "BorderPoliceWest": {
-    "lat": 43.87841,
-    "lng": 26.02019
-  },
-  "BorderPoliceEast": {
-    "lat": 43.87863,
-    "lng": 26.0199
-  },
-  "SlatinaWest": {
     "lat": 43.87901,
     "lng": 26.0264
   },
-  "SlatinaEast": {
+  "BorderPoliceEast": {
     "lat": 43.87921,
     "lng": 26.02636
+  },
+  "SlatinaWest": {
+    "lat": 43.87393,
+    "lng": 26.03426
+  },
+  "SlatinaEast": {
+    "lat": 43.87419,
+    "lng": 26.03405
   },
   "KEROS": {
     "lat": 43.87033,
@@ -1125,8 +1129,8 @@
     "lng": 25.95986
   },
   "VasilAprilovPrimarySchool": {
-    "lat": 43.8527,
-    "lng": 25.99709
+    "lat": 43.85248,
+    "lng": 25.99528
   },
   "BasarbovoCemeteryEntrance": {
     "lat": 43.79814,

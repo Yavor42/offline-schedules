@@ -1147,9 +1147,9 @@
     "displayName": "Block 33",
     "number": "153",
     "oppositeStation": "BlockElectron",
-    "smallText": "\"Maria Luisa\" str.",
+    "smallText": "\"Maria Luisa\" str., Block 202",
     "langBG": "Блок 33",
-    "smallTextBG": "ул. „Мария Луиза“"
+    "smallTextBG": "ул. „Мария Луиза“, блок 202"
   },
   "BlockAksakov": {
     "displayName": "Block \"Aksakov\"",
@@ -1160,20 +1160,20 @@
     "smallTextBG": ""
   },
   "BlockPushkinOnNeofitBozveliBlvd": {
-    "displayName": "Block \"Pushkin\" on \"Neofit Bozveli\" blvd.",
+    "displayName": "Block \"Pushkin\"",
     "number": "155",
     "oppositeStation": "",
     "smallText": "",
-    "langBG": "Блок „Пушкин“ на булевард „Неофит Бозвели“",
+    "langBG": "Блок „Пушкин“ на бул. „Неофит Бозвели“",
     "smallTextBG": ""
   },
   "AfterTsarOsvoboditelBlvdOnNeofitBozveliBlvd": {
     "displayName": "After \"Tsar Osvoboditel\" blvd., on \"Neofit Bozveli\" blvd.",
     "number": "156",
-    "oppositeStation": "",
+    "oppositeStation": "Block \"Vela Piskova\"",
     "smallText": "",
     "langBG": "След бул. „Цар Освободител“ на бул. „Неофит Бозвели“",
-    "smallTextBG": ""
+    "smallTextBG": "Блок „Вела Пискова“"
   },
   "Malyovitsa1North": {
     "displayName": "Malyovitsa 1 - North",
@@ -2200,7 +2200,7 @@
     "smallTextBG": "Към Русе"
   },
   "RusenskaKorabostroilnitsa": {
-    "displayName": "Rusenska Korabostroilnitsa",
+    "displayName": "Rusenska Korabostroitelnitsa",
     "number": "285",
     "oppositeStation": "",
     "smallText": "",
