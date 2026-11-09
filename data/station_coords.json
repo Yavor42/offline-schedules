@@ -253,12 +253,12 @@
     "lng": 25.97588
   },
   "OlympBlock49": {
-    "lat": 43.85024,
-    "lng": 25.97792
+    "lat": 43.84941,
+    "lng": 25.97884
   },
   "OlympBlock48": {
-    "lat": 43.85024,
-    "lng": 25.97792
+    "lat": 43.84957,
+    "lng": 25.97915
   },
   "Block6": {
     "lat": 43.82929,
@@ -805,12 +805,12 @@
     "lng": 26.0001
   },
   "KasevaChesmaNorth": {
-    "lat": 43.83677,
-    "lng": 26.00535
+    "lat": 43.83674,
+    "lng": 26.00975
   },
   "KasevaChesmaSouth": {
-    "lat": 43.83667,
-    "lng": 26.00561
+    "lat": 43.83661,
+    "lng": 26.01022
   },
   "ObrashtaloNorth": {
     "lat": 43.83677,
@@ -829,8 +829,8 @@
     "lng": 26.01535
   },
   "BoroveteNorth": {
-    "lat": 26.01823,
-    "lng": 43.83042
+    "lat": 43.83042,
+    "lng": 26.01823
   },
   "BoroveteSouth": {
     "lat": 43.83035,
@@ -885,16 +885,16 @@
     "lng": 26.00877
   },
   "ForkForObraztsovChiflikNorth": {
-    "lat": 43.80816,
-    "lng": 26.03891
+    "lat": 43.79918,
+    "lng": 26.03437
   },
   "CharodeykaSupera": {
     "lat": 1,
     "lng": 1
   },
   "ForkForObraztsovChiflikSouth": {
-    "lat": 43.80816,
-    "lng": 26.03891
+    "lat": 43.79921,
+    "lng": 26.03576
   },
   "ObraztsovChiflikCentre": {
     "lat": 43.80816,
