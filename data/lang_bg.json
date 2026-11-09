@@ -55,7 +55,7 @@
   "No favorite stations yet.": "Нямате любими спирки",
   "Tap ☆ on a station to add it.": "Натиснете ☆ на спирка за да я добавите към любимите",
   "No stations match": "Нито една спирка не съвпада",
-  "Clear all favorite stations?": "Исчистете всички любими спирки?",
+  "Clear all favorite stations?": "Желаете ли да изчистите всички любими спирки?",
   "Upcoming departures": "Предстоящи курсове",
   "Terminates here": "Приключва тук",
   "{0} ago": "Преди {0}",
@@ -195,6 +195,11 @@
   "Could not load the street map": "Неуспешно зареждане на улична карта",
   "Map settings": "Настройки на картата",
   "Show stations with no lines": "Показване на спирки без линии",
-  "Zoom in to view stations": "Увеличете за да видите спирките"
+  "Zoom in to view stations": "Увеличете за да видите спирките",
+  "Show only favorite stations": "Показване само на любими спирки",
+  "Favorite lines": "Любими линии",
+  "Favorite line": "Любима линия",
+  "Clear favorite lines": "Изчистване на любими линии",
+  "Clear all favorite lines?": "Желаете ли да изчистите всички любими линии?"
 }
 

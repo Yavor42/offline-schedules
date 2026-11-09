@@ -630,11 +630,11 @@
   },
   "FamiliaHotelEast": {
     "lat": 43.85935,
-    "lng": 26.01531
+    "lng": 26.01498
   },
   "FamiliaHotelWest": {
-    "lat": 43.86011,
-    "lng": 26.01498
+    "lat": 43.86010,
+    "lng": 26.01446
   },
   "RoadJunctionNikolovoNorth": {
     "lat": 43.85233,
@@ -837,8 +837,8 @@
     "lng": 26.01814
   },
   "AkatsiiteNorth": {
-    "lat": 43.82765,
-    "lng": 26.02393
+    "lat": 43.82771,
+    "lng": 26.02400
   },
   "AkatsiiteSouth": {
     "lat": 43.8273,
@@ -901,12 +901,12 @@
     "lng": 26.03891
   },
   "ZurnosahranenieNorth": {
-    "lat": 43.78786,
-    "lng": 26.0187
+    "lat": 43.78787,
+    "lng": 26.01867
   },
   "ZurnosahranenieSouth": {
-    "lat": 43.78782,
-    "lng": 26.01876
+    "lat": 43.78780,
+    "lng": 26.01877
   },
   "DZSNorth": {
     "lat": 43.78363,
